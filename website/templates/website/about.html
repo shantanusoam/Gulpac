@@ -1,0 +1,253 @@
+{% extends "website/base.html" %}
+{% load static %}
+
+{% block title %}About Us — Gulpac{% endblock %}
+
+{% block content %}
+  <!-- Page Header -->
+  <section class="relative bg-slate-900 text-white py-20 overflow-hidden">
+    <div class="absolute inset-0 bg-gradient-to-r from-blue-900/40 to-indigo-950/40 z-10"></div>
+    <div class="absolute inset-0 z-0">
+      <img src="{% static 'images/factory.png' %}" alt="Glupac Assembly Line" class="w-full h-full object-cover opacity-20 filter blur-sm">
+    </div>
+    
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-20 text-center space-y-4">
+      <span class="tracking-widest text-xs font-black text-blue-400 uppercase">A सुरेश राज Industries Venture</span>
+      <h1 class="text-4xl sm:text-5xl font-black tracking-tight about-title">About Our Company</h1>
+      <p class="text-slate-300 text-sm sm:text-base max-w-xl mx-auto about-subtitle">
+        Pioneering packaging development, precision bonding technology, and custom engineering since 2006.
+      </p>
+    </div>
+  </section>
+
+  <!-- Company Journey Section -->
+  <section class="py-20 md:py-28 bg-white">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-8 items-center">
+        
+        <!-- Left Side: Text -->
+        <div class="lg:col-span-6 space-y-6 journey-text">
+          <h2 class="text-3xl sm:text-4xl font-extrabold text-slate-900 tracking-tight leading-tight">
+            Pioneering Packaging Excellence
+          </h2>
+          <p class="text-slate-600 text-base sm:text-lg leading-relaxed">
+            Glupac, under the banner of <span class="font-bold text-slate-900">Suresh Raj Industries</span>, has built its reputation as a leading manufacturer of premium, high-speed automated packaging and hot melt adhesive machinery. 
+          </p>
+          <p class="text-slate-600 text-base sm:text-lg leading-relaxed">
+            Our journey began with a simple vision: to revolutionize regional cartoning operations by engineering systems that eliminate human error, guarantee leak-free packages, and significantly reduce material wastage.
+          </p>
+          <p class="text-slate-600 text-base sm:text-lg leading-relaxed">
+            Every machinery unit that leaves our production floor is a testament to rigorous quality assurance, premium structural materials, and meticulous customization tailored to our industrial client requirements.
+          </p>
+        </div>
+
+        <!-- Right Side: Overlapping Images -->
+        <div class="lg:col-span-6 relative flex items-center justify-center min-h-[400px] sm:min-h-[500px] journey-images-block">
+          <!-- Background shapes -->
+          <div class="absolute w-64 h-64 bg-blue-100/40 rounded-full blur-3xl -top-5 -right-5 pointer-events-none"></div>
+          
+          <!-- Image 1 (Factory) -->
+          <div class="absolute j-card-back left-4 sm:left-10 top-12 w-[260px] sm:w-[340px] aspect-[1.1] rounded-2xl overflow-hidden shadow-xl border-4 border-white bg-slate-100 transform -rotate-3 hover:rotate-0 hover:scale-105 transition-all duration-500 z-10">
+            <img src="{% static 'images/factory.png' %}" alt="Glupac Assembly Factory" class="w-full h-full object-cover">
+          </div>
+          
+          <!-- Image 2 (Manufacturing) -->
+          <div class="absolute j-card-front right-4 sm:right-10 bottom-10 w-[240px] sm:w-[320px] aspect-[1.1] rounded-2xl overflow-hidden shadow-2xl border-4 border-white bg-slate-150 transform rotate-3 hover:rotate-0 hover:scale-105 transition-all duration-500 z-20">
+            <img src="{% static 'images/process.png' %}" alt="Glupac Precision Manufacturing" class="w-full h-full object-cover">
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- Mission & Vision Section -->
+  <section class="py-16 md:py-24 bg-slate-50 border-y border-slate-100">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-10">
+        
+        <!-- Mission -->
+        <div class="bg-white rounded-3xl p-8 sm:p-10 shadow-sm border border-slate-100 space-y-6 hover:shadow-md transition-shadow mission-card">
+          <div class="w-14 h-14 rounded-2xl bg-blue-50 flex items-center justify-center text-blue-600">
+            <i data-lucide="target" class="w-7 h-7"></i>
+          </div>
+          <h3 class="text-2xl font-black text-slate-900 font-inter">Our Mission</h3>
+          <p class="text-slate-600 text-sm sm:text-base leading-relaxed">
+            To empower global industries with state-of-the-art, customized gluing and packaging automation. We commit to continuous technological enhancement, ensuring zero defect rates, high operator safety, and exceptional long-term machinery value.
+          </p>
+        </div>
+
+        <!-- Vision -->
+        <div class="bg-white rounded-3xl p-8 sm:p-10 shadow-sm border border-slate-100 space-y-6 hover:shadow-md transition-shadow vision-card">
+          <div class="w-14 h-14 rounded-2xl bg-blue-50 flex items-center justify-center text-blue-600">
+            <i data-lucide="eye" class="w-7 h-7"></i>
+          </div>
+          <h3 class="text-2xl font-black text-slate-900 font-inter">Our Vision</h3>
+          <p class="text-slate-600 text-sm sm:text-base leading-relaxed">
+            To be internationally recognized as the benchmark of excellence in structural packaging systems. We strive to pioneer intelligence and PLC capabilities, helping modern manufacturing lines transition cleanly onto green, low-waste automated solutions.
+          </p>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- Commitment Grid (Why Choose Glupac - About Us Variation) -->
+  <section class="py-20 md:py-28 bg-white">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      
+      <!-- Headers -->
+      <div class="text-center max-w-3xl mx-auto mb-16 space-y-3 choose-header">
+        <h2 class="text-3xl sm:text-4xl font-extrabold text-slate-900 tracking-tight">Our Core Commitments</h2>
+        <p class="text-base text-slate-600 leading-relaxed font-semibold">Our core values drive how we build machines and support clients</p>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 choose-grid">
+        
+        <!-- Commit 1 -->
+        <div class="p-8 rounded-2xl bg-slate-50 border border-slate-100 space-y-4 hover:shadow-md transition-all">
+          <div class="text-blue-600"><i data-lucide="shield-check" class="w-7 h-7"></i></div>
+          <h3 class="text-lg font-bold text-slate-900">Zero Leakage Guarantee</h3>
+          <p class="text-slate-600 text-sm leading-relaxed">
+            Our hot melt sealing controls are optimized to create tight, seamless box bonding preventing outer content seepage under high impact.
+          </p>
+        </div>
+
+        <!-- Commit 2 -->
+        <div class="p-8 rounded-2xl bg-slate-50 border border-slate-100 space-y-4 hover:shadow-md transition-all">
+          <div class="text-blue-600"><i data-lucide="lock" class="w-7 h-7"></i></div>
+          <h3 class="text-lg font-bold text-slate-900">Theft Resistant Design</h3>
+          <p class="text-slate-600 text-sm leading-relaxed">
+            Tamper-proof closure alignment guarantees that any shipping carton cannot be easily opened and reclosed without visible marking.
+          </p>
+        </div>
+
+        <!-- Commit 3 -->
+        <div class="p-8 rounded-2xl bg-slate-50 border border-slate-100 space-y-4 hover:shadow-md transition-all">
+          <div class="text-blue-600"><i data-lucide="sliders" class="w-7 h-7"></i></div>
+          <h3 class="text-lg font-bold text-slate-900">100% Customization</h3>
+          <p class="text-slate-600 text-sm leading-relaxed">
+            Every factory floor space demands custom design. We scale width, height, nozzle points, speed, and safety shields to exact client specifications.
+          </p>
+        </div>
+
+        <!-- Commit 4 -->
+        <div class="p-8 rounded-2xl bg-slate-50 border border-slate-100 space-y-4 hover:shadow-md transition-all">
+          <div class="text-blue-600"><i data-lucide="cpu" class="w-7 h-7"></i></div>
+          <h3 class="text-lg font-bold text-slate-900">Automation Excellence</h3>
+          <p class="text-slate-600 text-sm leading-relaxed">
+            We integrate with top-tier electronic providers like Schneider and Delta, running PLC intelligence to automatically monitor line faults.
+          </p>
+        </div>
+
+        <!-- Commit 5 -->
+        <div class="p-8 rounded-2xl bg-slate-50 border border-slate-100 space-y-4 hover:shadow-md transition-all">
+          <div class="text-blue-600"><i data-lucide="headphones" class="w-7 h-7"></i></div>
+          <h3 class="text-lg font-bold text-slate-900">Expert Technical Support</h3>
+          <p class="text-slate-600 text-sm leading-relaxed">
+            Transitioning to automation requires support. We provide comprehensive onsite training, documentation, and instant remote assistance.
+          </p>
+        </div>
+
+        <!-- Commit 6 -->
+        <div class="p-8 rounded-2xl bg-slate-50 border border-slate-100 space-y-4 hover:shadow-md transition-all">
+          <div class="text-blue-600"><i data-lucide="award" class="w-7 h-7"></i></div>
+          <h3 class="text-lg font-bold text-slate-900">Quality Assurance</h3>
+          <p class="text-slate-600 text-sm leading-relaxed">
+            Before packing, every single machine undergoes a non-stop 48-hour continuous cycle test with full carton load to verify electronic integrity.
+          </p>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA section -->
+  <section class="py-16 bg-[#020617] text-white overflow-hidden relative">
+    <div class="relative z-10 max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 text-center space-y-6">
+      <h2 class="text-3xl sm:text-4xl font-extrabold tracking-tight font-inter">Want to See Our Factory Setup?</h2>
+      <p class="text-slate-400 max-w-xl mx-auto text-sm sm:text-base leading-relaxed">
+        Let us schedule an in-person workshop visit, or run your dummy cartons on our demonstration lines over a high-resolution zoom video call.
+      </p>
+      <div class="pt-4 flex justify-center space-x-4">
+        <a href="{% url 'contact' %}" class="inline-flex items-center justify-center px-8 py-3 rounded-full text-sm font-bold text-white bg-blue-600 hover:bg-blue-700 shadow-lg shadow-blue-500/10 transition-all hover:-translate-y-0.5 active:translate-y-0">
+          Book Demonstration
+          <i data-lucide="phone-call" class="w-4 h-4 ml-1.5"></i>
+        </a>
+      </div>
+    </div>
+  </section>
+{% endblock %}
+
+{% block scripts %}
+  <script>
+    document.addEventListener("DOMContentLoaded", function() {
+      // General stagger animations using GSAP
+      const tl = gsap.timeline({ defaults: { ease: "power3.out", duration: 1 } });
+      tl.from(".about-title", { opacity: 0, y: 30, delay: 0.2 })
+        .from(".about-subtitle", { opacity: 0, y: 20 }, "-=0.6");
+
+      gsap.from(".journey-text", {
+        scrollTrigger: {
+          trigger: ".journey-text",
+          start: "top 80%",
+        },
+        opacity: 0,
+        x: -50,
+        duration: 1,
+        ease: "power2.out"
+      });
+
+      gsap.from(".journey-images-block .j-card-back", {
+        scrollTrigger: {
+          trigger: ".journey-images-block",
+          start: "top 85%",
+        },
+        opacity: 0,
+        x: -80,
+        rotate: -15,
+        duration: 1
+      });
+
+      gsap.from(".journey-images-block .j-card-front", {
+        scrollTrigger: {
+          trigger: ".journey-images-block",
+          start: "top 85%",
+        },
+        opacity: 0,
+        x: 80,
+        rotate: 15,
+        duration: 1
+      }, "-=0.7");
+
+      gsap.from(".mission-card", {
+        scrollTrigger: { trigger: ".mission-card", start: "top 80%" },
+        opacity: 0,
+        y: 40,
+        duration: 0.8
+      });
+
+      gsap.from(".vision-card", {
+        scrollTrigger: { trigger: ".vision-card", start: "top 80%" },
+        opacity: 0,
+        y: 40,
+        duration: 0.8
+      }, "-=0.4");
+
+      gsap.from(".choose-header", {
+        scrollTrigger: { trigger: ".choose-header", start: "top 80%" },
+        opacity: 0,
+        y: 30,
+        duration: 0.8
+      });
+
+      gsap.from(".choose-grid > div", {
+        scrollTrigger: { trigger: ".choose-grid", start: "top 80%" },
+        opacity: 0,
+        y: 40,
+        stagger: 0.15,
+        duration: 0.8
+      });
+    });
+  </script>
+{% endblock %}

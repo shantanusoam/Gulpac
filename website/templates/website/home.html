@@ -1,20 +1,622 @@
 {% extends "website/base.html" %}
+{% load static %}
 
-{% block title %}Home — Gulpac{% endblock %}
+{% block title %}Leading Packaging & Gluing Machine Manufacturer — Gulpac{% endblock %}
 
 {% block content %}
-  <main class="min-h-screen flex items-center justify-center bg-white">
-    <div class="text-center">
-      <h1 class="text-4xl font-bold text-gray-900 fade-up">Gulpac</h1>
-      <p class="mt-4 text-gray-600 fade-up">Up and running.</p>
+  <!-- Hero Section -->
+  <section class="relative bg-white pt-24 pb-20 md:pt-32 md:pb-28 overflow-hidden">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-8 items-center">
+        
+        <!-- Left Side: Hero Text -->
+        <div class="lg:col-span-6 space-y-8 hero-text-block">
+          <div class="inline-flex items-center space-x-2 bg-blue-50 border border-blue-100 rounded-full py-1.5 px-4 text-xs font-semibold text-blue-600 tracking-wide uppercase">
+            <span>About Glupac</span>
+          </div>
+          
+          <h1 class="text-4xl sm:text-5xl lg:text-6xl font-black text-slate-900 tracking-tight leading-tight hero-title">
+            Leading Manufacturer of <br>
+            <span class="text-blue-600 bg-gradient-to-r from-blue-600 to-indigo-600 bg-clip-text text-transparent">Packaging Solutions</span>
+          </h1>
+          
+          <p class="text-base sm:text-lg text-slate-600 leading-relaxed max-w-xl hero-desc">
+            Glupac, under the banner of <span class="font-semibold text-slate-900">Suresh Raj Industries</span>, is a pioneering manufacturer of high-performance gluing and cartoning machines. Our systems are custom-engineered for zero-leakage, extreme lifespan, and seamless automation.
+          </p>
+          
+          <!-- Hero Actions -->
+          <div class="flex flex-wrap gap-4 pt-2 hero-btns">
+            <a href="{% url 'contact' %}" class="inline-flex items-center justify-center px-8 py-3.5 rounded-full text-base font-bold text-white bg-blue-600 hover:bg-blue-700 shadow-lg shadow-blue-500/20 hover:shadow-blue-500/30 transition-all hover:-translate-y-0.5 active:translate-y-0">
+              Get Custom Quote
+              <i data-lucide="arrow-right" class="w-5 h-5 ml-2"></i>
+            </a>
+            <a href="{% url 'solutions' %}" class="inline-flex items-center justify-center px-8 py-3.5 rounded-full text-base font-bold text-slate-700 bg-slate-100 hover:bg-slate-200 transition-all hover:-translate-y-0.5 active:translate-y-0">
+              Explore Machines
+            </a>
+          </div>
+
+          <!-- Quick Metrics Grid -->
+          <div class="grid grid-cols-3 gap-4 pt-6 max-w-lg border-t border-slate-100 hero-stats">
+            <div class="text-center sm:text-left">
+              <p class="text-2xl sm:text-3xl font-extrabold text-blue-600">20+</p>
+              <p class="text-xs sm:text-sm font-semibold text-slate-600">Years Experience</p>
+            </div>
+            <div class="text-center sm:text-left">
+              <p class="text-2xl sm:text-3xl font-extrabold text-blue-600">500+</p>
+              <p class="text-xs sm:text-sm font-semibold text-slate-600">Installations</p>
+            </div>
+            <div class="text-center sm:text-left">
+              <p class="text-2xl sm:text-3xl font-extrabold text-blue-600">100%</p>
+              <p class="text-xs sm:text-sm font-semibold text-slate-600">Customized</p>
+            </div>
+          </div>
+        </div>
+        
+        <!-- Right Side: Interactive Overlapping Images -->
+        <div class="lg:col-span-6 relative flex items-center justify-center min-h-[400px] sm:min-h-[500px] lg:min-h-[550px] hero-images">
+          <!-- Background decorative shapes -->
+          <div class="absolute w-72 h-72 bg-blue-100/40 rounded-full blur-3xl -top-10 -right-10 pointer-events-none"></div>
+          <div class="absolute w-80 h-80 bg-indigo-50/50 rounded-full blur-3xl -bottom-10 -left-10 pointer-events-none"></div>
+          
+          <!-- Machine 2 (Back and Left) -->
+          <div class="absolute x-card-back left-4 sm:left-10 top-16 w-[260px] sm:w-[350px] aspect-[1.1] rounded-2xl overflow-hidden shadow-2xl border-4 border-white/80 bg-white/50 backdrop-blur-sm transform -rotate-6 hover:rotate-0 hover:scale-105 transition-all duration-500 z-10 pointer-events-auto">
+            <img src="{% static 'images/machine2.png' %}" alt="Glupac Modern Gluing Machinery" class="w-full h-full object-cover">
+          </div>
+          
+          <!-- Machine 1 (Front and Right) -->
+          <div class="absolute x-card-front right-4 sm:right-10 bottom-12 w-[240px] sm:w-[320px] aspect-[1.0] rounded-2xl overflow-hidden shadow-2xl border-4 border-white/80 bg-white transform rotate-3 hover:rotate-0 hover:scale-105 transition-all duration-500 z-20 pointer-events-auto">
+            <img src="{% static 'images/machine1.png' %}" alt="Glupac Carton Packaging Line" class="w-full h-full object-cover">
+          </div>
+        </div>
+        
+      </div>
     </div>
-  </main>
+  </section>
+
+  <!-- Infinite Partners Ticker -->
+  <section class="bg-[#fafbfd] py-10 border-y border-slate-100/80 overflow-hidden">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mb-4">
+      <p class="text-center text-xs font-bold text-slate-400 tracking-widest uppercase">Trusted by leading brands across industries</p>
+    </div>
+    
+    <!-- GSAP / CSS Infinite Ticker container -->
+    <div class="relative w-full overflow-hidden flex items-center h-20">
+      <div id="partner-ticker" class="flex space-x-12 whitespace-nowrap min-w-full">
+        <!-- We use our exported component2.png as part of the ticker, or simulate logos -->
+        <div class="flex items-center space-x-16">
+          <span class="text-lg sm:text-2xl font-black text-slate-300 select-none uppercase hover:text-blue-500 transition-colors">India Gate Foods</span>
+          <span class="text-lg sm:text-2xl font-black text-slate-300 select-none uppercase hover:text-blue-500 transition-colors">Haldirams</span>
+          <span class="text-lg sm:text-2xl font-black text-slate-300 select-none uppercase hover:text-blue-500 transition-colors">Finolex Cables</span>
+          <span class="text-lg sm:text-2xl font-black text-slate-300 select-none uppercase hover:text-blue-500 transition-colors">Suresh Raj Indus</span>
+          <span class="text-lg sm:text-2xl font-black text-slate-300 select-none uppercase hover:text-blue-500 transition-colors">Pharma Packaging Co</span>
+          <span class="text-lg sm:text-2xl font-black text-slate-300 select-none uppercase hover:text-blue-500 transition-colors">Cosmetic Pack</span>
+        </div>
+        <!-- Duplicate for loop -->
+        <div class="flex items-center space-x-16">
+          <span class="text-lg sm:text-2xl font-black text-slate-300 select-none uppercase hover:text-blue-500 transition-colors">India Gate Foods</span>
+          <span class="text-lg sm:text-2xl font-black text-slate-300 select-none uppercase hover:text-blue-500 transition-colors">Haldirams</span>
+          <span class="text-lg sm:text-2xl font-black text-slate-300 select-none uppercase hover:text-blue-500 transition-colors">Finolex Cables</span>
+          <span class="text-lg sm:text-2xl font-black text-slate-300 select-none uppercase hover:text-blue-500 transition-colors">Suresh Raj Indus</span>
+          <span class="text-lg sm:text-2xl font-black text-slate-300 select-none uppercase hover:text-blue-500 transition-colors">Pharma Packaging Co</span>
+          <span class="text-lg sm:text-2xl font-black text-slate-300 select-none uppercase hover:text-blue-500 transition-colors">Cosmetic Pack</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Advantages: Why Choose GLUPAC -->
+  <section id="advantages" class="py-20 md:py-28 bg-slate-50">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      
+      <!-- Section Header -->
+      <div class="text-center max-w-3xl mx-auto mb-16 space-y-4">
+        <h2 class="text-3xl sm:text-4xl font-extrabold text-slate-900 tracking-tight adv-header">Why Choose GLUPAC?</h2>
+        <p class="text-base sm:text-lg text-slate-600 leading-relaxed adv-subheader">
+          Industry-leading gluing and packaging solutions engineered to prevent leakage, deter tampering, and maximize day-to-day packaging throughput.
+        </p>
+      </div>
+      
+      <!-- Advantages Cards Grid -->
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 adv-grid">
+        
+        <!-- Card 1 -->
+        <div class="bg-white rounded-2xl p-8 shadow-sm border border-slate-100 hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1 group">
+          <div class="w-14 h-14 rounded-xl bg-blue-50 flex items-center justify-center text-blue-600 group-hover:bg-blue-600 group-hover:text-white transition-all mb-6">
+            <i data-lucide="shield-check" class="w-7 h-7"></i>
+          </div>
+          <h3 class="text-xl font-bold text-slate-900 mb-3 group-hover:text-blue-600 transition-colors">Zero Leakage Sealing</h3>
+          <p class="text-slate-600 text-sm leading-relaxed">
+            Advanced high-precision gluing and hot melt sealing technology secures complete package structural integrity for food and cosmetics.
+          </p>
+        </div>
+
+        <!-- Card 2 -->
+        <div class="bg-white rounded-2xl p-8 shadow-sm border border-slate-100 hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1 group">
+          <div class="w-14 h-14 rounded-xl bg-blue-50 flex items-center justify-center text-blue-600 group-hover:bg-blue-600 group-hover:text-white transition-all mb-6">
+            <i data-lucide="lock" class="w-7 h-7"></i>
+          </div>
+          <h3 class="text-xl font-bold text-slate-900 mb-3 group-hover:text-blue-600 transition-colors">Theft Resistant Systems</h3>
+          <p class="text-slate-600 text-sm leading-relaxed">
+            Secure bonding design prevents product theft or tampering throughout regional distribution and complex retail supply chain operations.
+          </p>
+        </div>
+
+        <!-- Card 3 -->
+        <div class="bg-white rounded-2xl p-8 shadow-sm border border-slate-100 hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1 group">
+          <div class="w-14 h-14 rounded-xl bg-blue-50 flex items-center justify-center text-blue-600 group-hover:bg-blue-600 group-hover:text-white transition-all mb-6">
+            <i data-lucide="layers" class="w-7 h-7"></i>
+          </div>
+          <h3 class="text-xl font-bold text-slate-900 mb-3 group-hover:text-blue-600 transition-colors">Multi-Size Compatibility</h3>
+          <p class="text-slate-600 text-sm leading-relaxed">
+            Highly adjustable and quick-change dynamic guidelines enable one single machinery unit to process multi-size carton cartons smoothly.
+          </p>
+        </div>
+
+        <!-- Card 4 -->
+        <div class="bg-white rounded-2xl p-8 shadow-sm border border-slate-100 hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1 group">
+          <div class="w-14 h-14 rounded-xl bg-blue-50 flex items-center justify-center text-blue-600 group-hover:bg-blue-600 group-hover:text-white transition-all mb-6">
+            <i data-lucide="sliders" class="w-7 h-7"></i>
+          </div>
+          <h3 class="text-xl font-bold text-slate-900 mb-3 group-hover:text-blue-600 transition-colors">Industry Customization</h3>
+          <p class="text-slate-600 text-sm leading-relaxed">
+            Tailored engineering processes built uniquely to satisfy standards in food processing, retail pharma cleanrooms, cosmetics, and FMCG.
+          </p>
+        </div>
+
+        <!-- Card 5 -->
+        <div class="bg-white rounded-2xl p-8 shadow-sm border border-slate-100 hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1 group">
+          <div class="w-14 h-14 rounded-xl bg-blue-50 flex items-center justify-center text-blue-600 group-hover:bg-blue-600 group-hover:text-white transition-all mb-6">
+            <i data-lucide="cpu" class="w-7 h-7"></i>
+          </div>
+          <h3 class="text-xl font-bold text-slate-900 mb-3 group-hover:text-blue-600 transition-colors">Precision Automation</h3>
+          <p class="text-slate-600 text-sm leading-relaxed">
+            High-speed automated workflows powered by state-of-the-art PLC computers and sensors guarantees consistent 85+ box output speeds.
+          </p>
+        </div>
+
+        <!-- Card 6 -->
+        <div class="bg-white rounded-2xl p-8 shadow-sm border border-slate-100 hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1 group">
+          <div class="w-14 h-14 rounded-xl bg-blue-50 flex items-center justify-center text-blue-600 group-hover:bg-blue-600 group-hover:text-white transition-all mb-6">
+            <i data-lucide="trash-2" class="w-7 h-7"></i>
+          </div>
+          <h3 class="text-xl font-bold text-slate-900 mb-3 group-hover:text-blue-600 transition-colors">Reduced Product Wastage</h3>
+          <p class="text-slate-600 text-sm leading-relaxed">
+            Optimized automated gluing nozzles minimize adhesive consumption and material waste, and prevent thermal tearing.
+          </p>
+        </div>
+        
+      </div>
+    </div>
+  </section>
+
+  <!-- Middle Showcase Banner (Component 4) -->
+  <section class="relative bg-slate-900 overflow-hidden py-24 md:py-32">
+    <!-- Overlay Graphic -->
+    <div class="absolute inset-0 bg-gradient-to-r from-slate-950 via-slate-900/90 to-transparent z-10"></div>
+    <div class="absolute inset-0 z-0 opacity-45 transform scale-105 pointer-events-none flex justify-end">
+      <img src="{% static 'images/component4.png' %}" alt="Glupac automated control system" class="w-full lg:w-2/3 h-full object-cover">
+    </div>
+    
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-20">
+      <div class="lg:w-1/2 space-y-6 md:space-y-8 showcase-text">
+        <span class="inline-flex tracking-widest text-xs font-bold text-blue-400 uppercase">Interactive Machine Showroom</span>
+        <h2 class="text-3xl sm:text-5xl font-black text-white leading-tight">
+          Engineered for <br class="hidden sm:inline">
+          Perfect Control & Zero-Fault Operation
+        </h2>
+        <p class="text-slate-300 text-base sm:text-lg leading-relaxed">
+          Behind every Glupac machine lies complex technical excellence. From dynamic hot-melt adhesive timing to automatic sensor diagnostics, our units help factory operators scale throughput easily without worrying about mechanical failure.
+        </p>
+        <div class="flex flex-wrap gap-4 pt-4">
+          <a href="{% url 'contact' %}" class="inline-flex items-center justify-center px-7 py-3 rounded-full text-sm font-bold text-white bg-blue-600 hover:bg-blue-700 transition-all">
+            Schedule Live Video Demo
+            <i data-lucide="video" class="w-4 h-4 ml-1.5"></i>
+          </a>
+          <a href="{% url 'solutions' %}" class="inline-flex items-center justify-center px-7 py-3 rounded-full text-sm font-bold text-slate-300 border border-slate-700 hover:bg-slate-800 transition-all">
+            Technical Specifications
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Solutions Section (Database Driven) -->
+  <section class="py-20 md:py-28 bg-white">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      
+      <!-- Header -->
+      <div class="flex flex-col md:flex-row md:items-end justify-between mb-16 gap-6 solutions-header">
+        <div class="space-y-4 max-w-2xl">
+          <h2 class="text-3xl sm:text-4xl font-extrabold text-slate-900 tracking-tight">Our High-Precision physical Solutions</h2>
+          <p class="text-base text-slate-600 leading-relaxed">
+            Browse our line-up of robust gluing and carton erection machines, starting from simple manual assist lines upward to continuous ultra-automation.
+          </p>
+        </div>
+        <div class="flex-shrink-0">
+          <a href="{% url 'solutions' %}" class="inline-flex items-center text-blue-600 hover:text-blue-700 font-bold hover:underline transition-all">
+            View All Machinery
+            <i data-lucide="arrow-right" class="w-5 h-5 ml-1.5"></i>
+          </a>
+        </div>
+      </div>
+
+      <!-- Machines Grid -->
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 machines-grid">
+        {% for machine in machines %}
+        <div class="bg-white rounded-2xl shadow-md hover:shadow-2xl border border-slate-100 overflow-hidden flex flex-col h-full transform transition-all duration-300 group hover:-translate-y-1">
+          <!-- Image frame -->
+          <div class="relative bg-slate-100 aspect-video overflow-hidden">
+            <img src="{% static machine.image_path %}" alt="{{ machine.name }}" class="w-full h-full object-cover group-hover:scale-105 transition-all duration-500" onerror="this.onerror=null; this.src='https://placehold.co/400x300?text={{ machine.model_number }}'">
+            <div class="absolute top-4 right-4 bg-slate-900/80 backdrop-blur-sm text-white px-3.5 py-1.5 rounded-full text-xs font-bold font-inter tracking-wider">
+              {{ machine.model_number }}
+            </div>
+          </div>
+          <!-- Body -->
+          <div class="p-6 sm:p-8 flex-grow flex flex-col justify-between">
+            <div class="space-y-4">
+              <h3 class="text-xl font-bold font-inter text-slate-900 group-hover:text-blue-600 transition-colors">{{ machine.name }}</h3>
+              
+              <!-- Bullets specifications / features -->
+              <ul class="space-y-2 text-sm text-slate-600 pt-1">
+                {% for feature in machine.features %}
+                <li class="flex items-start space-x-2">
+                  <i data-lucide="check-circle-2" class="w-4 h-4 text-blue-500 mt-0.5 flex-shrink-0"></i>
+                  <span>{{ feature }}</span>
+                </li>
+                {% endfor %}
+              </ul>
+            </div>
+            
+            <div class="pt-6 mt-6 border-t border-slate-100 flex items-center justify-between">
+              <span class="text-xs font-bold text-slate-400 uppercase tracking-widest">{{ machine.get_category_display }}</span>
+              <a href="{% url 'solution_detail' machine.model_number %}" class="inline-flex items-center justify-center px-4.5 py-2 border border-blue-500/20 rounded-full text-xs font-bold text-blue-600 hover:bg-blue-50 transition-all">
+                Details
+                <i data-lucide="chevron-right" class="w-3.5 h-3.5 ml-1"></i>
+              </a>
+            </div>
+          </div>
+        </div>
+        {% empty %}
+        <div class="col-span-full py-16 text-center text-slate-500">
+          No machines loaded. Please run the seeding script in the command line first.
+        </div>
+        {% endfor %}
+      </div>
+      
+    </div>
+  </section>
+
+  <!-- Footprints / Globe section -->
+  <section id="footprints" class="py-20 md:py-28 bg-[#fafbfd] overflow-hidden">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      
+      <!-- Section Headers -->
+      <div class="text-center max-w-2xl mx-auto mb-16 space-y-3 footprints-header">
+        <span class="tracking-widest text-xs font-black text-slate-400 uppercase">Footprints Across</span>
+        <h2 class="text-3xl sm:text-5xl font-black text-slate-900 tracking-tight">THE GLOBE</h2>
+        <p class="text-base text-slate-500 leading-relaxed font-semibold">Delivering excellence across continents</p>
+      </div>
+
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center relative">
+        
+        <!-- Left Side: Stats List -->
+        <div class="lg:col-span-5 space-y-6 md:space-y-8 footprints-stats">
+          
+          <!-- Stat 1 -->
+          <div class="flex items-center space-x-5 bg-white p-5 rounded-2xl shadow-sm border border-slate-100 hover:shadow-md transition-all">
+            <div class="w-14 h-14 rounded-xl bg-blue-50 flex items-center justify-center text-blue-600 flex-shrink-0">
+              <i data-lucide="anchor" class="w-6 h-6"></i>
+            </div>
+            <div>
+              <p class="text-3xl font-black text-slate-900 font-inter">500+</p>
+              <p class="text-sm font-bold text-slate-500">Installations Worldwide</p>
+            </div>
+          </div>
+
+          <!-- Stat 2 -->
+          <div class="flex items-center space-x-5 bg-white p-5 rounded-2xl shadow-sm border border-slate-100 hover:shadow-md transition-all">
+            <div class="w-14 h-14 rounded-xl bg-blue-50 flex items-center justify-center text-blue-600 flex-shrink-0">
+              <i data-lucide="factory" class="w-6 h-6"></i>
+            </div>
+            <div>
+              <p class="text-3xl font-black text-slate-900 font-inter">20+</p>
+              <p class="text-sm font-bold text-slate-500">Industries Served</p>
+            </div>
+          </div>
+
+          <!-- Stat 3 -->
+          <div class="flex items-center space-x-5 bg-white p-5 rounded-2xl shadow-sm border border-slate-100 hover:shadow-md transition-all">
+            <div class="w-14 h-14 rounded-xl bg-blue-50 flex items-center justify-center text-blue-600 flex-shrink-0">
+              <i data-lucide="settings" class="w-6 h-6"></i>
+            </div>
+            <div>
+              <p class="text-3xl font-black text-slate-900 font-inter">100%</p>
+              <p class="text-sm font-bold text-slate-500">Customized Engineering</p>
+            </div>
+          </div>
+
+          <!-- Stat 4 -->
+          <div class="flex items-center space-x-5 bg-white p-5 rounded-2xl shadow-sm border border-slate-100 hover:shadow-md transition-all">
+            <div class="w-14 h-14 rounded-xl bg-blue-50 flex items-center justify-center text-blue-600 flex-shrink-0">
+              <i data-lucide="globe" class="w-6 h-6"></i>
+            </div>
+            <div>
+              <p class="text-3xl font-black text-slate-900 font-inter">5+</p>
+              <p class="text-sm font-bold text-slate-500">Countries Worldwide</p>
+            </div>
+          </div>
+
+        </div>
+
+        <!-- Right Side: Beautiful Globe Image -->
+        <div class="lg:col-span-7 flex justify-center items-center relative footprints-globe">
+          <div class="absolute w-80 h-80 bg-blue-400/10 rounded-full blur-3xl pointer-events-none select-none"></div>
+          <div class="relative w-full max-w-[500px] h-[350px] sm:h-[450px] flex items-center justify-center transform hover:scale-105 transition-all duration-700 select-none">
+            <img src="{% static 'images/globe.png' %}" alt="Glupac Global Export Network Map" class="w-full h-full object-contain filter drop-shadow-2xl">
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- Client Testimonials -->
+  <section class="py-20 md:py-28 bg-white">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      
+      <!-- Header -->
+      <div class="text-center max-w-3xl mx-auto mb-16 space-y-4 testimonials-header">
+        <h2 class="text-3xl sm:text-4xl font-extrabold text-slate-900 tracking-tight">What Our Clients Say</h2>
+        <p class="text-base text-slate-600 leading-relaxed font-semibold">Trusted by industry leaders worldwide</p>
+      </div>
+
+      <!-- Testimonials Grid -->
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 testimonials-grid">
+        {% for testimonial in testimonials %}
+        <div class="bg-slate-50 rounded-2xl p-8 border border-slate-100 shadow-sm flex flex-col justify-between hover:shadow-lg transition-all">
+          <div class="space-y-6">
+            <!-- Stars -->
+            <div class="flex items-center space-x-1 text-amber-500">
+              <i data-lucide="star" class="w-5 h-5 fill-current"></i>
+              <i data-lucide="star" class="w-5 h-5 fill-current"></i>
+              <i data-lucide="star" class="w-5 h-5 fill-current"></i>
+              <i data-lucide="star" class="w-5 h-5 fill-current"></i>
+              <i data-lucide="star" class="w-5 h-5 fill-current"></i>
+            </div>
+            <p class="text-slate-600 text-sm leading-relaxed italic">
+              "{{ testimonial.quote }}"
+            </p>
+          </div>
+          <!-- Profile -->
+          <div class="pt-6 mt-6 border-t border-slate-200/60 flex items-center justify-between">
+            <div>
+              <p class="font-extrabold text-slate-950 text-sm sm:text-base leading-tight">{{ testimonial.name }}</p>
+              <p class="text-xs font-bold text-blue-600 pt-0.5">{{ testimonial.company }}</p>
+            </div>
+            <div class="w-10 h-10 rounded-full bg-slate-200/80 flex items-center justify-center font-bold text-slate-700">
+              {{ testimonial.name|slice:":1" }}
+            </div>
+          </div>
+        </div>
+        {% empty %}
+        <div class="col-span-full text-center text-slate-500 py-10">
+          No testimonials loaded database side yet. Please seed database.
+        </div>
+        {% endfor %}
+      </div>
+
+      <!-- Brand Showcase (Component 2) -->
+      <div class="mt-20 border-t border-slate-100 pt-16 testimonials-brands">
+        <h3 class="text-center text-xs font-extrabold text-slate-400 tracking-widest uppercase mb-10">Our Partners Grid</h3>
+        <div class="flex justify-center select-none max-w-4xl mx-auto rounded-3xl overflow-hidden border border-slate-100 bg-slate-50 relative p-8">
+          <img src="{% static 'images/component2.png' %}" alt="Glupac client logos" class="max-h-24 w-auto object-contain object-center opacity-70 hover:opacity-100 transition-opacity">
+        </div>
+      </div>
+      
+    </div>
+  </section>
+
+  <!-- CTA and Expert Form Frame (Looking for Right Packaging Machine?) -->
+  <section class="py-20 md:py-28 bg-[#020617] text-white overflow-hidden relative">
+    <div class="absolute inset-0 bg-blue-500/5 blur-3xl pointer-events-none"></div>
+    <div class="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+        
+        <!-- Left Side: Custom Bullet Info -->
+        <div class="lg:col-span-6 space-y-6 md:space-y-8 cta-info">
+          <span class="inline-flex tracking-widest text-xs font-bold text-blue-500 uppercase px-3 py-1 bg-blue-500/10 rounded-full">Get Your Custom Solution</span>
+          <h2 class="text-3xl sm:text-5xl font-black tracking-tight leading-tight">
+            Looking for the Right <br>
+            <span class="text-blue-500">Packaging Machine?</span>
+          </h2>
+          <p class="text-slate-400 text-base sm:text-lg leading-relaxed">
+            Send your packaging requirements and dimensional limits to receive a custom-tailored machinery estimate or engineering drawing from our lead developers.
+          </p>
+          
+          <ul class="space-y-4">
+            <li class="flex items-center space-x-3.5 text-slate-300">
+              <span class="w-8 h-8 rounded-full bg-blue-500/20 flex items-center justify-center text-blue-400 flex-shrink-0"><i data-lucide="check" class="w-4 h-4"></i></span>
+              <span class="font-semibold text-sm sm:text-base">Free machine demonstration & trials</span>
+            </li>
+            <li class="flex items-center space-x-3.5 text-slate-300">
+              <span class="w-8 h-8 rounded-full bg-blue-500/20 flex items-center justify-center text-blue-400 flex-shrink-0"><i data-lucide="check" class="w-4 h-4"></i></span>
+              <span class="font-semibold text-sm sm:text-base">Custom engineering for your carton sizes</span>
+            </li>
+            <li class="flex items-center space-x-3.5 text-slate-300">
+              <span class="w-8 h-8 rounded-full bg-blue-500/20 flex items-center justify-center text-blue-400 flex-shrink-0"><i data-lucide="check" class="w-4 h-4"></i></span>
+              <span class="font-semibold text-sm sm:text-base">Full pre-testing & industrial trials before purchase</span>
+            </li>
+          </ul>
+        </div>
+
+        <!-- Right Side: Fast Inline Contact Form -->
+        <div class="lg:col-span-6 bg-slate-900/60 backdrop-blur-md p-8 sm:p-10 rounded-3xl border border-slate-800/80 shadow-2xl cta-form">
+          <h3 class="text-xl sm:text-2xl font-bold tracking-tight mb-6">Request Callback in 10 Minutes</h3>
+          
+          <form action="{% url 'contact' %}" method="POST" class="space-y-5">
+            {% csrf_token %}
+            <div>
+              <label class="block text-xs font-bold uppercase tracking-wider text-slate-400 mb-1.5" for="cta_name">Name *</label>
+              <input type="text" id="cta_name" name="name" required class="w-full bg-slate-950 border border-slate-800 focus:border-blue-500 focus:ring-1 focus:ring-blue-500 rounded-xl px-4 py-3 text-sm text-white placeholder-slate-600 transition-all outline-none" placeholder="Your full name">
+            </div>
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+              <div>
+                <label class="block text-xs font-bold uppercase tracking-wider text-slate-400 mb-1.5" for="cta_email">Email *</label>
+                <input type="email" id="cta_email" name="email" required class="w-full bg-slate-950 border border-slate-800 focus:border-blue-500 focus:ring-1 focus:ring-blue-500 rounded-xl px-4 py-3 text-sm text-white placeholder-slate-600 transition-all outline-none" placeholder="work@company.com">
+              </div>
+              <div>
+                <label class="block text-xs font-bold uppercase tracking-wider text-slate-400 mb-1.5" for="cta_phone">Phone *</label>
+                <input type="tel" id="cta_phone" name="phone" required class="w-full bg-slate-950 border border-slate-800 focus:border-blue-500 focus:ring-1 focus:ring-blue-500 rounded-xl px-4 py-3 text-sm text-white placeholder-slate-600 transition-all outline-none" placeholder="+91 98765 43210">
+              </div>
+            </div>
+            <div>
+              <label class="block text-xs font-bold uppercase tracking-wider text-slate-400 mb-1.5" for="cta_company">Company Name</label>
+              <input type="text" id="cta_company" name="company" class="w-full bg-slate-950 border border-slate-800 focus:border-blue-500 focus:ring-1 focus:ring-blue-500 rounded-xl px-4 py-3 text-sm text-white placeholder-slate-600 transition-all outline-none" placeholder="Your organization name">
+            </div>
+            <div>
+              <label class="block text-xs font-bold uppercase tracking-wider text-slate-400 mb-1.5" for="cta_message">Inquiry Details *</label>
+              <textarea id="cta_message" name="message" required rows="3" class="w-full bg-slate-950 border border-slate-800 focus:border-blue-500 focus:ring-1 focus:ring-blue-500 rounded-xl px-4 py-3 text-sm text-white placeholder-slate-600 transition-all outline-none resize-none" placeholder="Specify machine, dimensions, or speed targets..."></textarea>
+            </div>
+            
+            <button type="submit" class="w-full inline-flex items-center justify-center px-6 py-4 rounded-xl text-sm font-bold text-white bg-blue-600 hover:bg-blue-700 transition-all shadow-lg shadow-blue-500/10">
+              Talk to an Expert
+              <i data-lucide="phone-call" class="w-4 h-4 ml-1.5"></i>
+            </button>
+          </form>
+        </div>
+
+      </div>
+    </div>
+  </section>
 {% endblock %}
 
 {% block scripts %}
-  <script type="module">
-    import { animate, stagger } from 'motion'
+  <script>
+    // GSAP ScrollTrigger Animations for beautiful entrance animations
+    document.addEventListener("DOMContentLoaded", function() {
+      // Hero load animations
+      const tl = gsap.timeline({ defaults: { ease: "power3.out", duration: 1 } });
+      
+      tl.from(".hero-text-block", { opacity: 0, x: -50, delay: 0.2 })
+        .from(".hero-images .x-card-back", { opacity: 0, x: -100, rotate: -20, duration: 1.2 }, "-=0.8")
+        .from(".hero-images .x-card-front", { opacity: 0, x: 100, rotate: 20, duration: 1.2 }, "-=1.0");
 
-    animate('.fade-up', { opacity: [0, 1], y: [24, 0] }, { delay: stagger(0.08), duration: 0.5 })
+      // Infinite Ticker scrolling using CSS/GSAP keyframes. Let's do elegant GSAP
+      gsap.to("#partner-ticker", {
+        xPercent: -50,
+        repeat: -1,
+        ease: "none",
+        duration: 35
+      });
+
+      // Cards staggered entrances on Scroll
+      gsap.from(".adv-grid > div", {
+        scrollTrigger: {
+          trigger: ".adv-grid",
+          start: "top 80%",
+        },
+        opacity: 0,
+        y: 60,
+        duration: 0.8,
+        stagger: 0.15,
+        ease: "power2.out"
+      });
+
+      // Showcase block text slide-in
+      gsap.from(".showcase-text", {
+        scrollTrigger: {
+          trigger: ".showcase-text",
+          start: "top 85%",
+        },
+        opacity: 0,
+        x: -50,
+        duration: 1.2,
+        ease: "power3.out"
+      });
+
+      // Solutions header & grid scroll triggers
+      gsap.from(".solutions-header", {
+        scrollTrigger: {
+          trigger: ".solutions-header",
+          start: "top 85%",
+        },
+        opacity: 0,
+        y: 30,
+        duration: 0.8,
+        ease: "power2.out"
+      });
+
+      gsap.from(".machines-grid > div", {
+        scrollTrigger: {
+          trigger: ".machines-grid",
+          start: "top 80%",
+        },
+        opacity: 0,
+        y: 50,
+        duration: 0.8,
+        stagger: 0.15,
+        ease: "power2.out"
+      });
+
+      // Globe pulsing and metrics loading
+      gsap.from(".footprints-stats > div", {
+        scrollTrigger: {
+          trigger: ".footprints-stats",
+          start: "top 80%",
+        },
+        opacity: 0,
+        x: -50,
+        stagger: 0.15,
+        duration: 0.8,
+        ease: "power2.out"
+      });
+
+      gsap.from(".footprints-globe", {
+        scrollTrigger: {
+          trigger: ".footprints-globe",
+          start: "top 75%",
+        },
+        opacity: 0,
+        scale: 0.8,
+        duration: 1.5,
+        ease: "elastic.out(1, 0.75)"
+      });
+
+      // Testimonials cards fade-up
+      gsap.from(".testimonials-grid > div", {
+        scrollTrigger: {
+          trigger: ".testimonials-grid",
+          start: "top 80%",
+        },
+        opacity: 0,
+        y: 40,
+        stagger: 0.15,
+        duration: 0.8,
+        ease: "power2.out"
+      });
+
+      // CTA section animations
+      gsap.from(".cta-info", {
+        scrollTrigger: {
+          trigger: ".cta-info",
+          start: "top 80%",
+        },
+        opacity: 0,
+        x: -50,
+        duration: 1,
+        ease: "power3.out"
+      });
+
+      gsap.from(".cta-form", {
+        scrollTrigger: {
+          trigger: ".cta-form",
+          start: "top 80%",
+        },
+        opacity: 0,
+        scale: 0.95,
+        duration: 1,
+        ease: "power3.out"
+      }, "-=0.5");
+    });
   </script>
 {% endblock %}

@@ -1,0 +1,158 @@
+{% extends "website/base.html" %}
+{% load static %}
+
+{% block title %}{{ machine.model_number }} — {{ machine.name }} — Gulpac{% endblock %}
+
+{% block content %}
+  <!-- Nav breadcrumbs -->
+  <section class="bg-white border-b border-slate-100 py-4">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <nav class="flex text-xs sm:text-sm font-semibold text-slate-500 space-x-2">
+        <a href="{% url 'home' %}" class="hover:text-blue-600">Home</a>
+        <span>/</span>
+        <a href="{% url 'solutions' %}" class="hover:text-blue-600">Solutions</a>
+        <span>/</span>
+        <span class="text-slate-900 font-bold font-inter">{{ machine.model_number }}</span>
+      </nav>
+    </div>
+  </section>
+
+  <!-- Detail Content Section -->
+  <section class="py-16 md:py-24 bg-slate-50">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-16">
+      
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-start">
+        
+        <!-- Left Column: Machinery Visual Showcase -->
+        <div class="lg:col-span-5 space-y-6 detail-visual-block">
+          <div class="bg-white rounded-3xl p-4 border border-slate-100 shadow-xl overflow-hidden aspect-square flex items-center justify-center relative">
+            <img src="{% static machine.image_path %}" alt="{{ machine.name }}" class="w-full h-full object-cover rounded-2xl" onerror="this.onerror=null; this.src='https://placehold.co/500x500?text={{ machine.model_number }}'">
+            
+            <div class="absolute top-8 left-8 bg-blue-600 text-white font-bold font-inter tracking-wider text-xs px-4 py-2 rounded-full shadow-lg">
+              {{ machine.model_number }}
+            </div>
+          </div>
+          
+          <div class="bg-slate-950 text-white p-6 rounded-2xl border border-slate-800 flex items-center justify-between shadow-lg">
+            <div class="space-y-1">
+              <p class="text-[10px] text-blue-400 font-bold tracking-widest uppercase">Need custom spacing?</p>
+              <h4 class="text-sm font-black leading-tight text-white">We resize nozzle heads freely!</h4>
+            </div>
+            <a href="{% url 'contact' %}?interest={{ machine.model_number }}" class="inline-flex items-center text-xs font-bold text-white bg-blue-600 hover:bg-blue-700 px-4 py-2.5 rounded-xl transition-colors">
+              Talk Expert
+            </a>
+          </div>
+        </div>
+
+        <!-- Right Column: Tech specs & Features metadata -->
+        <div class="lg:col-span-7 space-y-8 detail-text-block">
+          
+          <div class="space-y-4">
+            <span class="text-xs font-black tracking-widest text-blue-600 uppercase">{{ machine.get_category_display }}</span>
+            <h1 class="text-3xl sm:text-4xl font-extrabold tracking-tight text-slate-950 font-inter">{{ machine.name }}</h1>
+            <p class="text-slate-600 text-sm sm:text-base leading-relaxed">
+              {{ machine.description }}
+            </p>
+          </div>
+
+          <!-- Specifications list -->
+          <div class="space-y-4 pt-4 border-t border-slate-200/80">
+            <h3 class="text-lg font-bold font-inter text-slate-950">Technical Specifications</h3>
+            
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+              {% if machine.specifications %}
+                {% for key, val in machine.specifications.items %}
+                <div class="flex items-center justify-between p-4 bg-white border border-slate-100 rounded-xl shadow-xs">
+                  <span class="text-xs font-bold text-slate-400 uppercase tracking-wider">{{ key }}</span>
+                  <span class="text-sm font-black text-slate-900 font-inter">{{ val }}</span>
+                </div>
+                {% endfor %}
+              {% else %}
+                <p class="text-xs text-slate-400 font-semibold italic">No specifications loaded for this machine.</p>
+              {% endif %}
+            </div>
+          </div>
+
+          <!-- Features lists -->
+          <div class="space-y-4 pt-4 border-t border-slate-200/80">
+            <h3 class="text-lg font-bold font-inter text-slate-950">Features & Capabilities</h3>
+            
+            <ul class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+              {% for feature in machine.features %}
+              <li class="flex items-start space-x-3 bg-white border border-slate-100 p-4 rounded-xl shadow-xs">
+                <span class="w-6 h-6 rounded-full bg-blue-50 text-blue-600 flex items-center justify-center flex-shrink-0"><i data-lucide="check" class="w-4.5 h-4.5"></i></span>
+                <span class="text-slate-700 text-sm font-semibold leading-relaxed">{{ feature }}</span>
+              </li>
+              {% endfor %}
+            </ul>
+          </div>
+
+        </div>
+
+      </div>
+
+      <!-- Related Solutions Grid -->
+      <div class="space-y-8 pt-12 border-t border-slate-200">
+        <div class="flex items-end justify-between">
+          <div class="space-y-2">
+            <h2 class="text-2xl font-black text-slate-950 font-inter">Related Solutions</h2>
+            <p class="text-xs sm:text-sm text-slate-500 leading-none">Browse alternate gluing and cartoning sizes in detail</p>
+          </div>
+          <a href="{% url 'solutions' %}" class="inline-flex items-center text-sm font-bold text-blue-600 hover:text-blue-700">
+            View All Catalog
+            <i data-lucide="arrow-right" class="w-4 h-4 ml-1.5"></i>
+          </a>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+          {% for rm in related_machines %}
+          <div class="bg-white rounded-2xl shadow-sm hover:shadow-xl border border-slate-100 overflow-hidden flex flex-col justify-between h-full transform transition-all hover:-translate-y-1">
+            <div class="relative bg-slate-100 aspect-video">
+              <img src="{% static rm.image_path %}" alt="{{ rm.name }}" class="w-full h-full object-cover">
+              <div class="absolute top-4 right-4 bg-slate-900/80 backdrop-blur-sm text-white px-3.5 py-1.5 rounded-full text-xs font-bold font-inter tracking-wider">
+                {{ rm.model_number }}
+              </div>
+            </div>
+            
+            <div class="p-6 space-y-4 flex-grow flex flex-col justify-between">
+              <div class="space-y-2">
+                <span class="text-[9px] font-black tracking-widest text-blue-600 uppercase">{{ rm.get_category_display }}</span>
+                <h3 class="font-bold font-inter text-slate-950 text-base leading-tight">{{ rm.name }}</h3>
+              </div>
+              
+              <div class="pt-4 border-t border-slate-100 flex items-center justify-between">
+                <a href="{% url 'solution_detail' rm.model_number %}" class="text-xs font-bold text-blue-600 hover:underline flex items-center.">
+                  View Details
+                  <i data-lucide="chevron-right" class="w-3.5 h-3.5 ml-1"></i>
+                </a>
+              </div>
+            </div>
+          </div>
+          {% endfor %}
+        </div>
+      </div>
+
+    </div>
+  </section>
+{% endblock %}
+
+{% block scripts %}
+  <script>
+    document.addEventListener("DOMContentLoaded", function() {
+      // Direct high fidelity entrance animations via GSAP
+      gsap.from(".detail-visual-block", {
+        opacity: 0,
+        x: -40,
+        duration: 1,
+        ease: "power3.out"
+      });
+
+      gsap.from(".detail-text-block", {
+        opacity: 0,
+        x: 40,
+        duration: 1,
+        ease: "power3.out"
+      });
+    });
+  </script>
+{% endblock %}
