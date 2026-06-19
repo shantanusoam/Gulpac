@@ -1,0 +1,20 @@
+{% extends "website/base.html" %}
+
+{% block title %}Home — Gulpac{% endblock %}
+
+{% block content %}
+  <main class="min-h-screen flex items-center justify-center bg-white">
+    <div class="text-center">
+      <h1 class="text-4xl font-bold text-gray-900 fade-up">Gulpac</h1>
+      <p class="mt-4 text-gray-600 fade-up">Up and running.</p>
+    </div>
+  </main>
+{% endblock %}
+
+{% block scripts %}
+  <script type="module">
+    import { animate, stagger } from 'motion'
+
+    animate('.fade-up', { opacity: [0, 1], y: [24, 0] }, { delay: stagger(0.08), duration: 0.5 })
+  </script>
+{% endblock %}
