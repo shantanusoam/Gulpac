@@ -135,11 +135,15 @@ class HomeViewTest(TestCase):
         self.assertNotContains(response_filtered, "Test Gluing Machine")
 
     def test_solution_detail_views(self):
-        response = self.client.get("/solutions/GP-TEST-10/")
+        response = self.client.get(f"/solutions/{self.machine.slug}/")
         self.assertEqual(response.status_code, 200)
         self.assertTemplateUsed(response, "website/solution_detail.html")
         self.assertContains(response, "GP-TEST-10")
+        self.assertContains(response, "See It In Action")
+        self.assertContains(response, "Main Features")
+        self.assertContains(response, "Technical Specifications")
+        self.assertContains(response, "Send Enquiry")
         
         # Test 404 for non-existing model
-        response_404 = self.client.get("/solutions/GP-UNKNOWN/")
+        response_404 = self.client.get("/solutions/gp-unknown/")
         self.assertEqual(response_404.status_code, 404)

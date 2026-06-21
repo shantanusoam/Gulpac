@@ -157,6 +157,21 @@ def build_contact_map_context(page_key, defaults):
         **defaults,
     }
 
+
+def build_machine_hero_context(machine):
+    return {
+        "page_key": f"solutions:{machine.slug}",
+        "title": machine.name,
+        "description": machine.description,
+        "background_image_url": static(machine.image_path),
+        "back_link_label": "Back to Home",
+        "back_link_url": "/",
+        "show_back_link": True,
+        "badge_label": f"Model: {machine.model_number}",
+        "badge_url": "",
+        "centered": False,
+    }
+
 def home(request):
     machines = Machine.objects.all()[:6]
     testimonials = Testimonial.objects.all()[:3]
@@ -351,8 +366,38 @@ def solutions(request):
         "categories": Category.choices,
     })
 
-def solution_detail(request, model_number):
-    machine = get_object_or_404(Machine, model_number=model_number)
+def solution_detail(request, slug):
+    machine = get_object_or_404(Machine, slug=slug)
+    contact_section = build_contact_section_context("contact", {
+        "intro_prefix": "INTERESTED IN",
+        "intro_accent": "THIS MACHINE?",
+        "intro_description": "Send us your requirements and we'll get back to you",
+        "form_title": "Send us a message",
+        "name_label": "Name",
+        "name_placeholder": "Your name",
+        "email_label": "Email",
+        "email_placeholder": "your@email.com",
+        "phone_label": "Phone",
+        "phone_placeholder": "+91 00000 00000",
+        "message_label": "Message",
+        "message_placeholder": "Tell us about your requirements...",
+        "button_label": "Send Enquiry",
+        "address_title": "Address",
+        "address_line1": "B5/9, 1st Floor, Paschim Vihar",
+        "address_line2": "New Delhi-110063",
+        "phone_card_title": "Phone",
+        "phone_card_value": "+91 97173 33206",
+        "phone_card_href": "tel:+919717333206",
+        "email_card_title": "Email",
+        "email_card_value": "contact@glupac.in",
+        "email_card_href": "mailto:contact@glupac.in",
+    })
+    contact_map = build_contact_map_context("contact", {
+        "title_prefix": "Visit Our",
+        "title_accent": "Office",
+        "description": "Find us on the map",
+        "image_url": "https://www.figma.com/api/mcp/asset/95be48c5-54d6-46c5-bd85-e2082beefd35",
+    })
     # Related machines are other machines in the same category
     related_machines = Machine.objects.filter(category=machine.category).exclude(model_number=machine.model_number)[:3]
     if not related_machines.exists():
@@ -360,5 +405,9 @@ def solution_detail(request, model_number):
         
     return render(request, "website/solution_detail.html", {
         "machine": machine,
+        "hero": build_machine_hero_context(machine),
+        "contact_section": contact_section,
+        "contact_map": contact_map,
+        "selected_interest": machine.model_number,
         "related_machines": related_machines,
     })

@@ -62,9 +62,10 @@ class ContactMapSectionAdmin(admin.ModelAdmin):
 
 @admin.register(Machine)
 class MachineAdmin(admin.ModelAdmin):
-    list_display = ("model_number", "name", "category", "order")
+    list_display = ("model_number", "slug", "name", "category", "order")
     list_filter = ("category",)
-    search_fields = ("model_number", "name", "description")
+    search_fields = ("model_number", "slug", "name", "description", "video_iframe_html")
+    prepopulated_fields = {"slug": ("model_number", "name")}
     ordering = ("order", "model_number")
 
 @admin.register(Testimonial)

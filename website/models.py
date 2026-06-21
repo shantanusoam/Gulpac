@@ -1,4 +1,5 @@
 from django.db import models
+from django.utils.text import slugify
 
 class Category(models.TextChoices):
     GLUING = "GLUING", "Gluing Machines"
@@ -130,16 +131,23 @@ class ContactMapSection(models.Model):
 
 class Machine(models.Model):
     model_number = models.CharField(max_length=50, primary_key=True)
+    slug = models.SlugField(unique=True, blank=True, null=True)
     name = models.CharField(max_length=200)
     category = models.CharField(max_length=50, choices=Category.choices, default=Category.GLUING)
     image_path = models.CharField(max_length=250, help_text="Relative to static folder, e.g., 'images/machine1.png'")
     features = models.JSONField(default=list, help_text="A list of bullet features, e.g., ['Timer base control', 'Auto/Manual system']")
     description = models.TextField(blank=True, default="")
     specifications = models.JSONField(default=dict, blank=True, help_text="Dict of tech specs, e.g., {'speed': '30-60 pcs/min', 'power': '220V'}")
+    video_iframe_html = models.TextField(blank=True, default="", help_text="Optional raw iframe HTML for the PDP video section.")
     order = models.IntegerField(default=0)
 
     class Meta:
         ordering = ["order", "model_number"]
+
+    def save(self, *args, **kwargs):
+        if not self.slug:
+            self.slug = slugify(f"{self.model_number}-{self.name}")
+        super().save(*args, **kwargs)
 
     def __str__(self):
         return f"{self.model_number} - {self.name}"
