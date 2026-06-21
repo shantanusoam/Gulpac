@@ -1,0 +1,35 @@
+<section class="page-card-grid" data-page-card-grid="{{ industry_grid.section_key }}">
+  <div class="page-card-grid__container">
+    {% if industry_grid.title %}
+      <div class="page-card-grid__heading">
+        <h2 class="page-card-grid__title">{{ industry_grid.title }}</h2>
+        {% if industry_grid.description %}
+          <p class="page-card-grid__desc">{{ industry_grid.description }}</p>
+        {% endif %}
+      </div>
+    {% endif %}
+
+    <div class="page-card-grid__grid">
+      {% for card in industry_grid.cards %}
+        <article class="page-card-grid__card">
+          <div class="page-card-grid__image" style="background-image: url('{{ card.image_url }}');" aria-hidden="true">
+            <div class="page-card-grid__image-overlay"></div>
+            <div class="page-card-grid__card-title">{{ card.title }}</div>
+          </div>
+          <div class="page-card-grid__body">
+            <ul class="page-card-grid__list">
+              {% for bullet in card.bullet_points %}
+                <li class="page-card-grid__item">
+                  <i data-lucide="check" aria-hidden="true"></i>
+                  <span>{{ bullet }}</span>
+                </li>
+              {% endfor %}
+            </ul>
+          </div>
+        </article>
+      {% empty %}
+        <p class="page-card-grid__empty">Add cards for this section in Django admin.</p>
+      {% endfor %}
+    </div>
+  </div>
+</section>

@@ -1,0 +1,16 @@
+<section class="page-cta" data-page-cta="{{ cta_section.section_key }}">
+  <div class="page-cta__bg" aria-hidden="true" style="{% if cta_section.background_image_url %}background-image: url('{{ cta_section.background_image_url }}');{% endif %}"></div>
+  <div class="page-cta__overlay" aria-hidden="true"></div>
+  <div class="page-cta__container">
+    <div class="page-cta__content">
+      <h2 class="page-cta__title">
+        <span class="page-cta__title-prefix">{{ cta_section.heading_prefix }}</span>
+        <span class="page-cta__title-accent">{{ cta_section.heading_accent }}</span>
+      </h2>
+      <p class="page-cta__desc">{{ cta_section.description }}</p>
+      <a href="{{ cta_section.button_url }}" class="page-cta__button">
+        {{ cta_section.button_label }}
+      </a>
+    </div>
+  </div>
+</section>

@@ -1,11 +1,12 @@
 <!doctype html>
+{% load static %}
 <html lang="en" class="scroll-smooth">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>{% block title %}Gulpac{% endblock %}</title>
     <!-- Tailwind CSS compiled -->
-    <link rel="stylesheet" href="{% load static %}{% static 'css/site.css' %}" />
+    <link rel="stylesheet" href="{% static 'css/site.css' %}" />
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -17,6 +18,390 @@
       }
       .font-inter {
         font-family: 'Inter', sans-serif;
+      }
+
+      .page-hero {
+        position: relative;
+        min-height: 433px;
+        overflow: hidden;
+        color: #fff;
+        background: #111827;
+      }
+
+      .page-hero__media {
+        position: absolute;
+        inset: 0;
+        background-position: center center;
+        background-size: cover;
+        transform: scale(1.02);
+      }
+
+      .page-hero__overlay {
+        position: absolute;
+        inset: 0;
+        background: linear-gradient(
+          90deg,
+          rgba(6, 10, 16, 0.82) 0%,
+          rgba(6, 10, 16, 0.72) 44%,
+          rgba(6, 10, 16, 0.42) 100%
+        );
+      }
+
+      .page-hero__container {
+        position: relative;
+        z-index: 1;
+        max-width: 1280px;
+        margin: 0 auto;
+        min-height: 433px;
+        padding: 28px 24px 38px;
+        display: flex;
+        align-items: center;
+      }
+
+      .page-hero__content {
+        max-width: 896px;
+        width: 100%;
+        padding-top: 44px;
+      }
+
+      .page-hero__back {
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        margin-bottom: 24px;
+        color: rgba(255, 255, 255, 0.9);
+        font-size: 16px;
+        line-height: 24px;
+        text-decoration: none;
+      }
+
+      .page-hero__back:hover {
+        color: #fff;
+      }
+
+      .page-hero__back svg {
+        width: 20px;
+        height: 20px;
+        flex: none;
+      }
+
+      .page-hero__title {
+        margin: 0 0 18px;
+        font-size: 72px;
+        line-height: 1.05;
+        font-weight: 800;
+        letter-spacing: 0;
+        color: #fff;
+      }
+
+      .page-hero__desc {
+        margin: 0;
+        max-width: 896px;
+        font-size: 20px;
+        line-height: 1.625;
+        color: #e5e7eb;
+      }
+
+      @media (max-width: 1024px) {
+        .page-hero__title {
+          font-size: 56px;
+        }
+      }
+
+      @media (max-width: 640px) {
+        .page-hero {
+          min-height: 388px;
+        }
+
+        .page-hero__container {
+          min-height: 388px;
+          padding: 20px 16px 28px;
+        }
+
+        .page-hero__content {
+          padding-top: 24px;
+        }
+
+        .page-hero__back {
+          font-size: 15px;
+          line-height: 22px;
+          margin-bottom: 18px;
+        }
+
+        .page-hero__title {
+          font-size: 38px;
+          line-height: 1.08;
+          margin-bottom: 14px;
+        }
+
+        .page-hero__desc {
+          font-size: 16px;
+          line-height: 1.55;
+        }
+      }
+
+      .page-card-grid {
+        padding: 72px 0 88px;
+        background: #fff;
+      }
+
+      .page-card-grid__container {
+        max-width: 1280px;
+        margin: 0 auto;
+        padding: 0 24px;
+      }
+
+      .page-card-grid__heading {
+        margin-bottom: 32px;
+        max-width: 760px;
+      }
+
+      .page-card-grid__title {
+        margin: 0 0 12px;
+        font-size: 32px;
+        line-height: 1.15;
+        font-weight: 800;
+        color: #0f172a;
+      }
+
+      .page-card-grid__desc {
+        margin: 0;
+        color: #475569;
+        font-size: 16px;
+        line-height: 1.6;
+      }
+
+      .page-card-grid__grid {
+        display: grid;
+        grid-template-columns: repeat(4, minmax(0, 1fr));
+        gap: 24px;
+      }
+
+      .page-card-grid__card {
+        overflow: hidden;
+        border-radius: 14px;
+        background: #fff;
+        box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -4px rgba(0, 0, 0, 0.1);
+        display: flex;
+        flex-direction: column;
+        min-width: 0;
+      }
+
+      .page-card-grid__image {
+        position: relative;
+        min-height: 224px;
+        background-position: center center;
+        background-size: cover;
+        background-repeat: no-repeat;
+        display: flex;
+        align-items: flex-end;
+        padding: 16px;
+      }
+
+      .page-card-grid__image-overlay {
+        position: absolute;
+        inset: 0;
+        background: linear-gradient(
+          180deg,
+          rgba(22, 27, 45, 0.18) 0%,
+          rgba(44, 62, 143, 0.35) 45%,
+          rgba(26, 26, 46, 0.9) 100%
+        );
+      }
+
+      .page-card-grid__card-title {
+        position: relative;
+        z-index: 1;
+        color: #fff;
+        font-size: 20px;
+        line-height: 1.4;
+        font-weight: 600;
+        letter-spacing: -0.02em;
+      }
+
+      .page-card-grid__body {
+        background: #f9fafb;
+        padding: 24px;
+        flex: 1;
+      }
+
+      .page-card-grid__list {
+        display: flex;
+        flex-direction: column;
+        gap: 8px;
+      }
+
+      .page-card-grid__item {
+        display: flex;
+        align-items: flex-start;
+        gap: 8px;
+        color: #364153;
+        font-size: 14px;
+        line-height: 1.45;
+        min-width: 0;
+      }
+
+      .page-card-grid__item svg {
+        width: 16px;
+        height: 16px;
+        flex: none;
+        margin-top: 2px;
+        color: #22c55e;
+      }
+
+      .page-card-grid__empty {
+        color: #64748b;
+        font-size: 14px;
+      }
+
+      @media (max-width: 1100px) {
+        .page-card-grid__grid {
+          grid-template-columns: repeat(2, minmax(0, 1fr));
+        }
+      }
+
+      @media (max-width: 640px) {
+        .page-card-grid {
+          padding: 40px 0 56px;
+        }
+
+        .page-card-grid__container {
+          padding: 0 16px;
+        }
+
+        .page-card-grid__heading {
+          margin-bottom: 20px;
+        }
+
+        .page-card-grid__title {
+          font-size: 24px;
+        }
+
+        .page-card-grid__grid {
+          grid-template-columns: 1fr;
+          gap: 20px;
+        }
+
+        .page-card-grid__image {
+          min-height: 208px;
+        }
+
+        .page-card-grid__body {
+          padding: 20px;
+        }
+      }
+
+      .page-cta {
+        position: relative;
+        overflow: hidden;
+        padding: 80px 0 0;
+        margin-top: 0;
+        margin-bottom: 0;
+      }
+
+      .page-cta__bg,
+      .page-cta__overlay {
+        position: absolute;
+        inset: 0;
+      }
+
+      .page-cta__bg {
+        background-position: center center;
+        background-size: cover;
+        background-repeat: no-repeat;
+        transform: scale(1.02);
+      }
+
+      .page-cta__overlay {
+        background:
+          linear-gradient(180deg, rgba(255, 255, 255, 0.94), rgba(255, 255, 255, 0.98)),
+          radial-gradient(circle at 1px 1px, rgba(203, 213, 225, 0.55) 1px, transparent 0);
+        background-size: auto, 24px 24px;
+        background-position: 0 0, 0 0;
+      }
+
+      .page-cta__container {
+        position: relative;
+        z-index: 1;
+        max-width: 1280px;
+        margin: 0 auto;
+        padding: 0 24px;
+      }
+
+      .page-cta__content {
+        max-width: 700px;
+        margin: 0 auto;
+        text-align: center;
+        padding: 0 16px 56px;
+      }
+
+      .page-cta__title {
+        margin: 0 0 10px;
+        font-size: clamp(24px, 3vw, 40px);
+        line-height: 1.2;
+        font-weight: 800;
+        letter-spacing: -0.03em;
+      }
+
+      .page-cta__title-prefix {
+        color: #2d388c;
+        font-style: italic;
+      }
+
+      .page-cta__title-accent {
+        color: #47a33d;
+        font-style: italic;
+        margin-left: 8px;
+      }
+
+      .page-cta__desc {
+        margin: 0 auto 24px;
+        max-width: 640px;
+        color: #4a5565;
+        font-size: 20px;
+        line-height: 1.45;
+      }
+
+      .page-cta__button {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        min-width: 140px;
+        min-height: 44px;
+        padding: 0 28px;
+        border-radius: 10px;
+        background: #2c3e8f;
+        color: #fff;
+        font-size: 16px;
+        line-height: 1;
+        font-weight: 600;
+        text-decoration: none;
+      }
+
+      .page-cta__button:hover {
+        background: #24367f;
+      }
+
+      @media (max-width: 640px) {
+        .page-cta {
+          padding-top: 56px;
+        }
+
+        .page-cta__container {
+          padding: 0 16px;
+        }
+
+        .page-cta__content {
+          padding: 0 0 40px;
+        }
+
+        .page-cta__title {
+          font-size: 22px;
+        }
+
+        .page-cta__desc {
+          font-size: 16px;
+        }
       }
     </style>
   </head>
@@ -38,7 +423,7 @@
           <nav class="hidden md:flex space-x-8 lg:space-x-10 text-sm font-semibold text-slate-600">
             <a href="{% url 'home' %}" class="hover:text-primary transition-colors py-2 {% if request.resolver_match.url_name == 'home' %}text-blue-600 border-b-2 border-blue-600{% endif %}">Home</a>
             <a href="{% url 'about' %}" class="hover:text-primary transition-colors py-2 {% if request.resolver_match.url_name == 'about' %}text-blue-600 border-b-2 border-blue-600{% endif %}">About Us</a>
-            <a href="{% url 'home' %}#advantages" class="hover:text-primary transition-colors py-2">Industries</a>
+            <a href="{% url 'industries' %}" class="hover:text-primary transition-colors py-2 {% if request.resolver_match.url_name == 'industries' %}text-blue-600 border-b-2 border-blue-600{% endif %}">Industries</a>
             <a href="{% url 'solutions' %}" class="hover:text-primary transition-colors py-2 {% if request.resolver_match.url_name == 'solutions' or request.resolver_match.url_name == 'solution_detail' %}text-blue-600 border-b-2 border-blue-600{% endif %}">Solutions</a>
             <a href="{% url 'home' %}#footprints" class="hover:text-primary transition-colors py-2">Footprints</a>
             <a href="{% url 'contact' %}" class="hover:text-primary transition-colors py-2 {% if request.resolver_match.url_name == 'contact' %}text-blue-600 border-b-2 border-blue-600{% endif %}">Contact Us</a>
@@ -73,7 +458,7 @@
         <div class="px-2 pt-2 pb-4 space-y-1 sm:px-3 text-base font-semibold">
           <a href="{% url 'home' %}" class="block px-3 py-2 rounded-md hover:bg-slate-50 text-slate-800 {% if request.resolver_match.url_name == 'home' %}text-blue-600 bg-blue-50/50{% endif %}">Home</a>
           <a href="{% url 'about' %}" class="block px-3 py-2 rounded-md hover:bg-slate-50 text-slate-800 {% if request.resolver_match.url_name == 'about' %}text-blue-600 bg-blue-50/50{% endif %}">About Us</a>
-          <a href="{% url 'home' %}#advantages" class="block px-3 py-2 rounded-md hover:bg-slate-50 text-slate-800">Industries</a>
+          <a href="{% url 'industries' %}" class="block px-3 py-2 rounded-md hover:bg-slate-50 text-slate-800 {% if request.resolver_match.url_name == 'industries' %}text-blue-600 bg-blue-50/50{% endif %}">Industries</a>
           <a href="{% url 'solutions' %}" class="block px-3 py-2 rounded-md hover:bg-slate-50 text-slate-800 {% if request.resolver_match.url_name == 'solutions' %}text-blue-600 bg-blue-50/50{% endif %}">Solutions</a>
           <a href="{% url 'home' %}#footprints" class="block px-3 py-2 rounded-md hover:bg-slate-50 text-slate-800">Footprints</a>
           <a href="{% url 'contact' %}" class="block px-3 py-2 rounded-md hover:bg-slate-50 text-slate-800 {% if request.resolver_match.url_name == 'contact' %}text-blue-600 bg-blue-50/50{% endif %}">Contact Us</a>

@@ -1,0 +1,21 @@
+{% load static %}
+
+<section class="page-hero font-inter" data-page-hero="{{ hero.page_key }}">
+  <div class="page-hero__media" aria-hidden="true" style="background-image: url('{{ hero.background_image_url }}');"></div>
+  <div class="page-hero__overlay" aria-hidden="true"></div>
+
+  <div class="page-hero__container">
+    <div class="page-hero__content">
+      <a href="{{ hero.back_link_url }}" class="page-hero__back">
+        <i data-lucide="arrow-left" aria-hidden="true"></i>
+        <span>{{ hero.back_link_label }}</span>
+      </a>
+
+      <h1 class="page-hero__title">{{ hero.title }}</h1>
+
+      <p class="page-hero__desc">
+        {{ hero.description }}
+      </p>
+    </div>
+  </div>
+</section>

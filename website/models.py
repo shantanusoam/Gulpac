@@ -6,6 +6,78 @@ class Category(models.TextChoices):
     CARTONATOR = "CARTONATOR", "Cartonator Machines"
     SHIPPER = "SHIPPER", "Shipper Carton Machines"
 
+
+class HeroSection(models.Model):
+    page_key = models.CharField(max_length=100, unique=True)
+    title = models.CharField(max_length=200)
+    description = models.TextField()
+    background_image = models.ImageField(upload_to="hero_sections/", blank=True, null=True)
+    back_link_label = models.CharField(max_length=100, default="Back to Home")
+    back_link_url = models.CharField(max_length=255, default="/")
+    is_active = models.BooleanField(default=True)
+
+    class Meta:
+        verbose_name = "Hero Section"
+        verbose_name_plural = "Hero Sections"
+
+    def __str__(self):
+        return self.page_key
+
+
+class CardGridSection(models.Model):
+    page_key = models.CharField(max_length=100)
+    section_key = models.CharField(max_length=100)
+    title = models.CharField(max_length=200, blank=True, default="")
+    description = models.TextField(blank=True, default="")
+    is_active = models.BooleanField(default=True)
+
+    class Meta:
+        verbose_name = "Card Grid Section"
+        verbose_name_plural = "Card Grid Sections"
+        constraints = [
+            models.UniqueConstraint(fields=["page_key", "section_key"], name="unique_card_grid_section")
+        ]
+
+    def __str__(self):
+        return f"{self.page_key}:{self.section_key}"
+
+
+class CardGridItem(models.Model):
+    section = models.ForeignKey(CardGridSection, related_name="cards", on_delete=models.CASCADE)
+    title = models.CharField(max_length=200)
+    image = models.ImageField(upload_to="card_grid/")
+    bullet_points = models.JSONField(default=list)
+    order = models.IntegerField(default=0)
+    is_active = models.BooleanField(default=True)
+
+    class Meta:
+        ordering = ["order", "id"]
+
+    def __str__(self):
+        return self.title
+
+
+class CTASection(models.Model):
+    page_key = models.CharField(max_length=100)
+    section_key = models.CharField(max_length=100)
+    heading_prefix = models.CharField(max_length=200)
+    heading_accent = models.CharField(max_length=200)
+    description = models.TextField()
+    background_image = models.ImageField(upload_to="cta_sections/", blank=True, null=True)
+    button_label = models.CharField(max_length=100)
+    button_url = models.CharField(max_length=255, default="/contact/")
+    is_active = models.BooleanField(default=True)
+
+    class Meta:
+        verbose_name = "CTA Section"
+        verbose_name_plural = "CTA Sections"
+        constraints = [
+            models.UniqueConstraint(fields=["page_key", "section_key"], name="unique_cta_section")
+        ]
+
+    def __str__(self):
+        return f"{self.page_key}:{self.section_key}"
+
 class Machine(models.Model):
     model_number = models.CharField(max_length=50, primary_key=True)
     name = models.CharField(max_length=200)
@@ -50,4 +122,3 @@ class ContactInquiry(models.Model):
 
     def __str__(self):
         return f"Inquiry from {self.name} - {self.company}"
-
