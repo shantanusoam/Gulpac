@@ -1,13 +1,23 @@
-from django.shortcuts import render, get_object_or_404, redirect
+from django.shortcuts import render, get_object_or_404
 from django.templatetags.static import static
 from django.contrib import messages
-from .models import HeroSection, CardGridSection, CTASection, Machine, Testimonial, ContactInquiry, Category
+from .models import (
+    HeroSection,
+    CardGridSection,
+    CTASection,
+    ContactInquiry,
+    ContactMapSection,
+    ContactSection,
+    Machine,
+    Testimonial,
+    Category,
+)
 
 
 def build_hero_context(page_key, defaults):
     hero = HeroSection.objects.filter(page_key=page_key, is_active=True).first()
     if hero:
-        return {
+        context = {
             "page_key": hero.page_key,
             "title": hero.title,
             "description": hero.description,
@@ -15,8 +25,11 @@ def build_hero_context(page_key, defaults):
             "back_link_url": hero.back_link_url,
             "background_image_url": hero.background_image.url if hero.background_image else defaults["background_image_url"],
         }
+        context.update({key: value for key, value in defaults.items() if key not in context})
+        context.setdefault("show_back_link", True)
+        return context
 
-    return {
+    context = {
         "page_key": page_key,
         "title": defaults["title"],
         "description": defaults["description"],
@@ -24,6 +37,9 @@ def build_hero_context(page_key, defaults):
         "back_link_url": defaults.get("back_link_url", "/"),
         "background_image_url": defaults["background_image_url"],
     }
+    context.update({key: value for key, value in defaults.items() if key not in context})
+    context.setdefault("show_back_link", True)
+    return context
 
 
 def build_card_grid_context(page_key, section_key, defaults):
@@ -87,6 +103,58 @@ def build_cta_context(page_key, section_key, defaults):
         "background_image_url": defaults.get("background_image_url", ""),
         "button_label": defaults["button_label"],
         "button_url": defaults.get("button_url", "/contact/"),
+    }
+
+
+def build_contact_section_context(page_key, defaults):
+    section = ContactSection.objects.filter(page_key=page_key).first()
+    if section:
+        return {
+            "page_key": page_key,
+            "intro_prefix": section.intro_prefix,
+            "intro_accent": section.intro_accent,
+            "intro_description": section.intro_description,
+            "form_title": section.form_title,
+            "name_label": section.name_label,
+            "name_placeholder": section.name_placeholder,
+            "email_label": section.email_label,
+            "email_placeholder": section.email_placeholder,
+            "phone_label": section.phone_label,
+            "phone_placeholder": section.phone_placeholder,
+            "message_label": section.message_label,
+            "message_placeholder": section.message_placeholder,
+            "button_label": section.button_label,
+            "address_title": section.address_title,
+            "address_line1": section.address_line1,
+            "address_line2": section.address_line2,
+            "phone_card_title": section.phone_card_title,
+            "phone_card_value": section.phone_card_value,
+            "phone_card_href": section.phone_card_href,
+            "email_card_title": section.email_card_title,
+            "email_card_value": section.email_card_value,
+            "email_card_href": section.email_card_href,
+        }
+
+    return {
+        "page_key": page_key,
+        **defaults,
+    }
+
+
+def build_contact_map_context(page_key, defaults):
+    section = ContactMapSection.objects.filter(page_key=page_key).first()
+    if section:
+        return {
+            "page_key": page_key,
+            "title_prefix": section.title_prefix,
+            "title_accent": section.title_accent,
+            "description": section.description,
+            "image_url": section.map_image.url if section.map_image else (section.map_image_url or defaults["image_url"]),
+        }
+
+    return {
+        "page_key": page_key,
+        **defaults,
     }
 
 def home(request):
@@ -201,13 +269,55 @@ def industries(request):
     })
 
 def contact(request):
+    hero = build_hero_context("contact", {
+        "title": "Get In Touch",
+        "description": "Tell us about your packaging requirement and our team will help you find the right solution.",
+        "back_link_label": "Back to Home",
+        "back_link_url": "/",
+        "background_image_url": static("images/factory.png"),
+        "centered": True,
+        "show_back_link": False,
+        "eyebrow": "Contact Gulpac",
+    })
+    selected_interest = request.GET.get("interest", "")
+    contact_section = build_contact_section_context("contact", {
+        "intro_prefix": "GET IN",
+        "intro_accent": "TOUCH",
+        "intro_description": "We'd love to hear from you",
+        "form_title": "Send us a message",
+        "name_label": "Name",
+        "name_placeholder": "Your name",
+        "email_label": "Email",
+        "email_placeholder": "your@email.com",
+        "phone_label": "Phone",
+        "phone_placeholder": "+91 00000 00000",
+        "message_label": "Message",
+        "message_placeholder": "Tell us about your requirements...",
+        "button_label": "Send Message",
+        "address_title": "Address",
+        "address_line1": "B5/9, 1st Floor, Paschim Vihar",
+        "address_line2": "New Delhi-110063",
+        "phone_card_title": "Phone",
+        "phone_card_value": "+91 97173 33206",
+        "phone_card_href": "tel:+919717333206",
+        "email_card_title": "Email",
+        "email_card_value": "contact@glupac.in",
+        "email_card_href": "mailto:contact@glupac.in",
+    })
+    contact_map = build_contact_map_context("contact", {
+        "title_prefix": "Visit Our",
+        "title_accent": "Office",
+        "description": "Find us on the map",
+        "image_url": "https://www.figma.com/api/mcp/asset/95be48c5-54d6-46c5-bd85-e2082beefd35",
+    })
+
     if request.method == "POST":
         name = request.POST.get("name")
         email = request.POST.get("email")
         phone = request.POST.get("phone")
-        company = request.POST.get("company", "")
         message = request.POST.get("message")
-        machine_interest = request.POST.get("machine_interest", "")
+        company = request.POST.get("company", "")
+        machine_interest = request.POST.get("machine_interest", selected_interest)
         
         if name and email and phone and message:
             ContactInquiry.objects.create(
@@ -219,12 +329,15 @@ def contact(request):
                 machine_interest=machine_interest
             )
             messages.success(request, "Thank you! Your inquiry has been submitted. Our team will contact you shortly.")
-            return render(request, "website/contact.html", {"success": True})
         else:
             messages.error(request, "Please fill in all required fields.")
-            
-    machines = Machine.objects.all()
-    return render(request, "website/contact.html", {"machines": machines})
+
+    return render(request, "website/contact.html", {
+        "hero": hero,
+        "selected_interest": selected_interest,
+        "contact_section": contact_section,
+        "contact_map": contact_map,
+    })
 
 def solutions(request):
     category_filter = request.GET.get("category", "")

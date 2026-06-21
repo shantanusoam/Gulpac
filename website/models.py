@@ -78,6 +78,56 @@ class CTASection(models.Model):
     def __str__(self):
         return f"{self.page_key}:{self.section_key}"
 
+
+class ContactSection(models.Model):
+    page_key = models.CharField(max_length=100, unique=True)
+    intro_prefix = models.CharField(max_length=100, default="GET IN")
+    intro_accent = models.CharField(max_length=100, default="TOUCH")
+    intro_description = models.CharField(max_length=255, default="We'd love to hear from you")
+    form_title = models.CharField(max_length=200, default="Send us a message")
+    name_label = models.CharField(max_length=100, default="Name")
+    name_placeholder = models.CharField(max_length=100, default="Your name")
+    email_label = models.CharField(max_length=100, default="Email")
+    email_placeholder = models.CharField(max_length=100, default="your@email.com")
+    phone_label = models.CharField(max_length=100, default="Phone")
+    phone_placeholder = models.CharField(max_length=100, default="+91 00000 00000")
+    message_label = models.CharField(max_length=100, default="Message")
+    message_placeholder = models.CharField(max_length=255, default="Tell us about your requirements...")
+    button_label = models.CharField(max_length=100, default="Send Message")
+
+    address_title = models.CharField(max_length=100, default="Address")
+    address_line1 = models.CharField(max_length=200, default="B5/9, 1st Floor, Paschim Vihar")
+    address_line2 = models.CharField(max_length=200, default="New Delhi-110063")
+    phone_card_title = models.CharField(max_length=100, default="Phone")
+    phone_card_value = models.CharField(max_length=50, default="+91 97173 33206")
+    phone_card_href = models.CharField(max_length=100, default="tel:+919717333206")
+    email_card_title = models.CharField(max_length=100, default="Email")
+    email_card_value = models.CharField(max_length=100, default="contact@glupac.in")
+    email_card_href = models.CharField(max_length=100, default="mailto:contact@glupac.in")
+
+    class Meta:
+        verbose_name = "Contact Section"
+        verbose_name_plural = "Contact Sections"
+
+    def __str__(self):
+        return self.page_key
+
+
+class ContactMapSection(models.Model):
+    page_key = models.CharField(max_length=100, unique=True)
+    title_prefix = models.CharField(max_length=100, default="Visit Our")
+    title_accent = models.CharField(max_length=100, default="Office")
+    description = models.CharField(max_length=255, default="Find us on the map")
+    map_image = models.ImageField(upload_to="contact_maps/", blank=True, null=True)
+    map_image_url = models.URLField(blank=True, default="")
+
+    class Meta:
+        verbose_name = "Contact Map Section"
+        verbose_name_plural = "Contact Map Sections"
+
+    def __str__(self):
+        return self.page_key
+
 class Machine(models.Model):
     model_number = models.CharField(max_length=50, primary_key=True)
     name = models.CharField(max_length=200)

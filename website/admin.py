@@ -1,5 +1,15 @@
 from django.contrib import admin
-from .models import CTASection, HeroSection, CardGridItem, CardGridSection, Machine, Testimonial, ContactInquiry
+from .models import (
+    CTASection,
+    ContactInquiry,
+    ContactMapSection,
+    ContactSection,
+    HeroSection,
+    CardGridItem,
+    CardGridSection,
+    Machine,
+    Testimonial,
+)
 
 
 @admin.register(HeroSection)
@@ -27,6 +37,28 @@ class CTASectionAdmin(admin.ModelAdmin):
     list_display = ("page_key", "section_key", "heading_prefix", "heading_accent", "is_active")
     list_filter = ("is_active", "page_key")
     search_fields = ("page_key", "section_key", "heading_prefix", "heading_accent", "description")
+
+
+@admin.register(ContactSection)
+class ContactSectionAdmin(admin.ModelAdmin):
+    list_display = ("page_key", "form_title")
+    search_fields = (
+        "page_key",
+        "intro_prefix",
+        "intro_accent",
+        "intro_description",
+        "form_title",
+        "address_line1",
+        "address_line2",
+        "phone_card_value",
+        "email_card_value",
+    )
+
+
+@admin.register(ContactMapSection)
+class ContactMapSectionAdmin(admin.ModelAdmin):
+    list_display = ("page_key", "title_prefix", "title_accent")
+    search_fields = ("page_key", "title_prefix", "title_accent", "description", "map_image_url")
 
 @admin.register(Machine)
 class MachineAdmin(admin.ModelAdmin):
