@@ -1,0 +1,132 @@
+{% load static %}
+
+<section class="contact-section">
+  <div class="contact-section__background"></div>
+  <div class="contact-section__container">
+    <div class="contact-section__stack">
+      {% if messages %}
+        <div class="contact-section__messages">
+          {% for message in messages %}
+            <div class="contact-alert {% if message.tags == 'success' %}contact-alert--success{% else %}contact-alert--error{% endif %}">
+              <i data-lucide="{% if message.tags == 'success' %}check-circle{% else %}alert-circle{% endif %}" aria-hidden="true"></i>
+              <p>{{ message }}</p>
+            </div>
+          {% endfor %}
+        </div>
+      {% endif %}
+
+      <div class="contact-section__intro">
+        <h2 class="contact-section__title">
+          <span>{{ contact_section.intro_prefix }}</span>
+          <span>{{ contact_section.intro_accent }}</span>
+        </h2>
+        <p class="contact-section__subtitle">{{ contact_section.intro_description }}</p>
+      </div>
+
+      <div class="contact-form-card">
+        <h3 class="contact-form-card__title">{{ contact_section.form_title }}</h3>
+
+        <form action="{% url 'contact' %}" method="POST" class="contact-form">
+          {% csrf_token %}
+          <input type="hidden" name="company" value="">
+          <input type="hidden" name="machine_interest" value="{{ selected_interest|default:'' }}">
+
+          <div class="contact-form__row">
+            <label class="contact-form__field">
+              <span class="contact-form__label">{{ contact_section.name_label }}</span>
+              <input type="text" name="name" required placeholder="{{ contact_section.name_placeholder }}" class="contact-form__input">
+            </label>
+
+            <label class="contact-form__field">
+              <span class="contact-form__label">{{ contact_section.email_label }}</span>
+              <input type="email" name="email" required placeholder="{{ contact_section.email_placeholder }}" class="contact-form__input">
+            </label>
+
+            <label class="contact-form__field">
+              <span class="contact-form__label">{{ contact_section.phone_label }}</span>
+              <input type="tel" name="phone" required placeholder="{{ contact_section.phone_placeholder }}" class="contact-form__input">
+            </label>
+          </div>
+
+          <label class="contact-form__field contact-form__field--full">
+            <span class="contact-form__label">{{ contact_section.message_label }}</span>
+            <textarea
+              name="message"
+              required
+              rows="6"
+              placeholder="{{ contact_section.message_placeholder }}"
+              class="contact-form__textarea"
+            ></textarea>
+          </label>
+
+          <div class="contact-form__actions">
+            <button type="submit" class="contact-form__button">
+              <i data-lucide="send" aria-hidden="true"></i>
+              <span>{{ contact_section.button_label }}</span>
+            </button>
+          </div>
+        </form>
+      </div>
+
+      <div class="contact-cards">
+        <div class="contact-info-card">
+          <div class="contact-info-card__icon">
+            <i data-lucide="map-pin" aria-hidden="true"></i>
+          </div>
+          <h3 class="contact-info-card__title">{{ contact_section.address_title }}</h3>
+          <div class="contact-info-card__body">
+            <p>{{ contact_section.address_line1 }}</p>
+            <p>{{ contact_section.address_line2 }}</p>
+          </div>
+        </div>
+
+        <div class="contact-info-card">
+          <div class="contact-info-card__icon">
+            <i data-lucide="phone" aria-hidden="true"></i>
+          </div>
+          <h3 class="contact-info-card__title">{{ contact_section.phone_card_title }}</h3>
+          <div class="contact-info-card__body">
+            <a href="{{ contact_section.phone_card_href }}">{{ contact_section.phone_card_value }}</a>
+          </div>
+        </div>
+
+        <div class="contact-info-card">
+          <div class="contact-info-card__icon">
+            <i data-lucide="mail" aria-hidden="true"></i>
+          </div>
+          <h3 class="contact-info-card__title">{{ contact_section.email_card_title }}</h3>
+          <div class="contact-info-card__body">
+            <a href="{{ contact_section.email_card_href }}">{{ contact_section.email_card_value }}</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="contact-map-section">
+        <div class="contact-map-section__header">
+          <h3 class="contact-map-section__title">
+            <span>{{ contact_map.title_prefix }}</span>
+            <span>{{ contact_map.title_accent }}</span>
+          </h3>
+          <p class="contact-map-section__description">{{ contact_map.description }}</p>
+        </div>
+
+        <div class="contact-map-section__media">
+          <iframe
+            title="Gulpac office location map"
+            class="contact-map-section__iframe"
+            width="100%"
+            height="100%"
+            frameborder="0"
+            scrolling="no"
+            marginheight="0"
+            marginwidth="0"
+            src="https://www.openstreetmap.org/export/embed.html?bbox=77.0970%2C28.6630%2C77.1130%2C28.6730&amp;layer=mapnik&amp;marker=28.6680%2C77.1050"
+            referrerpolicy="no-referrer"
+            loading="lazy"
+            allowfullscreen
+          ></iframe>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

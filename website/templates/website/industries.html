@@ -1,0 +1,9 @@
+{% extends "website/base.html" %}
+
+{% block title %}Industries We Serve — Gulpac{% endblock %}
+
+{% block content %}
+  {% include "website/components/page_hero.html" with hero=hero %}
+  {% include "website/components/card_grid_section.html" with industry_grid=industry_grid %}
+  {% include "website/components/cta_section.html" with cta_section=cta_section %}
+{% endblock %}

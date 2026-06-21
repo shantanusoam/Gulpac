@@ -1,0 +1,31 @@
+{% load static %}
+
+<section class="page-hero font-inter{% if hero.centered %} page-hero--centered{% endif %}" data-page-hero="{{ hero.page_key }}">
+  <div class="page-hero__media" aria-hidden="true" style="background-image: url('{{ hero.background_image_url }}');"></div>
+  <div class="page-hero__overlay" aria-hidden="true"></div>
+
+  <div class="page-hero__container{% if hero.centered %} page-hero__container--centered{% endif %}">
+    <div class="page-hero__content{% if hero.centered %} page-hero__content--centered{% endif %}">
+      {% if hero.show_back_link %}
+      <a href="{{ hero.back_link_url }}" class="page-hero__back{% if hero.centered %} page-hero__back--centered{% endif %}">
+        <i data-lucide="arrow-left" aria-hidden="true"></i>
+        <span>{{ hero.back_link_label }}</span>
+      </a>
+      {% endif %}
+
+      {% if hero.badge_label %}
+      <div class="page-hero__badge">{{ hero.badge_label }}</div>
+      {% endif %}
+
+      {% if hero.eyebrow %}
+      <span class="page-hero__eyebrow">{{ hero.eyebrow }}</span>
+      {% endif %}
+
+      <h1 class="page-hero__title">{{ hero.title }}</h1>
+
+      <p class="page-hero__desc">
+        {{ hero.description }}
+      </p>
+    </div>
+  </div>
+</section>
