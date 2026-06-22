@@ -492,16 +492,60 @@
 
 {% block scripts %}
   <script>
-    // GSAP ScrollTrigger Animations for beautiful entrance animations
-    document.addEventListener("DOMContentLoaded", function() {
-      // Hero load animations
-      const tl = gsap.timeline({ defaults: { ease: "power3.out", duration: 1 } });
-      
-      tl.from(".hero-text-block", { opacity: 0, x: -50, delay: 0.2 })
-        .from(".hero-images .x-card-back", { opacity: 0, x: -100, rotate: -20, duration: 1.2 }, "-=0.8")
-        .from(".hero-images .x-card-front", { opacity: 0, x: 100, rotate: 20, duration: 1.2 }, "-=1.0");
+    initGulpacAnimations(function(context) {
+      if (!context.gsapAvailable) {
+        return;
+      }
 
-      // Infinite Ticker scrolling using CSS/GSAP keyframes. Let's do elegant GSAP
+      const animatedTargets = [
+        ".hero-text-block",
+        ".hero-images .x-card-back",
+        ".hero-images .x-card-front",
+        ".adv-grid > div",
+        ".showcase-text",
+        ".solutions-header",
+        ".machines-grid > div",
+        ".footprints-stats > div",
+        ".footprints-globe",
+        ".testimonials-grid > div",
+        ".cta-info",
+        ".cta-form"
+      ];
+
+      if (context.reducedMotion) {
+        clearGulpacAnimationProps(animatedTargets);
+        return;
+      }
+
+      const tl = gsap.timeline({ defaults: { ease: "power3.out", duration: 1 } });
+
+      tl.fromTo(".hero-text-block", {
+        autoAlpha: 0,
+        x: -50
+      }, {
+        autoAlpha: 1,
+        x: 0,
+        delay: 0.15
+      }).fromTo(".hero-images .x-card-back", {
+        autoAlpha: 0,
+        x: -80,
+        rotate: -18
+      }, {
+        autoAlpha: 1,
+        x: 0,
+        rotate: -6,
+        duration: 1.1
+      }, "-=0.7").fromTo(".hero-images .x-card-front", {
+        autoAlpha: 0,
+        x: 80,
+        rotate: 16
+      }, {
+        autoAlpha: 1,
+        x: 0,
+        rotate: 3,
+        duration: 1.1
+      }, "-=0.95");
+
       gsap.to("#partner-ticker", {
         xPercent: -50,
         repeat: -1,
@@ -509,114 +553,144 @@
         duration: 35
       });
 
-      // Cards staggered entrances on Scroll
-      gsap.from(".adv-grid > div", {
+      gsap.fromTo(".adv-grid > div", {
+        autoAlpha: 0,
+        y: 60
+      }, {
+        autoAlpha: 1,
+        y: 0,
+        duration: 0.8,
+        stagger: 0.15,
+        ease: "power2.out",
         scrollTrigger: {
           trigger: ".adv-grid",
-          start: "top 80%",
-        },
-        opacity: 0,
-        y: 60,
-        duration: 0.8,
-        stagger: 0.15,
-        ease: "power2.out"
+          start: "top 82%",
+          once: true
+        }
       });
 
-      // Showcase block text slide-in
-      gsap.from(".showcase-text", {
+      gsap.fromTo(".showcase-text", {
+        autoAlpha: 0,
+        x: -50
+      }, {
+        autoAlpha: 1,
+        x: 0,
+        duration: 1.1,
+        ease: "power3.out",
         scrollTrigger: {
           trigger: ".showcase-text",
-          start: "top 85%",
-        },
-        opacity: 0,
-        x: -50,
-        duration: 1.2,
-        ease: "power3.out"
+          start: "top 88%",
+          once: true
+        }
       });
 
-      // Solutions header & grid scroll triggers
-      gsap.from(".solutions-header", {
+      gsap.fromTo(".solutions-header", {
+        autoAlpha: 0,
+        y: 30
+      }, {
+        autoAlpha: 1,
+        y: 0,
+        duration: 0.8,
+        ease: "power2.out",
         scrollTrigger: {
           trigger: ".solutions-header",
-          start: "top 85%",
-        },
-        opacity: 0,
-        y: 30,
-        duration: 0.8,
-        ease: "power2.out"
+          start: "top 88%",
+          once: true
+        }
       });
 
-      gsap.from(".machines-grid > div", {
+      gsap.fromTo(".machines-grid > div", {
+        autoAlpha: 0,
+        y: 50
+      }, {
+        autoAlpha: 1,
+        y: 0,
+        duration: 0.8,
+        stagger: 0.15,
+        ease: "power2.out",
         scrollTrigger: {
           trigger: ".machines-grid",
-          start: "top 80%",
-        },
-        opacity: 0,
-        y: 50,
-        duration: 0.8,
-        stagger: 0.15,
-        ease: "power2.out"
+          start: "top 82%",
+          once: true
+        }
       });
 
-      // Globe pulsing and metrics loading
-      gsap.from(".footprints-stats > div", {
+      gsap.fromTo(".footprints-stats > div", {
+        autoAlpha: 0,
+        x: -50
+      }, {
+        autoAlpha: 1,
+        x: 0,
+        stagger: 0.15,
+        duration: 0.8,
+        ease: "power2.out",
         scrollTrigger: {
           trigger: ".footprints-stats",
-          start: "top 80%",
-        },
-        opacity: 0,
-        x: -50,
-        stagger: 0.15,
-        duration: 0.8,
-        ease: "power2.out"
+          start: "top 82%",
+          once: true
+        }
       });
 
-      gsap.from(".footprints-globe", {
+      gsap.fromTo(".footprints-globe", {
+        autoAlpha: 0,
+        scale: 0.88
+      }, {
+        autoAlpha: 1,
+        scale: 1,
+        duration: 1.2,
+        ease: "power2.out",
         scrollTrigger: {
           trigger: ".footprints-globe",
-          start: "top 75%",
-        },
-        opacity: 0,
-        scale: 0.8,
-        duration: 1.5,
-        ease: "elastic.out(1, 0.75)"
+          start: "top 78%",
+          once: true
+        }
       });
 
-      // Testimonials cards fade-up
-      gsap.from(".testimonials-grid > div", {
-        scrollTrigger: {
-          trigger: ".testimonials-grid",
-          start: "top 80%",
-        },
-        opacity: 0,
-        y: 40,
+      gsap.fromTo(".testimonials-grid > div", {
+        autoAlpha: 0,
+        y: 40
+      }, {
+        autoAlpha: 1,
+        y: 0,
         stagger: 0.15,
         duration: 0.8,
-        ease: "power2.out"
+        ease: "power2.out",
+        scrollTrigger: {
+          trigger: ".testimonials-grid",
+          start: "top 82%",
+          once: true
+        }
       });
 
-      // CTA section animations
-      gsap.from(".cta-info", {
+      gsap.fromTo(".cta-info", {
+        autoAlpha: 0,
+        x: -50
+      }, {
+        autoAlpha: 1,
+        x: 0,
+        duration: 1,
+        ease: "power3.out",
         scrollTrigger: {
           trigger: ".cta-info",
-          start: "top 80%",
-        },
-        opacity: 0,
-        x: -50,
-        duration: 1,
-        ease: "power3.out"
+          start: "top 84%",
+          once: true
+        }
       });
 
-      gsap.from(".cta-form", {
+      gsap.fromTo(".cta-form", {
+        autoAlpha: 0,
+        scale: 0.96
+      }, {
+        autoAlpha: 1,
+        scale: 1,
+        duration: 1,
+        ease: "power3.out",
         scrollTrigger: {
           trigger: ".cta-form",
-          start: "top 80%",
-        },
-        opacity: 0,
-        scale: 0.95,
-        duration: 1,
-        ease: "power3.out"
-      }, "-=0.5");
+          start: "top 84%",
+          once: true
+        }
+      });
     });
   </script>
 {% endblock %}

@@ -1018,6 +1018,59 @@
       document.addEventListener("DOMContentLoaded", function() {
         lucide.createIcons();
       });
+
+      (function() {
+        function onLoadReady(callback) {
+          if (document.readyState === "complete") {
+            requestAnimationFrame(function() {
+              requestAnimationFrame(callback);
+            });
+            return;
+          }
+
+          window.addEventListener("load", function() {
+            requestAnimationFrame(function() {
+              requestAnimationFrame(callback);
+            });
+          }, { once: true });
+        }
+
+        window.initGulpacAnimations = function(callback) {
+          if (typeof callback !== "function") {
+            return;
+          }
+
+          onLoadReady(function() {
+            if (typeof gsap === "undefined") {
+              callback({ gsapAvailable: false, reducedMotion: false });
+              return;
+            }
+
+            if (typeof ScrollTrigger !== "undefined" && !window.__gulpacScrollTriggerRegistered) {
+              gsap.registerPlugin(ScrollTrigger);
+              window.__gulpacScrollTriggerRegistered = true;
+            }
+
+            const reducedMotion = window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+            callback({ gsapAvailable: true, reducedMotion: reducedMotion });
+
+            if (typeof ScrollTrigger !== "undefined") {
+              ScrollTrigger.refresh();
+            }
+          });
+        };
+
+        window.clearGulpacAnimationProps = function(targets) {
+          if (typeof gsap === "undefined" || !targets) {
+            return;
+          }
+
+          gsap.set(targets, {
+            clearProps: "opacity,visibility,transform"
+          });
+        };
+      })();
     </script>
     {% block scripts %}{% endblock %}
   </body>

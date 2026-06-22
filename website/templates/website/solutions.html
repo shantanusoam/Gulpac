@@ -119,19 +119,61 @@
 
 {% block scripts %}
   <script>
-    document.addEventListener("DOMContentLoaded", function() {
+    initGulpacAnimations(function(context) {
+      if (!context.gsapAvailable) {
+        return;
+      }
+
+      const animatedTargets = [
+        ".solutions-title",
+        ".solutions-subtitle",
+        ".category-tabs",
+        ".solutions-grid > div"
+      ];
+
+      if (context.reducedMotion) {
+        clearGulpacAnimationProps(animatedTargets);
+        return;
+      }
+
       const tl = gsap.timeline({ defaults: { ease: "power3.out", duration: 1 } });
-      tl.from(".solutions-title", { opacity: 0, y: 30, delay: 0.2 })
-        .from(".solutions-subtitle", { opacity: 0, y: 20 }, "-=0.6");
+      tl.fromTo(".solutions-title", {
+        autoAlpha: 0,
+        y: 30
+      }, {
+        autoAlpha: 1,
+        y: 0,
+        delay: 0.15
+      }).fromTo(".solutions-subtitle", {
+        autoAlpha: 0,
+        y: 20
+      }, {
+        autoAlpha: 1,
+        y: 0
+      }, "-=0.6");
 
-      gsap.from(".category-tabs", { opacity: 0, scale: 0.95, duration: 0.5 });
+      gsap.fromTo(".category-tabs", {
+        autoAlpha: 0,
+        scale: 0.97
+      }, {
+        autoAlpha: 1,
+        scale: 1,
+        duration: 0.5
+      });
 
-      gsap.from(".solutions-grid > div", {
-        scrollTrigger: { trigger: ".solutions-grid", start: "top 85%" },
-        opacity: 0,
-        y: 50,
+      gsap.fromTo(".solutions-grid > div", {
+        autoAlpha: 0,
+        y: 50
+      }, {
+        autoAlpha: 1,
+        y: 0,
         stagger: 0.1,
-        duration: 0.8
+        duration: 0.8,
+        scrollTrigger: {
+          trigger: ".solutions-grid",
+          start: "top 86%",
+          once: true
+        }
       });
     });
   </script>
