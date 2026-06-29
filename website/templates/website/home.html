@@ -26,13 +26,13 @@
           
           <!-- Hero Actions -->
           <div class="flex flex-wrap gap-4 pt-2 hero-btns">
-            <a href="{% url 'contact' %}" class="inline-flex items-center justify-center px-8 py-3.5 rounded-full text-base font-bold text-white bg-blue-600 hover:bg-blue-700 shadow-lg shadow-blue-500/20 hover:shadow-blue-500/30 transition-all hover:-translate-y-0.5 active:translate-y-0">
+            {# <a href="#contact" class="inline-flex items-center justify-center px-8 py-3.5 rounded-full text-base font-bold text-white bg-blue-600 hover:bg-blue-700 shadow-lg shadow-blue-500/20 hover:shadow-blue-500/30 transition-all hover:-translate-y-0.5 active:translate-y-0">
               Get Custom Quote
               <i data-lucide="arrow-right" class="w-5 h-5 ml-2"></i>
-            </a>
-            <a href="{% url 'solutions' %}" class="inline-flex items-center justify-center px-8 py-3.5 rounded-full text-base font-bold text-slate-700 bg-slate-100 hover:bg-slate-200 transition-all hover:-translate-y-0.5 active:translate-y-0">
+            </a> #}
+            {# <a href="#solutions" class="inline-flex items-center justify-center px-8 py-3.5 rounded-full text-base font-bold text-slate-700 bg-slate-100 hover:bg-slate-200 transition-all hover:-translate-y-0.5 active:translate-y-0">
               Explore Machines
-            </a>
+            </a> #}
           </div>
 
           <!-- Quick Metrics Grid -->
@@ -208,20 +208,20 @@
           Behind every Glupac machine lies complex technical excellence. From dynamic hot-melt adhesive timing to automatic sensor diagnostics, our units help factory operators scale throughput easily without worrying about mechanical failure.
         </p>
         <div class="flex flex-wrap gap-4 pt-4">
-          <a href="{% url 'contact' %}" class="inline-flex items-center justify-center px-7 py-3 rounded-full text-sm font-bold text-white bg-blue-600 hover:bg-blue-700 transition-all">
+          {# <a href="#contact" class="inline-flex items-center justify-center px-7 py-3 rounded-full text-sm font-bold text-white bg-blue-600 hover:bg-blue-700 transition-all">
             Schedule Live Video Demo
             <i data-lucide="video" class="w-4 h-4 ml-1.5"></i>
-          </a>
-          <a href="{% url 'solutions' %}" class="inline-flex items-center justify-center px-7 py-3 rounded-full text-sm font-bold text-slate-300 border border-slate-700 hover:bg-slate-800 transition-all">
+          </a> #}
+          {# <a href="#solutions" class="inline-flex items-center justify-center px-7 py-3 rounded-full text-sm font-bold text-slate-300 border border-slate-700 hover:bg-slate-800 transition-all">
             Technical Specifications
-          </a>
+          </a> #}
         </div>
       </div>
     </div>
   </section>
 
   <!-- Solutions Section (Database Driven) -->
-  <section class="py-20 md:py-28 bg-white">
+  <section id="solutions" class="py-20 md:py-28 bg-white">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
       
       <!-- Header -->
@@ -233,10 +233,10 @@
           </p>
         </div>
         <div class="flex-shrink-0">
-          <a href="{% url 'solutions' %}" class="inline-flex items-center text-blue-600 hover:text-blue-700 font-bold hover:underline transition-all">
+          {# <a href="#solutions" class="inline-flex items-center text-blue-600 hover:text-blue-700 font-bold hover:underline transition-all">
             View All Machinery
             <i data-lucide="arrow-right" class="w-5 h-5 ml-1.5"></i>
-          </a>
+          </a> #}
         </div>
       </div>
 
@@ -269,10 +269,10 @@
             
             <div class="pt-6 mt-6 border-t border-slate-100 flex items-center justify-between">
               <span class="text-xs font-bold text-slate-400 uppercase tracking-widest">{{ machine.get_category_display }}</span>
-              <a href="{% url 'solution_detail' machine.slug %}" class="inline-flex items-center justify-center px-4.5 py-2 border border-blue-500/20 rounded-full text-xs font-bold text-blue-600 hover:bg-blue-50 transition-all">
+              {# <a href="#solutions" class="inline-flex items-center justify-center px-4.5 py-2 border border-blue-500/20 rounded-full text-xs font-bold text-blue-600 hover:bg-blue-50 transition-all">
                 Details
                 <i data-lucide="chevron-right" class="w-3.5 h-3.5 ml-1"></i>
-              </a>
+              </a> #}
             </div>
           </div>
         </div>
@@ -417,7 +417,7 @@
   </section>
 
   <!-- CTA and Expert Form Frame (Looking for Right Packaging Machine?) -->
-  <section class="py-20 md:py-28 bg-[#020617] text-white overflow-hidden relative">
+  <section id="contact" class="py-20 md:py-28 bg-[#020617] text-white overflow-hidden relative">
     <div class="absolute inset-0 bg-blue-500/5 blur-3xl pointer-events-none"></div>
     <div class="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
       <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
@@ -453,7 +453,7 @@
         <div class="lg:col-span-6 bg-slate-900/60 backdrop-blur-md p-8 sm:p-10 rounded-3xl border border-slate-800/80 shadow-2xl cta-form">
           <h3 class="text-xl sm:text-2xl font-bold tracking-tight mb-6">Request Callback in 10 Minutes</h3>
           
-          <form action="{% url 'contact' %}" method="POST" class="space-y-5">
+          <form action="/" method="POST" class="space-y-5">
             {% csrf_token %}
             <div>
               <label class="block text-xs font-bold uppercase tracking-wider text-slate-400 mb-1.5" for="cta_name">Name *</label>
