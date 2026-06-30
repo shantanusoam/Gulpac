@@ -1,4 +1,4 @@
-from django.shortcuts import render, get_object_or_404
+from django.shortcuts import render, get_object_or_404, redirect
 from django.templatetags.static import static
 from django.contrib import messages
 from .models import (
@@ -173,9 +173,28 @@ def build_machine_hero_context(machine):
     }
 
 def home(request):
+    if request.method == "POST":
+        ContactInquiry.objects.create(
+            name=request.POST.get("name", ""),
+            email=request.POST.get("email", ""),
+            phone=request.POST.get("phone", ""),
+            company=request.POST.get("company", ""),
+            message=request.POST.get("message", ""),
+        )
+        messages.success(request, "Thank you! We'll get back to you within 10 minutes.")
+        return redirect("/")
+
+    hero = build_hero_context("home", {
+        "title": "Packaging Machines Built For Your Product",
+        "description": "Advanced packaging solutions built for speed, precision, and reliability. Empower your production. Elevate your brand.",
+        "badge_label": "Precision Bonding, Seamless Packaging",
+        "background_image_url": static("images/hero/hero-bg.png"),
+        "show_back_link": False,
+    })
     machines = Machine.objects.all()[:6]
     testimonials = Testimonial.objects.all()[:3]
     return render(request, "website/home.html", {
+        "hero": hero,
         "machines": machines,
         "testimonials": testimonials,
     })

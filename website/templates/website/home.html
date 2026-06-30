@@ -4,18 +4,20 @@
 {% block title %}Leading Packaging & Gluing Machine Manufacturer — Gulpac{% endblock %}
 
 {% block content %}
-  <!-- Figma Hero Section -->
+
+  {# ── 1. HERO ─────────────────────────────────────────────────────────── #}
   <section class="relative overflow-hidden bg-[#f3f5f9] pt-24 pb-24 md:pt-28 md:pb-28 lg:pt-32 lg:pb-36">
     <div class="absolute inset-0 pointer-events-none" aria-hidden="true">
-      <img src="{% static 'images/hero/hero-bg.png' %}" alt="" class="h-full w-full object-cover object-center">
+      <img src="{{ hero.background_image_url }}" alt="" class="h-full w-full object-cover object-center">
       <div class="absolute inset-0 bg-gradient-to-r from-[rgba(255,255,255,0.92)] via-[rgba(255,255,255,0.62)] to-[rgba(255,255,255,0.12)]"></div>
     </div>
 
-    <div class="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="relative z-10 mx-8  lg:mx-24 mx-auto px-4 sm:px-6 lg:px-8">
       <div class="grid grid-cols-1 items-center gap-12 lg:grid-cols-12 lg:gap-8">
+
         <div class="hero-text-block-primary lg:col-span-5 space-y-6 md:space-y-7">
           <div class="inline-flex items-center rounded-full bg-[#2d388c] px-5 py-2 text-xs sm:text-sm font-medium text-white tracking-[-0.01em]">
-            Precision Bonding, Seamless Packaging
+            {{ hero.badge_label|default:"Precision Bonding, Seamless Packaging" }}
           </div>
 
           <h1 class="max-w-[18ch] font-black italic uppercase leading-[1.08] tracking-[0.01em] text-[2rem] sm:text-[2.5rem] lg:text-[3.1rem] text-[#2d388c]">
@@ -23,12 +25,12 @@
             <span class="block text-[#47a33d]">Built For Your Product</span>
           </h1>
 
-          <p class="max-w-[26ch] text-base sm:text-lg leading-[1.6] text-[#4a5565]">
-            Advanced packaging solutions built for speed, precision, and reliability. Empower your production. Elevate your brand.
+          <p class="max-w-[30ch] text-base sm:text-lg leading-[1.6] text-[#4a5565]">
+            {{ hero.description|default:"Advanced packaging solutions built for speed, precision, and reliability. Empower your production. Elevate your brand." }}
           </p>
 
           <div class="pt-1">
-            <a href="{% url 'contact' %}" class="inline-flex min-h-[58px] min-w-[170px] items-center justify-center rounded-[10px] bg-[#2d388c] px-7 py-4 text-base font-medium text-white shadow-[0_16px_30px_rgba(27,52,132,0.24)] transition-all hover:-translate-y-0.5 hover:bg-[#25307c] active:translate-y-0">
+            <a href="{% url 'contact' %}" class="inline-flex min-h-[58px] min-w-[170px] items-center justify-center rounded-[10px] bg-[#2d388c] px-7 py-4 text-base font-medium text-white shadow-[0_16px_30px_rgba(45,56,140,0.28)] transition-all hover:-translate-y-0.5 hover:bg-[#25307c] active:translate-y-0">
               Get A Quote
             </a>
           </div>
@@ -43,6 +45,7 @@
             >
           </div>
         </div>
+
       </div>
     </div>
 
@@ -52,355 +55,273 @@
     </svg>
   </section>
 
-  <!-- Legacy Hero Section -->
-  <section class="relative bg-white pt-24 pb-20 md:pt-32 md:pb-28 overflow-hidden">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-      <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-8 items-center">
-        
-        <!-- Left Side: Hero Text -->
-        <div class="lg:col-span-6 space-y-8 hero-text-block">
-          <div class="inline-flex items-center space-x-2 bg-blue-50 border border-blue-100 rounded-full py-1.5 px-4 text-xs font-semibold text-blue-600 tracking-wide uppercase">
-            <span>About Glupac</span>
-          </div>
-          
-          <h1 class="text-4xl sm:text-5xl lg:text-6xl font-black text-slate-900 tracking-tight leading-tight hero-title">
-            Leading Manufacturer of <br>
-            <span class="text-blue-600 bg-gradient-to-r from-blue-600 to-indigo-600 bg-clip-text text-transparent">Packaging Solutions</span>
-          </h1>
-          
-          <p class="text-base sm:text-lg text-slate-600 leading-relaxed max-w-xl hero-desc">
-            Glupac, under the banner of <span class="font-semibold text-slate-900">Suresh Raj Industries</span>, is a pioneering manufacturer of high-performance gluing and cartoning machines. Our systems are custom-engineered for zero-leakage, extreme lifespan, and seamless automation.
-          </p>
-          
-          <!-- Hero Actions -->
-          <div class="flex flex-wrap gap-4 pt-2 hero-btns">
-            {# <a href="#contact" class="inline-flex items-center justify-center px-8 py-3.5 rounded-full text-base font-bold text-white bg-blue-600 hover:bg-blue-700 shadow-lg shadow-blue-500/20 hover:shadow-blue-500/30 transition-all hover:-translate-y-0.5 active:translate-y-0">
-              Get Custom Quote
-              <i data-lucide="arrow-right" class="w-5 h-5 ml-2"></i>
-            </a> #}
-            {# <a href="#solutions" class="inline-flex items-center justify-center px-8 py-3.5 rounded-full text-base font-bold text-slate-700 bg-slate-100 hover:bg-slate-200 transition-all hover:-translate-y-0.5 active:translate-y-0">
-              Explore Machines
-            </a> #}
-          </div>
-
-          <!-- Quick Metrics Grid -->
-          <div class="grid grid-cols-3 gap-4 pt-6 max-w-lg border-t border-slate-100 hero-stats">
-            <div class="text-center sm:text-left">
-              <p class="text-2xl sm:text-3xl font-extrabold text-blue-600">20+</p>
-              <p class="text-xs sm:text-sm font-semibold text-slate-600">Years Experience</p>
-            </div>
-            <div class="text-center sm:text-left">
-              <p class="text-2xl sm:text-3xl font-extrabold text-blue-600">500+</p>
-              <p class="text-xs sm:text-sm font-semibold text-slate-600">Installations</p>
-            </div>
-            <div class="text-center sm:text-left">
-              <p class="text-2xl sm:text-3xl font-extrabold text-blue-600">100%</p>
-              <p class="text-xs sm:text-sm font-semibold text-slate-600">Customized</p>
-            </div>
-          </div>
-        </div>
-        
-        <!-- Right Side: Interactive Overlapping Images -->
-        <div class="lg:col-span-6 relative flex items-center justify-center min-h-[400px] sm:min-h-[500px] lg:min-h-[550px] hero-images">
-          <!-- Background decorative shapes -->
-          <div class="absolute w-72 h-72 bg-blue-100/40 rounded-full blur-3xl -top-10 -right-10 pointer-events-none"></div>
-          <div class="absolute w-80 h-80 bg-indigo-50/50 rounded-full blur-3xl -bottom-10 -left-10 pointer-events-none"></div>
-          
-          <!-- Machine 2 (Back and Left) -->
-          <div class="absolute x-card-back left-4 sm:left-10 top-16 w-[260px] sm:w-[350px] aspect-[1.1] rounded-2xl overflow-hidden shadow-2xl border-4 border-white/80 bg-white/50 backdrop-blur-sm transform -rotate-6 hover:rotate-0 hover:scale-105 transition-all duration-500 z-10 pointer-events-auto">
-            <img src="{% static 'images/machine2.png' %}" alt="Glupac Modern Gluing Machinery" class="w-full h-full object-cover">
-          </div>
-          
-          <!-- Machine 1 (Front and Right) -->
-          <div class="absolute x-card-front right-4 sm:right-10 bottom-12 w-[240px] sm:w-[320px] aspect-[1.0] rounded-2xl overflow-hidden shadow-2xl border-4 border-white/80 bg-white transform rotate-3 hover:rotate-0 hover:scale-105 transition-all duration-500 z-20 pointer-events-auto">
-            <img src="{% static 'images/machine1.png' %}" alt="Glupac Carton Packaging Line" class="w-full h-full object-cover">
-          </div>
-        </div>
-        
-      </div>
-    </div>
-  </section>
-
-  <!-- Infinite Partners Ticker -->
-  <section class="bg-[#fafbfd] py-10 border-y border-slate-100/80 overflow-hidden">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mb-4">
+  {# ── 2. PARTNER TICKER ───────────────────────────────────────────────── #}
+  <section class="bg-white py-10 border-b border-slate-100/80 overflow-hidden">
+    <div class="mx-8  lg:mx-24 mx-auto px-4 sm:px-6 lg:px-8 mb-6">
       <p class="text-center text-xs font-bold text-slate-400 tracking-widest uppercase">Trusted by leading brands across industries</p>
     </div>
-    
-    <!-- GSAP / CSS Infinite Ticker container -->
-    <div class="relative w-full overflow-hidden flex items-center h-20">
-      <div id="partner-ticker" class="flex space-x-12 whitespace-nowrap min-w-full">
-        <!-- We use our exported component2.png as part of the ticker, or simulate logos -->
-        <div class="flex items-center space-x-16">
-          <span class="text-lg sm:text-2xl font-black text-slate-300 select-none uppercase hover:text-blue-500 transition-colors">India Gate Foods</span>
-          <span class="text-lg sm:text-2xl font-black text-slate-300 select-none uppercase hover:text-blue-500 transition-colors">Haldirams</span>
-          <span class="text-lg sm:text-2xl font-black text-slate-300 select-none uppercase hover:text-blue-500 transition-colors">Finolex Cables</span>
-          <span class="text-lg sm:text-2xl font-black text-slate-300 select-none uppercase hover:text-blue-500 transition-colors">Suresh Raj Indus</span>
-          <span class="text-lg sm:text-2xl font-black text-slate-300 select-none uppercase hover:text-blue-500 transition-colors">Pharma Packaging Co</span>
-          <span class="text-lg sm:text-2xl font-black text-slate-300 select-none uppercase hover:text-blue-500 transition-colors">Cosmetic Pack</span>
+
+    <div class="relative w-full overflow-hidden">
+      <div id="partner-ticker" class="flex gap-4 w-max">
+        <div class="flex gap-4">
+          <div class="inline-flex items-center justify-center min-w-[160px] h-20 rounded-xl border border-slate-100 bg-[#f9fafb] px-4 py-3 flex-shrink-0"><img src="{% static 'images/brands/brand-01.png' %}" alt="Client 1" class="h-full w-auto object-contain grayscale hover:grayscale-0 transition-all duration-300 opacity-70 hover:opacity-100"></div>
+          <div class="inline-flex items-center justify-center min-w-[160px] h-20 rounded-xl border border-slate-100 bg-[#f9fafb] px-4 py-3 flex-shrink-0"><img src="{% static 'images/brands/brand-02.png' %}" alt="Client 2" class="h-full w-auto object-contain grayscale hover:grayscale-0 transition-all duration-300 opacity-70 hover:opacity-100"></div>
+          <div class="inline-flex items-center justify-center min-w-[160px] h-20 rounded-xl border border-slate-100 bg-[#f9fafb] px-4 py-3 flex-shrink-0"><img src="{% static 'images/brands/brand-03.png' %}" alt="Client 3" class="h-full w-auto object-contain grayscale hover:grayscale-0 transition-all duration-300 opacity-70 hover:opacity-100"></div>
+          <div class="inline-flex items-center justify-center min-w-[160px] h-20 rounded-xl border border-slate-100 bg-[#f9fafb] px-4 py-3 flex-shrink-0"><img src="{% static 'images/brands/brand-04.png' %}" alt="Client 4" class="h-full w-auto object-contain grayscale hover:grayscale-0 transition-all duration-300 opacity-70 hover:opacity-100"></div>
+          <div class="inline-flex items-center justify-center min-w-[160px] h-20 rounded-xl border border-slate-100 bg-[#f9fafb] px-4 py-3 flex-shrink-0"><img src="{% static 'images/brands/brand-05.png' %}" alt="Client 5" class="h-full w-auto object-contain grayscale hover:grayscale-0 transition-all duration-300 opacity-70 hover:opacity-100"></div>
+          <div class="inline-flex items-center justify-center min-w-[160px] h-20 rounded-xl border border-slate-100 bg-[#f9fafb] px-4 py-3 flex-shrink-0"><img src="{% static 'images/brands/brand-06.png' %}" alt="Client 6" class="h-full w-auto object-contain grayscale hover:grayscale-0 transition-all duration-300 opacity-70 hover:opacity-100"></div>
+          <div class="inline-flex items-center justify-center min-w-[160px] h-20 rounded-xl border border-slate-100 bg-[#f9fafb] px-4 py-3 flex-shrink-0"><img src="{% static 'images/brands/brand-07.png' %}" alt="Client 7" class="h-full w-auto object-contain grayscale hover:grayscale-0 transition-all duration-300 opacity-70 hover:opacity-100"></div>
+          <div class="inline-flex items-center justify-center min-w-[160px] h-20 rounded-xl border border-slate-100 bg-[#f9fafb] px-4 py-3 flex-shrink-0"><img src="{% static 'images/brands/brand-08.png' %}" alt="Client 8" class="h-full w-auto object-contain grayscale hover:grayscale-0 transition-all duration-300 opacity-70 hover:opacity-100"></div>
+          <div class="inline-flex items-center justify-center min-w-[160px] h-20 rounded-xl border border-slate-100 bg-[#f9fafb] px-4 py-3 flex-shrink-0"><img src="{% static 'images/brands/brand-09.png' %}" alt="Client 9" class="h-full w-auto object-contain grayscale hover:grayscale-0 transition-all duration-300 opacity-70 hover:opacity-100"></div>
+          <div class="inline-flex items-center justify-center min-w-[160px] h-20 rounded-xl border border-slate-100 bg-[#f9fafb] px-4 py-3 flex-shrink-0"><img src="{% static 'images/brands/brand-10.png' %}" alt="Client 10" class="h-full w-auto object-contain grayscale hover:grayscale-0 transition-all duration-300 opacity-70 hover:opacity-100"></div>
+          <div class="inline-flex items-center justify-center min-w-[160px] h-20 rounded-xl border border-slate-100 bg-[#f9fafb] px-4 py-3 flex-shrink-0"><img src="{% static 'images/brands/brand-11.png' %}" alt="Client 11" class="h-full w-auto object-contain grayscale hover:grayscale-0 transition-all duration-300 opacity-70 hover:opacity-100"></div>
+          <div class="inline-flex items-center justify-center min-w-[160px] h-20 rounded-xl border border-slate-100 bg-[#f9fafb] px-4 py-3 flex-shrink-0"><img src="{% static 'images/brands/brand-12.png' %}" alt="Client 12" class="h-full w-auto object-contain grayscale hover:grayscale-0 transition-all duration-300 opacity-70 hover:opacity-100"></div>
         </div>
-        <!-- Duplicate for loop -->
-        <div class="flex items-center space-x-16">
-          <span class="text-lg sm:text-2xl font-black text-slate-300 select-none uppercase hover:text-blue-500 transition-colors">India Gate Foods</span>
-          <span class="text-lg sm:text-2xl font-black text-slate-300 select-none uppercase hover:text-blue-500 transition-colors">Haldirams</span>
-          <span class="text-lg sm:text-2xl font-black text-slate-300 select-none uppercase hover:text-blue-500 transition-colors">Finolex Cables</span>
-          <span class="text-lg sm:text-2xl font-black text-slate-300 select-none uppercase hover:text-blue-500 transition-colors">Suresh Raj Indus</span>
-          <span class="text-lg sm:text-2xl font-black text-slate-300 select-none uppercase hover:text-blue-500 transition-colors">Pharma Packaging Co</span>
-          <span class="text-lg sm:text-2xl font-black text-slate-300 select-none uppercase hover:text-blue-500 transition-colors">Cosmetic Pack</span>
+        {# Duplicate for seamless loop #}
+        <div class="flex gap-4" aria-hidden="true">
+          <div class="inline-flex items-center justify-center min-w-[160px] h-20 rounded-xl border border-slate-100 bg-[#f9fafb] px-4 py-3 flex-shrink-0"><img src="{% static 'images/brands/brand-01.png' %}" alt="" class="h-full w-auto object-contain grayscale opacity-70"></div>
+          <div class="inline-flex items-center justify-center min-w-[160px] h-20 rounded-xl border border-slate-100 bg-[#f9fafb] px-4 py-3 flex-shrink-0"><img src="{% static 'images/brands/brand-02.png' %}" alt="" class="h-full w-auto object-contain grayscale opacity-70"></div>
+          <div class="inline-flex items-center justify-center min-w-[160px] h-20 rounded-xl border border-slate-100 bg-[#f9fafb] px-4 py-3 flex-shrink-0"><img src="{% static 'images/brands/brand-03.png' %}" alt="" class="h-full w-auto object-contain grayscale opacity-70"></div>
+          <div class="inline-flex items-center justify-center min-w-[160px] h-20 rounded-xl border border-slate-100 bg-[#f9fafb] px-4 py-3 flex-shrink-0"><img src="{% static 'images/brands/brand-04.png' %}" alt="" class="h-full w-auto object-contain grayscale opacity-70"></div>
+          <div class="inline-flex items-center justify-center min-w-[160px] h-20 rounded-xl border border-slate-100 bg-[#f9fafb] px-4 py-3 flex-shrink-0"><img src="{% static 'images/brands/brand-05.png' %}" alt="" class="h-full w-auto object-contain grayscale opacity-70"></div>
+          <div class="inline-flex items-center justify-center min-w-[160px] h-20 rounded-xl border border-slate-100 bg-[#f9fafb] px-4 py-3 flex-shrink-0"><img src="{% static 'images/brands/brand-06.png' %}" alt="" class="h-full w-auto object-contain grayscale opacity-70"></div>
+          <div class="inline-flex items-center justify-center min-w-[160px] h-20 rounded-xl border border-slate-100 bg-[#f9fafb] px-4 py-3 flex-shrink-0"><img src="{% static 'images/brands/brand-07.png' %}" alt="" class="h-full w-auto object-contain grayscale opacity-70"></div>
+          <div class="inline-flex items-center justify-center min-w-[160px] h-20 rounded-xl border border-slate-100 bg-[#f9fafb] px-4 py-3 flex-shrink-0"><img src="{% static 'images/brands/brand-08.png' %}" alt="" class="h-full w-auto object-contain grayscale opacity-70"></div>
+          <div class="inline-flex items-center justify-center min-w-[160px] h-20 rounded-xl border border-slate-100 bg-[#f9fafb] px-4 py-3 flex-shrink-0"><img src="{% static 'images/brands/brand-09.png' %}" alt="" class="h-full w-auto object-contain grayscale opacity-70"></div>
+          <div class="inline-flex items-center justify-center min-w-[160px] h-20 rounded-xl border border-slate-100 bg-[#f9fafb] px-4 py-3 flex-shrink-0"><img src="{% static 'images/brands/brand-10.png' %}" alt="" class="h-full w-auto object-contain grayscale opacity-70"></div>
+          <div class="inline-flex items-center justify-center min-w-[160px] h-20 rounded-xl border border-slate-100 bg-[#f9fafb] px-4 py-3 flex-shrink-0"><img src="{% static 'images/brands/brand-11.png' %}" alt="" class="h-full w-auto object-contain grayscale opacity-70"></div>
+          <div class="inline-flex items-center justify-center min-w-[160px] h-20 rounded-xl border border-slate-100 bg-[#f9fafb] px-4 py-3 flex-shrink-0"><img src="{% static 'images/brands/brand-12.png' %}" alt="" class="h-full w-auto object-contain grayscale opacity-70"></div>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- Advantages: Why Choose GLUPAC -->
-  <section id="advantages" class="py-20 md:py-28 bg-slate-50">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-      
-      <!-- Section Header -->
-      <div class="text-center max-w-3xl mx-auto mb-16 space-y-4">
-        <h2 class="text-3xl sm:text-4xl font-extrabold text-slate-900 tracking-tight adv-header">Why Choose GLUPAC?</h2>
-        <p class="text-base sm:text-lg text-slate-600 leading-relaxed adv-subheader">
-          Industry-leading gluing and packaging solutions engineered to prevent leakage, deter tampering, and maximize day-to-day packaging throughput.
+  {# ── 3. ADVANTAGES ───────────────────────────────────────────────────── #}
+  <section id="advantages" class="py-20 md:py-28 bg-[#f3f5f9]">
+    <div class="mx-8  lg:mx-24 mx-auto px-4 sm:px-6 lg:px-8">
+
+      <div class="text-center max-w-3xl mx-auto mb-16 space-y-4 adv-header">
+        <span class="inline-block text-xs font-bold tracking-widest uppercase text-[#47a33d]">Why Choose Us</span>
+        <h2 class="text-3xl sm:text-4xl font-extrabold text-slate-900 tracking-tight">Why Choose <span class="text-[#2d388c]">GLUPAC?</span></h2>
+        <p class="text-base sm:text-lg text-[#4a5565] leading-relaxed">
+          Industry-leading gluing and packaging solutions engineered to prevent leakage, deter tampering, and maximize packaging throughput.
         </p>
       </div>
-      
-      <!-- Advantages Cards Grid -->
+
       <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 adv-grid">
-        
-        <!-- Card 1 -->
+
         <div class="bg-white rounded-2xl p-8 shadow-sm border border-slate-100 hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1 group">
-          <div class="w-14 h-14 rounded-xl bg-blue-50 flex items-center justify-center text-blue-600 group-hover:bg-blue-600 group-hover:text-white transition-all mb-6">
+          <div class="w-14 h-14 rounded-xl bg-[#2d388c]/10 flex items-center justify-center text-[#2d388c] group-hover:bg-[#2d388c] group-hover:text-white transition-all mb-6">
             <i data-lucide="shield-check" class="w-7 h-7"></i>
           </div>
-          <h3 class="text-xl font-bold text-slate-900 mb-3 group-hover:text-blue-600 transition-colors">Zero Leakage Sealing</h3>
-          <p class="text-slate-600 text-sm leading-relaxed">
+          <h3 class="text-xl font-bold text-slate-900 mb-3 group-hover:text-[#2d388c] transition-colors">Zero Leakage Sealing</h3>
+          <p class="text-[#4a5565] text-sm leading-relaxed">
             Advanced high-precision gluing and hot melt sealing technology secures complete package structural integrity for food and cosmetics.
           </p>
         </div>
 
-        <!-- Card 2 -->
         <div class="bg-white rounded-2xl p-8 shadow-sm border border-slate-100 hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1 group">
-          <div class="w-14 h-14 rounded-xl bg-blue-50 flex items-center justify-center text-blue-600 group-hover:bg-blue-600 group-hover:text-white transition-all mb-6">
+          <div class="w-14 h-14 rounded-xl bg-[#2d388c]/10 flex items-center justify-center text-[#2d388c] group-hover:bg-[#2d388c] group-hover:text-white transition-all mb-6">
             <i data-lucide="lock" class="w-7 h-7"></i>
           </div>
-          <h3 class="text-xl font-bold text-slate-900 mb-3 group-hover:text-blue-600 transition-colors">Theft Resistant Systems</h3>
-          <p class="text-slate-600 text-sm leading-relaxed">
+          <h3 class="text-xl font-bold text-slate-900 mb-3 group-hover:text-[#2d388c] transition-colors">Theft Resistant Systems</h3>
+          <p class="text-[#4a5565] text-sm leading-relaxed">
             Secure bonding design prevents product theft or tampering throughout regional distribution and complex retail supply chain operations.
           </p>
         </div>
 
-        <!-- Card 3 -->
         <div class="bg-white rounded-2xl p-8 shadow-sm border border-slate-100 hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1 group">
-          <div class="w-14 h-14 rounded-xl bg-blue-50 flex items-center justify-center text-blue-600 group-hover:bg-blue-600 group-hover:text-white transition-all mb-6">
+          <div class="w-14 h-14 rounded-xl bg-[#2d388c]/10 flex items-center justify-center text-[#2d388c] group-hover:bg-[#2d388c] group-hover:text-white transition-all mb-6">
             <i data-lucide="layers" class="w-7 h-7"></i>
           </div>
-          <h3 class="text-xl font-bold text-slate-900 mb-3 group-hover:text-blue-600 transition-colors">Multi-Size Compatibility</h3>
-          <p class="text-slate-600 text-sm leading-relaxed">
-            Highly adjustable and quick-change dynamic guidelines enable one single machinery unit to process multi-size carton cartons smoothly.
+          <h3 class="text-xl font-bold text-slate-900 mb-3 group-hover:text-[#2d388c] transition-colors">Multi-Size Compatibility</h3>
+          <p class="text-[#4a5565] text-sm leading-relaxed">
+            Highly adjustable and quick-change dynamic guidelines enable one single machinery unit to process multi-size cartons smoothly.
           </p>
         </div>
 
-        <!-- Card 4 -->
         <div class="bg-white rounded-2xl p-8 shadow-sm border border-slate-100 hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1 group">
-          <div class="w-14 h-14 rounded-xl bg-blue-50 flex items-center justify-center text-blue-600 group-hover:bg-blue-600 group-hover:text-white transition-all mb-6">
+          <div class="w-14 h-14 rounded-xl bg-[#2d388c]/10 flex items-center justify-center text-[#2d388c] group-hover:bg-[#2d388c] group-hover:text-white transition-all mb-6">
             <i data-lucide="sliders" class="w-7 h-7"></i>
           </div>
-          <h3 class="text-xl font-bold text-slate-900 mb-3 group-hover:text-blue-600 transition-colors">Industry Customization</h3>
-          <p class="text-slate-600 text-sm leading-relaxed">
+          <h3 class="text-xl font-bold text-slate-900 mb-3 group-hover:text-[#2d388c] transition-colors">Industry Customization</h3>
+          <p class="text-[#4a5565] text-sm leading-relaxed">
             Tailored engineering processes built uniquely to satisfy standards in food processing, retail pharma cleanrooms, cosmetics, and FMCG.
           </p>
         </div>
 
-        <!-- Card 5 -->
         <div class="bg-white rounded-2xl p-8 shadow-sm border border-slate-100 hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1 group">
-          <div class="w-14 h-14 rounded-xl bg-blue-50 flex items-center justify-center text-blue-600 group-hover:bg-blue-600 group-hover:text-white transition-all mb-6">
+          <div class="w-14 h-14 rounded-xl bg-[#2d388c]/10 flex items-center justify-center text-[#2d388c] group-hover:bg-[#2d388c] group-hover:text-white transition-all mb-6">
             <i data-lucide="cpu" class="w-7 h-7"></i>
           </div>
-          <h3 class="text-xl font-bold text-slate-900 mb-3 group-hover:text-blue-600 transition-colors">Precision Automation</h3>
-          <p class="text-slate-600 text-sm leading-relaxed">
+          <h3 class="text-xl font-bold text-slate-900 mb-3 group-hover:text-[#2d388c] transition-colors">Precision Automation</h3>
+          <p class="text-[#4a5565] text-sm leading-relaxed">
             High-speed automated workflows powered by state-of-the-art PLC computers and sensors guarantees consistent 85+ box output speeds.
           </p>
         </div>
 
-        <!-- Card 6 -->
         <div class="bg-white rounded-2xl p-8 shadow-sm border border-slate-100 hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1 group">
-          <div class="w-14 h-14 rounded-xl bg-blue-50 flex items-center justify-center text-blue-600 group-hover:bg-blue-600 group-hover:text-white transition-all mb-6">
-            <i data-lucide="trash-2" class="w-7 h-7"></i>
+          <div class="w-14 h-14 rounded-xl bg-[#2d388c]/10 flex items-center justify-center text-[#2d388c] group-hover:bg-[#2d388c] group-hover:text-white transition-all mb-6">
+            <i data-lucide="leaf" class="w-7 h-7"></i>
           </div>
-          <h3 class="text-xl font-bold text-slate-900 mb-3 group-hover:text-blue-600 transition-colors">Reduced Product Wastage</h3>
-          <p class="text-slate-600 text-sm leading-relaxed">
+          <h3 class="text-xl font-bold text-slate-900 mb-3 group-hover:text-[#2d388c] transition-colors">Reduced Product Wastage</h3>
+          <p class="text-[#4a5565] text-sm leading-relaxed">
             Optimized automated gluing nozzles minimize adhesive consumption and material waste, and prevent thermal tearing.
           </p>
         </div>
-        
+
       </div>
     </div>
   </section>
 
-  <!-- Middle Showcase Banner (Component 4) -->
-  <section class="relative bg-slate-900 overflow-hidden py-24 md:py-32">
-    <!-- Overlay Graphic -->
-    <div class="absolute inset-0 bg-gradient-to-r from-slate-950 via-slate-900/90 to-transparent z-10"></div>
-    <div class="absolute inset-0 z-0 opacity-45 transform scale-105 pointer-events-none flex justify-end">
-      <img src="{% static 'images/component4.png' %}" alt="Glupac automated control system" class="w-full lg:w-2/3 h-full object-cover">
+  {# ── 4. SHOWCASE BANNER ──────────────────────────────────────────────── #}
+  <section class="relative bg-[#0f172a] overflow-hidden py-24 md:py-32">
+    <div class="absolute inset-0 bg-gradient-to-r from-[#0f172a] via-[#0f172a]/90 to-transparent z-10"></div>
+    <div class="absolute inset-0 z-0 opacity-40 pointer-events-none flex justify-end">
+      <img src="{% static 'images/component4.png' %}" alt="" class="w-full lg:w-2/3 h-full object-cover">
     </div>
-    
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-20">
+
+    <div class="mx-8  lg:mx-24 mx-auto px-4 sm:px-6 lg:px-8 relative z-20">
       <div class="lg:w-1/2 space-y-6 md:space-y-8 showcase-text">
-        <span class="inline-flex tracking-widest text-xs font-bold text-blue-400 uppercase">Interactive Machine Showroom</span>
+        <span class="inline-flex tracking-widest text-xs font-bold text-[#47a33d] uppercase">Interactive Machine Showroom</span>
         <h2 class="text-3xl sm:text-5xl font-black text-white leading-tight">
           Engineered for <br class="hidden sm:inline">
-          Perfect Control & Zero-Fault Operation
+          Perfect Control &amp; Zero-Fault Operation
         </h2>
         <p class="text-slate-300 text-base sm:text-lg leading-relaxed">
           Behind every Glupac machine lies complex technical excellence. From dynamic hot-melt adhesive timing to automatic sensor diagnostics, our units help factory operators scale throughput easily without worrying about mechanical failure.
         </p>
         <div class="flex flex-wrap gap-4 pt-4">
-          {# <a href="#contact" class="inline-flex items-center justify-center px-7 py-3 rounded-full text-sm font-bold text-white bg-blue-600 hover:bg-blue-700 transition-all">
+          <a href="#contact" class="inline-flex items-center justify-center px-7 py-3.5 rounded-full text-sm font-bold text-white bg-[#47a33d] hover:bg-[#3c8f34] transition-all shadow-lg shadow-[#47a33d]/20">
             Schedule Live Video Demo
             <i data-lucide="video" class="w-4 h-4 ml-1.5"></i>
-          </a> #}
-          {# <a href="#solutions" class="inline-flex items-center justify-center px-7 py-3 rounded-full text-sm font-bold text-slate-300 border border-slate-700 hover:bg-slate-800 transition-all">
+          </a>
+          <a href="{% url 'solutions' %}" class="inline-flex items-center justify-center px-7 py-3.5 rounded-full text-sm font-bold text-slate-200 border border-white/20 hover:bg-white/10 transition-all">
             Technical Specifications
-          </a> #}
+          </a>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- Solutions Section (Database Driven) -->
+  {# ── 5. SOLUTIONS ────────────────────────────────────────────────────── #}
   <section id="solutions" class="py-20 md:py-28 bg-white">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-      
-      <!-- Header -->
+    <div class="mx-8  lg:mx-24 mx-auto px-4 sm:px-6 lg:px-8">
+
       <div class="flex flex-col md:flex-row md:items-end justify-between mb-16 gap-6 solutions-header">
         <div class="space-y-4 max-w-2xl">
-          <h2 class="text-3xl sm:text-4xl font-extrabold text-slate-900 tracking-tight">Our High-Precision physical Solutions</h2>
-          <p class="text-base text-slate-600 leading-relaxed">
-            Browse our line-up of robust gluing and carton erection machines, starting from simple manual assist lines upward to continuous ultra-automation.
+          <span class="inline-block text-xs font-bold tracking-widest uppercase text-[#47a33d]">Our Products</span>
+          <h2 class="text-3xl sm:text-4xl font-extrabold text-slate-900 tracking-tight">High-Precision Packaging <span class="text-[#2d388c]">Solutions</span></h2>
+          <p class="text-base text-[#4a5565] leading-relaxed">
+            Browse our line-up of robust gluing and carton erection machines, from simple manual assist lines to continuous ultra-automation.
           </p>
         </div>
         <div class="flex-shrink-0">
-          {# <a href="#solutions" class="inline-flex items-center text-blue-600 hover:text-blue-700 font-bold hover:underline transition-all">
+          <a href="{% url 'solutions' %}" class="inline-flex items-center text-[#2d388c] hover:text-[#47a33d] font-bold transition-all group">
             View All Machinery
-            <i data-lucide="arrow-right" class="w-5 h-5 ml-1.5"></i>
-          </a> #}
+            <i data-lucide="arrow-right" class="w-5 h-5 ml-1.5 group-hover:translate-x-1 transition-transform"></i>
+          </a>
         </div>
       </div>
 
-      <!-- Machines Grid -->
       <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 machines-grid">
         {% for machine in machines %}
         <div class="bg-white rounded-2xl shadow-md hover:shadow-2xl border border-slate-100 overflow-hidden flex flex-col h-full transform transition-all duration-300 group hover:-translate-y-1">
-          <!-- Image frame -->
           <div class="relative bg-slate-100 aspect-video overflow-hidden">
             <img src="{% static machine.image_path %}" alt="{{ machine.name }}" class="w-full h-full object-cover group-hover:scale-105 transition-all duration-500" onerror="this.onerror=null; this.src='https://placehold.co/400x300?text={{ machine.model_number }}'">
-            <div class="absolute top-4 right-4 bg-slate-900/80 backdrop-blur-sm text-white px-3.5 py-1.5 rounded-full text-xs font-bold font-inter tracking-wider">
+            <div class="absolute top-4 right-4 bg-[#2d388c]/90 backdrop-blur-sm text-white px-3.5 py-1.5 rounded-full text-xs font-bold tracking-wider">
               {{ machine.model_number }}
             </div>
           </div>
-          <!-- Body -->
           <div class="p-6 sm:p-8 flex-grow flex flex-col justify-between">
             <div class="space-y-4">
-              <h3 class="text-xl font-bold font-inter text-slate-900 group-hover:text-blue-600 transition-colors">{{ machine.name }}</h3>
-              
-              <!-- Bullets specifications / features -->
-              <ul class="space-y-2 text-sm text-slate-600 pt-1">
+              <h3 class="text-xl font-bold text-slate-900 group-hover:text-[#2d388c] transition-colors">{{ machine.name }}</h3>
+              <ul class="space-y-2 text-sm text-[#4a5565] pt-1">
                 {% for feature in machine.features %}
                 <li class="flex items-start space-x-2">
-                  <i data-lucide="check-circle-2" class="w-4 h-4 text-blue-500 mt-0.5 flex-shrink-0"></i>
+                  <i data-lucide="check-circle-2" class="w-4 h-4 text-[#47a33d] mt-0.5 flex-shrink-0"></i>
                   <span>{{ feature }}</span>
                 </li>
                 {% endfor %}
               </ul>
             </div>
-            
             <div class="pt-6 mt-6 border-t border-slate-100 flex items-center justify-between">
               <span class="text-xs font-bold text-slate-400 uppercase tracking-widest">{{ machine.get_category_display }}</span>
-              {# <a href="#solutions" class="inline-flex items-center justify-center px-4.5 py-2 border border-blue-500/20 rounded-full text-xs font-bold text-blue-600 hover:bg-blue-50 transition-all">
+              <a href="{% url 'solution_detail' machine.slug %}" class="inline-flex items-center justify-center px-4 py-2 border border-[#2d388c]/20 rounded-full text-xs font-bold text-[#2d388c] hover:bg-[#2d388c]/5 transition-all">
                 Details
                 <i data-lucide="chevron-right" class="w-3.5 h-3.5 ml-1"></i>
-              </a> #}
+              </a>
             </div>
           </div>
         </div>
         {% empty %}
         <div class="col-span-full py-16 text-center text-slate-500">
-          No machines loaded. Please run the seeding script in the command line first.
+          No machines loaded yet. Run <code>python manage.py seed_demo</code> to populate.
         </div>
         {% endfor %}
       </div>
-      
+
     </div>
   </section>
 
-  <!-- Footprints / Globe section -->
-  <section id="footprints" class="py-20 md:py-28 bg-[#fafbfd] overflow-hidden">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-      
-      <!-- Section Headers -->
+  {# ── 6. FOOTPRINTS ───────────────────────────────────────────────────── #}
+  <section id="footprints" class="py-20 md:py-28 bg-[#f3f5f9] overflow-hidden">
+    <div class="mx-8  lg:mx-24 mx-auto px-4 sm:px-6 lg:px-8">
+
       <div class="text-center max-w-2xl mx-auto mb-16 space-y-3 footprints-header">
-        <span class="tracking-widest text-xs font-black text-slate-400 uppercase">Footprints Across</span>
-        <h2 class="text-3xl sm:text-5xl font-black text-slate-900 tracking-tight">THE GLOBE</h2>
-        <p class="text-base text-slate-500 leading-relaxed font-semibold">Delivering excellence across continents</p>
+        <span class="tracking-widest text-xs font-black text-[#47a33d] uppercase">Global Reach</span>
+        <h2 class="text-3xl sm:text-5xl font-black text-[#2d388c] tracking-tight uppercase">Footprints Across The Globe</h2>
+        <p class="text-base text-[#4a5565] leading-relaxed font-semibold">Delivering excellence across continents</p>
       </div>
 
-      <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center relative">
-        
-        <!-- Left Side: Stats List -->
-        <div class="lg:col-span-5 space-y-6 md:space-y-8 footprints-stats">
-          
-          <!-- Stat 1 -->
-          <div class="flex items-center space-x-5 bg-white p-5 rounded-2xl shadow-sm border border-slate-100 hover:shadow-md transition-all">
-            <div class="w-14 h-14 rounded-xl bg-blue-50 flex items-center justify-center text-blue-600 flex-shrink-0">
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+
+        <div class="lg:col-span-5 space-y-5 footprints-stats">
+          <div class="flex items-center space-x-5 bg-white p-5 rounded-2xl shadow-sm border border-slate-100 hover:shadow-md hover:-translate-y-0.5 transition-all duration-300">
+            <div class="w-14 h-14 rounded-xl bg-[#2d388c]/10 flex items-center justify-center text-[#2d388c] flex-shrink-0">
               <i data-lucide="anchor" class="w-6 h-6"></i>
             </div>
             <div>
-              <p class="text-3xl font-black text-slate-900 font-inter">500+</p>
-              <p class="text-sm font-bold text-slate-500">Installations Worldwide</p>
+              <p class="text-3xl font-black text-slate-900">500+</p>
+              <p class="text-sm font-bold text-[#4a5565]">Installations Worldwide</p>
             </div>
           </div>
 
-          <!-- Stat 2 -->
-          <div class="flex items-center space-x-5 bg-white p-5 rounded-2xl shadow-sm border border-slate-100 hover:shadow-md transition-all">
-            <div class="w-14 h-14 rounded-xl bg-blue-50 flex items-center justify-center text-blue-600 flex-shrink-0">
+          <div class="flex items-center space-x-5 bg-white p-5 rounded-2xl shadow-sm border border-slate-100 hover:shadow-md hover:-translate-y-0.5 transition-all duration-300">
+            <div class="w-14 h-14 rounded-xl bg-[#2d388c]/10 flex items-center justify-center text-[#2d388c] flex-shrink-0">
               <i data-lucide="factory" class="w-6 h-6"></i>
             </div>
             <div>
-              <p class="text-3xl font-black text-slate-900 font-inter">20+</p>
-              <p class="text-sm font-bold text-slate-500">Industries Served</p>
+              <p class="text-3xl font-black text-slate-900">20+</p>
+              <p class="text-sm font-bold text-[#4a5565]">Industries Served</p>
             </div>
           </div>
 
-          <!-- Stat 3 -->
-          <div class="flex items-center space-x-5 bg-white p-5 rounded-2xl shadow-sm border border-slate-100 hover:shadow-md transition-all">
-            <div class="w-14 h-14 rounded-xl bg-blue-50 flex items-center justify-center text-blue-600 flex-shrink-0">
-              <i data-lucide="settings" class="w-6 h-6"></i>
+          <div class="flex items-center space-x-5 bg-white p-5 rounded-2xl shadow-sm border border-slate-100 hover:shadow-md hover:-translate-y-0.5 transition-all duration-300">
+            <div class="w-14 h-14 rounded-xl bg-[#2d388c]/10 flex items-center justify-center text-[#2d388c] flex-shrink-0">
+              <i data-lucide="settings-2" class="w-6 h-6"></i>
             </div>
             <div>
-              <p class="text-3xl font-black text-slate-900 font-inter">100%</p>
-              <p class="text-sm font-bold text-slate-500">Customized Engineering</p>
+              <p class="text-3xl font-black text-slate-900">100%</p>
+              <p class="text-sm font-bold text-[#4a5565]">Customized Engineering</p>
             </div>
           </div>
 
-          <!-- Stat 4 -->
-          <div class="flex items-center space-x-5 bg-white p-5 rounded-2xl shadow-sm border border-slate-100 hover:shadow-md transition-all">
-            <div class="w-14 h-14 rounded-xl bg-blue-50 flex items-center justify-center text-blue-600 flex-shrink-0">
-              <i data-lucide="globe" class="w-6 h-6"></i>
+          <div class="flex items-center space-x-5 bg-white p-5 rounded-2xl shadow-sm border border-slate-100 hover:shadow-md hover:-translate-y-0.5 transition-all duration-300">
+            <div class="w-14 h-14 rounded-xl bg-[#2d388c]/10 flex items-center justify-center text-[#2d388c] flex-shrink-0">
+              <i data-lucide="globe-2" class="w-6 h-6"></i>
             </div>
             <div>
-              <p class="text-3xl font-black text-slate-900 font-inter">5+</p>
-              <p class="text-sm font-bold text-slate-500">Countries Worldwide</p>
+              <p class="text-3xl font-black text-slate-900">5+</p>
+              <p class="text-sm font-bold text-[#4a5565]">Countries Worldwide</p>
             </div>
           </div>
-
         </div>
 
-        <!-- Right Side: Beautiful Globe Image -->
         <div class="lg:col-span-7 flex justify-center items-center relative footprints-globe">
-          <div class="absolute w-80 h-80 bg-blue-400/10 rounded-full blur-3xl pointer-events-none select-none"></div>
-          <div class="relative w-full max-w-[500px] h-[350px] sm:h-[450px] flex items-center justify-center transform hover:scale-105 transition-all duration-700 select-none">
-            <img src="{% static 'images/globe.png' %}" alt="Glupac Global Export Network Map" class="w-full h-full object-contain filter drop-shadow-2xl">
+          <div class="absolute w-96 h-96 bg-[#2d388c]/8 rounded-full blur-3xl pointer-events-none"></div>
+          <div class="relative w-full max-w-[520px] h-[360px] sm:h-[460px] flex items-center justify-center transform hover:scale-[1.03] transition-all duration-700">
+            <img src="{% static 'images/globe.png' %}" alt="Glupac Global Export Network" class="w-full h-full object-contain drop-shadow-2xl">
           </div>
         </div>
 
@@ -408,62 +329,59 @@
     </div>
   </section>
 
-  <!-- Client Testimonials -->
+  {# ── 7. TESTIMONIALS ─────────────────────────────────────────────────── #}
   <section class="py-20 md:py-28 bg-white">
-    <div class=" mx-auto px-4 sm:px-6 lg:px-8">
-      
-      <!-- Header -->
+    <div class="mx-8  lg:mx-24 mx-auto px-4 sm:px-6 lg:px-8">
+
       <div class="text-center max-w-3xl mx-auto mb-16 space-y-4 testimonials-header">
-        <h2 class="text-3xl sm:text-4xl font-extrabold text-slate-900 tracking-tight">What Our Clients Say</h2>
-        <p class="text-base text-slate-600 leading-relaxed font-semibold">Trusted by industry leaders worldwide</p>
+        <span class="inline-block text-xs font-bold tracking-widest uppercase text-[#47a33d]">Testimonials</span>
+        <h2 class="text-3xl sm:text-4xl font-extrabold text-slate-900 tracking-tight">What Our <span class="text-[#2d388c]">Clients Say</span></h2>
+        <p class="text-base text-[#4a5565] leading-relaxed font-semibold">Trusted by industry leaders worldwide</p>
       </div>
 
-      <!-- Testimonials Grid -->
       <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 testimonials-grid">
         {% for testimonial in testimonials %}
-        <div class="bg-slate-50 rounded-2xl p-8 border border-slate-100 shadow-sm flex flex-col justify-between hover:shadow-lg transition-all">
-          <div class="space-y-6">
-            <!-- Stars -->
-            <div class="flex items-center space-x-1 text-amber-500">
+        <div class="bg-[#f3f5f9] rounded-2xl p-8 border border-slate-100 shadow-sm flex flex-col justify-between hover:shadow-lg hover:-translate-y-0.5 transition-all duration-300">
+          <div class="space-y-5">
+            <div class="flex items-center space-x-1 text-amber-400">
               <i data-lucide="star" class="w-5 h-5 fill-current"></i>
               <i data-lucide="star" class="w-5 h-5 fill-current"></i>
               <i data-lucide="star" class="w-5 h-5 fill-current"></i>
               <i data-lucide="star" class="w-5 h-5 fill-current"></i>
               <i data-lucide="star" class="w-5 h-5 fill-current"></i>
             </div>
-            <p class="text-slate-600 text-sm leading-relaxed italic">
+            <p class="text-[#4a5565] text-sm leading-relaxed italic">
               "{{ testimonial.quote }}"
             </p>
           </div>
-          <!-- Profile -->
-          <div class="pt-6 mt-6 border-t border-slate-200/60 flex items-center justify-between">
+          <div class="pt-6 mt-6 border-t border-slate-200/70 flex items-center justify-between">
             <div>
-              <p class="font-extrabold text-slate-950 text-sm sm:text-base leading-tight">{{ testimonial.name }}</p>
-              <p class="text-xs font-bold text-blue-600 pt-0.5">{{ testimonial.company }}</p>
+              <p class="font-extrabold text-slate-900 text-sm leading-tight">{{ testimonial.name }}</p>
+              <p class="text-xs font-bold text-[#2d388c] pt-0.5">{{ testimonial.company }}</p>
             </div>
-            <div class="w-10 h-10 rounded-full bg-slate-200/80 flex items-center justify-center font-bold text-slate-700">
+            <div class="w-10 h-10 rounded-full bg-[#2d388c]/10 flex items-center justify-center font-bold text-[#2d388c] text-sm">
               {{ testimonial.name|slice:":1" }}
             </div>
           </div>
         </div>
         {% empty %}
         <div class="col-span-full text-center text-slate-500 py-10">
-          No testimonials loaded database side yet. Please seed database.
+          No testimonials yet. Seed the database to display them.
         </div>
         {% endfor %}
       </div>
 
-      <!-- Brand Showcase -->
-      <div class="mt-20   pt-16 bg-[#F1F8FF] testimonials-brands">
-        <div class="text-center max-w-3xl mx-auto mb-10 space-y-2">
-          <h3 class="text-3xl sm:text-4xl font-extrabold tracking-tight">
-            <span class="text-slate-800 italic">ESTEEMED</span>
-            <span class="text-emerald-600 italic"> CLIENTS</span>
+      {# Esteemed Clients Brand Marquee #}
+      <div class="mt-20 pt-16 bg-[#f3f5f9] rounded-3xl testimonials-brands">
+        <div class="text-center max-w-3xl mx-auto mb-10 space-y-2 px-4">
+          <h3 class="text-3xl sm:text-4xl font-extrabold tracking-tight italic">
+            <span class="text-slate-800">ESTEEMED</span>
+            <span class="text-[#47a33d]"> CLIENTS</span>
           </h3>
-          <p class="text-base text-slate-500 font-semibold">Trusted by leading brands across industries</p>
+          <p class="text-base text-[#4a5565] font-semibold">Trusted by leading brands across industries</p>
         </div>
 
-        <div class="testimonials-brand-marquee mx-auto  rounded-3xl    p-6 sm:p-8">
+        <div class="testimonials-brand-marquee pb-8 px-4 sm:px-8">
           <div class="brand-marquee-row">
             <div class="brand-marquee-track">
               <div class="brand-logo-card"><img src="{% static 'images/brands/brand-01.png' %}" alt="Client brand logo 1" class="brand-logo-image"></div>
@@ -472,7 +390,6 @@
               <div class="brand-logo-card"><img src="{% static 'images/brands/brand-04.png' %}" alt="Client brand logo 4" class="brand-logo-image"></div>
               <div class="brand-logo-card"><img src="{% static 'images/brands/brand-05.png' %}" alt="Client brand logo 5" class="brand-logo-image"></div>
               <div class="brand-logo-card"><img src="{% static 'images/brands/brand-06.png' %}" alt="Client brand logo 6" class="brand-logo-image"></div>
-
               <div class="brand-logo-card" aria-hidden="true"><img src="{% static 'images/brands/brand-01.png' %}" alt="" class="brand-logo-image"></div>
               <div class="brand-logo-card" aria-hidden="true"><img src="{% static 'images/brands/brand-02.png' %}" alt="" class="brand-logo-image"></div>
               <div class="brand-logo-card" aria-hidden="true"><img src="{% static 'images/brands/brand-03.png' %}" alt="" class="brand-logo-image"></div>
@@ -490,7 +407,6 @@
               <div class="brand-logo-card"><img src="{% static 'images/brands/brand-10.png' %}" alt="Client brand logo 10" class="brand-logo-image"></div>
               <div class="brand-logo-card"><img src="{% static 'images/brands/brand-11.png' %}" alt="Client brand logo 11" class="brand-logo-image"></div>
               <div class="brand-logo-card"><img src="{% static 'images/brands/brand-12.png' %}" alt="Client brand logo 12" class="brand-logo-image"></div>
-
               <div class="brand-logo-card" aria-hidden="true"><img src="{% static 'images/brands/brand-07.png' %}" alt="" class="brand-logo-image"></div>
               <div class="brand-logo-card" aria-hidden="true"><img src="{% static 'images/brands/brand-08.png' %}" alt="" class="brand-logo-image"></div>
               <div class="brand-logo-card" aria-hidden="true"><img src="{% static 'images/brands/brand-09.png' %}" alt="" class="brand-logo-image"></div>
@@ -500,93 +416,231 @@
             </div>
           </div>
 
-          <p class="text-center text-slate-700 font-extrabold text-xl mt-6">&amp; many more...</p>
+          <p class="text-center text-slate-600 font-extrabold text-lg mt-6 pb-2">&amp; many more...</p>
         </div>
       </div>
-      
+
     </div>
   </section>
 
-  <!-- CTA and Expert Form Frame (Looking for Right Packaging Machine?) -->
-  <section id="contact" class="py-20 md:py-28 bg-[#020617] text-white overflow-hidden relative">
-    <div class="absolute inset-0 bg-blue-500/5 blur-3xl pointer-events-none"></div>
-    <div class="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-      <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
-        
-        <!-- Left Side: Custom Bullet Info -->
-        <div class="lg:col-span-6 space-y-6 md:space-y-8 cta-info">
-          <span class="inline-flex tracking-widest text-xs font-bold text-blue-500 uppercase px-3 py-1 bg-blue-500/10 rounded-full">Get Your Custom Solution</span>
-          <h2 class="text-3xl sm:text-5xl font-black tracking-tight leading-tight">
-            Looking for the Right <br>
-            <span class="text-blue-500">Packaging Machine?</span>
+  {# ── 8. LOOKING FOR THE RIGHT MACHINE (CTA BANNER) ──────────────────── #}
+  <section class="bg-white pt-20 pb-0 px-4 sm:px-8 lg:px-16">
+    <div class="max-w-[1280px] mx-auto px-6">
+      {# Large rounded card — navy-to-blue gradient + machine photo left #}
+      <div class="relative h-[480px] sm:h-[540px] lg:h-[600px] rounded-3xl overflow-hidden shadow-[0px_25px_50px_-12px_rgba(0,0,0,0.25)] cta-banner"
+        style="background: linear-gradient(154.03deg, rgb(10,10,26) 0%, rgb(13,16,40) 7.14%, rgb(16,23,55) 14.29%, rgb(19,30,71) 21.43%, rgb(22,37,87) 28.57%, rgb(25,44,103) 35.71%, rgb(28,51,120) 42.86%, rgb(30,58,138) 50%, rgb(30,59,143) 57.14%, rgb(30,60,148) 64.29%, rgb(30,61,154) 71.43%, rgb(30,62,159) 78.57%, rgb(30,62,164) 85.71%, rgb(30,63,170) 92.86%, rgb(30,64,175) 100%);">
+
+        {# Left: machine photo with fade-right overlay #}
+        <div class="absolute inset-y-0 left-0 w-1/2 overflow-hidden">
+          <img src="{% static 'images/cta-machine.jpg' %}" alt="Glupac packaging machine production line"
+            class="w-full h-full object-cover object-center">
+          <div class="absolute inset-0" style="background: linear-gradient(to right, rgba(30,58,138,0.85) 0%, rgba(0,0,0,0) 100%);"></div>
+        </div>
+
+        {# Right: content #}
+        <div class="absolute inset-y-0 right-0 w-1/2 flex flex-col justify-center px-12 py-10">
+
+          {# Badge #}
+          <div class="inline-flex self-start mb-6 px-4 py-1.5 rounded-full text-[14px] font-normal leading-[20px] tracking-[-0.15px] text-white"
+            style="background: rgba(30,64,175,0.8); font-family: 'Inter', sans-serif;">
+            Get Your Custom Solution
+          </div>
+
+          {# Heading #}
+          <h2 class="text-white font-bold text-[36px] leading-[43.2px] tracking-[0.37px] mb-5 max-w-[496px]"
+            style="font-family: 'Inter', sans-serif;">
+            Looking for the Right Packaging Machine?
           </h2>
-          <p class="text-slate-400 text-base sm:text-lg leading-relaxed">
-            Send your packaging requirements and dimensional limits to receive a custom-tailored machinery estimate or engineering drawing from our lead developers.
+
+          {# Body #}
+          <p class="text-[#e5e7eb] text-[18px] font-normal leading-[29.25px] tracking-[-0.44px] mb-6 max-w-[496px]"
+            style="font-family: 'Inter', sans-serif;">
+            Send your requirements and receive a customized machine proposal from our experts.
           </p>
-          
-          <ul class="space-y-4">
-            <li class="flex items-center space-x-3.5 text-slate-300">
-              <span class="w-8 h-8 rounded-full bg-blue-500/20 flex items-center justify-center text-blue-400 flex-shrink-0"><i data-lucide="check" class="w-4 h-4"></i></span>
-              <span class="font-semibold text-sm sm:text-base">Free machine demonstration & trials</span>
+
+          {# Bullet points #}
+          <ul class="flex flex-col gap-3 mb-8">
+            <li class="flex items-center gap-3 text-white text-[16px] font-normal leading-[24px] tracking-[-0.31px]"
+              style="font-family: 'Inter', sans-serif;">
+              <i data-lucide="circle-check" class="w-5 h-5 flex-shrink-0 text-[#47a33d]"></i>
+              Free machine demonstration
             </li>
-            <li class="flex items-center space-x-3.5 text-slate-300">
-              <span class="w-8 h-8 rounded-full bg-blue-500/20 flex items-center justify-center text-blue-400 flex-shrink-0"><i data-lucide="check" class="w-4 h-4"></i></span>
-              <span class="font-semibold text-sm sm:text-base">Custom engineering for your carton sizes</span>
+            <li class="flex items-center gap-3 text-white text-[16px] font-normal leading-[24px] tracking-[-0.31px]"
+              style="font-family: 'Inter', sans-serif;">
+              <i data-lucide="circle-check" class="w-5 h-5 flex-shrink-0 text-[#47a33d]"></i>
+              Custom engineering for your product
             </li>
-            <li class="flex items-center space-x-3.5 text-slate-300">
-              <span class="w-8 h-8 rounded-full bg-blue-500/20 flex items-center justify-center text-blue-400 flex-shrink-0"><i data-lucide="check" class="w-4 h-4"></i></span>
-              <span class="font-semibold text-sm sm:text-base">Full pre-testing & industrial trials before purchase</span>
+            <li class="flex items-center gap-3 text-white text-[16px] font-normal leading-[24px] tracking-[-0.31px]"
+              style="font-family: 'Inter', sans-serif;">
+              <i data-lucide="circle-check" class="w-5 h-5 flex-shrink-0 text-[#47a33d]"></i>
+              Testing &amp; trial before purchase
             </li>
           </ul>
+
+          {# CTA button #}
+          <div>
+            <a href="#contact"
+              class="inline-flex items-center justify-center h-[52px] px-8 rounded-[10px] border-2 border-white/30 bg-[#47a33d] hover:bg-[#3c8f34] text-white text-[16px] font-medium leading-[24px] tracking-[-0.31px] transition-all hover:-translate-y-0.5 active:translate-y-0"
+              style="font-family: 'Inter', sans-serif;">
+              Talk to an Expert
+            </a>
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </section>
+
+  {# ── 9. GET IN TOUCH ─────────────────────────────────────────────────── #}
+  <section id="contact" class="relative overflow-hidden pt-20 pb-20">
+    {# Hexagonal background pattern #}
+    <div class="absolute inset-0 pointer-events-none" aria-hidden="true">
+      <img src="{% static 'images/contact-bg.gif' %}" alt="" class="h-full w-full object-cover object-center">
+    </div>
+
+    <div class="relative z-10 max-w-[1280px] mx-auto px-6 lg:px-8">
+
+      {# Section heading #}
+      <div class="text-center mb-10 cta-info">
+        <h2 class="font-extrabold italic uppercase text-[40px] leading-[48px] tracking-[0.37px] mb-4" style="font-family: 'Plus Jakarta Sans', sans-serif;">
+          <span class="text-[#2d388c]">Get In </span><span class="text-[#47a33d]">Touch</span>
+        </h2>
+        <p class="font-normal text-[20px] leading-[28px] tracking-[-0.45px] text-black" style="font-family: 'Inter', sans-serif;">
+          We'd love to hear from you
+        </p>
+      </div>
+
+      {# Success / error messages #}
+      {% if messages %}
+      <div class="mb-6">
+        {% for message in messages %}
+        <div class="rounded-xl px-6 py-4 text-sm font-semibold text-center {% if message.tags == 'success' %}bg-[#47a33d]/15 text-[#2d4a20] border border-[#47a33d]/30{% else %}bg-red-100 text-red-700 border border-red-300{% endif %}">
+          {{ message }}
+        </div>
+        {% endfor %}
+      </div>
+      {% endif %}
+
+      {# White form card #}
+      <div class="bg-white rounded-2xl shadow-[0px_10px_7.5px_rgba(0,0,0,0.1),0px_4px_3px_rgba(0,0,0,0.1)] pt-12 px-12 pb-12 mb-8 cta-form">
+        <h3 class="text-[24px] font-semibold leading-[32px] tracking-[0.07px] text-[#1a1a2e] text-center mb-8" style="font-family: 'Inter', sans-serif;">
+          Send us a message
+        </h3>
+
+        <form action="/" method="POST" class="space-y-6">
+          {% csrf_token %}
+
+          {# Name / Email / Phone row #}
+          <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+            <div class="flex flex-col gap-2">
+              <label class="text-[14px] font-medium leading-[20px] tracking-[-0.15px] text-[#364153]" style="font-family: 'Inter', sans-serif;" for="git_name">Name</label>
+              <input type="text" id="git_name" name="name" required
+                class="border border-[#d1d5dc] rounded-[10px] px-4 py-3 text-[16px] leading-normal tracking-[-0.31px] text-[#1a1a2e] placeholder-[rgba(26,26,46,0.5)] focus:outline-none focus:border-[#2d388c] focus:ring-1 focus:ring-[#2d388c] transition-all h-[50px]"
+                style="font-family: 'Inter', sans-serif;"
+                placeholder="Your name">
+            </div>
+            <div class="flex flex-col gap-2">
+              <label class="text-[14px] font-medium leading-[20px] tracking-[-0.15px] text-[#364153]" style="font-family: 'Inter', sans-serif;" for="git_email">Email</label>
+              <input type="email" id="git_email" name="email" required
+                class="border border-[#d1d5dc] rounded-[10px] px-4 py-3 text-[16px] leading-normal tracking-[-0.31px] text-[#1a1a2e] placeholder-[rgba(26,26,46,0.5)] focus:outline-none focus:border-[#2d388c] focus:ring-1 focus:ring-[#2d388c] transition-all h-[50px]"
+                style="font-family: 'Inter', sans-serif;"
+                placeholder="your@email.com">
+            </div>
+            <div class="flex flex-col gap-2">
+              <label class="text-[14px] font-medium leading-[20px] tracking-[-0.15px] text-[#364153]" style="font-family: 'Inter', sans-serif;" for="git_phone">Phone</label>
+              <input type="tel" id="git_phone" name="phone" required
+                class="border border-[#d1d5dc] rounded-[10px] px-4 py-3 text-[16px] leading-normal tracking-[-0.31px] text-[#1a1a2e] placeholder-[rgba(26,26,46,0.5)] focus:outline-none focus:border-[#2d388c] focus:ring-1 focus:ring-[#2d388c] transition-all h-[50px]"
+                style="font-family: 'Inter', sans-serif;"
+                placeholder="+91 00000 00000">
+            </div>
+          </div>
+
+          {# Message textarea #}
+          <div class="flex flex-col gap-2">
+            <label class="text-[14px] font-medium leading-[20px] tracking-[-0.15px] text-[#364153]" style="font-family: 'Inter', sans-serif;" for="git_message">Message</label>
+            <textarea id="git_message" name="message" required rows="6"
+              class="border border-[#d1d5dc] rounded-[10px] px-4 py-3 text-[16px] leading-[24px] tracking-[-0.31px] text-[#1a1a2e] placeholder-[rgba(26,26,46,0.5)] focus:outline-none focus:border-[#2d388c] focus:ring-1 focus:ring-[#2d388c] transition-all resize-none h-[146px]"
+              style="font-family: 'Inter', sans-serif;"
+              placeholder="Tell us about your requirements..."></textarea>
+          </div>
+
+          {# Submit button — centered, matches Figma width ratio #}
+          <div class="flex justify-center">
+            <button type="submit"
+              class="inline-flex items-center justify-center gap-3 bg-[#2d388c] hover:bg-[#25307c] text-white text-[16px] font-medium leading-[24px] tracking-[-0.31px] rounded-[10px] px-12 py-[16px] h-[56px] min-w-[260px] transition-all shadow-md shadow-[#2d388c]/20 hover:-translate-y-0.5 active:translate-y-0"
+              style="font-family: 'Inter', sans-serif;">
+              <i data-lucide="send" class="w-5 h-5"></i>
+              Send Message
+            </button>
+          </div>
+        </form>
+      </div>
+
+      {# 3 info cards #}
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+
+        {# Address card #}
+        <div class="rounded-2xl h-[220px] flex flex-col items-center justify-center gap-4 px-8 py-8"
+          style="background: linear-gradient(150.53deg, rgb(44,62,143) 0%, rgb(42,62,148) 16.667%, rgb(40,63,154) 33.333%, rgb(38,63,159) 50%, rgb(35,64,164) 66.667%, rgb(33,64,170) 83.333%, rgb(30,64,175) 100%);">
+          <div class="w-16 h-16 rounded-[10px] bg-white/20 flex items-center justify-center">
+            <i data-lucide="map-pin" class="w-8 h-8 text-white"></i>
+          </div>
+          <div class="text-center">
+            <p class="text-[18px] font-semibold leading-[28px] tracking-[-0.44px] text-white mb-1" style="font-family: 'Inter', sans-serif;">Address</p>
+            <p class="text-[14px] font-normal leading-[20px] tracking-[-0.15px] text-[#e5e7eb]" style="font-family: 'Inter', sans-serif;">B5/9, 1st Floor, Paschim Vihar</p>
+            <p class="text-[14px] font-normal leading-[20px] tracking-[-0.15px] text-[#e5e7eb]" style="font-family: 'Inter', sans-serif;">New Delhi-110063</p>
+          </div>
         </div>
 
-        <!-- Right Side: Fast Inline Contact Form -->
-        <div class="lg:col-span-6 bg-slate-900/60 backdrop-blur-md p-8 sm:p-10 rounded-3xl border border-slate-800/80 shadow-2xl cta-form">
-          <h3 class="text-xl sm:text-2xl font-bold tracking-tight mb-6">Request Callback in 10 Minutes</h3>
-          
-          <form action="/" method="POST" class="space-y-5">
-            {% csrf_token %}
-            <div>
-              <label class="block text-xs font-bold uppercase tracking-wider text-slate-400 mb-1.5" for="cta_name">Name *</label>
-              <input type="text" id="cta_name" name="name" required class="w-full bg-slate-950 border border-slate-800 focus:border-blue-500 focus:ring-1 focus:ring-blue-500 rounded-xl px-4 py-3 text-sm text-white placeholder-slate-600 transition-all outline-none" placeholder="Your full name">
-            </div>
-            <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
-              <div>
-                <label class="block text-xs font-bold uppercase tracking-wider text-slate-400 mb-1.5" for="cta_email">Email *</label>
-                <input type="email" id="cta_email" name="email" required class="w-full bg-slate-950 border border-slate-800 focus:border-blue-500 focus:ring-1 focus:ring-blue-500 rounded-xl px-4 py-3 text-sm text-white placeholder-slate-600 transition-all outline-none" placeholder="work@company.com">
-              </div>
-              <div>
-                <label class="block text-xs font-bold uppercase tracking-wider text-slate-400 mb-1.5" for="cta_phone">Phone *</label>
-                <input type="tel" id="cta_phone" name="phone" required class="w-full bg-slate-950 border border-slate-800 focus:border-blue-500 focus:ring-1 focus:ring-blue-500 rounded-xl px-4 py-3 text-sm text-white placeholder-slate-600 transition-all outline-none" placeholder="+91 98765 43210">
-              </div>
-            </div>
-            <div>
-              <label class="block text-xs font-bold uppercase tracking-wider text-slate-400 mb-1.5" for="cta_company">Company Name</label>
-              <input type="text" id="cta_company" name="company" class="w-full bg-slate-950 border border-slate-800 focus:border-blue-500 focus:ring-1 focus:ring-blue-500 rounded-xl px-4 py-3 text-sm text-white placeholder-slate-600 transition-all outline-none" placeholder="Your organization name">
-            </div>
-            <div>
-              <label class="block text-xs font-bold uppercase tracking-wider text-slate-400 mb-1.5" for="cta_message">Inquiry Details *</label>
-              <textarea id="cta_message" name="message" required rows="3" class="w-full bg-slate-950 border border-slate-800 focus:border-blue-500 focus:ring-1 focus:ring-blue-500 rounded-xl px-4 py-3 text-sm text-white placeholder-slate-600 transition-all outline-none resize-none" placeholder="Specify machine, dimensions, or speed targets..."></textarea>
-            </div>
-            
-            <button type="submit" class="w-full inline-flex items-center justify-center px-6 py-4 rounded-xl text-sm font-bold text-white bg-blue-600 hover:bg-blue-700 transition-all shadow-lg shadow-blue-500/10">
-              Talk to an Expert
-              <i data-lucide="phone-call" class="w-4 h-4 ml-1.5"></i>
-            </button>
-          </form>
+        {# Phone card #}
+        <div class="rounded-2xl h-[220px] flex flex-col items-center justify-center gap-4 px-8 py-8"
+          style="background: linear-gradient(150.53deg, rgb(44,62,143) 0%, rgb(42,62,148) 16.667%, rgb(40,63,154) 33.333%, rgb(38,63,159) 50%, rgb(35,64,164) 66.667%, rgb(33,64,170) 83.333%, rgb(30,64,175) 100%);">
+          <div class="w-16 h-16 rounded-[10px] bg-white/20 flex items-center justify-center">
+            <i data-lucide="phone-call" class="w-8 h-8 text-white"></i>
+          </div>
+          <div class="text-center">
+            <p class="text-[18px] font-semibold leading-[28px] tracking-[-0.44px] text-white mb-1" style="font-family: 'Inter', sans-serif;">Phone</p>
+            <p class="text-[14px] font-normal leading-[20px] tracking-[-0.15px] text-[#e5e7eb]" style="font-family: 'Inter', sans-serif;">+91 97173 33206</p>
+          </div>
+        </div>
+
+        {# Email card #}
+        <div class="rounded-2xl h-[220px] flex flex-col items-center justify-center gap-4 px-8 py-8"
+          style="background: linear-gradient(150.53deg, rgb(44,62,143) 0%, rgb(42,62,148) 16.667%, rgb(40,63,154) 33.333%, rgb(38,63,159) 50%, rgb(35,64,164) 66.667%, rgb(33,64,170) 83.333%, rgb(30,64,175) 100%);">
+          <div class="w-16 h-16 rounded-[10px] bg-white/20 flex items-center justify-center">
+            <i data-lucide="mail" class="w-8 h-8 text-white"></i>
+          </div>
+          <div class="text-center">
+            <p class="text-[18px] font-semibold leading-[28px] tracking-[-0.44px] text-white mb-1" style="font-family: 'Inter', sans-serif;">Email</p>
+            <p class="text-[14px] font-normal leading-[20px] tracking-[-0.15px] text-[#e5e7eb]" style="font-family: 'Inter', sans-serif;">contact@glupac.in</p>
+          </div>
         </div>
 
       </div>
     </div>
   </section>
+
 {% endblock %}
 
 {% block scripts %}
   <style>
+    /* ── Partner Ticker ─────────────────────── */
+    #partner-ticker {
+      animation: ticker-scroll 36s linear infinite;
+      will-change: transform;
+    }
+    #partner-ticker:hover {
+      animation-play-state: paused;
+    }
+    @keyframes ticker-scroll {
+      from { transform: translateX(0); }
+      to   { transform: translateX(-50%); }
+    }
+
+    /* ── Brand Marquee ──────────────────────── */
     .brand-marquee-row {
       overflow: hidden;
     }
-
     .brand-marquee-track {
       display: flex;
       gap: 0.85rem;
@@ -594,45 +648,41 @@
       animation: brand-marquee 28s linear infinite;
       will-change: transform;
     }
-
     .brand-marquee-row--reverse .brand-marquee-track {
       animation-duration: 34s;
       animation-direction: reverse;
     }
-
     .testimonials-brand-marquee:hover .brand-marquee-track {
       animation-play-state: paused;
     }
-
     .brand-logo-card {
       min-width: 186px;
       height: 100px;
       border-radius: 0.75rem;
-      background: #f8fafc;
+      background: #ffffff;
+      border: 1px solid #e2e8f0;
       display: flex;
       align-items: center;
       justify-content: center;
       overflow: hidden;
     }
-
     .brand-logo-image {
       width: 100%;
       height: 100%;
       object-fit: cover;
       transition: transform 0.25s ease, opacity 0.25s ease;
     }
-
     .brand-logo-card:hover .brand-logo-image {
       transform: scale(1.04);
       opacity: 0.95;
     }
-
     @keyframes brand-marquee {
       from { transform: translateX(0); }
-      to { transform: translateX(-50%); }
+      to   { transform: translateX(-50%); }
     }
 
     @media (prefers-reduced-motion: reduce) {
+      #partner-ticker,
       .brand-marquee-track {
         animation: none;
       }
@@ -641,25 +691,24 @@
 
   <script>
     initGulpacAnimations(function(context) {
-      if (!context.gsapAvailable) {
-        return;
-      }
+      if (!context.gsapAvailable) return;
 
       const animatedTargets = [
         ".hero-text-block-primary",
         ".hero-images-primary .hero-machine-primary",
-        ".hero-text-block",
-        ".hero-images .x-card-back",
-        ".hero-images .x-card-front",
+        ".adv-header",
         ".adv-grid > div",
         ".showcase-text",
         ".solutions-header",
         ".machines-grid > div",
+        ".footprints-header",
         ".footprints-stats > div",
         ".footprints-globe",
+        ".testimonials-header",
         ".testimonials-grid > div",
+        ".testimonials-brands",
         ".cta-info",
-        ".cta-form"
+        ".cta-form",
       ];
 
       if (context.reducedMotion) {
@@ -667,198 +716,100 @@
         return;
       }
 
+      /* ── Hero entrance ─────────────────────── */
       const tl = gsap.timeline({ defaults: { ease: "power3.out", duration: 1 } });
+      tl.fromTo(".hero-text-block-primary",
+        { autoAlpha: 0, x: -50 },
+        { autoAlpha: 1, x: 0, delay: 0.15 }
+      ).fromTo(".hero-images-primary .hero-machine-primary",
+        { autoAlpha: 0, x: 90, y: 24, scale: 0.97 },
+        { autoAlpha: 1, x: 0, y: 0, scale: 1, duration: 1.15 },
+        "-=0.7"
+      );
 
-      tl.fromTo(".hero-text-block-primary", {
-        autoAlpha: 0,
-        x: -50
-      }, {
-        autoAlpha: 1,
-        x: 0,
-        delay: 0.15
-      }).fromTo(".hero-images-primary .hero-machine-primary", {
-        autoAlpha: 0,
-        x: 90,
-        y: 24,
-        scale: 0.97
-      }, {
-        autoAlpha: 1,
-        x: 0,
-        y: 0,
-        scale: 1,
-        duration: 1.15
-      }, "-=0.7").fromTo(".hero-text-block", {
-        autoAlpha: 0,
-        x: -50
-      }, {
-        autoAlpha: 1,
-        x: 0,
-        delay: 0.15
-      }).fromTo(".hero-images .x-card-back", {
-        autoAlpha: 0,
-        x: -80,
-        rotate: -18
-      }, {
-        autoAlpha: 1,
-        x: 0,
-        rotate: -6,
-        duration: 1.1
-      }, "-=0.7").fromTo(".hero-images .x-card-front", {
-        autoAlpha: 0,
-        x: 80,
-        rotate: 16
-      }, {
-        autoAlpha: 1,
-        x: 0,
-        rotate: 3,
-        duration: 1.1
-      }, "-=0.95");
+      /* ── Advantages ────────────────────────── */
+      gsap.fromTo(".adv-header",
+        { autoAlpha: 0, y: 30 },
+        { autoAlpha: 1, y: 0, duration: 0.7, ease: "power2.out",
+          scrollTrigger: { trigger: ".adv-header", start: "top 88%", once: true } }
+      );
+      gsap.fromTo(".adv-grid > div",
+        { autoAlpha: 0, y: 60 },
+        { autoAlpha: 1, y: 0, duration: 0.75, stagger: 0.12, ease: "power2.out",
+          scrollTrigger: { trigger: ".adv-grid", start: "top 84%", once: true } }
+      );
 
-      gsap.to("#partner-ticker", {
-        xPercent: -50,
-        repeat: -1,
-        ease: "none",
-        duration: 35
-      });
+      /* ── Showcase banner ────────────────────── */
+      gsap.fromTo(".showcase-text",
+        { autoAlpha: 0, x: -50 },
+        { autoAlpha: 1, x: 0, duration: 1.1, ease: "power3.out",
+          scrollTrigger: { trigger: ".showcase-text", start: "top 88%", once: true } }
+      );
 
-      gsap.fromTo(".adv-grid > div", {
-        autoAlpha: 0,
-        y: 60
-      }, {
-        autoAlpha: 1,
-        y: 0,
-        duration: 0.8,
-        stagger: 0.15,
-        ease: "power2.out",
-        scrollTrigger: {
-          trigger: ".adv-grid",
-          start: "top 82%",
-          once: true
-        }
-      });
+      /* ── Solutions ──────────────────────────── */
+      gsap.fromTo(".solutions-header",
+        { autoAlpha: 0, y: 30 },
+        { autoAlpha: 1, y: 0, duration: 0.8, ease: "power2.out",
+          scrollTrigger: { trigger: ".solutions-header", start: "top 88%", once: true } }
+      );
+      gsap.fromTo(".machines-grid > div",
+        { autoAlpha: 0, y: 50 },
+        { autoAlpha: 1, y: 0, duration: 0.75, stagger: 0.12, ease: "power2.out",
+          scrollTrigger: { trigger: ".machines-grid", start: "top 84%", once: true } }
+      );
 
-      gsap.fromTo(".showcase-text", {
-        autoAlpha: 0,
-        x: -50
-      }, {
-        autoAlpha: 1,
-        x: 0,
-        duration: 1.1,
-        ease: "power3.out",
-        scrollTrigger: {
-          trigger: ".showcase-text",
-          start: "top 88%",
-          once: true
-        }
-      });
+      /* ── Footprints ─────────────────────────── */
+      gsap.fromTo(".footprints-header",
+        { autoAlpha: 0, y: 30 },
+        { autoAlpha: 1, y: 0, duration: 0.8, ease: "power2.out",
+          scrollTrigger: { trigger: ".footprints-header", start: "top 88%", once: true } }
+      );
+      gsap.fromTo(".footprints-stats > div",
+        { autoAlpha: 0, x: -50 },
+        { autoAlpha: 1, x: 0, stagger: 0.14, duration: 0.75, ease: "power2.out",
+          scrollTrigger: { trigger: ".footprints-stats", start: "top 84%", once: true } }
+      );
+      gsap.fromTo(".footprints-globe",
+        { autoAlpha: 0, scale: 0.88 },
+        { autoAlpha: 1, scale: 1, duration: 1.2, ease: "power2.out",
+          scrollTrigger: { trigger: ".footprints-globe", start: "top 80%", once: true } }
+      );
 
-      gsap.fromTo(".solutions-header", {
-        autoAlpha: 0,
-        y: 30
-      }, {
-        autoAlpha: 1,
-        y: 0,
-        duration: 0.8,
-        ease: "power2.out",
-        scrollTrigger: {
-          trigger: ".solutions-header",
-          start: "top 88%",
-          once: true
-        }
-      });
+      /* ── Testimonials ───────────────────────── */
+      gsap.fromTo(".testimonials-header",
+        { autoAlpha: 0, y: 30 },
+        { autoAlpha: 1, y: 0, duration: 0.8, ease: "power2.out",
+          scrollTrigger: { trigger: ".testimonials-header", start: "top 88%", once: true } }
+      );
+      gsap.fromTo(".testimonials-grid > div",
+        { autoAlpha: 0, y: 40 },
+        { autoAlpha: 1, y: 0, stagger: 0.14, duration: 0.75, ease: "power2.out",
+          scrollTrigger: { trigger: ".testimonials-grid", start: "top 84%", once: true } }
+      );
+      gsap.fromTo(".testimonials-brands",
+        { autoAlpha: 0, y: 30 },
+        { autoAlpha: 1, y: 0, duration: 0.9, ease: "power2.out",
+          scrollTrigger: { trigger: ".testimonials-brands", start: "top 86%", once: true } }
+      );
 
-      gsap.fromTo(".machines-grid > div", {
-        autoAlpha: 0,
-        y: 50
-      }, {
-        autoAlpha: 1,
-        y: 0,
-        duration: 0.8,
-        stagger: 0.15,
-        ease: "power2.out",
-        scrollTrigger: {
-          trigger: ".machines-grid",
-          start: "top 82%",
-          once: true
-        }
-      });
+      /* ── CTA Banner ─────────────────────────── */
+      gsap.fromTo(".cta-banner",
+        { autoAlpha: 0, y: 50, scale: 0.97 },
+        { autoAlpha: 1, y: 0, scale: 1, duration: 1.1, ease: "power3.out",
+          scrollTrigger: { trigger: ".cta-banner", start: "top 86%", once: true } }
+      );
 
-      gsap.fromTo(".footprints-stats > div", {
-        autoAlpha: 0,
-        x: -50
-      }, {
-        autoAlpha: 1,
-        x: 0,
-        stagger: 0.15,
-        duration: 0.8,
-        ease: "power2.out",
-        scrollTrigger: {
-          trigger: ".footprints-stats",
-          start: "top 82%",
-          once: true
-        }
-      });
-
-      gsap.fromTo(".footprints-globe", {
-        autoAlpha: 0,
-        scale: 0.88
-      }, {
-        autoAlpha: 1,
-        scale: 1,
-        duration: 1.2,
-        ease: "power2.out",
-        scrollTrigger: {
-          trigger: ".footprints-globe",
-          start: "top 78%",
-          once: true
-        }
-      });
-
-      gsap.fromTo(".testimonials-grid > div", {
-        autoAlpha: 0,
-        y: 40
-      }, {
-        autoAlpha: 1,
-        y: 0,
-        stagger: 0.15,
-        duration: 0.8,
-        ease: "power2.out",
-        scrollTrigger: {
-          trigger: ".testimonials-grid",
-          start: "top 82%",
-          once: true
-        }
-      });
-
-      gsap.fromTo(".cta-info", {
-        autoAlpha: 0,
-        x: -50
-      }, {
-        autoAlpha: 1,
-        x: 0,
-        duration: 1,
-        ease: "power3.out",
-        scrollTrigger: {
-          trigger: ".cta-info",
-          start: "top 84%",
-          once: true
-        }
-      });
-
-      gsap.fromTo(".cta-form", {
-        autoAlpha: 0,
-        scale: 0.96
-      }, {
-        autoAlpha: 1,
-        scale: 1,
-        duration: 1,
-        ease: "power3.out",
-        scrollTrigger: {
-          trigger: ".cta-form",
-          start: "top 84%",
-          once: true
-        }
-      });
+      /* ── Get In Touch ───────────────────────── */
+      gsap.fromTo(".cta-info",
+        { autoAlpha: 0, y: 30 },
+        { autoAlpha: 1, y: 0, duration: 0.9, ease: "power3.out",
+          scrollTrigger: { trigger: ".cta-info", start: "top 88%", once: true } }
+      );
+      gsap.fromTo(".cta-form",
+        { autoAlpha: 0, y: 40, scale: 0.98 },
+        { autoAlpha: 1, y: 0, scale: 1, duration: 1, ease: "power3.out",
+          scrollTrigger: { trigger: ".cta-form", start: "top 86%", once: true } }
+      );
     });
   </script>
 {% endblock %}
