@@ -2,7 +2,7 @@
   "scripts": {
     "build:css": "npx @tailwindcss/cli -i ./website/static/src/styles.css -o ./website/static/css/site.css --minify",
     "watch:css": "npx @tailwindcss/cli -i ./website/static/src/styles.css -o ./website/static/css/site.css --watch",
-    "vendor:js": "cp node_modules/alpinejs/dist/cdn.min.js website/static/js/alpine.min.js",
+    "vendor:js": "node -e \"const fs = require('fs'); fs.copyFileSync('node_modules/alpinejs/dist/cdn.min.js', 'website/static/js/alpine.min.js')\"",
     "dev": "npm run vendor:js && npm run watch:css",
     "build": "npm run vendor:js && npm run build:css",
     "deploy": "scripts/deploy.sh"
