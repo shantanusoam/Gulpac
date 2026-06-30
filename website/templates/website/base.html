@@ -874,22 +874,23 @@
           </div>
           
           <!-- Desktop Nav -->
+
+          
           <nav class="hidden md:flex space-x-8 lg:space-x-10 text-sm font-semibold text-slate-600">
             <a href="{% url 'home' %}" class="hover:text-[#2d388c] transition-colors py-2 {% if request.resolver_match.url_name == 'home' %}text-[#2d388c] border-b-2 border-[#2d388c]{% endif %}">Home</a>
             <a href="#advantages" class="hover:text-primary transition-colors py-2">Advantages</a>
             <a href="#solutions" class="hover:text-primary transition-colors py-2">Solutions</a>
             <a href="{% url 'home' %}#footprints" class="hover:text-primary transition-colors py-2">Footprints</a>
             <a href="#contact" class="hover:text-primary transition-colors py-2">Contact Us</a>
-          </nav>
-          
+            
           <!-- Right Button -->
           <div class="hidden md:flex items-center">
-            <a href="#contact" class="inline-flex items-center justify-center px-6 py-2.5 rounded-full text-sm font-bold text-white bg-[#2d388c] hover:bg-[#25307c] transition-all shadow-md shadow-[#2d388c]/20 hover:-translate-y-0.5 active:translate-y-0">
+            <a href="#contact" class="inline-flex items-center justify-center px-6 py-2.5 rounded-lg text-sm font-bold text-white bg-[#2d388c] hover:bg-[#25307c] transition-all shadow-md shadow-[#2d388c]/20 hover:-translate-y-0.5 active:translate-y-0">
               Enquire Now
-              <i data-lucide="arrow-right" class="w-4 h-4 ml-1.5"></i>
             </a>
           </div>
-          
+          </nav>
+      
           <!-- Mobile Menu Toggle -->
           <div class="flex items-center md:hidden">
             <button @click="mobileMenuOpen = !mobileMenuOpen" type="button" class="inline-flex items-center justify-center p-2 rounded-lg text-slate-400 hover:text-slate-500 hover:bg-slate-100 focus:outline-none focus:ring-2 focus:ring-[#2d388c]" aria-controls="mobile-menu" aria-expanded="false">

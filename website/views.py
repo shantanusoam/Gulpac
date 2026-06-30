@@ -188,7 +188,7 @@ def home(request):
         "title": "Packaging Machines Built For Your Product",
         "description": "Advanced packaging solutions built for speed, precision, and reliability. Empower your production. Elevate your brand.",
         "badge_label": "Precision Bonding, Seamless Packaging",
-        "background_image_url": static("images/hero/hero-bg.png"),
+        "background_image_url": static("images/hero/hero-machine.png"),
         "show_back_link": False,
     })
     machines = Machine.objects.all()[:6]
