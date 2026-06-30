@@ -30,10 +30,13 @@ Output goes to `website/static/css/site.css`.
 ## Deployment
 
 ```bash
-REMOTE_HOST=example.com scripts/deploy.sh
+scripts/deploy.sh
 ```
 
-The script rsync's code, installs deps, builds assets, runs migrations, collects static files, then restarts Gunicorn and Nginx.
+Defaults: `root@168.144.92.215`, `/var/www/gulpac`, service `gulpac`, port `8011`.
+Override with `REMOTE_HOST`, `REMOTE_USER`, `SERVER_NAME`, `APP_DIR`, `SERVICE_NAME`, or `PORT`.
+
+The script packages the project, uploads the archive, installs deps, builds assets, runs migrations, collects static files, writes systemd/Nginx config, then verifies the app on port `8011`.
 
 ## Template conventions
 

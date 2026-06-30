@@ -48,8 +48,11 @@ djlint website/templates --reformat
 ## Deploy
 
 ```bash
-REMOTE_HOST=example.com SERVER_NAME=app.example.com scripts/deploy.sh
+scripts/deploy.sh
 ```
+
+Defaults: `root@168.144.92.215`, `/var/www/gulpac`, service `gulpac`, port `8011`.
+Override with `REMOTE_HOST`, `REMOTE_USER`, `SERVER_NAME`, `APP_DIR`, `SERVICE_NAME`, or `PORT`.
 
 ## Pre-commit hooks
 
