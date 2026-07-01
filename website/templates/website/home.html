@@ -6,7 +6,7 @@
 {% block content %}
 
   {# ── 1. HERO ─────────────────────────────────────────────────────────── #}
-  <section class="relative overflow-hidden bg-[#f3f5f9] pt-24 pb-24 md:pt-28 md:pb-28 lg:pt-32 lg:pb-36">
+  <section class="hero-section relative overflow-hidden bg-[#f3f5f9] pt-24 pb-24 md:pt-28 md:pb-28 lg:pt-32 lg:pb-36">
     <div class="absolute inset-0 pointer-events-none" aria-hidden="true">
       <div
         class="hero-machine-bg absolute inset-0 bg-contain bg-no-repeat bg-right bg-bottom"
@@ -18,21 +18,21 @@
       <div class="grid grid-cols-1 items-center gap-12 lg:grid-cols-12 lg:gap-8">
 
         <div class="hero-text-block-primary lg:col-span-5 space-y-6 md:space-y-7">
-          <div class="inline-flex items-center rounded-full bg-[#2d388c] px-5 py-2 text-xs sm:text-sm font-medium text-white tracking-[-0.01em]">
+          <div class="hero-badge inline-flex items-center rounded-full bg-[#2d388c] px-5 py-2 text-xs sm:text-sm font-medium text-white tracking-[-0.01em]">
             {{ hero.badge_label|default:"Precision Bonding, Seamless Packaging" }}
           </div>
 
-          <h1 class="max-w-[18ch] font-black italic uppercase leading-[1.08] tracking-[0.01em] text-[2rem] sm:text-[2.5rem] lg:text-[3.1rem] text-[#2d388c]">
-            Packaging Machines
-            <span class="block text-[#47a33d]">Built For Your Product</span>
+          <h1 class="hero-heading max-w-[18ch] font-black italic uppercase leading-[1.08] tracking-[0.01em] text-[2rem] sm:text-[2.5rem] lg:text-[3.1rem] text-[#2d388c]">
+            <span class="hero-heading__line block">Packaging Machines</span>
+            <span class="hero-heading__line block text-[#47a33d]">Built For Your Product</span>
           </h1>
 
-          <p class="max-w-[30ch] text-base sm:text-lg leading-[1.6] text-[#4a5565]">
+          <p class="hero-desc max-w-[30ch] text-base sm:text-lg leading-[1.6] text-[#4a5565]">
             {{ hero.description|default:"Advanced packaging solutions built for speed, precision, and reliability. Empower your production. Elevate your brand." }}
           </p>
 
-          <div class="pt-1">
-            <a href="{% url 'contact' %}" class="inline-flex min-h-[58px] min-w-[170px] items-center justify-center rounded-[10px] bg-[#2d388c] px-7 py-4 text-base font-medium text-white shadow-[0_16px_30px_rgba(45,56,140,0.28)] transition-all hover:-translate-y-0.5 hover:bg-[#25307c] active:translate-y-0">
+          <div class="hero-cta pt-1">
+            <a href="{% url 'contact' %}" class="gulpac-btn-primary inline-flex min-h-[58px] min-w-[170px] items-center justify-center rounded-[10px] bg-[#2d388c] px-7 py-4 text-base font-medium text-white shadow-[0_16px_30px_rgba(45,56,140,0.28)]">
               Get A Quote
             </a>
           </div>
@@ -41,9 +41,9 @@
       </div>
     </div>
 
-    <svg class="pointer-events-none absolute bottom-0 left-0 h-[68px] sm:h-[82px] md:h-[95px] w-full" viewBox="0 0 1440 120" preserveAspectRatio="none" aria-hidden="true">
-      <path d="M0,64 C280,28 560,92 830,72 C1080,54 1270,10 1440,0 L1440,120 L0,120 Z" fill="#39a051"></path>
-      <path d="M0,68 C290,36 570,106 844,86 C1096,68 1282,24 1440,14 L1440,120 L0,120 Z" fill="#1f3f84"></path>
+    <svg class="hero-wave pointer-events-none absolute bottom-0 left-0 h-[68px] sm:h-[82px] md:h-[95px] w-full" viewBox="0 0 1440 120" preserveAspectRatio="none" aria-hidden="true">
+      <path class="hero-wave__layer hero-wave__layer--green" d="M0,64 C280,28 560,92 830,72 C1080,54 1270,10 1440,0 L1440,120 L0,120 Z" fill="#39a051"></path>
+      <path class="hero-wave__layer hero-wave__layer--blue" d="M0,68 C290,36 570,106 844,86 C1096,68 1282,24 1440,14 L1440,120 L0,120 Z" fill="#1f3f84"></path>
     </svg>
   </section>
 
@@ -376,7 +376,7 @@
         </div>
 
         <div class="industries-cta-wrap text-center mt-10 lg:mt-12">
-          <a href="{% url 'industries' %}" class="industries-cta industries-cta-animate">
+          <a href="{% url 'industries' %}" class="industries-cta industries-cta-animate gulpac-btn-primary">
             <span>View All Industries</span>
             <img src="{% static 'images/industries/icon-arrow.svg' %}" alt="" width="20" height="20" aria-hidden="true">
           </a>
@@ -672,7 +672,7 @@
               </li>
             </ul>
 
-            <a href="{% url 'contact' %}" class="cta-banner__button">
+            <a href="{% url 'contact' %}" class="cta-banner__button gulpac-btn-primary">
               Talk to an Expert
             </a>
           </div>
@@ -685,8 +685,8 @@
   {# ── 9. GET IN TOUCH ─────────────────────────────────────────────────── #}
   <section id="contact" class="relative overflow-hidden pt-20 pb-20">
     {# Hexagonal background pattern #}
-    <div class="absolute inset-0 pointer-events-none" aria-hidden="true">
-      <img src="{% static 'images/contact-bg.gif' %}" alt="" class="h-full w-full object-cover object-center">
+    <div class="absolute inset-0 pointer-events-none contact-bg-parallax" aria-hidden="true">
+      <img src="{% static 'images/contact-bg.gif' %}" alt="" class="contact-bg-parallax__image h-full w-full object-cover object-center">
     </div>
 
     <div class="relative z-10 max-w-[1280px] mx-auto px-6 lg:px-8">
@@ -768,10 +768,10 @@
       </div>
 
       {# 3 info cards #}
-      <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+      <div class="contact-info-grid grid grid-cols-1 md:grid-cols-3 gap-6">
 
         {# Address card #}
-        <div class="rounded-2xl h-[220px] flex flex-col items-center justify-center gap-4 px-8 py-8"
+        <div class="contact-info-card rounded-2xl h-[220px] flex flex-col items-center justify-center gap-4 px-8 py-8"
           style="background: linear-gradient(150.53deg, rgb(44,62,143) 0%, rgb(42,62,148) 16.667%, rgb(40,63,154) 33.333%, rgb(38,63,159) 50%, rgb(35,64,164) 66.667%, rgb(33,64,170) 83.333%, rgb(30,64,175) 100%);">
           <div class="w-16 h-16 rounded-[10px] bg-white/20 flex items-center justify-center">
             <i data-lucide="map-pin" class="w-8 h-8 text-white"></i>
@@ -784,7 +784,7 @@
         </div>
 
         {# Phone card #}
-        <div class="rounded-2xl h-[220px] flex flex-col items-center justify-center gap-4 px-8 py-8"
+        <div class="contact-info-card rounded-2xl h-[220px] flex flex-col items-center justify-center gap-4 px-8 py-8"
           style="background: linear-gradient(150.53deg, rgb(44,62,143) 0%, rgb(42,62,148) 16.667%, rgb(40,63,154) 33.333%, rgb(38,63,159) 50%, rgb(35,64,164) 66.667%, rgb(33,64,170) 83.333%, rgb(30,64,175) 100%);">
           <div class="w-16 h-16 rounded-[10px] bg-white/20 flex items-center justify-center">
             <i data-lucide="phone-call" class="w-8 h-8 text-white"></i>
@@ -796,7 +796,7 @@
         </div>
 
         {# Email card #}
-        <div class="rounded-2xl h-[220px] flex flex-col items-center justify-center gap-4 px-8 py-8"
+        <div class="contact-info-card rounded-2xl h-[220px] flex flex-col items-center justify-center gap-4 px-8 py-8"
           style="background: linear-gradient(150.53deg, rgb(44,62,143) 0%, rgb(42,62,148) 16.667%, rgb(40,63,154) 33.333%, rgb(38,63,159) 50%, rgb(35,64,164) 66.667%, rgb(33,64,170) 83.333%, rgb(30,64,175) 100%);">
           <div class="w-16 h-16 rounded-[10px] bg-white/20 flex items-center justify-center">
             <i data-lucide="mail" class="w-8 h-8 text-white"></i>
@@ -1849,6 +1849,34 @@
         animation: none;
       }
     }
+
+    /* ── GSAP animation hooks ─────────────── */
+    .hero-machine-bg,
+    .about-image-1,
+    .about-image-2,
+    .industries-bg__image,
+    .cta-banner__photo,
+    .footprints-globe__image {
+      will-change: transform;
+    }
+
+    .adv-card,
+    .industries-card,
+    .machine-card,
+    .testimonial-card,
+    .footprints-stat,
+    .contact-info-card {
+      transform-style: preserve-3d;
+      backface-visibility: hidden;
+    }
+
+    .industries-card__media {
+      overflow: hidden;
+    }
+
+    .gulpac-btn-primary {
+      transition: background-color 0.25s ease;
+    }
   </style>
 
   <script>
@@ -1856,46 +1884,21 @@
       if (!context.gsapAvailable) return;
 
       const animatedTargets = [
-        ".hero-text-block-primary",
-        ".hero-machine-bg",
-        ".about-eyebrow",
-        ".about-heading",
-        ".about-para",
-        ".about-stat",
-        ".about-image-1",
-        ".about-image-2",
-        ".adv-header",
-        ".advantages-heading",
-        ".advantages-subheading",
-        ".adv-card",
-        ".industries-bg__image",
-        ".industries-heading",
-        ".industries-subheading",
-        ".industries-card-animate",
-        ".industries-cta-animate",
-        ".solutions-header",
-        ".solutions-heading",
-        ".solutions-subheading",
-        ".solutions-card-animate",
-        ".footprints-eyebrow",
-        ".footprints-heading",
-        ".footprints-subheading",
-        ".footprints-stat-animate",
-        ".footprints-globe",
-        ".footprints-globe__glow",
-        ".testimonials-header",
-        ".testimonial-card-animate",
-        ".clients-header",
-        ".clients-marquee-animate",
-        ".clients-more-animate",
-        ".cta-banner",
-        ".cta-banner__badge",
-        ".cta-banner__heading",
-        ".cta-banner__body",
-        ".cta-banner__feature",
-        ".cta-banner__button",
-        ".cta-info",
-        ".cta-form",
+        ".hero-badge", ".hero-heading", ".hero-heading__line", ".hero-desc", ".hero-cta",
+        ".hero-text-block-primary", ".hero-machine-bg", ".hero-wave__layer",
+        ".about-eyebrow", ".about-heading", ".about-para", ".about-stat",
+        ".about-image-1", ".about-image-2",
+        ".adv-header", ".advantages-heading", ".advantages-subheading", ".adv-card",
+        ".industries-bg__image", ".industries-heading", ".industries-subheading",
+        ".industries-card-animate", ".industries-cta-animate",
+        ".solutions-header", ".solutions-heading", ".solutions-subheading", ".solutions-card-animate",
+        ".footprints-eyebrow", ".footprints-heading", ".footprints-subheading",
+        ".footprints-stat-animate", ".footprints-globe", ".footprints-globe__glow",
+        ".testimonials-header", ".testimonial-card-animate",
+        ".clients-header", ".clients-marquee-animate", ".clients-more-animate",
+        ".cta-banner", ".cta-banner__badge", ".cta-banner__heading", ".cta-banner__body",
+        ".cta-banner__feature", ".cta-banner__button", ".cta-banner__photo",
+        ".cta-info", ".cta-form", ".contact-info-card",
       ];
 
       if (context.reducedMotion) {
@@ -1903,315 +1906,388 @@
         return;
       }
 
-      /* ── Hero entrance ─────────────────────── */
-      const tl = gsap.timeline({ defaults: { ease: "power3.out", duration: 1 } });
-      tl.fromTo(".hero-text-block-primary",
-        { autoAlpha: 0, x: -50 },
-        { autoAlpha: 1, x: 0, delay: 0.15 }
-      ).fromTo(".hero-machine-bg",
-        { autoAlpha: 0, x: 90, y: 24, scale: 1.03 },
-        { autoAlpha: 1, x: 0, y: 0, scale: 1, duration: 1.15 },
-        "-=0.7"
-      );
+      const ctx = gsap.context(function() {
+        gsap.defaults({ ease: "power2.out", duration: 0.7 });
 
-      /* ── About Glupac ──────────────────────── */
-      const aboutTl = gsap.timeline({
-        defaults: { ease: "power2.out" },
-        scrollTrigger: { trigger: ".about-section__stage", start: "top 85%", once: true },
-      });
+        /* ── Helpers ─────────────────────────── */
+        function bindCardHover(cards, opts) {
+          const scale = opts && opts.scale ? opts.scale : 1.02;
+          const lift = opts && opts.lift ? opts.lift : -8;
+          const imgSel = opts && opts.image ? opts.image : null;
 
-      aboutTl
-        .fromTo(".about-eyebrow",
-          { autoAlpha: 0, y: 18 },
-          { autoAlpha: 1, y: 0, duration: 0.55 }
-        )
-        .fromTo(".about-heading",
-          { autoAlpha: 0, y: 28 },
-          { autoAlpha: 1, y: 0, duration: 0.7 },
-          "-=0.3"
-        )
-        .fromTo(".about-para",
-          { autoAlpha: 0, y: 22 },
-          { autoAlpha: 1, y: 0, duration: 0.65, stagger: 0.12 },
-          "-=0.35"
-        )
-        .fromTo(".about-stat",
-          { autoAlpha: 0, y: 24, scale: 0.94 },
-          { autoAlpha: 1, y: 0, scale: 1, duration: 0.6, stagger: 0.1 },
-          "-=0.25"
-        )
-        .fromTo(".about-image-1",
-          { autoAlpha: 0, x: 70, y: 18 },
-          { autoAlpha: 1, x: 0, y: 0, duration: 0.95, ease: "power3.out" },
-          "-=0.45"
-        )
-        .fromTo(".about-image-2",
-          { autoAlpha: 0, x: 90, y: 36 },
-          { autoAlpha: 1, x: 0, y: 0, duration: 1.05, ease: "power3.out" },
-          "-=0.7"
-        );
-
-      /* ── Advantages ────────────────────────── */
-      const advTl = gsap.timeline({
-        defaults: { ease: "power2.out" },
-        scrollTrigger: { trigger: ".advantages-section__inner", start: "top 85%", once: true },
-      });
-
-      advTl
-        .fromTo(".advantages-heading",
-          { autoAlpha: 0, y: 24 },
-          { autoAlpha: 1, y: 0, duration: 0.7 }
-        )
-        .fromTo(".advantages-subheading",
-          { autoAlpha: 0, y: 20 },
-          { autoAlpha: 1, y: 0, duration: 0.65 },
-          "-=0.35"
-        )
-        .fromTo(".adv-card",
-          { autoAlpha: 0, y: 40, scale: 0.97 },
-          { autoAlpha: 1, y: 0, scale: 1, duration: 0.7, stagger: 0.1 },
-          "-=0.2"
-        );
-
-      /* ── Industries We Serve ─────────────────── */
-      gsap.fromTo(".industries-bg__image",
-        { autoAlpha: 0, scale: 1.12 },
-        { autoAlpha: 1, scale: 1, duration: 1.4, ease: "power2.out",
-          scrollTrigger: { trigger: ".industries-section", start: "top 90%", once: true } }
-      );
-
-      gsap.to(".industries-bg__image", {
-        y: 60,
-        scale: 1.06,
-        ease: "none",
-        scrollTrigger: {
-          trigger: ".industries-section",
-          start: "top bottom",
-          end: "bottom top",
-          scrub: 1.2,
-        },
-      });
-
-      gsap.to(".industries-bg__image", {
-        x: "-=40",
-        duration: 10,
-        repeat: -1,
-        yoyo: true,
-        ease: "sine.inOut",
-      });
-
-      const industriesTl = gsap.timeline({
-        defaults: { ease: "power2.out" },
-        scrollTrigger: { trigger: ".industries-section__inner", start: "top 85%", once: true },
-      });
-
-      industriesTl
-        .fromTo(".industries-heading",
-          { autoAlpha: 0, y: 24 },
-          { autoAlpha: 1, y: 0, duration: 0.7 }
-        )
-        .fromTo(".industries-subheading",
-          { autoAlpha: 0, y: 20 },
-          { autoAlpha: 1, y: 0, duration: 0.65 },
-          "-=0.35"
-        )
-        .fromTo(".industries-card-animate",
-          { autoAlpha: 0, y: 36, scale: 0.96 },
-          { autoAlpha: 1, y: 0, scale: 1, duration: 0.65, stagger: 0.08 },
-          "-=0.2"
-        )
-        .fromTo(".industries-cta-animate",
-          { autoAlpha: 0, y: 16 },
-          { autoAlpha: 1, y: 0, duration: 0.55 },
-          "-=0.15"
-        );
-
-      /* ── Solutions ──────────────────────────── */
-      const solutionsTl = gsap.timeline({
-        defaults: { ease: "power2.out" },
-        scrollTrigger: { trigger: ".solutions-section__inner", start: "top 85%", once: true },
-      });
-
-      solutionsTl
-        .fromTo(".solutions-heading",
-          { autoAlpha: 0, y: 24 },
-          { autoAlpha: 1, y: 0, duration: 0.7 }
-        )
-        .fromTo(".solutions-subheading",
-          { autoAlpha: 0, y: 20 },
-          { autoAlpha: 1, y: 0, duration: 0.65 },
-          "-=0.35"
-        )
-        .fromTo(".solutions-card-animate",
-          { autoAlpha: 0, y: 40, scale: 0.97 },
-          { autoAlpha: 1, y: 0, scale: 1, duration: 0.7, stagger: 0.1 },
-          "-=0.2"
-        );
-
-      /* ── Footprints ─────────────────────────── */
-      const footprintsTl = gsap.timeline({
-        defaults: { ease: "power2.out" },
-        scrollTrigger: { trigger: ".footprints-section__inner", start: "top 85%", once: true },
-      });
-
-      footprintsTl
-        .fromTo(".footprints-eyebrow",
-          { autoAlpha: 0, y: 18 },
-          { autoAlpha: 1, y: 0, duration: 0.55 }
-        )
-        .fromTo(".footprints-heading",
-          { autoAlpha: 0, y: 28 },
-          { autoAlpha: 1, y: 0, duration: 0.7 },
-          "-=0.3"
-        )
-        .fromTo(".footprints-subheading",
-          { autoAlpha: 0, y: 20 },
-          { autoAlpha: 1, y: 0, duration: 0.65 },
-          "-=0.35"
-        )
-        .fromTo(".footprints-stat-animate",
-          { autoAlpha: 0, x: -50 },
-          { autoAlpha: 1, x: 0, stagger: 0.14, duration: 0.75 },
-          "-=0.2"
-        )
-        .fromTo(".footprints-globe",
-          { autoAlpha: 0, scale: 0.88, x: 40 },
-          { autoAlpha: 1, scale: 1, x: 0, duration: 1.2, ease: "power3.out" },
-          "-=0.5"
-        )
-        .fromTo(".footprints-globe__glow",
-          { autoAlpha: 0, scale: 0.6 },
-          { autoAlpha: 1, scale: 1, duration: 0.9, stagger: 0.15 },
-          "-=0.8"
-        );
-
-      document.querySelectorAll(".footprints-stat__value").forEach(function(el) {
-        const final = el.dataset.final || "";
-        const match = final.match(/^(\d+)(.*)$/);
-        if (!match) {
-          return;
+          cards.forEach(function(card) {
+            const img = imgSel ? card.querySelector(imgSel) : null;
+            card.addEventListener("mouseenter", function() {
+              gsap.to(card, { y: lift, scale: scale, boxShadow: "0 20px 40px rgba(45,56,140,0.12)", duration: 0.35, ease: "power2.out" });
+              if (img) gsap.to(img, { scale: 1.08, duration: 0.5, ease: "power2.out" });
+            });
+            card.addEventListener("mouseleave", function() {
+              gsap.to(card, { y: 0, scale: 1, boxShadow: "none", duration: 0.4, ease: "power2.out" });
+              if (img) gsap.to(img, { scale: 1, duration: 0.5, ease: "power2.out" });
+            });
+          });
         }
-        const target = parseInt(match[1], 10);
-        const suffix = match[2] || "";
-        el.textContent = "0" + suffix;
-        const counter = { val: 0 };
-        gsap.to(counter, {
-          val: target,
-          duration: 1.6,
-          ease: "power2.out",
-          snap: { val: 1 },
-          scrollTrigger: { trigger: el.closest(".footprints-stat"), start: "top 86%", once: true },
-          onUpdate: function() {
-            el.textContent = Math.round(counter.val) + suffix;
+
+        function bindTilt(cards, maxDeg) {
+          const deg = maxDeg || 6;
+          cards.forEach(function(card) {
+            card.addEventListener("mousemove", function(e) {
+              const rect = card.getBoundingClientRect();
+              const x = (e.clientX - rect.left) / rect.width - 0.5;
+              const y = (e.clientY - rect.top) / rect.height - 0.5;
+              gsap.to(card, {
+                rotationY: x * deg,
+                rotationX: -y * deg,
+                transformPerspective: 800,
+                duration: 0.4,
+                ease: "power2.out",
+              });
+            });
+            card.addEventListener("mouseleave", function() {
+              gsap.to(card, { rotationY: 0, rotationX: 0, duration: 0.6, ease: "power3.out" });
+            });
+          });
+        }
+
+        function bindPrimaryButtons(selector) {
+          document.querySelectorAll(selector).forEach(function(btn) {
+            btn.addEventListener("mouseenter", function() {
+              gsap.to(btn, { y: -3, scale: 1.03, boxShadow: "0 20px 36px rgba(45,56,140,0.32)", duration: 0.3 });
+            });
+            btn.addEventListener("mouseleave", function() {
+              gsap.to(btn, { y: 0, scale: 1, boxShadow: "0 16px 30px rgba(45,56,140,0.28)", duration: 0.35 });
+            });
+            btn.addEventListener("mousedown", function() {
+              gsap.to(btn, { scale: 0.97, duration: 0.1 });
+            });
+            btn.addEventListener("mouseup", function() {
+              gsap.to(btn, { scale: 1.03, duration: 0.15 });
+            });
+          });
+        }
+
+        /* ── Hero entrance ─────────────────────── */
+        const heroTl = gsap.timeline({ defaults: { ease: "power3.out" } });
+        heroTl
+          .fromTo(".hero-badge",
+            { autoAlpha: 0, y: 20, scale: 0.9 },
+            { autoAlpha: 1, y: 0, scale: 1, duration: 0.6, delay: 0.1 }
+          )
+          .fromTo(".hero-heading__line",
+            { autoAlpha: 0, y: 40, rotateX: -12 },
+            { autoAlpha: 1, y: 0, rotateX: 0, duration: 0.85, stagger: 0.12, transformOrigin: "50% 100%" },
+            "-=0.3"
+          )
+          .fromTo(".hero-desc",
+            { autoAlpha: 0, y: 24 },
+            { autoAlpha: 1, y: 0, duration: 0.7 },
+            "-=0.45"
+          )
+          .fromTo(".hero-cta",
+            { autoAlpha: 0, y: 20, scale: 0.95 },
+            { autoAlpha: 1, y: 0, scale: 1, duration: 0.6 },
+            "-=0.4"
+          )
+          .fromTo(".hero-machine-bg",
+            { autoAlpha: 0, x: 100, y: 30, scale: 1.06 },
+            { autoAlpha: 1, x: 0, y: 0, scale: 1, duration: 1.2 },
+            "-=0.9"
+          )
+          .fromTo(".hero-wave__layer",
+            { y: 60, autoAlpha: 0 },
+            { y: 0, autoAlpha: 1, duration: 1, stagger: 0.15, ease: "power4.out" },
+            "-=0.8"
+          );
+
+        gsap.to(".hero-machine-bg", {
+          rotation: 1.2,
+          duration: 4.5,
+          ease: "sine.inOut",
+          yoyo: true,
+          repeat: -1,
+          delay: 1.5,
+          transformOrigin: "80% 80%",
+        });
+
+        gsap.to(".hero-machine-bg", {
+          y: 50,
+          ease: "none",
+          scrollTrigger: {
+            trigger: ".hero-section",
+            start: "top top",
+            end: "bottom top",
+            scrub: 1.5,
           },
         });
-      });
 
-      gsap.to(".footprints-globe__image", {
-        y: -10,
-        duration: 3.5,
-        ease: "sine.inOut",
-        yoyo: true,
-        repeat: -1,
-        delay: 1.5,
-      });
+        gsap.to(".hero-wave__layer--green", {
+          y: 6,
+          duration: 4,
+          ease: "sine.inOut",
+          yoyo: true,
+          repeat: -1,
+        });
 
-      /* ── Testimonials + Clients ─────────────── */
-      const testimonialsTl = gsap.timeline({
-        defaults: { ease: "power2.out" },
-        scrollTrigger: { trigger: ".testimonials-part__inner", start: "top 85%", once: true },
-      });
+        gsap.to(".hero-wave__layer--blue", {
+          y: -4,
+          duration: 3.5,
+          ease: "sine.inOut",
+          yoyo: true,
+          repeat: -1,
+          delay: 0.5,
+        });
 
-      testimonialsTl
-        .fromTo(".testimonials-heading",
-          { autoAlpha: 0, y: 24 },
-          { autoAlpha: 1, y: 0, duration: 0.7 }
-        )
-        .fromTo(".testimonials-subheading",
-          { autoAlpha: 0, y: 20 },
-          { autoAlpha: 1, y: 0, duration: 0.65 },
-          "-=0.35"
-        )
-        .fromTo(".testimonial-card-animate",
-          { autoAlpha: 0, y: 40, scale: 0.97 },
-          { autoAlpha: 1, y: 0, scale: 1, duration: 0.7, stagger: 0.12 },
-          "-=0.2"
+        /* ── About Glupac ──────────────────────── */
+        const aboutTl = gsap.timeline({
+          scrollTrigger: { trigger: ".about-section__stage", start: "top 85%", once: true },
+        });
+
+        aboutTl
+          .fromTo(".about-eyebrow", { autoAlpha: 0, y: 18 }, { autoAlpha: 1, y: 0, duration: 0.55 })
+          .fromTo(".about-heading", { autoAlpha: 0, y: 32, clipPath: "inset(0 0 100% 0)" }, { autoAlpha: 1, y: 0, clipPath: "inset(0 0 0% 0)", duration: 0.85 }, "-=0.25")
+          .fromTo(".about-para", { autoAlpha: 0, y: 22 }, { autoAlpha: 1, y: 0, duration: 0.65, stagger: 0.12 }, "-=0.35")
+          .fromTo(".about-stat", { autoAlpha: 0, y: 28, scale: 0.9 }, { autoAlpha: 1, y: 0, scale: 1, duration: 0.6, stagger: 0.1 }, "-=0.25")
+          .fromTo(".about-image-1", { autoAlpha: 0, x: 80, y: 24, rotation: 3 }, { autoAlpha: 1, x: 0, y: 0, rotation: 0, duration: 1, ease: "power3.out" }, "-=0.5")
+          .fromTo(".about-image-2", { autoAlpha: 0, x: 100, y: 40, rotation: -4 }, { autoAlpha: 1, x: 0, y: 0, rotation: 0, duration: 1.1, ease: "power3.out" }, "-=0.75");
+
+        gsap.to(".about-image-1", {
+          y: -30,
+          ease: "none",
+          scrollTrigger: { trigger: ".about-section", start: "top bottom", end: "bottom top", scrub: 1.2 },
+        });
+        gsap.to(".about-image-2", {
+          y: 40,
+          ease: "none",
+          scrollTrigger: { trigger: ".about-section", start: "top bottom", end: "bottom top", scrub: 1.5 },
+        });
+
+        document.querySelectorAll(".about-stat").forEach(function(stat) {
+          stat.addEventListener("mouseenter", function() {
+            gsap.to(stat.querySelector(".about-stat__icon"), { scale: 1.12, rotation: 5, duration: 0.35, ease: "back.out(1.7)" });
+          });
+          stat.addEventListener("mouseleave", function() {
+            gsap.to(stat.querySelector(".about-stat__icon"), { scale: 1, rotation: 0, duration: 0.4 });
+          });
+        });
+
+        /* ── Advantages ────────────────────────── */
+        const advTl = gsap.timeline({
+          scrollTrigger: { trigger: ".advantages-section__inner", start: "top 85%", once: true },
+        });
+
+        advTl
+          .fromTo(".advantages-heading", { autoAlpha: 0, y: 28 }, { autoAlpha: 1, y: 0, duration: 0.75 })
+          .fromTo(".advantages-subheading", { autoAlpha: 0, y: 20 }, { autoAlpha: 1, y: 0, duration: 0.65 }, "-=0.35")
+          .fromTo(".adv-card", { autoAlpha: 0, y: 50, scale: 0.95 }, { autoAlpha: 1, y: 0, scale: 1, duration: 0.7, stagger: { amount: 0.5, from: "start" } }, "-=0.2");
+
+        bindCardHover(document.querySelectorAll(".adv-card"), { lift: -6, scale: 1.02 });
+        document.querySelectorAll(".adv-card").forEach(function(card) {
+          card.addEventListener("mouseenter", function() {
+            gsap.to(card.querySelector(".advantages-card__icon"), { scale: 1.15, rotation: 8, duration: 0.4, ease: "back.out(2)" });
+          });
+          card.addEventListener("mouseleave", function() {
+            gsap.to(card.querySelector(".advantages-card__icon"), { scale: 1, rotation: 0, duration: 0.35 });
+          });
+        });
+
+        /* ── Industries We Serve ─────────────────── */
+        gsap.fromTo(".industries-bg__image",
+          { autoAlpha: 0, scale: 1.14 },
+          { autoAlpha: 1, scale: 1, duration: 1.4, ease: "power2.out",
+            scrollTrigger: { trigger: ".industries-section", start: "top 90%", once: true } }
         );
 
-      const clientsTl = gsap.timeline({
-        defaults: { ease: "power2.out" },
-        scrollTrigger: { trigger: ".clients-part__inner", start: "top 88%", once: true },
+        gsap.to(".industries-bg__image", {
+          y: 80,
+          scale: 1.08,
+          ease: "none",
+          scrollTrigger: { trigger: ".industries-section", start: "top bottom", end: "bottom top", scrub: 1.2 },
+        });
+
+        gsap.to(".industries-bg__image", {
+          x: "-=30",
+          duration: 12,
+          repeat: -1,
+          yoyo: true,
+          ease: "sine.inOut",
+        });
+
+        const industriesTl = gsap.timeline({
+          scrollTrigger: { trigger: ".industries-section__inner", start: "top 85%", once: true },
+        });
+
+        industriesTl
+          .fromTo(".industries-heading", { autoAlpha: 0, y: 28 }, { autoAlpha: 1, y: 0, duration: 0.7 })
+          .fromTo(".industries-subheading", { autoAlpha: 0, y: 20 }, { autoAlpha: 1, y: 0, duration: 0.65 }, "-=0.35")
+          .fromTo(".industries-card-animate", { autoAlpha: 0, y: 40, scale: 0.94 }, { autoAlpha: 1, y: 0, scale: 1, duration: 0.65, stagger: 0.08 }, "-=0.2")
+          .fromTo(".industries-cta-animate", { autoAlpha: 0, y: 16 }, { autoAlpha: 1, y: 0, duration: 0.55 }, "-=0.15");
+
+        bindCardHover(document.querySelectorAll(".industries-card"), { lift: -10, scale: 1.02, image: ".industries-card__image" });
+
+        /* ── Solutions ──────────────────────────── */
+        const solutionsTl = gsap.timeline({
+          scrollTrigger: { trigger: ".solutions-section__inner", start: "top 85%", once: true },
+        });
+
+        solutionsTl
+          .fromTo(".solutions-heading", { autoAlpha: 0, y: 28 }, { autoAlpha: 1, y: 0, duration: 0.7 })
+          .fromTo(".solutions-subheading", { autoAlpha: 0, y: 20 }, { autoAlpha: 1, y: 0, duration: 0.65 }, "-=0.35")
+          .fromTo(".solutions-card-animate", { autoAlpha: 0, y: 50, scale: 0.96 }, { autoAlpha: 1, y: 0, scale: 1, duration: 0.7, stagger: 0.1 }, "-=0.2");
+
+        bindCardHover(document.querySelectorAll(".machine-card"), { lift: -8, scale: 1.015, image: ".machine-card__image" });
+        bindTilt(document.querySelectorAll(".machine-card"), 5);
+
+        /* ── Footprints ─────────────────────────── */
+        const footprintsTl = gsap.timeline({
+          scrollTrigger: { trigger: ".footprints-section__inner", start: "top 85%", once: true },
+        });
+
+        footprintsTl
+          .fromTo(".footprints-eyebrow", { autoAlpha: 0, y: 18 }, { autoAlpha: 1, y: 0, duration: 0.55 })
+          .fromTo(".footprints-heading", { autoAlpha: 0, y: 32 }, { autoAlpha: 1, y: 0, duration: 0.75 }, "-=0.3")
+          .fromTo(".footprints-subheading", { autoAlpha: 0, y: 20 }, { autoAlpha: 1, y: 0, duration: 0.65 }, "-=0.35")
+          .fromTo(".footprints-stat-animate", { autoAlpha: 0, x: -60 }, { autoAlpha: 1, x: 0, stagger: 0.14, duration: 0.75 }, "-=0.2")
+          .fromTo(".footprints-globe", { autoAlpha: 0, scale: 0.85, x: 50 }, { autoAlpha: 1, scale: 1, x: 0, duration: 1.2, ease: "power3.out" }, "-=0.5")
+          .fromTo(".footprints-globe__glow", { autoAlpha: 0, scale: 0.5 }, { autoAlpha: 1, scale: 1, duration: 0.9, stagger: 0.15 }, "-=0.8");
+
+        document.querySelectorAll(".footprints-stat__value").forEach(function(el) {
+          const final = el.dataset.final || "";
+          const match = final.match(/^(\d+)(.*)$/);
+          if (!match) return;
+          const target = parseInt(match[1], 10);
+          const suffix = match[2] || "";
+          el.textContent = "0" + suffix;
+          const counter = { val: 0 };
+          gsap.to(counter, {
+            val: target,
+            duration: 1.8,
+            ease: "power2.out",
+            snap: { val: 1 },
+            scrollTrigger: { trigger: el.closest(".footprints-stat"), start: "top 86%", once: true },
+            onUpdate: function() { el.textContent = Math.round(counter.val) + suffix; },
+          });
+        });
+
+        gsap.to(".footprints-globe__image", {
+          y: -12,
+          duration: 3.5,
+          ease: "sine.inOut",
+          yoyo: true,
+          repeat: -1,
+          delay: 1.5,
+        });
+
+        gsap.to(".footprints-globe__image", {
+          rotation: 8,
+          ease: "none",
+          scrollTrigger: { trigger: ".footprints-section", start: "top bottom", end: "bottom top", scrub: 2 },
+        });
+
+        document.querySelectorAll(".footprints-stat").forEach(function(stat) {
+          stat.addEventListener("mouseenter", function() {
+            gsap.to(stat, { x: 8, scale: 1.02, duration: 0.35, ease: "power2.out" });
+            gsap.to(stat.querySelector(".footprints-stat__icon"), { rotation: 10, scale: 1.1, duration: 0.35, ease: "back.out(1.7)" });
+          });
+          stat.addEventListener("mouseleave", function() {
+            gsap.to(stat, { x: 0, scale: 1, duration: 0.4 });
+            gsap.to(stat.querySelector(".footprints-stat__icon"), { rotation: 0, scale: 1, duration: 0.35 });
+          });
+        });
+
+        /* ── Testimonials + Clients ─────────────── */
+        const testimonialsTl = gsap.timeline({
+          scrollTrigger: { trigger: ".testimonials-part__inner", start: "top 85%", once: true },
+        });
+
+        testimonialsTl
+          .fromTo(".testimonials-heading", { autoAlpha: 0, y: 28 }, { autoAlpha: 1, y: 0, duration: 0.7 })
+          .fromTo(".testimonials-subheading", { autoAlpha: 0, y: 20 }, { autoAlpha: 1, y: 0, duration: 0.65 }, "-=0.35")
+          .fromTo(".testimonial-card-animate", { autoAlpha: 0, y: 50, scale: 0.96 }, { autoAlpha: 1, y: 0, scale: 1, duration: 0.7, stagger: 0.12 }, "-=0.2");
+
+        document.querySelectorAll(".testimonial-card").forEach(function(card) {
+          const stars = card.querySelectorAll(".testimonial-card__stars img");
+          card.addEventListener("mouseenter", function() {
+            gsap.to(card, { y: -6, boxShadow: "0 16px 32px rgba(45,56,140,0.1)", duration: 0.35 });
+            gsap.fromTo(stars, { scale: 0.8, rotation: -20 }, { scale: 1, rotation: 0, duration: 0.35, stagger: 0.04, ease: "back.out(2)" });
+          });
+          card.addEventListener("mouseleave", function() {
+            gsap.to(card, { y: 0, boxShadow: "none", duration: 0.4 });
+          });
+        });
+
+        const clientsTl = gsap.timeline({
+          scrollTrigger: { trigger: ".clients-part__inner", start: "top 88%", once: true },
+        });
+
+        clientsTl
+          .fromTo(".clients-heading", { autoAlpha: 0, y: 28 }, { autoAlpha: 1, y: 0, duration: 0.7 })
+          .fromTo(".clients-subheading", { autoAlpha: 0, y: 20 }, { autoAlpha: 1, y: 0, duration: 0.65 }, "-=0.35")
+          .fromTo(".clients-marquee-animate", { autoAlpha: 0, y: 32 }, { autoAlpha: 1, y: 0, duration: 0.8 }, "-=0.2")
+          .fromTo(".clients-more-animate", { autoAlpha: 0, y: 16 }, { autoAlpha: 1, y: 0, duration: 0.55 }, "-=0.35");
+
+        document.querySelectorAll(".brand-logo-card").forEach(function(card) {
+          card.addEventListener("mouseenter", function() {
+            gsap.to(card, { scale: 1.06, borderColor: "#2d388c", duration: 0.3 });
+          });
+          card.addEventListener("mouseleave", function() {
+            gsap.to(card, { scale: 1, borderColor: "#e5e7eb", duration: 0.35 });
+          });
+        });
+
+        /* ── CTA Banner ─────────────────────────── */
+        const ctaTl = gsap.timeline({
+          scrollTrigger: { trigger: ".cta-banner", start: "top 86%", once: true },
+        });
+
+        ctaTl
+          .fromTo(".cta-banner", { autoAlpha: 0, y: 60, scale: 0.96 }, { autoAlpha: 1, y: 0, scale: 1, duration: 1.1, ease: "power3.out" })
+          .fromTo(".cta-banner__badge", { autoAlpha: 0, y: 16, scale: 0.9 }, { autoAlpha: 1, y: 0, scale: 1, duration: 0.55 }, "-=0.7")
+          .fromTo(".cta-banner__heading", { autoAlpha: 0, y: 24 }, { autoAlpha: 1, y: 0, duration: 0.65 }, "-=0.35")
+          .fromTo(".cta-banner__body", { autoAlpha: 0, y: 18 }, { autoAlpha: 1, y: 0, duration: 0.6 }, "-=0.4")
+          .fromTo(".cta-banner__feature", { autoAlpha: 0, x: -24 }, { autoAlpha: 1, x: 0, duration: 0.55, stagger: 0.1 }, "-=0.35")
+          .fromTo(".cta-banner__button", { autoAlpha: 0, y: 14, scale: 0.95 }, { autoAlpha: 1, y: 0, scale: 1, duration: 0.55 }, "-=0.2");
+
+        gsap.to(".cta-banner__photo", {
+          scale: 1.12,
+          y: -30,
+          ease: "none",
+          scrollTrigger: { trigger: ".cta-banner", start: "top bottom", end: "bottom top", scrub: 1.5 },
+        });
+
+        /* ── Get In Touch ───────────────────────── */
+        const contactTl = gsap.timeline({
+          scrollTrigger: { trigger: "#contact", start: "top 85%", once: true },
+        });
+
+        contactTl
+          .fromTo(".cta-info", { autoAlpha: 0, y: 36 }, { autoAlpha: 1, y: 0, duration: 0.9, ease: "power3.out" })
+          .fromTo(".cta-form", { autoAlpha: 0, y: 50, scale: 0.97 }, { autoAlpha: 1, y: 0, scale: 1, duration: 1, ease: "power3.out" }, "-=0.5")
+          .fromTo(".contact-info-card", { autoAlpha: 0, y: 40, scale: 0.95 }, { autoAlpha: 1, y: 0, scale: 1, duration: 0.7, stagger: 0.12 }, "-=0.4");
+
+        bindCardHover(document.querySelectorAll(".contact-info-card"), { lift: -8, scale: 1.03 });
+
+        document.querySelectorAll("#contact input, #contact textarea").forEach(function(field) {
+          field.addEventListener("focus", function() {
+            gsap.to(field, { scale: 1.01, duration: 0.25, ease: "power2.out" });
+          });
+          field.addEventListener("blur", function() {
+            gsap.to(field, { scale: 1, duration: 0.25 });
+          });
+        });
+
+        gsap.to(".contact-bg-parallax__image", {
+          y: 80,
+          scale: 1.08,
+          ease: "none",
+          scrollTrigger: { trigger: "#contact", start: "top bottom", end: "bottom top", scrub: 1.5 },
+        });
+
+        /* ── Primary buttons ────────────────────── */
+        bindPrimaryButtons(".gulpac-btn-primary");
+
       });
 
-      clientsTl
-        .fromTo(".clients-heading",
-          { autoAlpha: 0, y: 24 },
-          { autoAlpha: 1, y: 0, duration: 0.7 }
-        )
-        .fromTo(".clients-subheading",
-          { autoAlpha: 0, y: 20 },
-          { autoAlpha: 1, y: 0, duration: 0.65 },
-          "-=0.35"
-        )
-        .fromTo(".clients-marquee-animate",
-          { autoAlpha: 0, y: 28 },
-          { autoAlpha: 1, y: 0, duration: 0.8 },
-          "-=0.2"
-        )
-        .fromTo(".clients-more-animate",
-          { autoAlpha: 0, y: 16 },
-          { autoAlpha: 1, y: 0, duration: 0.55 },
-          "-=0.35"
-        );
-
-      /* ── CTA Banner ─────────────────────────── */
-      const ctaTl = gsap.timeline({
-        defaults: { ease: "power2.out" },
-        scrollTrigger: { trigger: ".cta-banner", start: "top 86%", once: true },
-      });
-
-      ctaTl
-        .fromTo(".cta-banner",
-          { autoAlpha: 0, y: 50, scale: 0.97 },
-          { autoAlpha: 1, y: 0, scale: 1, duration: 1.1, ease: "power3.out" }
-        )
-        .fromTo(".cta-banner__badge",
-          { autoAlpha: 0, y: 16 },
-          { autoAlpha: 1, y: 0, duration: 0.55 },
-          "-=0.7"
-        )
-        .fromTo(".cta-banner__heading",
-          { autoAlpha: 0, y: 22 },
-          { autoAlpha: 1, y: 0, duration: 0.65 },
-          "-=0.35"
-        )
-        .fromTo(".cta-banner__body",
-          { autoAlpha: 0, y: 18 },
-          { autoAlpha: 1, y: 0, duration: 0.6 },
-          "-=0.4"
-        )
-        .fromTo(".cta-banner__feature",
-          { autoAlpha: 0, x: -20 },
-          { autoAlpha: 1, x: 0, duration: 0.55, stagger: 0.1 },
-          "-=0.35"
-        )
-        .fromTo(".cta-banner__button",
-          { autoAlpha: 0, y: 14 },
-          { autoAlpha: 1, y: 0, duration: 0.55 },
-          "-=0.2"
-        );
-
-      /* ── Get In Touch ───────────────────────── */
-      gsap.fromTo(".cta-info",
-        { autoAlpha: 0, y: 30 },
-        { autoAlpha: 1, y: 0, duration: 0.9, ease: "power3.out",
-          scrollTrigger: { trigger: ".cta-info", start: "top 88%", once: true } }
-      );
-      gsap.fromTo(".cta-form",
-        { autoAlpha: 0, y: 40, scale: 0.98 },
-        { autoAlpha: 1, y: 0, scale: 1, duration: 1, ease: "power3.out",
-          scrollTrigger: { trigger: ".cta-form", start: "top 86%", once: true } }
-      );
+      window.__gulpacHomeAnimCtx = ctx;
     });
   </script>
 {% endblock %}
