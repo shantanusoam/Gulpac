@@ -8,8 +8,10 @@
   {# ── 1. HERO ─────────────────────────────────────────────────────────── #}
   <section class="relative overflow-hidden bg-[#f3f5f9] pt-24 pb-24 md:pt-28 md:pb-28 lg:pt-32 lg:pb-36">
     <div class="absolute inset-0 pointer-events-none" aria-hidden="true">
-      <img src="{{ hero.background_image_url }}" alt="" class="h-full w-full object-cover object-center">
-      <div class="absolute inset-0 bg-gradient-to-r from-[rgba(255,255,255,0.92)] via-[rgba(255,255,255,0.62)] to-[rgba(255,255,255,0.12)]"></div>
+      <div
+        class="hero-machine-bg absolute inset-0 bg-contain bg-no-repeat bg-right bg-bottom"
+        style="background-image: url('{% static 'images/hero/hero-machine.png' %}');"
+      ></div>
     </div>
 
     <div class="relative z-10 mx-8  lg:mx-24 mx-auto px-4 sm:px-6 lg:px-8">
@@ -36,16 +38,6 @@
           </div>
         </div>
 
-        <div class="hero-images-primary relative lg:col-span-7 min-h-[230px] sm:min-h-[300px] lg:min-h-[430px]">
-          <div class="absolute inset-x-0 bottom-0">
-            <img
-              src="{% static 'images/hero/hero-machine.png' %}"
-              alt="Gulpac packaging machine line"
-              class="hero-machine-primary w-[180%] max-w-none -ml-[20%] sm:w-[165%] sm:-ml-[16%] md:w-[150%] md:-ml-[10%] lg:w-[142%] lg:-ml-[7%]"
-            >
-          </div>
-        </div>
-
       </div>
     </div>
 
@@ -55,8 +47,68 @@
     </svg>
   </section>
 
-  {# ── 2. PARTNER TICKER ───────────────────────────────────────────────── #}
-  <section class="bg-white py-10 border-b border-slate-100/80 overflow-hidden">
+  {# ── 2. ABOUT GLUPAC (Figma 105:784) ─────────────────────────────────── #}
+  <section id="about-glupac" class="about-section bg-white pt-20 lg:pt-[80px] pb-20 lg:pb-[80px]">
+    <div class="about-section__container mx-8 lg:mx-24 mx-auto px-4 sm:px-6 lg:px-[88px]">
+      <div class="about-section__stage relative mx-auto w-full max-w-[1232px]">
+
+        <div class="about-content relative z-10 w-full max-w-[584px] xl:absolute xl:left-0 xl:top-0 xl:min-h-[516.75px]">
+          <p class="about-eyebrow">About Glupac</p>
+
+          <h2 class="about-heading">
+            Leading Manufacturer of
+            <span class="text-[#47a33d]">Packaging Solutions</span>
+          </h2>
+
+          <p class="about-para">
+            Glupac, under Suresh Raj Industries, is a pioneering manufacturer of precision gluing and packaging machinery. With installations across 5 countries and 20+ industries, we deliver customized solutions that ensure product safety, reduce wastage, and prevent supply chain theft.
+          </p>
+
+          <p class="about-para">
+            Our machines are engineered to provide zero-leakage packaging, theft resistance, and seamless automation for businesses ranging from food and pharmaceuticals to cosmetics and textiles.
+          </p>
+
+          <div class="about-stats">
+            <div class="about-stat">
+              <div class="about-stat__icon">
+                <img src="{% static 'images/about/icon-experience.svg' %}" alt="" width="32" height="32" aria-hidden="true">
+              </div>
+              <p class="about-stat__label">20+ Years Experience</p>
+            </div>
+            <div class="about-stat">
+              <div class="about-stat__icon">
+                <img src="{% static 'images/about/icon-installations.svg' %}" alt="" width="32" height="32" aria-hidden="true">
+              </div>
+              <p class="about-stat__label">500+ Installations</p>
+            </div>
+            <div class="about-stat">
+              <div class="about-stat__icon">
+                <img src="{% static 'images/about/icon-customized.svg' %}" alt="" width="32" height="32" aria-hidden="true">
+              </div>
+              <p class="about-stat__label">100% Customized</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="about-images relative mt-10 h-[300px] sm:h-[360px] xl:absolute xl:inset-0 xl:mt-0 xl:h-auto xl:pointer-events-none">
+          <img
+            src="{% static 'images/about/machine-1.jpg' %}"
+            alt="Gulpac packaging machinery close-up"
+            class="about-image-1"
+          >
+          <img
+            src="{% static 'images/about/machine-2.jpg' %}"
+            alt="Gulpac automated packaging production line"
+            class="about-image-2"
+          >
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  {# ── 3. PARTNER TICKER ───────────────────────────────────────────────── #}
+  <!-- <section class="bg-white py-10 border-b border-slate-100/80 overflow-hidden">
     <div class="mx-8  lg:mx-24 mx-auto px-4 sm:px-6 lg:px-8 mb-6">
       <p class="text-center text-xs font-bold text-slate-400 tracking-widest uppercase">Trusted by leading brands across industries</p>
     </div>
@@ -94,399 +146,538 @@
         </div>
       </div>
     </div>
-  </section>
+  </section> -->
 
-  {# ── 3. ADVANTAGES ───────────────────────────────────────────────────── #}
-  <section id="advantages" class="py-20 md:py-28 bg-[#f3f5f9]">
-    <div class="mx-8  lg:mx-24 mx-auto px-4 sm:px-6 lg:px-8">
+  {# ── 3. ADVANTAGES (Figma 105:821) ───────────────────────────────────── #}
+  <section id="advantages" class="advantages-section bg-[#f1f8ff] pt-20 lg:pt-[80px] pb-20 lg:pb-[80px]">
+    <div class="advantages-section__container mx-8 lg:mx-24 mx-auto px-4 sm:px-6 lg:px-[88px]">
+      <div class="advantages-section__inner mx-auto w-full max-w-[1232px] flex flex-col gap-12 lg:gap-16">
 
-      <div class="text-center max-w-3xl mx-auto mb-16 space-y-4 adv-header">
-        <span class="inline-block text-xs font-bold tracking-widest uppercase text-[#47a33d]">Why Choose Us</span>
-        <h2 class="text-3xl sm:text-4xl font-extrabold text-slate-900 tracking-tight">Why Choose <span class="text-[#2d388c]">GLUPAC?</span></h2>
-        <p class="text-base sm:text-lg text-[#4a5565] leading-relaxed">
-          Industry-leading gluing and packaging solutions engineered to prevent leakage, deter tampering, and maximize packaging throughput.
-        </p>
-      </div>
-
-      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 adv-grid">
-
-        <div class="bg-white rounded-2xl p-8 shadow-sm border border-slate-100 hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1 group">
-          <div class="w-14 h-14 rounded-xl bg-[#2d388c]/10 flex items-center justify-center text-[#2d388c] group-hover:bg-[#2d388c] group-hover:text-white transition-all mb-6">
-            <i data-lucide="shield-check" class="w-7 h-7"></i>
-          </div>
-          <h3 class="text-xl font-bold text-slate-900 mb-3 group-hover:text-[#2d388c] transition-colors">Zero Leakage Sealing</h3>
-          <p class="text-[#4a5565] text-sm leading-relaxed">
-            Advanced high-precision gluing and hot melt sealing technology secures complete package structural integrity for food and cosmetics.
+        <header class="adv-header text-center">
+          <h2 class="advantages-heading">
+            <span class="text-[#2d388c]">Why Choose</span><span class="text-[#47a33d]"> GLUPAC?</span>
+          </h2>
+          <p class="advantages-subheading">
+            Industry-leading gluing and packaging solutions that protect your products and brand
           </p>
-        </div>
+        </header>
 
-        <div class="bg-white rounded-2xl p-8 shadow-sm border border-slate-100 hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1 group">
-          <div class="w-14 h-14 rounded-xl bg-[#2d388c]/10 flex items-center justify-center text-[#2d388c] group-hover:bg-[#2d388c] group-hover:text-white transition-all mb-6">
-            <i data-lucide="lock" class="w-7 h-7"></i>
-          </div>
-          <h3 class="text-xl font-bold text-slate-900 mb-3 group-hover:text-[#2d388c] transition-colors">Theft Resistant Systems</h3>
-          <p class="text-[#4a5565] text-sm leading-relaxed">
-            Secure bonding design prevents product theft or tampering throughout regional distribution and complex retail supply chain operations.
-          </p>
-        </div>
-
-        <div class="bg-white rounded-2xl p-8 shadow-sm border border-slate-100 hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1 group">
-          <div class="w-14 h-14 rounded-xl bg-[#2d388c]/10 flex items-center justify-center text-[#2d388c] group-hover:bg-[#2d388c] group-hover:text-white transition-all mb-6">
-            <i data-lucide="layers" class="w-7 h-7"></i>
-          </div>
-          <h3 class="text-xl font-bold text-slate-900 mb-3 group-hover:text-[#2d388c] transition-colors">Multi-Size Compatibility</h3>
-          <p class="text-[#4a5565] text-sm leading-relaxed">
-            Highly adjustable and quick-change dynamic guidelines enable one single machinery unit to process multi-size cartons smoothly.
-          </p>
-        </div>
-
-        <div class="bg-white rounded-2xl p-8 shadow-sm border border-slate-100 hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1 group">
-          <div class="w-14 h-14 rounded-xl bg-[#2d388c]/10 flex items-center justify-center text-[#2d388c] group-hover:bg-[#2d388c] group-hover:text-white transition-all mb-6">
-            <i data-lucide="sliders" class="w-7 h-7"></i>
-          </div>
-          <h3 class="text-xl font-bold text-slate-900 mb-3 group-hover:text-[#2d388c] transition-colors">Industry Customization</h3>
-          <p class="text-[#4a5565] text-sm leading-relaxed">
-            Tailored engineering processes built uniquely to satisfy standards in food processing, retail pharma cleanrooms, cosmetics, and FMCG.
-          </p>
-        </div>
-
-        <div class="bg-white rounded-2xl p-8 shadow-sm border border-slate-100 hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1 group">
-          <div class="w-14 h-14 rounded-xl bg-[#2d388c]/10 flex items-center justify-center text-[#2d388c] group-hover:bg-[#2d388c] group-hover:text-white transition-all mb-6">
-            <i data-lucide="cpu" class="w-7 h-7"></i>
-          </div>
-          <h3 class="text-xl font-bold text-slate-900 mb-3 group-hover:text-[#2d388c] transition-colors">Precision Automation</h3>
-          <p class="text-[#4a5565] text-sm leading-relaxed">
-            High-speed automated workflows powered by state-of-the-art PLC computers and sensors guarantees consistent 85+ box output speeds.
-          </p>
-        </div>
-
-        <div class="bg-white rounded-2xl p-8 shadow-sm border border-slate-100 hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1 group">
-          <div class="w-14 h-14 rounded-xl bg-[#2d388c]/10 flex items-center justify-center text-[#2d388c] group-hover:bg-[#2d388c] group-hover:text-white transition-all mb-6">
-            <i data-lucide="leaf" class="w-7 h-7"></i>
-          </div>
-          <h3 class="text-xl font-bold text-slate-900 mb-3 group-hover:text-[#2d388c] transition-colors">Reduced Product Wastage</h3>
-          <p class="text-[#4a5565] text-sm leading-relaxed">
-            Optimized automated gluing nozzles minimize adhesive consumption and material waste, and prevent thermal tearing.
-          </p>
-        </div>
-
-      </div>
-    </div>
-  </section>
-
-  {# ── 4. SHOWCASE BANNER ──────────────────────────────────────────────── #}
-  <section class="relative bg-[#0f172a] overflow-hidden py-24 md:py-32">
-    <div class="absolute inset-0 bg-gradient-to-r from-[#0f172a] via-[#0f172a]/90 to-transparent z-10"></div>
-    <div class="absolute inset-0 z-0 opacity-40 pointer-events-none flex justify-end">
-      <img src="{% static 'images/component4.png' %}" alt="" class="w-full lg:w-2/3 h-full object-cover">
-    </div>
-
-    <div class="mx-8  lg:mx-24 mx-auto px-4 sm:px-6 lg:px-8 relative z-20">
-      <div class="lg:w-1/2 space-y-6 md:space-y-8 showcase-text">
-        <span class="inline-flex tracking-widest text-xs font-bold text-[#47a33d] uppercase">Interactive Machine Showroom</span>
-        <h2 class="text-3xl sm:text-5xl font-black text-white leading-tight">
-          Engineered for <br class="hidden sm:inline">
-          Perfect Control &amp; Zero-Fault Operation
-        </h2>
-        <p class="text-slate-300 text-base sm:text-lg leading-relaxed">
-          Behind every Glupac machine lies complex technical excellence. From dynamic hot-melt adhesive timing to automatic sensor diagnostics, our units help factory operators scale throughput easily without worrying about mechanical failure.
-        </p>
-        <div class="flex flex-wrap gap-4 pt-4">
-          <a href="#contact" class="inline-flex items-center justify-center px-7 py-3.5 rounded-full text-sm font-bold text-white bg-[#47a33d] hover:bg-[#3c8f34] transition-all shadow-lg shadow-[#47a33d]/20">
-            Schedule Live Video Demo
-            <i data-lucide="video" class="w-4 h-4 ml-1.5"></i>
-          </a>
-          <a href="{% url 'solutions' %}" class="inline-flex items-center justify-center px-7 py-3.5 rounded-full text-sm font-bold text-slate-200 border border-white/20 hover:bg-white/10 transition-all">
-            Technical Specifications
-          </a>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  {# ── 5. SOLUTIONS ────────────────────────────────────────────────────── #}
-  <section id="solutions" class="py-20 md:py-28 bg-white">
-    <div class="mx-8  lg:mx-24 mx-auto px-4 sm:px-6 lg:px-8">
-
-      <div class="flex flex-col md:flex-row md:items-end justify-between mb-16 gap-6 solutions-header">
-        <div class="space-y-4 max-w-2xl">
-          <span class="inline-block text-xs font-bold tracking-widest uppercase text-[#47a33d]">Our Products</span>
-          <h2 class="text-3xl sm:text-4xl font-extrabold text-slate-900 tracking-tight">High-Precision Packaging <span class="text-[#2d388c]">Solutions</span></h2>
-          <p class="text-base text-[#4a5565] leading-relaxed">
-            Browse our line-up of robust gluing and carton erection machines, from simple manual assist lines to continuous ultra-automation.
-          </p>
-        </div>
-        <div class="flex-shrink-0">
-          <a href="{% url 'solutions' %}" class="inline-flex items-center text-[#2d388c] hover:text-[#47a33d] font-bold transition-all group">
-            View All Machinery
-            <i data-lucide="arrow-right" class="w-5 h-5 ml-1.5 group-hover:translate-x-1 transition-transform"></i>
-          </a>
-        </div>
-      </div>
-
-      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 machines-grid">
-        {% for machine in machines %}
-        <div class="bg-white rounded-2xl shadow-md hover:shadow-2xl border border-slate-100 overflow-hidden flex flex-col h-full transform transition-all duration-300 group hover:-translate-y-1">
-          <div class="relative bg-slate-100 aspect-video overflow-hidden">
-            <img src="{% static machine.image_path %}" alt="{{ machine.name }}" class="w-full h-full object-cover group-hover:scale-105 transition-all duration-500" onerror="this.onerror=null; this.src='https://placehold.co/400x300?text={{ machine.model_number }}'">
-            <div class="absolute top-4 right-4 bg-[#2d388c]/90 backdrop-blur-sm text-white px-3.5 py-1.5 rounded-full text-xs font-bold tracking-wider">
-              {{ machine.model_number }}
+        <div class="advantages-grid adv-grid">
+          <article class="advantages-card adv-card">
+            <div class="advantages-card__icon">
+              <img src="{% static 'images/advantages/icon-zero-leakage.svg' %}" alt="" width="32" height="32" aria-hidden="true">
             </div>
+            <h3 class="advantages-card__title">Zero Leakage Packaging</h3>
+            <p class="advantages-card__text">
+              Advanced sealing technology ensures complete protection and prevents any product leakage during transit and storage.
+            </p>
+          </article>
+
+          <article class="advantages-card adv-card">
+            <div class="advantages-card__icon">
+              <img src="{% static 'images/advantages/icon-theft-resistant.svg' %}" alt="" width="32" height="32" aria-hidden="true">
+            </div>
+            <h3 class="advantages-card__title">Theft Resistant Systems</h3>
+            <p class="advantages-card__text">
+              Secure packaging solutions that prevent tampering and protect against counterfeiting in the supply chain.
+            </p>
+          </article>
+
+          <article class="advantages-card adv-card">
+            <div class="advantages-card__icon">
+              <img src="{% static 'images/advantages/icon-multi-size.svg' %}" alt="" width="32" height="32" aria-hidden="true">
+            </div>
+            <h3 class="advantages-card__title">Multi-Size Compatibility</h3>
+            <p class="advantages-card__text">
+              Flexible machines that handle various package dimensions from small pouches to large cartons.
+            </p>
+          </article>
+
+          <article class="advantages-card adv-card">
+            <div class="advantages-card__icon">
+              <img src="{% static 'images/advantages/icon-customization.svg' %}" alt="" width="32" height="32" aria-hidden="true">
+            </div>
+            <h3 class="advantages-card__title">Industry Customization</h3>
+            <p class="advantages-card__text">
+              Tailored solutions for food, pharma, cosmetics, FMCG, and more based on specific industry requirements.
+            </p>
+          </article>
+
+          <article class="advantages-card adv-card">
+            <div class="advantages-card__icon">
+              <img src="{% static 'images/advantages/icon-precision.svg' %}" alt="" width="32" height="32" aria-hidden="true">
+            </div>
+            <h3 class="advantages-card__title">Precision Automation</h3>
+            <p class="advantages-card__text">
+              High-speed automated systems with PLC controls ensuring consistent quality and reduced wastage.
+            </p>
+          </article>
+
+          <article class="advantages-card adv-card">
+            <div class="advantages-card__icon">
+              <img src="{% static 'images/advantages/icon-precision.svg' %}" alt="" width="32" height="32" aria-hidden="true">
+            </div>
+            <h3 class="advantages-card__title">Reduced Product Wastage</h3>
+            <p class="advantages-card__text">
+              Optimized gluing and sealing processes minimize material waste and maximize production efficiency.
+            </p>
+          </article>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  {# ── 4. INDUSTRIES WE SERVE (Figma 105:881) ─────────────────────────── #}
+  <section id="industries-we-serve" class="industries-section relative overflow-hidden bg-white pt-16 lg:pt-[62px] pb-20 lg:pb-[88px]">
+    <div class="industries-bg pointer-events-none absolute inset-0 overflow-hidden" aria-hidden="true">
+      <img
+        src="{% static 'images/industries/magnific-hexagon-bg.png' %}"
+        alt=""
+        class="industries-bg__image absolute left-1/2 top-[-84px] h-[968px] w-[1702px] max-w-none -translate-x-1/2 object-cover"
+      >
+    </div>
+
+    <div class="relative z-10 mx-8 lg:mx-24 mx-auto px-4 sm:px-6 lg:px-[88px]">
+      <div class="industries-section__inner mx-auto w-full max-w-[1232px]">
+
+        <header class="industries-header text-center mb-10 lg:mb-14">
+          <h2 class="industries-heading">
+            <span class="text-[#2d388c]">Industries </span><span class="text-[#47a33d]">We Serve</span>
+          </h2>
+          <p class="industries-subheading">
+            Customized packaging solutions across diverse sectors
+          </p>
+        </header>
+
+        <div class="industries-carousel-shell -mx-4 sm:mx-0">
+          <div class="industries-carousel flex gap-6 lg:gap-8 overflow-x-auto pb-4 snap-x snap-mandatory scroll-smooth">
+            <article class="industries-card industries-card-animate snap-start shrink-0">
+              <div class="industries-card__media">
+                <img src="{% static 'images/industries/food.jpg' %}" alt="" class="industries-card__image">
+                <img src="{% static 'images/industries/food-detail.jpg' %}" alt="" class="industries-card__image industries-card__image--overlay" aria-hidden="true">
+                <div class="industries-card__gradient"></div>
+                <h3 class="industries-card__title">Food Industry</h3>
+              </div>
+              <div class="industries-card__body">
+                <ul class="industries-card__list">
+                  <li><img src="{% static 'images/industries/icon-check.svg' %}" alt="" width="16" height="16" aria-hidden="true"><span>Ready to Eat Boxes</span></li>
+                  <li><img src="{% static 'images/industries/icon-check.svg' %}" alt="" width="16" height="16" aria-hidden="true"><span>Spice Boxes</span></li>
+                  <li><img src="{% static 'images/industries/icon-check.svg' %}" alt="" width="16" height="16" aria-hidden="true"><span>Sweet Boxes</span></li>
+                  <li><img src="{% static 'images/industries/icon-check.svg' %}" alt="" width="16" height="16" aria-hidden="true"><span>Dry Fruits</span></li>
+                </ul>
+              </div>
+            </article>
+
+            <article class="industries-card industries-card-animate snap-start shrink-0">
+              <div class="industries-card__media">
+                <img src="{% static 'images/industries/pharma.jpg' %}" alt="" class="industries-card__image">
+                <div class="industries-card__gradient"></div>
+                <h3 class="industries-card__title">Pharma Industry</h3>
+              </div>
+              <div class="industries-card__body">
+                <ul class="industries-card__list">
+                  <li><img src="{% static 'images/industries/icon-check.svg' %}" alt="" width="16" height="16" aria-hidden="true"><span>Soap Boxes</span></li>
+                  <li><img src="{% static 'images/industries/icon-check.svg' %}" alt="" width="16" height="16" aria-hidden="true"><span>Toothpaste</span></li>
+                  <li><img src="{% static 'images/industries/icon-check.svg' %}" alt="" width="16" height="16" aria-hidden="true"><span>Vials</span></li>
+                  <li><img src="{% static 'images/industries/icon-check.svg' %}" alt="" width="16" height="16" aria-hidden="true"><span>Ointments</span></li>
+                </ul>
+              </div>
+            </article>
+
+            <article class="industries-card industries-card-animate snap-start shrink-0">
+              <div class="industries-card__media">
+                <img src="{% static 'images/industries/cosmetics.jpg' %}" alt="" class="industries-card__image">
+                <div class="industries-card__gradient"></div>
+                <h3 class="industries-card__title">Cosmetics Industry</h3>
+              </div>
+              <div class="industries-card__body">
+                <ul class="industries-card__list">
+                  <li><img src="{% static 'images/industries/icon-check.svg' %}" alt="" width="16" height="16" aria-hidden="true"><span>Beauty Products</span></li>
+                  <li><img src="{% static 'images/industries/icon-check.svg' %}" alt="" width="16" height="16" aria-hidden="true"><span>Bonding of Foam</span></li>
+                  <li><img src="{% static 'images/industries/icon-check.svg' %}" alt="" width="16" height="16" aria-hidden="true"><span>Plastic Components</span></li>
+                </ul>
+              </div>
+            </article>
+
+            <article class="industries-card industries-card-animate snap-start shrink-0">
+              <div class="industries-card__media">
+                <img src="{% static 'images/industries/paper.jpg' %}" alt="" class="industries-card__image">
+                <div class="industries-card__gradient"></div>
+                <h3 class="industries-card__title">Paper Industry</h3>
+              </div>
+              <div class="industries-card__body industries-card__body--muted">
+                <ul class="industries-card__list">
+                  <li><img src="{% static 'images/industries/icon-check.svg' %}" alt="" width="16" height="16" aria-hidden="true"><span>Tissue Paper Boxes</span></li>
+                  <li><img src="{% static 'images/industries/icon-check.svg' %}" alt="" width="16" height="16" aria-hidden="true"><span>Paper Bags</span></li>
+                  <li><img src="{% static 'images/industries/icon-check.svg' %}" alt="" width="16" height="16" aria-hidden="true"><span>Corrugated Boxes</span></li>
+                  <li><img src="{% static 'images/industries/icon-check.svg' %}" alt="" width="16" height="16" aria-hidden="true"><span>A4 Paper Reams</span></li>
+                </ul>
+              </div>
+            </article>
+
+            <article class="industries-card industries-card-animate snap-start shrink-0">
+              <div class="industries-card__media">
+                <img src="{% static 'images/industries/textile.jpg' %}" alt="" class="industries-card__image">
+                <div class="industries-card__gradient"></div>
+                <h3 class="industries-card__title">Textile Industry</h3>
+              </div>
+              <div class="industries-card__body industries-card__body--muted">
+                <ul class="industries-card__list">
+                  <li><img src="{% static 'images/industries/icon-check.svg' %}" alt="" width="16" height="16" aria-hidden="true"><span>Pasting of Velcro on Fabric</span></li>
+                  <li><img src="{% static 'images/industries/icon-check.svg' %}" alt="" width="16" height="16" aria-hidden="true"><span>Textile Packaging</span></li>
+                </ul>
+              </div>
+            </article>
+
+            <article class="industries-card industries-card-animate snap-start shrink-0">
+              <div class="industries-card__media">
+                <img src="{% static 'images/industries/mattress.jpg' %}" alt="" class="industries-card__image">
+                <div class="industries-card__gradient"></div>
+                <h3 class="industries-card__title">Mattress Industry</h3>
+              </div>
+              <div class="industries-card__body industries-card__body--muted">
+                <ul class="industries-card__list">
+                  <li><img src="{% static 'images/industries/icon-check.svg' %}" alt="" width="16" height="16" aria-hidden="true"><span>Bonding of multiple layers of foam in a mattress</span></li>
+                  <li><img src="{% static 'images/industries/icon-check.svg' %}" alt="" width="16" height="16" aria-hidden="true"><span>Foam Assembly</span></li>
+                </ul>
+              </div>
+            </article>
+
+            <article class="industries-card industries-card-animate snap-start shrink-0">
+              <div class="industries-card__media">
+                <img src="{% static 'images/industries/wire.jpg' %}" alt="" class="industries-card__image">
+                <div class="industries-card__gradient"></div>
+                <h3 class="industries-card__title">Wire Industry</h3>
+              </div>
+              <div class="industries-card__body industries-card__body--muted">
+                <ul class="industries-card__list">
+                  <li><img src="{% static 'images/industries/icon-check.svg' %}" alt="" width="16" height="16" aria-hidden="true"><span>Wire Coil Boxes</span></li>
+                  <li><img src="{% static 'images/industries/icon-check.svg' %}" alt="" width="16" height="16" aria-hidden="true"><span>Cable Packaging</span></li>
+                </ul>
+              </div>
+            </article>
+
+            <article class="industries-card industries-card-animate snap-start shrink-0">
+              <div class="industries-card__media">
+                <img src="{% static 'images/industries/automobile.jpg' %}" alt="" class="industries-card__image">
+                <div class="industries-card__gradient"></div>
+                <h3 class="industries-card__title">Automobile Industry</h3>
+              </div>
+              <div class="industries-card__body industries-card__body--muted">
+                <ul class="industries-card__list">
+                  <li><img src="{% static 'images/industries/icon-check.svg' %}" alt="" width="16" height="16" aria-hidden="true"><span>Air Filters</span></li>
+                  <li><img src="{% static 'images/industries/icon-check.svg' %}" alt="" width="16" height="16" aria-hidden="true"><span>Head Lights</span></li>
+                  <li><img src="{% static 'images/industries/icon-check.svg' %}" alt="" width="16" height="16" aria-hidden="true"><span>Automotive Parts Packaging</span></li>
+                </ul>
+              </div>
+            </article>
           </div>
-          <div class="p-6 sm:p-8 flex-grow flex flex-col justify-between">
-            <div class="space-y-4">
-              <h3 class="text-xl font-bold text-slate-900 group-hover:text-[#2d388c] transition-colors">{{ machine.name }}</h3>
-              <ul class="space-y-2 text-sm text-[#4a5565] pt-1">
-                {% for feature in machine.features %}
-                <li class="flex items-start space-x-2">
-                  <i data-lucide="check-circle-2" class="w-4 h-4 text-[#47a33d] mt-0.5 flex-shrink-0"></i>
+        </div>
+
+        <div class="industries-cta-wrap text-center mt-10 lg:mt-12">
+          <a href="{% url 'industries' %}" class="industries-cta industries-cta-animate">
+            <span>View All Industries</span>
+            <img src="{% static 'images/industries/icon-arrow.svg' %}" alt="" width="20" height="20" aria-hidden="true">
+          </a>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  {# ── 5. SOLUTIONS (Figma 105:882) ────────────────────────────────────── #}
+  <section id="solutions" class="solutions-section bg-[#f1f8ff] pt-20 lg:pt-[80px] pb-20 lg:pb-[80px]">
+    <div class="solutions-section__container mx-8 lg:mx-24 mx-auto px-4 sm:px-6 lg:px-[88px]">
+      <div class="solutions-section__inner mx-auto w-full max-w-[1232px] flex flex-col gap-12 lg:gap-16">
+
+        <header class="solutions-header text-center">
+          <h2 class="solutions-heading">
+            <span class="text-[#2d388c]">Our</span><span class="text-[#47a33d]"> Solutions </span>
+          </h2>
+          <p class="solutions-subheading">
+            Advanced gluing and cartoning solutions
+          </p>
+        </header>
+
+        <div class="machines-grid solutions-grid">
+          {% for machine in machines %}
+          <article class="machine-card solutions-card-animate">
+            <div class="machine-card__media">
+              <img
+                src="{% static machine.image_path %}"
+                alt="{{ machine.name }}"
+                class="machine-card__image"
+                onerror="this.onerror=null; this.src='https://placehold.co/800x512?text={{ machine.model_number }}'"
+              >
+              <span class="machine-card__badge">{{ machine.model_number }}</span>
+            </div>
+            <div class="machine-card__body">
+              <h3 class="machine-card__title">{{ machine.name }}</h3>
+              <ul class="machine-card__features">
+                {% for feature in machine.features|slice:":3" %}
+                <li>
+                  <img src="{% static 'images/industries/icon-check.svg' %}" alt="" width="16" height="16" aria-hidden="true">
                   <span>{{ feature }}</span>
                 </li>
                 {% endfor %}
               </ul>
+              <a href="{% url 'solution_detail' machine.slug %}" class="machine-card__cta">View Details</a>
             </div>
-            <div class="pt-6 mt-6 border-t border-slate-100 flex items-center justify-between">
-              <span class="text-xs font-bold text-slate-400 uppercase tracking-widest">{{ machine.get_category_display }}</span>
-              <a href="{% url 'solution_detail' machine.slug %}" class="inline-flex items-center justify-center px-4 py-2 border border-[#2d388c]/20 rounded-full text-xs font-bold text-[#2d388c] hover:bg-[#2d388c]/5 transition-all">
-                Details
-                <i data-lucide="chevron-right" class="w-3.5 h-3.5 ml-1"></i>
-              </a>
-            </div>
+          </article>
+          {% empty %}
+          <div class="col-span-full py-16 text-center text-[#4a5565]">
+            No machines loaded yet. Run <code>python manage.py seed_demo</code> to populate.
           </div>
-        </div>
-        {% empty %}
-        <div class="col-span-full py-16 text-center text-slate-500">
-          No machines loaded yet. Run <code>python manage.py seed_demo</code> to populate.
-        </div>
-        {% endfor %}
-      </div>
-
-    </div>
-  </section>
-
-  {# ── 6. FOOTPRINTS ───────────────────────────────────────────────────── #}
-  <section id="footprints" class="py-20 md:py-28 bg-[#f3f5f9] overflow-hidden">
-    <div class="mx-8  lg:mx-24 mx-auto px-4 sm:px-6 lg:px-8">
-
-      <div class="text-center max-w-2xl mx-auto mb-16 space-y-3 footprints-header">
-        <span class="tracking-widest text-xs font-black text-[#47a33d] uppercase">Global Reach</span>
-        <h2 class="text-3xl sm:text-5xl font-black text-[#2d388c] tracking-tight uppercase">Footprints Across The Globe</h2>
-        <p class="text-base text-[#4a5565] leading-relaxed font-semibold">Delivering excellence across continents</p>
-      </div>
-
-      <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
-
-        <div class="lg:col-span-5 space-y-5 footprints-stats">
-          <div class="flex items-center space-x-5 bg-white p-5 rounded-2xl shadow-sm border border-slate-100 hover:shadow-md hover:-translate-y-0.5 transition-all duration-300">
-            <div class="w-14 h-14 rounded-xl bg-[#2d388c]/10 flex items-center justify-center text-[#2d388c] flex-shrink-0">
-              <i data-lucide="anchor" class="w-6 h-6"></i>
-            </div>
-            <div>
-              <p class="text-3xl font-black text-slate-900">500+</p>
-              <p class="text-sm font-bold text-[#4a5565]">Installations Worldwide</p>
-            </div>
-          </div>
-
-          <div class="flex items-center space-x-5 bg-white p-5 rounded-2xl shadow-sm border border-slate-100 hover:shadow-md hover:-translate-y-0.5 transition-all duration-300">
-            <div class="w-14 h-14 rounded-xl bg-[#2d388c]/10 flex items-center justify-center text-[#2d388c] flex-shrink-0">
-              <i data-lucide="factory" class="w-6 h-6"></i>
-            </div>
-            <div>
-              <p class="text-3xl font-black text-slate-900">20+</p>
-              <p class="text-sm font-bold text-[#4a5565]">Industries Served</p>
-            </div>
-          </div>
-
-          <div class="flex items-center space-x-5 bg-white p-5 rounded-2xl shadow-sm border border-slate-100 hover:shadow-md hover:-translate-y-0.5 transition-all duration-300">
-            <div class="w-14 h-14 rounded-xl bg-[#2d388c]/10 flex items-center justify-center text-[#2d388c] flex-shrink-0">
-              <i data-lucide="settings-2" class="w-6 h-6"></i>
-            </div>
-            <div>
-              <p class="text-3xl font-black text-slate-900">100%</p>
-              <p class="text-sm font-bold text-[#4a5565]">Customized Engineering</p>
-            </div>
-          </div>
-
-          <div class="flex items-center space-x-5 bg-white p-5 rounded-2xl shadow-sm border border-slate-100 hover:shadow-md hover:-translate-y-0.5 transition-all duration-300">
-            <div class="w-14 h-14 rounded-xl bg-[#2d388c]/10 flex items-center justify-center text-[#2d388c] flex-shrink-0">
-              <i data-lucide="globe-2" class="w-6 h-6"></i>
-            </div>
-            <div>
-              <p class="text-3xl font-black text-slate-900">5+</p>
-              <p class="text-sm font-bold text-[#4a5565]">Countries Worldwide</p>
-            </div>
-          </div>
-        </div>
-
-        <div class="lg:col-span-7 flex justify-center items-center relative footprints-globe">
-          <div class="absolute w-96 h-96 bg-[#2d388c]/8 rounded-full blur-3xl pointer-events-none"></div>
-          <div class="relative w-full max-w-[520px] h-[360px] sm:h-[460px] flex items-center justify-center transform hover:scale-[1.03] transition-all duration-700">
-            <img src="{% static 'images/globe.png' %}" alt="Glupac Global Export Network" class="w-full h-full object-contain drop-shadow-2xl">
-          </div>
+          {% endfor %}
         </div>
 
       </div>
     </div>
   </section>
 
-  {# ── 7. TESTIMONIALS ─────────────────────────────────────────────────── #}
-  <section class="py-20 md:py-28 bg-white">
-    <div class="mx-8  lg:mx-24 mx-auto px-4 sm:px-6 lg:px-8">
+ 
 
-      <div class="text-center max-w-3xl mx-auto mb-16 space-y-4 testimonials-header">
-        <span class="inline-block text-xs font-bold tracking-widest uppercase text-[#47a33d]">Testimonials</span>
-        <h2 class="text-3xl sm:text-4xl font-extrabold text-slate-900 tracking-tight">What Our <span class="text-[#2d388c]">Clients Say</span></h2>
-        <p class="text-base text-[#4a5565] leading-relaxed font-semibold">Trusted by industry leaders worldwide</p>
-      </div>
+  {# ── 7. TESTIMONIALS + ESTEEMED CLIENTS (Figma 105:1058 + 183:450) ──── #}
+  <section id="testimonials-clients" class="testimonials-clients">
+    <div class="testimonials-part bg-white pt-[57px] pb-[63px]">
+      <div class="mx-8 lg:mx-24 mx-auto px-4 sm:px-6 lg:px-[88px]">
+        <div class="testimonials-part__inner mx-auto w-full max-w-[1232px] flex flex-col gap-12 lg:gap-16">
 
-      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 testimonials-grid">
-        {% for testimonial in testimonials %}
-        <div class="bg-[#f3f5f9] rounded-2xl p-8 border border-slate-100 shadow-sm flex flex-col justify-between hover:shadow-lg hover:-translate-y-0.5 transition-all duration-300">
-          <div class="space-y-5">
-            <div class="flex items-center space-x-1 text-amber-400">
-              <i data-lucide="star" class="w-5 h-5 fill-current"></i>
-              <i data-lucide="star" class="w-5 h-5 fill-current"></i>
-              <i data-lucide="star" class="w-5 h-5 fill-current"></i>
-              <i data-lucide="star" class="w-5 h-5 fill-current"></i>
-              <i data-lucide="star" class="w-5 h-5 fill-current"></i>
-            </div>
-            <p class="text-[#4a5565] text-sm leading-relaxed italic">
-              "{{ testimonial.quote }}"
-            </p>
-          </div>
-          <div class="pt-6 mt-6 border-t border-slate-200/70 flex items-center justify-between">
-            <div>
-              <p class="font-extrabold text-slate-900 text-sm leading-tight">{{ testimonial.name }}</p>
-              <p class="text-xs font-bold text-[#2d388c] pt-0.5">{{ testimonial.company }}</p>
-            </div>
-            <div class="w-10 h-10 rounded-full bg-[#2d388c]/10 flex items-center justify-center font-bold text-[#2d388c] text-sm">
-              {{ testimonial.name|slice:":1" }}
-            </div>
-          </div>
-        </div>
-        {% empty %}
-        <div class="col-span-full text-center text-slate-500 py-10">
-          No testimonials yet. Seed the database to display them.
-        </div>
-        {% endfor %}
-      </div>
+          <header class="testimonials-header text-center">
+            <h2 class="testimonials-heading">
+              <span class="text-[#2d388c]">What Our </span><span class="text-[#47a33d]">Clients Say</span>
+            </h2>
+            <p class="testimonials-subheading">Trusted by industry leaders worldwide</p>
+          </header>
 
-      {# Esteemed Clients Brand Marquee #}
-      <div class="mt-20 pt-16 bg-[#f3f5f9] rounded-3xl testimonials-brands">
-        <div class="text-center max-w-3xl mx-auto mb-10 space-y-2 px-4">
-          <h3 class="text-3xl sm:text-4xl font-extrabold tracking-tight italic">
-            <span class="text-slate-800">ESTEEMED</span>
-            <span class="text-[#47a33d]"> CLIENTS</span>
-          </h3>
-          <p class="text-base text-[#4a5565] font-semibold">Trusted by leading brands across industries</p>
-        </div>
-
-        <div class="testimonials-brand-marquee pb-8 px-4 sm:px-8">
-          <div class="brand-marquee-row">
-            <div class="brand-marquee-track">
-              <div class="brand-logo-card"><img src="{% static 'images/brands/brand-01.png' %}" alt="Client brand logo 1" class="brand-logo-image"></div>
-              <div class="brand-logo-card"><img src="{% static 'images/brands/brand-02.png' %}" alt="Client brand logo 2" class="brand-logo-image"></div>
-              <div class="brand-logo-card"><img src="{% static 'images/brands/brand-03.png' %}" alt="Client brand logo 3" class="brand-logo-image"></div>
-              <div class="brand-logo-card"><img src="{% static 'images/brands/brand-04.png' %}" alt="Client brand logo 4" class="brand-logo-image"></div>
-              <div class="brand-logo-card"><img src="{% static 'images/brands/brand-05.png' %}" alt="Client brand logo 5" class="brand-logo-image"></div>
-              <div class="brand-logo-card"><img src="{% static 'images/brands/brand-06.png' %}" alt="Client brand logo 6" class="brand-logo-image"></div>
-              <div class="brand-logo-card" aria-hidden="true"><img src="{% static 'images/brands/brand-01.png' %}" alt="" class="brand-logo-image"></div>
-              <div class="brand-logo-card" aria-hidden="true"><img src="{% static 'images/brands/brand-02.png' %}" alt="" class="brand-logo-image"></div>
-              <div class="brand-logo-card" aria-hidden="true"><img src="{% static 'images/brands/brand-03.png' %}" alt="" class="brand-logo-image"></div>
-              <div class="brand-logo-card" aria-hidden="true"><img src="{% static 'images/brands/brand-04.png' %}" alt="" class="brand-logo-image"></div>
-              <div class="brand-logo-card" aria-hidden="true"><img src="{% static 'images/brands/brand-05.png' %}" alt="" class="brand-logo-image"></div>
-              <div class="brand-logo-card" aria-hidden="true"><img src="{% static 'images/brands/brand-06.png' %}" alt="" class="brand-logo-image"></div>
-            </div>
+          <div class="testimonials-grid">
+            {% for testimonial in testimonials %}
+            <article class="testimonial-card testimonial-card-animate">
+              <div class="testimonial-card__stars" aria-label="{{ testimonial.rating }} out of 5 stars">
+                {% for i in "12345" %}
+                <img src="{% static 'images/testimonials/icon-star.svg' %}" alt="" width="20" height="20" aria-hidden="true">
+                {% endfor %}
+              </div>
+              <blockquote class="testimonial-card__quote">"{{ testimonial.quote }}"</blockquote>
+              <div class="testimonial-card__author">
+                <p class="testimonial-card__name">{{ testimonial.name }}</p>
+                <p class="testimonial-card__company">{{ testimonial.company }}</p>
+              </div>
+            </article>
+            {% empty %}
+            <article class="testimonial-card testimonial-card-animate">
+              <div class="testimonial-card__stars" aria-hidden="true">
+                {% for i in "12345" %}<img src="{% static 'images/testimonials/icon-star.svg' %}" alt="" width="20" height="20">{% endfor %}
+              </div>
+              <blockquote class="testimonial-card__quote">"Glupac machines have transformed our packaging efficiency. The zero-leakage feature has significantly reduced product wastage."</blockquote>
+              <div class="testimonial-card__author">
+                <p class="testimonial-card__name">Rajesh Kumar</p>
+                <p class="testimonial-card__company">India Gate Foods</p>
+              </div>
+            </article>
+            <article class="testimonial-card testimonial-card-animate">
+              <div class="testimonial-card__stars" aria-hidden="true">
+                {% for i in "12345" %}<img src="{% static 'images/testimonials/icon-star.svg' %}" alt="" width="20" height="20">{% endfor %}
+              </div>
+              <blockquote class="testimonial-card__quote">"Outstanding customization and support. The machines are perfectly tailored to our product requirements."</blockquote>
+              <div class="testimonial-card__author">
+                <p class="testimonial-card__name">Priya Sharma</p>
+                <p class="testimonial-card__company">Haldirams</p>
+              </div>
+            </article>
+            <article class="testimonial-card testimonial-card-animate">
+              <div class="testimonial-card__stars" aria-hidden="true">
+                {% for i in "12345" %}<img src="{% static 'images/testimonials/icon-star.svg' %}" alt="" width="20" height="20">{% endfor %}
+              </div>
+              <blockquote class="testimonial-card__quote">"Excellent build quality and automation. Our production speed has increased by 40% since installation."</blockquote>
+              <div class="testimonial-card__author">
+                <p class="testimonial-card__name">Mohammed Ali</p>
+                <p class="testimonial-card__company">Finolex Cables</p>
+              </div>
+            </article>
+            {% endfor %}
           </div>
 
-          <div class="brand-marquee-row brand-marquee-row--reverse mt-4">
-            <div class="brand-marquee-track">
-              <div class="brand-logo-card"><img src="{% static 'images/brands/brand-07.png' %}" alt="Client brand logo 7" class="brand-logo-image"></div>
-              <div class="brand-logo-card"><img src="{% static 'images/brands/brand-08.png' %}" alt="Client brand logo 8" class="brand-logo-image"></div>
-              <div class="brand-logo-card"><img src="{% static 'images/brands/brand-09.png' %}" alt="Client brand logo 9" class="brand-logo-image"></div>
-              <div class="brand-logo-card"><img src="{% static 'images/brands/brand-10.png' %}" alt="Client brand logo 10" class="brand-logo-image"></div>
-              <div class="brand-logo-card"><img src="{% static 'images/brands/brand-11.png' %}" alt="Client brand logo 11" class="brand-logo-image"></div>
-              <div class="brand-logo-card"><img src="{% static 'images/brands/brand-12.png' %}" alt="Client brand logo 12" class="brand-logo-image"></div>
-              <div class="brand-logo-card" aria-hidden="true"><img src="{% static 'images/brands/brand-07.png' %}" alt="" class="brand-logo-image"></div>
-              <div class="brand-logo-card" aria-hidden="true"><img src="{% static 'images/brands/brand-08.png' %}" alt="" class="brand-logo-image"></div>
-              <div class="brand-logo-card" aria-hidden="true"><img src="{% static 'images/brands/brand-09.png' %}" alt="" class="brand-logo-image"></div>
-              <div class="brand-logo-card" aria-hidden="true"><img src="{% static 'images/brands/brand-10.png' %}" alt="" class="brand-logo-image"></div>
-              <div class="brand-logo-card" aria-hidden="true"><img src="{% static 'images/brands/brand-11.png' %}" alt="" class="brand-logo-image"></div>
-              <div class="brand-logo-card" aria-hidden="true"><img src="{% static 'images/brands/brand-12.png' %}" alt="" class="brand-logo-image"></div>
-            </div>
-          </div>
-
-          <p class="text-center text-slate-600 font-extrabold text-lg mt-6 pb-2">&amp; many more...</p>
         </div>
       </div>
+    </div>
 
+    <div class="clients-part bg-[#f1f8ff] pt-[22px] pb-[22px]">
+      <div class="mx-8 lg:mx-24 mx-auto px-4 sm:px-6 lg:px-[88px]">
+        <div class="clients-part__inner mx-auto w-full max-w-[1232px] py-[38px]">
+
+          <header class="clients-header text-center mb-10 lg:mb-12">
+            <h2 class="clients-heading">
+              <span class="text-[#2d388c]">Esteemed </span><span class="text-[#47a33d]">Clients</span>
+            </h2>
+            <p class="clients-subheading">Trusted by leading brands across industries</p>
+          </header>
+
+          <div class="clients-marquee testimonials-brand-marquee clients-marquee-animate">
+            <div class="brand-marquee-row">
+              <div class="brand-marquee-track">
+                <div class="brand-logo-card"><img src="{% static 'images/brands/brand-01.png' %}" alt="Haldiram's" class="brand-logo-image"></div>
+                <div class="brand-logo-card"><img src="{% static 'images/brands/brand-02.png' %}" alt="Bikano" class="brand-logo-image"></div>
+                <div class="brand-logo-card"><img src="{% static 'images/brands/brand-03.png' %}" alt="Bambino" class="brand-logo-image"></div>
+                <div class="brand-logo-card"><img src="{% static 'images/brands/brand-04.png' %}" alt="Bansal" class="brand-logo-image"></div>
+                <div class="brand-logo-card"><img src="{% static 'images/brands/brand-05.png' %}" alt="Bhujialalji" class="brand-logo-image"></div>
+                <div class="brand-logo-card"><img src="{% static 'images/brands/brand-06.png' %}" alt="Karachi Bakery" class="brand-logo-image"></div>
+                <div class="brand-logo-card" aria-hidden="true"><img src="{% static 'images/brands/brand-01.png' %}" alt="" class="brand-logo-image"></div>
+                <div class="brand-logo-card" aria-hidden="true"><img src="{% static 'images/brands/brand-02.png' %}" alt="" class="brand-logo-image"></div>
+                <div class="brand-logo-card" aria-hidden="true"><img src="{% static 'images/brands/brand-03.png' %}" alt="" class="brand-logo-image"></div>
+                <div class="brand-logo-card" aria-hidden="true"><img src="{% static 'images/brands/brand-04.png' %}" alt="" class="brand-logo-image"></div>
+                <div class="brand-logo-card" aria-hidden="true"><img src="{% static 'images/brands/brand-05.png' %}" alt="" class="brand-logo-image"></div>
+                <div class="brand-logo-card" aria-hidden="true"><img src="{% static 'images/brands/brand-06.png' %}" alt="" class="brand-logo-image"></div>
+              </div>
+            </div>
+
+            <div class="brand-marquee-row brand-marquee-row--reverse mt-4">
+              <div class="brand-marquee-track">
+                <div class="brand-logo-card"><img src="{% static 'images/brands/brand-07.png' %}" alt="Hungryy" class="brand-logo-image"></div>
+                <div class="brand-logo-card"><img src="{% static 'images/brands/brand-08.png' %}" alt="Claret" class="brand-logo-image"></div>
+                <div class="brand-logo-card"><img src="{% static 'images/brands/brand-09.png' %}" alt="Finolex Cables" class="brand-logo-image"></div>
+                <div class="brand-logo-card"><img src="{% static 'images/brands/brand-10.png' %}" alt="Shantis" class="brand-logo-image"></div>
+                <div class="brand-logo-card"><img src="{% static 'images/brands/brand-11.png' %}" alt="Radhee" class="brand-logo-image"></div>
+                <div class="brand-logo-card"><img src="{% static 'images/brands/brand-12.png' %}" alt="JR" class="brand-logo-image"></div>
+                <div class="brand-logo-card" aria-hidden="true"><img src="{% static 'images/brands/brand-07.png' %}" alt="" class="brand-logo-image"></div>
+                <div class="brand-logo-card" aria-hidden="true"><img src="{% static 'images/brands/brand-08.png' %}" alt="" class="brand-logo-image"></div>
+                <div class="brand-logo-card" aria-hidden="true"><img src="{% static 'images/brands/brand-09.png' %}" alt="" class="brand-logo-image"></div>
+                <div class="brand-logo-card" aria-hidden="true"><img src="{% static 'images/brands/brand-10.png' %}" alt="" class="brand-logo-image"></div>
+                <div class="brand-logo-card" aria-hidden="true"><img src="{% static 'images/brands/brand-11.png' %}" alt="" class="brand-logo-image"></div>
+                <div class="brand-logo-card" aria-hidden="true"><img src="{% static 'images/brands/brand-12.png' %}" alt="" class="brand-logo-image"></div>
+              </div>
+            </div>
+
+            <p class="clients-more clients-more-animate">&amp; many more...</p>
+          </div>
+
+        </div>
+      </div>
     </div>
   </section>
 
-  {# ── 8. LOOKING FOR THE RIGHT MACHINE (CTA BANNER) ──────────────────── #}
-  <section class="bg-white pt-20 pb-0 px-4 sm:px-8 lg:px-16">
-    <div class="max-w-[1280px] mx-auto px-6">
-      {# Large rounded card — navy-to-blue gradient + machine photo left #}
-      <div class="relative h-[480px] sm:h-[540px] lg:h-[600px] rounded-3xl overflow-hidden shadow-[0px_25px_50px_-12px_rgba(0,0,0,0.25)] cta-banner"
-        style="background: linear-gradient(154.03deg, rgb(10,10,26) 0%, rgb(13,16,40) 7.14%, rgb(16,23,55) 14.29%, rgb(19,30,71) 21.43%, rgb(22,37,87) 28.57%, rgb(25,44,103) 35.71%, rgb(28,51,120) 42.86%, rgb(30,58,138) 50%, rgb(30,59,143) 57.14%, rgb(30,60,148) 64.29%, rgb(30,61,154) 71.43%, rgb(30,62,159) 78.57%, rgb(30,62,164) 85.71%, rgb(30,63,170) 92.86%, rgb(30,64,175) 100%);">
+  {# ── 6. FOOTPRINTS (Figma 105:1134 + 105:1140) ─────────────────────── #}
+  <section id="footprints" class="footprints-section bg-white pt-20 lg:pt-[80px] pb-20 lg:pb-[80px] overflow-hidden">
+    <div class="mx-8 lg:mx-24 mx-auto px-4 sm:px-6 lg:px-[88px]">
+      <div class="footprints-section__inner mx-auto w-full max-w-[1232px]">
 
-        {# Left: machine photo with fade-right overlay #}
-        <div class="absolute inset-y-0 left-0 w-1/2 overflow-hidden">
-          <img src="{% static 'images/cta-machine.jpg' %}" alt="Glupac packaging machine production line"
-            class="w-full h-full object-cover object-center">
-          <div class="absolute inset-0" style="background: linear-gradient(to right, rgba(30,58,138,0.85) 0%, rgba(0,0,0,0) 100%);"></div>
-        </div>
-
-        {# Right: content #}
-        <div class="absolute inset-y-0 right-0 w-1/2 flex flex-col justify-center px-12 py-10">
-
-          {# Badge #}
-          <div class="inline-flex self-start mb-6 px-4 py-1.5 rounded-full text-[14px] font-normal leading-[20px] tracking-[-0.15px] text-white"
-            style="background: rgba(30,64,175,0.8); font-family: 'Inter', sans-serif;">
-            Get Your Custom Solution
-          </div>
-
-          {# Heading #}
-          <h2 class="text-white font-bold text-[36px] leading-[43.2px] tracking-[0.37px] mb-5 max-w-[496px]"
-            style="font-family: 'Inter', sans-serif;">
-            Looking for the Right Packaging Machine?
+        <header class="footprints-header text-center mb-12 lg:mb-16">
+          <p class="footprints-eyebrow">Footprints Across</p>
+          <h2 class="footprints-heading">
+            <span class="text-[#2d388c]">THE </span><span class="text-[#47a33d]">GLOBE</span>
           </h2>
+          <p class="footprints-subheading">Delivering excellence across continents</p>
+        </header>
 
-          {# Body #}
-          <p class="text-[#e5e7eb] text-[18px] font-normal leading-[29.25px] tracking-[-0.44px] mb-6 max-w-[496px]"
-            style="font-family: 'Inter', sans-serif;">
-            Send your requirements and receive a customized machine proposal from our experts.
-          </p>
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+          <div class="lg:col-span-5 footprints-stats flex flex-col gap-6 lg:gap-8">
+            <div class="footprints-stat footprints-stat-animate">
+              <div class="footprints-stat__icon">
+                <img src="{% static 'images/footprints/icon-installations.svg' %}" alt="" width="32" height="32" aria-hidden="true">
+              </div>
+              <div class="footprints-stat__text">
+                <p class="footprints-stat__value" data-final="500+">500+</p>
+                <p class="footprints-stat__label">Installations</p>
+              </div>
+            </div>
 
-          {# Bullet points #}
-          <ul class="flex flex-col gap-3 mb-8">
-            <li class="flex items-center gap-3 text-white text-[16px] font-normal leading-[24px] tracking-[-0.31px]"
-              style="font-family: 'Inter', sans-serif;">
-              <i data-lucide="circle-check" class="w-5 h-5 flex-shrink-0 text-[#47a33d]"></i>
-              Free machine demonstration
-            </li>
-            <li class="flex items-center gap-3 text-white text-[16px] font-normal leading-[24px] tracking-[-0.31px]"
-              style="font-family: 'Inter', sans-serif;">
-              <i data-lucide="circle-check" class="w-5 h-5 flex-shrink-0 text-[#47a33d]"></i>
-              Custom engineering for your product
-            </li>
-            <li class="flex items-center gap-3 text-white text-[16px] font-normal leading-[24px] tracking-[-0.31px]"
-              style="font-family: 'Inter', sans-serif;">
-              <i data-lucide="circle-check" class="w-5 h-5 flex-shrink-0 text-[#47a33d]"></i>
-              Testing &amp; trial before purchase
-            </li>
-          </ul>
+            <div class="footprints-stat footprints-stat-animate">
+              <div class="footprints-stat__icon">
+                <img src="{% static 'images/footprints/icon-industries.svg' %}" alt="" width="32" height="32" aria-hidden="true">
+              </div>
+              <div class="footprints-stat__text">
+                <p class="footprints-stat__value" data-final="20+">20+</p>
+                <p class="footprints-stat__label">Industries Served</p>
+              </div>
+            </div>
 
-          {# CTA button #}
-          <div>
-            <a href="#contact"
-              class="inline-flex items-center justify-center h-[52px] px-8 rounded-[10px] border-2 border-white/30 bg-[#47a33d] hover:bg-[#3c8f34] text-white text-[16px] font-medium leading-[24px] tracking-[-0.31px] transition-all hover:-translate-y-0.5 active:translate-y-0"
-              style="font-family: 'Inter', sans-serif;">
+            <div class="footprints-stat footprints-stat-animate">
+              <div class="footprints-stat__icon">
+                <img src="{% static 'images/footprints/icon-engineering.svg' %}" alt="" width="32" height="32" aria-hidden="true">
+              </div>
+              <div class="footprints-stat__text">
+                <p class="footprints-stat__value" data-final="100%">100%</p>
+                <p class="footprints-stat__label">Customized Engineering</p>
+              </div>
+            </div>
+
+            <div class="footprints-stat footprints-stat-animate">
+              <div class="footprints-stat__icon">
+                <img src="{% static 'images/footprints/icon-countries.svg' %}" alt="" width="32" height="32" aria-hidden="true">
+              </div>
+              <div class="footprints-stat__text">
+                <p class="footprints-stat__value" data-final="5">5</p>
+                <p class="footprints-stat__label">Countries Worldwide</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="lg:col-span-7 flex justify-center items-center relative footprints-globe">
+            <div class="footprints-globe__glow footprints-globe__glow--1" aria-hidden="true"></div>
+            <div class="footprints-globe__glow footprints-globe__glow--2" aria-hidden="true"></div>
+            <div class="footprints-globe__frame relative w-full max-w-[720px] h-[360px] sm:h-[460px]">
+              <img
+                src="{% static 'images/footprints/globe.png' %}"
+                alt="Glupac global export network across USA, Kuwait, UAE, India, and Russia"
+                class="footprints-globe__image"
+              >
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+
+  {# ── 8. LOOKING FOR THE RIGHT MACHINE (Figma 105:1185) ──────────────── #}
+  <section class="cta-section bg-white pt-0 pb-0">
+    <div class="mx-8 lg:mx-24 mx-auto px-4 sm:px-6 lg:px-[88px] pb-[76px] my-0">
+      <div class="cta-section__inner mx-auto w-full max-w-[1232px]">
+
+        <div class="cta-banner relative w-full min-h-[520px] xl:h-[600px] rounded-[24px] overflow-hidden shadow-[0px_25px_50px_-12px_rgba(0,0,0,0.25)]">
+          <div class="cta-banner__image" aria-hidden="true">
+            <img
+              src="{% static 'images/cta/machine.jpg' %}"
+              alt=""
+              class="cta-banner__photo"
+            >
+            <div class="cta-banner__image-overlay"></div>
+          </div>
+
+          <div class="cta-banner__content">
+            <span class="cta-banner__badge">Get Your Custom Solution</span>
+
+            <h2 class="cta-banner__heading">
+              Looking for the Right Packaging Machine?
+            </h2>
+
+            <p class="cta-banner__body">
+              Send your requirements and receive a customized machine proposal from our experts.
+            </p>
+
+            <ul class="cta-banner__features">
+              <li class="cta-banner__feature">
+                <img src="{% static 'images/cta/icon-check.svg' %}" alt="" width="20" height="20" aria-hidden="true">
+                Free machine demonstration
+              </li>
+              <li class="cta-banner__feature">
+                <img src="{% static 'images/cta/icon-check.svg' %}" alt="" width="20" height="20" aria-hidden="true">
+                Custom engineering for your product
+              </li>
+              <li class="cta-banner__feature">
+                <img src="{% static 'images/cta/icon-check.svg' %}" alt="" width="20" height="20" aria-hidden="true">
+                Testing &amp; trial before purchase
+              </li>
+            </ul>
+
+            <a href="{% url 'contact' %}" class="cta-banner__button">
               Talk to an Expert
             </a>
           </div>
-
         </div>
+
       </div>
     </div>
   </section>
@@ -624,6 +815,972 @@
 
 {% block scripts %}
   <style>
+    /* ── About Glupac (Figma 105:784) ─────── */
+    @font-face {
+      font-family: "Hatsch Sans PERSONAL USE ONLY";
+      font-style: normal;
+      font-weight: 400;
+      font-display: swap;
+      src: url("{% static 'fonts/HatschSans-Regular.woff' %}") format("woff");
+    }
+    @font-face {
+      font-family: "Hatsch Sans PERSONAL USE ONLY";
+      font-style: italic;
+      font-weight: 400;
+      font-display: swap;
+      src: url("{% static 'fonts/HatschSans-Italic.woff' %}") format("woff");
+    }
+
+    .about-eyebrow {
+      margin: 0;
+      color: #2d388c;
+      font-family: "Inter", sans-serif;
+      font-size: 14px;
+      font-style: normal;
+      font-weight: 600;
+      line-height: 20px;
+      letter-spacing: 0.1996px;
+      text-transform: uppercase;
+    }
+
+    .about-heading {
+      margin: 16px 0 0;
+      max-width: 584px;
+      color: #2d388c;
+      font-family: "Hatsch Sans PERSONAL USE ONLY", sans-serif;
+      font-size: 40px;
+      font-style: italic;
+      font-weight: 400;
+      line-height: 48px;
+      letter-spacing: 0.369px;
+    }
+
+    .about-para {
+      margin: 24px 0 0;
+      max-width: 584px;
+      color: #4a5565;
+      font-family: "Inter", sans-serif;
+      font-size: 18px;
+      font-style: normal;
+      font-weight: 400;
+      line-height: 29.25px;
+      letter-spacing: -0.439px;
+    }
+
+    .about-stats {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 24px;
+      margin-top: 32px;
+      max-width: 584px;
+    }
+
+    .about-stat {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+    }
+
+    .about-stat__icon {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 64px;
+      height: 64px;
+      border-radius: 14px;
+      background: linear-gradient(
+        135deg,
+        rgb(44, 62, 143) 0%,
+        rgb(42, 62, 148) 16.667%,
+        rgb(40, 63, 154) 33.333%,
+        rgb(38, 63, 159) 50%,
+        rgb(35, 64, 164) 66.667%,
+        rgb(33, 64, 170) 83.333%,
+        rgb(30, 64, 175) 100%
+      );
+    }
+
+    .about-stat__label {
+      margin: 12px 0 0;
+      color: #364153;
+      font-family: "Inter", sans-serif;
+      font-size: 14px;
+      font-style: normal;
+      font-weight: 500;
+      line-height: 20px;
+      letter-spacing: -0.1504px;
+    }
+
+    .about-image-1,
+    .about-image-2 {
+      position: absolute;
+      border-radius: 14px;
+      object-fit: cover;
+      box-shadow:
+        0 10px 15px -3px rgba(0, 0, 0, 0.1),
+        0 4px 6px -4px rgba(0, 0, 0, 0.1);
+    }
+
+    .about-image-1 {
+      left: 0;
+      top: 0;
+      width: 58%;
+      max-width: 280px;
+      aspect-ratio: 341 / 338;
+      z-index: 1;
+    }
+
+    .about-image-2 {
+      right: 0;
+      bottom: 0;
+      width: 64%;
+      max-width: 300px;
+      aspect-ratio: 370 / 339;
+      z-index: 2;
+    }
+
+    @media (min-width: 1280px) {
+      .about-section__stage {
+        min-height: 516.75px;
+      }
+
+      .about-image-1 {
+        left: 644px;
+        top: 9px;
+        width: 341px;
+        max-width: none;
+        height: 338px;
+        aspect-ratio: auto;
+      }
+
+      .about-image-2 {
+        left: 862px;
+        right: auto;
+        bottom: auto;
+        top: 178px;
+        width: 370px;
+        max-width: none;
+        height: 339px;
+        aspect-ratio: auto;
+      }
+    }
+
+    /* ── Advantages (Figma 105:821) ──────── */
+    .advantages-heading {
+      margin: 0;
+      font-family: "Hatsch Sans PERSONAL USE ONLY", sans-serif;
+      font-size: 40px;
+      font-style: italic;
+      font-weight: 400;
+      line-height: 48px;
+      letter-spacing: 0.369px;
+    }
+
+    .advantages-subheading {
+      margin: 8px auto 0;
+      max-width: 672px;
+      color: #4a5565;
+      font-family: "Inter", sans-serif;
+      font-size: 20px;
+      font-style: normal;
+      font-weight: 400;
+      line-height: 28px;
+      letter-spacing: -0.449px;
+    }
+
+    .advantages-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 24px;
+    }
+
+    @media (min-width: 768px) {
+      .advantages-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 28px;
+      }
+    }
+
+    @media (min-width: 1280px) {
+      .advantages-grid {
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        gap: 32px;
+      }
+    }
+
+    .advantages-card {
+      min-height: 272px;
+      padding: 32px;
+      border-radius: 14px;
+      border: 1px solid #f3f4f6;
+      background: #ffffff;
+      box-shadow:
+        0 10px 7.5px rgba(0, 0, 0, 0.1),
+        0 4px 3px rgba(0, 0, 0, 0.1);
+    }
+
+    .advantages-card__icon {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 64px;
+      height: 64px;
+      border-radius: 14px;
+      background: linear-gradient(
+        135deg,
+        rgb(44, 62, 143) 0%,
+        rgb(42, 62, 148) 16.667%,
+        rgb(40, 63, 154) 33.333%,
+        rgb(38, 63, 159) 50%,
+        rgb(35, 64, 164) 66.667%,
+        rgb(33, 64, 170) 83.333%,
+        rgb(30, 64, 175) 100%
+      );
+    }
+
+    .advantages-card__title {
+      margin: 24px 0 0;
+      color: #1a1a2e;
+      font-family: "Inter", sans-serif;
+      font-size: 20px;
+      font-style: normal;
+      font-weight: 600;
+      line-height: 28px;
+      letter-spacing: -0.449px;
+    }
+
+    .advantages-card__text {
+      margin: 12px 0 0;
+      color: #4a5565;
+      font-family: "Inter", sans-serif;
+      font-size: 16px;
+      font-style: normal;
+      font-weight: 400;
+      line-height: 26px;
+      letter-spacing: -0.3125px;
+    }
+
+    /* ── Industries We Serve (Figma 105:881) ─ */
+    .industries-heading {
+      margin: 0;
+      font-family: "Hatsch Sans PERSONAL USE ONLY", sans-serif;
+      font-size: 40px;
+      font-style: italic;
+      font-weight: 400;
+      line-height: 48px;
+      letter-spacing: 0.369px;
+    }
+
+    .industries-subheading {
+      margin: 16px auto 0;
+      max-width: 672px;
+      color: #4a5565;
+      font-family: "Inter", sans-serif;
+      font-size: 20px;
+      font-style: normal;
+      font-weight: 400;
+      line-height: 28px;
+      letter-spacing: -0.449px;
+    }
+
+    .industries-carousel-shell {
+      mask-image: linear-gradient(90deg, transparent 0%, #000 3%, #000 97%, transparent 100%);
+    }
+
+    .industries-carousel {
+      scrollbar-width: none;
+    }
+
+    .industries-carousel::-webkit-scrollbar {
+      display: none;
+    }
+
+    .industries-card {
+      width: 284px;
+      min-height: 376px;
+      border-radius: 14px;
+      overflow: hidden;
+      background: #ffffff;
+      border: 1px solid #f3f4f6;
+      box-shadow:
+        0 10px 15px -3px rgba(0, 0, 0, 0.1),
+        0 4px 6px -4px rgba(0, 0, 0, 0.1);
+    }
+
+    .industries-card__media {
+      position: relative;
+      height: 224px;
+      overflow: hidden;
+    }
+
+    .industries-card__image {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .industries-card__image--overlay {
+      width: 284px;
+      height: 284px;
+      top: -29.75px;
+      left: 0;
+    }
+
+    .industries-card__gradient {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(
+        to top,
+        rgba(26, 26, 46, 0.9) 0%,
+        rgba(44, 62, 143, 0.5) 50%,
+        rgba(0, 0, 0, 0) 100%
+      );
+    }
+
+    .industries-card__title {
+      position: absolute;
+      left: 16px;
+      bottom: 16px;
+      margin: 0;
+      color: #ffffff;
+      font-family: "Inter", sans-serif;
+      font-size: 20px;
+      font-style: normal;
+      font-weight: 600;
+      line-height: 28px;
+      letter-spacing: -0.449px;
+      z-index: 1;
+    }
+
+    .industries-card__body {
+      padding: 24px;
+      background: #ffffff;
+    }
+
+    .industries-card__body--muted {
+      background: #f9fafb;
+    }
+
+    .industries-card__list {
+      margin: 0;
+      padding: 0;
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+
+    .industries-card__list li {
+      display: flex;
+      align-items: flex-start;
+      gap: 8px;
+      color: #364153;
+      font-family: "Inter", sans-serif;
+      font-size: 14px;
+      font-style: normal;
+      font-weight: 400;
+      line-height: 20px;
+      letter-spacing: -0.1504px;
+    }
+
+    .industries-card__list img {
+      margin-top: 2px;
+      flex-shrink: 0;
+    }
+
+    .industries-cta {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      min-height: 56px;
+      padding: 0 24px;
+      border-radius: 10px;
+      background: #2d388c;
+      color: #ffffff;
+      font-family: "Inter", sans-serif;
+      font-size: 16px;
+      font-style: normal;
+      font-weight: 500;
+      line-height: 24px;
+      letter-spacing: -0.3125px;
+      text-decoration: none;
+      transition: background-color 0.2s ease, transform 0.2s ease;
+    }
+
+    .industries-cta:hover {
+      background: #25307c;
+      transform: translateY(-1px);
+    }
+
+    /* ── Solutions (Figma 105:882) ──────── */
+    .solutions-heading {
+      margin: 0;
+      font-family: "Hatsch Sans PERSONAL USE ONLY", sans-serif;
+      font-size: 40px;
+      font-style: italic;
+      font-weight: 400;
+      line-height: 48px;
+      letter-spacing: 0.369px;
+    }
+
+    .solutions-subheading {
+      margin: 16px auto 0;
+      max-width: 672px;
+      color: #4a5565;
+      font-family: "Inter", sans-serif;
+      font-size: 20px;
+      font-style: normal;
+      font-weight: 400;
+      line-height: 28px;
+      letter-spacing: -0.449px;
+    }
+
+    .solutions-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 24px;
+    }
+
+    @media (min-width: 768px) {
+      .solutions-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 28px;
+      }
+    }
+
+    @media (min-width: 1280px) {
+      .solutions-grid {
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        gap: 32px;
+      }
+    }
+
+    .machine-card {
+      display: flex;
+      flex-direction: column;
+      overflow: hidden;
+      border-radius: 14px;
+      background: #ffffff;
+      box-shadow:
+        0 10px 15px -3px rgba(0, 0, 0, 0.1),
+        0 4px 6px -4px rgba(0, 0, 0, 0.1);
+    }
+
+    .machine-card__media {
+      position: relative;
+      height: 256px;
+      overflow: hidden;
+      flex-shrink: 0;
+    }
+
+    .machine-card__image {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .machine-card__badge {
+      position: absolute;
+      top: 16px;
+      right: 16px;
+      display: inline-flex;
+      align-items: center;
+      min-height: 28px;
+      padding: 4px 12px;
+      border-radius: 9999px;
+      background: #2d388c;
+      color: #ffffff;
+      font-family: "Inter", sans-serif;
+      font-size: 14px;
+      font-style: normal;
+      font-weight: 400;
+      line-height: 20px;
+      letter-spacing: -0.1504px;
+      white-space: nowrap;
+    }
+
+    .machine-card__body {
+      display: flex;
+      flex-direction: column;
+      flex: 1;
+      padding: 24px;
+    }
+
+    .machine-card__title {
+      margin: 0;
+      color: #1a1a2e;
+      font-family: "Inter", sans-serif;
+      font-size: 20px;
+      font-style: normal;
+      font-weight: 600;
+      line-height: 28px;
+      letter-spacing: -0.449px;
+    }
+
+    .machine-card__features {
+      margin: 16px 0 0;
+      padding: 0;
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+      flex: 1;
+    }
+
+    .machine-card__features li {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      color: #4a5565;
+      font-family: "Inter", sans-serif;
+      font-size: 14px;
+      font-style: normal;
+      font-weight: 400;
+      line-height: 20px;
+      letter-spacing: -0.1504px;
+    }
+
+    .machine-card__features img {
+      flex-shrink: 0;
+    }
+
+    .machine-card__cta {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 100%;
+      min-height: 48px;
+      margin-top: 24px;
+      border-radius: 10px;
+      background: #2d388c;
+      color: #ffffff;
+      font-family: "Inter", sans-serif;
+      font-size: 16px;
+      font-style: normal;
+      font-weight: 500;
+      line-height: 24px;
+      letter-spacing: -0.3125px;
+      text-decoration: none;
+      transition: background-color 0.2s ease;
+    }
+
+    .machine-card__cta:hover {
+      background: #25307c;
+    }
+
+    /* ── Testimonials + Clients (Figma 105:1058 + 183:450) ── */
+    .testimonials-heading,
+    .clients-heading {
+      margin: 0;
+      font-family: "Hatsch Sans PERSONAL USE ONLY", sans-serif;
+      font-size: 40px;
+      font-style: italic;
+      font-weight: 400;
+      line-height: 48px;
+      letter-spacing: 0.369px;
+    }
+
+    .testimonials-subheading,
+    .clients-subheading {
+      margin: 16px auto 0;
+      max-width: 672px;
+      color: #4a5565;
+      font-family: "Inter", sans-serif;
+      font-size: 20px;
+      font-style: normal;
+      font-weight: 400;
+      line-height: 28px;
+      letter-spacing: -0.449px;
+    }
+
+    .testimonials-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 24px;
+    }
+
+    @media (min-width: 768px) {
+      .testimonials-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 28px;
+      }
+    }
+
+    @media (min-width: 1280px) {
+      .testimonials-grid {
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        gap: 32px;
+      }
+    }
+
+    .testimonial-card {
+      display: flex;
+      flex-direction: column;
+      min-height: 276px;
+      padding: 32px;
+      border-radius: 14px;
+      border: 2px solid #f3f4f6;
+      background: #f9fafb;
+    }
+
+    .testimonial-card__stars {
+      display: flex;
+      align-items: center;
+      gap: 4px;
+      margin-bottom: 16px;
+    }
+
+    .testimonial-card__quote {
+      margin: 0;
+      flex: 1;
+      color: #364153;
+      font-family: "Inter", sans-serif;
+      font-size: 16px;
+      font-style: italic;
+      font-weight: 400;
+      line-height: 26px;
+      letter-spacing: -0.3125px;
+    }
+
+    .testimonial-card__author {
+      margin-top: 24px;
+    }
+
+    .testimonial-card__name {
+      margin: 0;
+      color: #101828;
+      font-family: "Inter", sans-serif;
+      font-size: 16px;
+      font-style: normal;
+      font-weight: 600;
+      line-height: 24px;
+      letter-spacing: -0.3125px;
+    }
+
+    .testimonial-card__company {
+      margin: 4px 0 0;
+      color: #4a5565;
+      font-family: "Inter", sans-serif;
+      font-size: 14px;
+      font-style: normal;
+      font-weight: 400;
+      line-height: 20px;
+      letter-spacing: -0.1504px;
+    }
+
+    .clients-more {
+      margin: 32px 0 0;
+      text-align: center;
+      color: #364153;
+      font-family: "Inter", sans-serif;
+      font-size: 24px;
+      font-style: normal;
+      font-weight: 600;
+      line-height: 32px;
+      letter-spacing: 0.0703px;
+    }
+
+    /* ── Footprints (Figma 105:1134 + 105:1140) ── */
+    .footprints-eyebrow {
+      margin: 0;
+      color: #6a7282;
+      font-family: "Inter", sans-serif;
+      font-size: 18px;
+      font-style: normal;
+      font-weight: 500;
+      line-height: 28px;
+      letter-spacing: -0.4395px;
+      text-transform: uppercase;
+    }
+
+    .footprints-heading {
+      margin: 8px 0 0;
+      font-family: "Hatsch Sans PERSONAL USE ONLY", sans-serif;
+      font-size: 40px;
+      font-style: italic;
+      font-weight: 400;
+      line-height: 48px;
+      letter-spacing: 0.369px;
+    }
+
+    .footprints-subheading {
+      margin: 16px auto 0;
+      max-width: 672px;
+      color: #4a5565;
+      font-family: "Inter", sans-serif;
+      font-size: 20px;
+      font-style: normal;
+      font-weight: 400;
+      line-height: 28px;
+      letter-spacing: -0.449px;
+    }
+
+    .footprints-stat {
+      display: flex;
+      align-items: center;
+      gap: 24px;
+      min-height: 132px;
+      padding: 26px;
+      border-radius: 14px;
+      border: 2px solid #f3f4f6;
+      background: linear-gradient(to right, #f9fafb, #ffffff);
+    }
+
+    .footprints-stat__icon {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      width: 64px;
+      height: 64px;
+      border-radius: 14px;
+      background: linear-gradient(
+        135deg,
+        rgb(44, 62, 143) 0%,
+        rgb(42, 62, 148) 16.667%,
+        rgb(40, 63, 154) 33.333%,
+        rgb(38, 63, 159) 50%,
+        rgb(35, 64, 164) 66.667%,
+        rgb(33, 64, 170) 83.333%,
+        rgb(30, 64, 175) 100%
+      );
+    }
+
+    .footprints-stat__value {
+      margin: 0;
+      color: #2d388c;
+      font-family: "Inter", sans-serif;
+      font-size: 48px;
+      font-style: normal;
+      font-weight: 700;
+      line-height: 48px;
+      letter-spacing: 0.3516px;
+    }
+
+    .footprints-stat__label {
+      margin: 4px 0 0;
+      color: #364153;
+      font-family: "Inter", sans-serif;
+      font-size: 18px;
+      font-style: normal;
+      font-weight: 500;
+      line-height: 28px;
+      letter-spacing: -0.4395px;
+    }
+
+    .footprints-globe__frame {
+      overflow: hidden;
+    }
+
+    .footprints-globe__image {
+      position: absolute;
+      width: 100.04%;
+      height: 255.43%;
+      left: -0.02%;
+      top: -61.76%;
+      max-width: none;
+      pointer-events: none;
+      user-select: none;
+    }
+
+    .footprints-globe__glow {
+      position: absolute;
+      border-radius: 50%;
+      pointer-events: none;
+      filter: blur(40px);
+    }
+
+    .footprints-globe__glow--1 {
+      width: 128px;
+      height: 128px;
+      left: 10%;
+      top: 50%;
+      transform: translateY(-50%);
+      background: rgba(44, 62, 143, 0.1);
+    }
+
+    .footprints-globe__glow--2 {
+      width: 96px;
+      height: 96px;
+      right: 10%;
+      top: 52%;
+      transform: translateY(-50%);
+      background: rgba(30, 64, 175, 0.1);
+    }
+
+    /* ── CTA Banner (Figma 105:1185) ────────── */
+    .cta-banner {
+      background: linear-gradient(
+        154.03deg,
+        rgb(10, 10, 26) 0%,
+        rgb(13, 16, 40) 7.14%,
+        rgb(16, 23, 55) 14.29%,
+        rgb(19, 30, 71) 21.43%,
+        rgb(22, 37, 87) 28.57%,
+        rgb(25, 44, 103) 35.71%,
+        rgb(28, 51, 120) 42.86%,
+        rgb(30, 58, 138) 50%,
+        rgb(30, 59, 143) 57.14%,
+        rgb(30, 60, 148) 64.29%,
+        rgb(30, 61, 154) 71.43%,
+        rgb(30, 62, 159) 78.57%,
+        rgb(30, 62, 164) 85.71%,
+        rgb(30, 63, 170) 92.86%,
+        rgb(30, 64, 175) 100%
+      );
+    }
+
+    .cta-banner__image {
+      position: relative;
+      width: 100%;
+      height: 220px;
+      overflow: hidden;
+    }
+
+    @media (min-width: 1280px) {
+      .cta-banner__image {
+        position: absolute;
+        left: 0;
+        top: 0;
+        width: 592px;
+        height: 600px;
+      }
+    }
+
+    .cta-banner__photo {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center;
+    }
+
+    .cta-banner__image-overlay {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(to right, rgba(30, 58, 138, 0.8) 0%, rgba(0, 0, 0, 0) 100%);
+      pointer-events: none;
+    }
+
+    .cta-banner__content {
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      padding: 32px 24px 40px;
+    }
+
+    @media (min-width: 1280px) {
+      .cta-banner__content {
+        position: absolute;
+        left: 640px;
+        top: 37.55px;
+        width: 592px;
+        padding: 48px 48px 0;
+      }
+    }
+
+    .cta-banner__badge {
+      display: inline-flex;
+      align-items: center;
+      height: 32px;
+      padding: 0 16px;
+      border-radius: 9999px;
+      background: rgba(30, 64, 175, 0.8);
+      color: #ffffff;
+      font-family: "Inter", sans-serif;
+      font-size: 14px;
+      font-style: normal;
+      font-weight: 400;
+      line-height: 20px;
+      letter-spacing: -0.1504px;
+    }
+
+    .cta-banner__heading {
+      margin: 16px 0 0;
+      max-width: 496px;
+      color: #ffffff;
+      font-family: "Inter", sans-serif;
+      font-size: 36px;
+      font-style: normal;
+      font-weight: 700;
+      line-height: 43.2px;
+      letter-spacing: 0.3691px;
+    }
+
+    .cta-banner__body {
+      margin: 24px 0 0;
+      max-width: 496px;
+      color: #e5e7eb;
+      font-family: "Inter", sans-serif;
+      font-size: 18px;
+      font-style: normal;
+      font-weight: 400;
+      line-height: 29.25px;
+      letter-spacing: -0.4395px;
+    }
+
+    .cta-banner__features {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      margin: 32px 0 0;
+      padding: 0;
+      list-style: none;
+      max-width: 496px;
+    }
+
+    .cta-banner__feature {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      color: #ffffff;
+      font-family: "Inter", sans-serif;
+      font-size: 16px;
+      font-style: normal;
+      font-weight: 400;
+      line-height: 24px;
+      letter-spacing: -0.3125px;
+    }
+
+    .cta-banner__feature img {
+      flex-shrink: 0;
+    }
+
+    .cta-banner__button {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      margin-top: 32px;
+      min-width: 191px;
+      height: 52px;
+      padding: 0 34px;
+      border-radius: 10px;
+      border: 2px solid rgba(255, 255, 255, 0.3);
+      background: #47a33d;
+      color: #ffffff;
+      font-family: "Inter", sans-serif;
+      font-size: 16px;
+      font-style: normal;
+      font-weight: 500;
+      line-height: 24px;
+      letter-spacing: -0.3125px;
+      text-decoration: none;
+      transition: background-color 0.2s ease, transform 0.2s ease;
+    }
+
+    .cta-banner__button:hover {
+      background: #3c8f34;
+      transform: translateY(-2px);
+    }
+
+    .cta-banner__button:active {
+      transform: translateY(0);
+    }
+
     /* ── Partner Ticker ─────────────────────── */
     #partner-ticker {
       animation: ticker-scroll 36s linear infinite;
@@ -643,7 +1800,7 @@
     }
     .brand-marquee-track {
       display: flex;
-      gap: 0.85rem;
+      gap: 16px;
       width: max-content;
       animation: brand-marquee 28s linear infinite;
       will-change: transform;
@@ -656,20 +1813,24 @@
       animation-play-state: paused;
     }
     .brand-logo-card {
-      min-width: 186px;
+      flex-shrink: 0;
+      width: 185px;
+      min-width: 185px;
       height: 100px;
-      border-radius: 0.75rem;
+      padding: 26px;
+      border-radius: 10px;
       background: #ffffff;
-      border: 1px solid #e2e8f0;
+      border: 2px solid #e5e7eb;
       display: flex;
       align-items: center;
       justify-content: center;
       overflow: hidden;
+      box-sizing: border-box;
     }
     .brand-logo-image {
       width: 100%;
       height: 100%;
-      object-fit: cover;
+      object-fit: contain;
       transition: transform 0.25s ease, opacity 0.25s ease;
     }
     .brand-logo-card:hover .brand-logo-image {
@@ -683,7 +1844,8 @@
 
     @media (prefers-reduced-motion: reduce) {
       #partner-ticker,
-      .brand-marquee-track {
+      .brand-marquee-track,
+      .industries-bg__image {
         animation: none;
       }
     }
@@ -695,18 +1857,43 @@
 
       const animatedTargets = [
         ".hero-text-block-primary",
-        ".hero-images-primary .hero-machine-primary",
+        ".hero-machine-bg",
+        ".about-eyebrow",
+        ".about-heading",
+        ".about-para",
+        ".about-stat",
+        ".about-image-1",
+        ".about-image-2",
         ".adv-header",
-        ".adv-grid > div",
-        ".showcase-text",
+        ".advantages-heading",
+        ".advantages-subheading",
+        ".adv-card",
+        ".industries-bg__image",
+        ".industries-heading",
+        ".industries-subheading",
+        ".industries-card-animate",
+        ".industries-cta-animate",
         ".solutions-header",
-        ".machines-grid > div",
-        ".footprints-header",
-        ".footprints-stats > div",
+        ".solutions-heading",
+        ".solutions-subheading",
+        ".solutions-card-animate",
+        ".footprints-eyebrow",
+        ".footprints-heading",
+        ".footprints-subheading",
+        ".footprints-stat-animate",
         ".footprints-globe",
+        ".footprints-globe__glow",
         ".testimonials-header",
-        ".testimonials-grid > div",
-        ".testimonials-brands",
+        ".testimonial-card-animate",
+        ".clients-header",
+        ".clients-marquee-animate",
+        ".clients-more-animate",
+        ".cta-banner",
+        ".cta-banner__badge",
+        ".cta-banner__heading",
+        ".cta-banner__body",
+        ".cta-banner__feature",
+        ".cta-banner__button",
         ".cta-info",
         ".cta-form",
       ];
@@ -721,83 +1908,298 @@
       tl.fromTo(".hero-text-block-primary",
         { autoAlpha: 0, x: -50 },
         { autoAlpha: 1, x: 0, delay: 0.15 }
-      ).fromTo(".hero-images-primary .hero-machine-primary",
-        { autoAlpha: 0, x: 90, y: 24, scale: 0.97 },
+      ).fromTo(".hero-machine-bg",
+        { autoAlpha: 0, x: 90, y: 24, scale: 1.03 },
         { autoAlpha: 1, x: 0, y: 0, scale: 1, duration: 1.15 },
         "-=0.7"
       );
 
+      /* ── About Glupac ──────────────────────── */
+      const aboutTl = gsap.timeline({
+        defaults: { ease: "power2.out" },
+        scrollTrigger: { trigger: ".about-section__stage", start: "top 85%", once: true },
+      });
+
+      aboutTl
+        .fromTo(".about-eyebrow",
+          { autoAlpha: 0, y: 18 },
+          { autoAlpha: 1, y: 0, duration: 0.55 }
+        )
+        .fromTo(".about-heading",
+          { autoAlpha: 0, y: 28 },
+          { autoAlpha: 1, y: 0, duration: 0.7 },
+          "-=0.3"
+        )
+        .fromTo(".about-para",
+          { autoAlpha: 0, y: 22 },
+          { autoAlpha: 1, y: 0, duration: 0.65, stagger: 0.12 },
+          "-=0.35"
+        )
+        .fromTo(".about-stat",
+          { autoAlpha: 0, y: 24, scale: 0.94 },
+          { autoAlpha: 1, y: 0, scale: 1, duration: 0.6, stagger: 0.1 },
+          "-=0.25"
+        )
+        .fromTo(".about-image-1",
+          { autoAlpha: 0, x: 70, y: 18 },
+          { autoAlpha: 1, x: 0, y: 0, duration: 0.95, ease: "power3.out" },
+          "-=0.45"
+        )
+        .fromTo(".about-image-2",
+          { autoAlpha: 0, x: 90, y: 36 },
+          { autoAlpha: 1, x: 0, y: 0, duration: 1.05, ease: "power3.out" },
+          "-=0.7"
+        );
+
       /* ── Advantages ────────────────────────── */
-      gsap.fromTo(".adv-header",
-        { autoAlpha: 0, y: 30 },
-        { autoAlpha: 1, y: 0, duration: 0.7, ease: "power2.out",
-          scrollTrigger: { trigger: ".adv-header", start: "top 88%", once: true } }
-      );
-      gsap.fromTo(".adv-grid > div",
-        { autoAlpha: 0, y: 60 },
-        { autoAlpha: 1, y: 0, duration: 0.75, stagger: 0.12, ease: "power2.out",
-          scrollTrigger: { trigger: ".adv-grid", start: "top 84%", once: true } }
+      const advTl = gsap.timeline({
+        defaults: { ease: "power2.out" },
+        scrollTrigger: { trigger: ".advantages-section__inner", start: "top 85%", once: true },
+      });
+
+      advTl
+        .fromTo(".advantages-heading",
+          { autoAlpha: 0, y: 24 },
+          { autoAlpha: 1, y: 0, duration: 0.7 }
+        )
+        .fromTo(".advantages-subheading",
+          { autoAlpha: 0, y: 20 },
+          { autoAlpha: 1, y: 0, duration: 0.65 },
+          "-=0.35"
+        )
+        .fromTo(".adv-card",
+          { autoAlpha: 0, y: 40, scale: 0.97 },
+          { autoAlpha: 1, y: 0, scale: 1, duration: 0.7, stagger: 0.1 },
+          "-=0.2"
+        );
+
+      /* ── Industries We Serve ─────────────────── */
+      gsap.fromTo(".industries-bg__image",
+        { autoAlpha: 0, scale: 1.12 },
+        { autoAlpha: 1, scale: 1, duration: 1.4, ease: "power2.out",
+          scrollTrigger: { trigger: ".industries-section", start: "top 90%", once: true } }
       );
 
-      /* ── Showcase banner ────────────────────── */
-      gsap.fromTo(".showcase-text",
-        { autoAlpha: 0, x: -50 },
-        { autoAlpha: 1, x: 0, duration: 1.1, ease: "power3.out",
-          scrollTrigger: { trigger: ".showcase-text", start: "top 88%", once: true } }
-      );
+      gsap.to(".industries-bg__image", {
+        y: 60,
+        scale: 1.06,
+        ease: "none",
+        scrollTrigger: {
+          trigger: ".industries-section",
+          start: "top bottom",
+          end: "bottom top",
+          scrub: 1.2,
+        },
+      });
+
+      gsap.to(".industries-bg__image", {
+        x: "-=40",
+        duration: 10,
+        repeat: -1,
+        yoyo: true,
+        ease: "sine.inOut",
+      });
+
+      const industriesTl = gsap.timeline({
+        defaults: { ease: "power2.out" },
+        scrollTrigger: { trigger: ".industries-section__inner", start: "top 85%", once: true },
+      });
+
+      industriesTl
+        .fromTo(".industries-heading",
+          { autoAlpha: 0, y: 24 },
+          { autoAlpha: 1, y: 0, duration: 0.7 }
+        )
+        .fromTo(".industries-subheading",
+          { autoAlpha: 0, y: 20 },
+          { autoAlpha: 1, y: 0, duration: 0.65 },
+          "-=0.35"
+        )
+        .fromTo(".industries-card-animate",
+          { autoAlpha: 0, y: 36, scale: 0.96 },
+          { autoAlpha: 1, y: 0, scale: 1, duration: 0.65, stagger: 0.08 },
+          "-=0.2"
+        )
+        .fromTo(".industries-cta-animate",
+          { autoAlpha: 0, y: 16 },
+          { autoAlpha: 1, y: 0, duration: 0.55 },
+          "-=0.15"
+        );
 
       /* ── Solutions ──────────────────────────── */
-      gsap.fromTo(".solutions-header",
-        { autoAlpha: 0, y: 30 },
-        { autoAlpha: 1, y: 0, duration: 0.8, ease: "power2.out",
-          scrollTrigger: { trigger: ".solutions-header", start: "top 88%", once: true } }
-      );
-      gsap.fromTo(".machines-grid > div",
-        { autoAlpha: 0, y: 50 },
-        { autoAlpha: 1, y: 0, duration: 0.75, stagger: 0.12, ease: "power2.out",
-          scrollTrigger: { trigger: ".machines-grid", start: "top 84%", once: true } }
-      );
+      const solutionsTl = gsap.timeline({
+        defaults: { ease: "power2.out" },
+        scrollTrigger: { trigger: ".solutions-section__inner", start: "top 85%", once: true },
+      });
+
+      solutionsTl
+        .fromTo(".solutions-heading",
+          { autoAlpha: 0, y: 24 },
+          { autoAlpha: 1, y: 0, duration: 0.7 }
+        )
+        .fromTo(".solutions-subheading",
+          { autoAlpha: 0, y: 20 },
+          { autoAlpha: 1, y: 0, duration: 0.65 },
+          "-=0.35"
+        )
+        .fromTo(".solutions-card-animate",
+          { autoAlpha: 0, y: 40, scale: 0.97 },
+          { autoAlpha: 1, y: 0, scale: 1, duration: 0.7, stagger: 0.1 },
+          "-=0.2"
+        );
 
       /* ── Footprints ─────────────────────────── */
-      gsap.fromTo(".footprints-header",
-        { autoAlpha: 0, y: 30 },
-        { autoAlpha: 1, y: 0, duration: 0.8, ease: "power2.out",
-          scrollTrigger: { trigger: ".footprints-header", start: "top 88%", once: true } }
-      );
-      gsap.fromTo(".footprints-stats > div",
-        { autoAlpha: 0, x: -50 },
-        { autoAlpha: 1, x: 0, stagger: 0.14, duration: 0.75, ease: "power2.out",
-          scrollTrigger: { trigger: ".footprints-stats", start: "top 84%", once: true } }
-      );
-      gsap.fromTo(".footprints-globe",
-        { autoAlpha: 0, scale: 0.88 },
-        { autoAlpha: 1, scale: 1, duration: 1.2, ease: "power2.out",
-          scrollTrigger: { trigger: ".footprints-globe", start: "top 80%", once: true } }
-      );
+      const footprintsTl = gsap.timeline({
+        defaults: { ease: "power2.out" },
+        scrollTrigger: { trigger: ".footprints-section__inner", start: "top 85%", once: true },
+      });
 
-      /* ── Testimonials ───────────────────────── */
-      gsap.fromTo(".testimonials-header",
-        { autoAlpha: 0, y: 30 },
-        { autoAlpha: 1, y: 0, duration: 0.8, ease: "power2.out",
-          scrollTrigger: { trigger: ".testimonials-header", start: "top 88%", once: true } }
-      );
-      gsap.fromTo(".testimonials-grid > div",
-        { autoAlpha: 0, y: 40 },
-        { autoAlpha: 1, y: 0, stagger: 0.14, duration: 0.75, ease: "power2.out",
-          scrollTrigger: { trigger: ".testimonials-grid", start: "top 84%", once: true } }
-      );
-      gsap.fromTo(".testimonials-brands",
-        { autoAlpha: 0, y: 30 },
-        { autoAlpha: 1, y: 0, duration: 0.9, ease: "power2.out",
-          scrollTrigger: { trigger: ".testimonials-brands", start: "top 86%", once: true } }
-      );
+      footprintsTl
+        .fromTo(".footprints-eyebrow",
+          { autoAlpha: 0, y: 18 },
+          { autoAlpha: 1, y: 0, duration: 0.55 }
+        )
+        .fromTo(".footprints-heading",
+          { autoAlpha: 0, y: 28 },
+          { autoAlpha: 1, y: 0, duration: 0.7 },
+          "-=0.3"
+        )
+        .fromTo(".footprints-subheading",
+          { autoAlpha: 0, y: 20 },
+          { autoAlpha: 1, y: 0, duration: 0.65 },
+          "-=0.35"
+        )
+        .fromTo(".footprints-stat-animate",
+          { autoAlpha: 0, x: -50 },
+          { autoAlpha: 1, x: 0, stagger: 0.14, duration: 0.75 },
+          "-=0.2"
+        )
+        .fromTo(".footprints-globe",
+          { autoAlpha: 0, scale: 0.88, x: 40 },
+          { autoAlpha: 1, scale: 1, x: 0, duration: 1.2, ease: "power3.out" },
+          "-=0.5"
+        )
+        .fromTo(".footprints-globe__glow",
+          { autoAlpha: 0, scale: 0.6 },
+          { autoAlpha: 1, scale: 1, duration: 0.9, stagger: 0.15 },
+          "-=0.8"
+        );
+
+      document.querySelectorAll(".footprints-stat__value").forEach(function(el) {
+        const final = el.dataset.final || "";
+        const match = final.match(/^(\d+)(.*)$/);
+        if (!match) {
+          return;
+        }
+        const target = parseInt(match[1], 10);
+        const suffix = match[2] || "";
+        el.textContent = "0" + suffix;
+        const counter = { val: 0 };
+        gsap.to(counter, {
+          val: target,
+          duration: 1.6,
+          ease: "power2.out",
+          snap: { val: 1 },
+          scrollTrigger: { trigger: el.closest(".footprints-stat"), start: "top 86%", once: true },
+          onUpdate: function() {
+            el.textContent = Math.round(counter.val) + suffix;
+          },
+        });
+      });
+
+      gsap.to(".footprints-globe__image", {
+        y: -10,
+        duration: 3.5,
+        ease: "sine.inOut",
+        yoyo: true,
+        repeat: -1,
+        delay: 1.5,
+      });
+
+      /* ── Testimonials + Clients ─────────────── */
+      const testimonialsTl = gsap.timeline({
+        defaults: { ease: "power2.out" },
+        scrollTrigger: { trigger: ".testimonials-part__inner", start: "top 85%", once: true },
+      });
+
+      testimonialsTl
+        .fromTo(".testimonials-heading",
+          { autoAlpha: 0, y: 24 },
+          { autoAlpha: 1, y: 0, duration: 0.7 }
+        )
+        .fromTo(".testimonials-subheading",
+          { autoAlpha: 0, y: 20 },
+          { autoAlpha: 1, y: 0, duration: 0.65 },
+          "-=0.35"
+        )
+        .fromTo(".testimonial-card-animate",
+          { autoAlpha: 0, y: 40, scale: 0.97 },
+          { autoAlpha: 1, y: 0, scale: 1, duration: 0.7, stagger: 0.12 },
+          "-=0.2"
+        );
+
+      const clientsTl = gsap.timeline({
+        defaults: { ease: "power2.out" },
+        scrollTrigger: { trigger: ".clients-part__inner", start: "top 88%", once: true },
+      });
+
+      clientsTl
+        .fromTo(".clients-heading",
+          { autoAlpha: 0, y: 24 },
+          { autoAlpha: 1, y: 0, duration: 0.7 }
+        )
+        .fromTo(".clients-subheading",
+          { autoAlpha: 0, y: 20 },
+          { autoAlpha: 1, y: 0, duration: 0.65 },
+          "-=0.35"
+        )
+        .fromTo(".clients-marquee-animate",
+          { autoAlpha: 0, y: 28 },
+          { autoAlpha: 1, y: 0, duration: 0.8 },
+          "-=0.2"
+        )
+        .fromTo(".clients-more-animate",
+          { autoAlpha: 0, y: 16 },
+          { autoAlpha: 1, y: 0, duration: 0.55 },
+          "-=0.35"
+        );
 
       /* ── CTA Banner ─────────────────────────── */
-      gsap.fromTo(".cta-banner",
-        { autoAlpha: 0, y: 50, scale: 0.97 },
-        { autoAlpha: 1, y: 0, scale: 1, duration: 1.1, ease: "power3.out",
-          scrollTrigger: { trigger: ".cta-banner", start: "top 86%", once: true } }
-      );
+      const ctaTl = gsap.timeline({
+        defaults: { ease: "power2.out" },
+        scrollTrigger: { trigger: ".cta-banner", start: "top 86%", once: true },
+      });
+
+      ctaTl
+        .fromTo(".cta-banner",
+          { autoAlpha: 0, y: 50, scale: 0.97 },
+          { autoAlpha: 1, y: 0, scale: 1, duration: 1.1, ease: "power3.out" }
+        )
+        .fromTo(".cta-banner__badge",
+          { autoAlpha: 0, y: 16 },
+          { autoAlpha: 1, y: 0, duration: 0.55 },
+          "-=0.7"
+        )
+        .fromTo(".cta-banner__heading",
+          { autoAlpha: 0, y: 22 },
+          { autoAlpha: 1, y: 0, duration: 0.65 },
+          "-=0.35"
+        )
+        .fromTo(".cta-banner__body",
+          { autoAlpha: 0, y: 18 },
+          { autoAlpha: 1, y: 0, duration: 0.6 },
+          "-=0.4"
+        )
+        .fromTo(".cta-banner__feature",
+          { autoAlpha: 0, x: -20 },
+          { autoAlpha: 1, x: 0, duration: 0.55, stagger: 0.1 },
+          "-=0.35"
+        )
+        .fromTo(".cta-banner__button",
+          { autoAlpha: 0, y: 14 },
+          { autoAlpha: 1, y: 0, duration: 0.55 },
+          "-=0.2"
+        );
 
       /* ── Get In Touch ───────────────────────── */
       gsap.fromTo(".cta-info",

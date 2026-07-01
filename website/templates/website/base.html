@@ -857,42 +857,391 @@
           font-size: 16px;
         }
       }
+
+      /* ── Site Header (Figma 105:1357) ─────── */
+      .site-header {
+        background: #ffffff;
+        border-bottom: 1px solid #e5e7eb;
+      }
+
+      .site-header__inner {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        min-height: 76px;
+        padding: 16px 0;
+      }
+
+      .site-header__logo img {
+        display: block;
+        width: 202px;
+        height: 45px;
+        object-fit: contain;
+        object-position: left center;
+      }
+
+      .site-header__actions {
+        display: none;
+        align-items: center;
+        gap: 32px;
+      }
+
+      @media (min-width: 768px) {
+        .site-header__actions {
+          display: flex;
+        }
+      }
+
+      .site-header__nav {
+        display: flex;
+        align-items: center;
+        gap: 32px;
+      }
+
+      .site-header__link {
+        color: #000000;
+        font-family: "Inter", sans-serif;
+        font-size: 16px;
+        font-style: normal;
+        font-weight: 400;
+        line-height: 24px;
+        letter-spacing: -0.3125px;
+        text-decoration: none;
+        transition: color 0.2s ease;
+      }
+
+      .site-header__link:hover,
+      .site-header__link--active {
+        color: #2d388c;
+      }
+
+      .site-header__cta {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        min-width: 141px;
+        height: 44px;
+        padding: 0 20px;
+        border-radius: 8px;
+        background: #2d388c;
+        color: #ffffff;
+        font-family: "Inter", sans-serif;
+        font-size: 16px;
+        font-style: normal;
+        font-weight: 500;
+        line-height: 24px;
+        letter-spacing: -0.3125px;
+        text-decoration: none;
+        transition: background-color 0.2s ease, transform 0.2s ease;
+      }
+
+      .site-header__cta:hover {
+        background: #25307c;
+        transform: translateY(-1px);
+      }
+
+      .site-header__cta:active {
+        transform: translateY(0);
+      }
+
+      .site-header__mobile-link {
+        display: block;
+        padding: 10px 12px;
+        border-radius: 8px;
+        color: #000000;
+        font-family: "Inter", sans-serif;
+        font-size: 16px;
+        font-weight: 400;
+        line-height: 24px;
+        letter-spacing: -0.3125px;
+        text-decoration: none;
+      }
+
+      .site-header__mobile-link:hover,
+      .site-header__mobile-link--active {
+        color: #2d388c;
+        background: rgba(45, 56, 140, 0.05);
+      }
+
+      /* ── Site Footer ──────────────────────── */
+      .site-footer {
+        background: #0f172a;
+        color: #94a3b8;
+        font-family: "Inter", sans-serif;
+      }
+
+      .site-footer__marquee-wrap {
+        overflow: hidden;
+        border-bottom: 1px solid rgba(148, 163, 184, 0.12);
+        padding: 28px 0;
+      }
+
+      .site-footer__marquee-track {
+        display: flex;
+        width: max-content;
+        animation: footer-marquee 28s linear infinite;
+        will-change: transform;
+      }
+
+      .site-footer__marquee-wrap:hover .site-footer__marquee-track {
+        animation-play-state: paused;
+      }
+
+      .site-footer__marquee-item {
+        display: inline-flex;
+        align-items: center;
+        gap: 40px;
+        padding-right: 40px;
+        color: #ffffff;
+        font-family: "Inter", sans-serif;
+        font-size: clamp(28px, 4vw, 48px);
+        font-style: italic;
+        font-weight: 500;
+        line-height: 1.1;
+        letter-spacing: -0.02em;
+        white-space: nowrap;
+      }
+
+      .site-footer__star {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 0.85em;
+        font-style: normal;
+        opacity: 0.95;
+      }
+
+      @keyframes footer-marquee {
+        from { transform: translateX(0); }
+        to { transform: translateX(-50%); }
+      }
+
+      .site-footer__main {
+        padding: 56px 0 40px;
+      }
+
+      .site-footer__grid {
+        display: grid;
+        grid-template-columns: 1fr;
+        gap: 40px;
+      }
+
+      @media (min-width: 768px) {
+        .site-footer__grid {
+          grid-template-columns: repeat(2, minmax(0, 1fr));
+          gap: 48px 40px;
+        }
+      }
+
+      @media (min-width: 1024px) {
+        .site-footer__grid {
+          grid-template-columns: minmax(0, 1.35fr) repeat(3, minmax(0, 1fr));
+          gap: 48px;
+        }
+      }
+
+      .site-footer__logo img {
+        display: block;
+        width: 202px;
+        height: 45px;
+        object-fit: contain;
+        object-position: left center;
+      }
+
+      .site-footer__tagline {
+        margin: 20px 0 0;
+        max-width: 280px;
+        color: #94a3b8;
+        font-size: 14px;
+        font-weight: 400;
+        line-height: 22px;
+        letter-spacing: -0.15px;
+      }
+
+      .site-footer__contact {
+        display: flex;
+        flex-direction: column;
+        gap: 12px;
+        margin-top: 24px;
+      }
+
+      .site-footer__contact-link {
+        display: inline-flex;
+        align-items: center;
+        gap: 10px;
+        color: #ffffff;
+        font-size: 14px;
+        font-weight: 500;
+        line-height: 20px;
+        letter-spacing: -0.15px;
+        text-decoration: none;
+        transition: color 0.2s ease;
+      }
+
+      .site-footer__contact-link:hover {
+        color: #cbd5e1;
+      }
+
+      .site-footer__contact-link svg,
+      .site-footer__contact-link i {
+        flex-shrink: 0;
+        color: #2d388c;
+      }
+
+      .site-footer__heading {
+        margin: 0 0 20px;
+        color: #ffffff;
+        font-size: 16px;
+        font-weight: 600;
+        line-height: 24px;
+        letter-spacing: -0.31px;
+      }
+
+      .site-footer__links {
+        display: flex;
+        flex-direction: column;
+        gap: 14px;
+        margin: 0;
+        padding: 0;
+        list-style: none;
+      }
+
+      .site-footer__link {
+        color: #94a3b8;
+        font-size: 14px;
+        font-weight: 400;
+        line-height: 20px;
+        letter-spacing: -0.15px;
+        text-decoration: none;
+        transition: color 0.2s ease;
+      }
+
+      .site-footer__link:hover {
+        color: #ffffff;
+      }
+
+      .site-footer__socials {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+        margin-top: 24px;
+      }
+
+      .site-footer__social {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        width: 36px;
+        height: 36px;
+        border-radius: 50%;
+        background: #1e3a8a;
+        color: #ffffff;
+        text-decoration: none;
+        transition: background-color 0.2s ease, transform 0.2s ease;
+      }
+
+      .site-footer__social:hover {
+        background: #2d388c;
+        transform: translateY(-1px);
+      }
+
+      .site-footer__social svg {
+        width: 16px;
+        height: 16px;
+      }
+
+      .site-footer__bottom {
+        display: flex;
+        flex-direction: column;
+        gap: 16px;
+        margin-top: 48px;
+        padding-top: 28px;
+        border-top: 1px solid rgba(148, 163, 184, 0.15);
+      }
+
+      @media (min-width: 768px) {
+        .site-footer__bottom {
+          flex-direction: row;
+          align-items: flex-end;
+          justify-content: space-between;
+          gap: 24px;
+        }
+      }
+
+      .site-footer__legal {
+        margin: 0;
+        color: #64748b;
+        font-size: 12px;
+        font-weight: 400;
+        line-height: 18px;
+        letter-spacing: -0.1px;
+      }
+
+      .site-footer__credit {
+        margin: 6px 0 0;
+        color: #64748b;
+        font-size: 12px;
+        font-weight: 400;
+        line-height: 18px;
+      }
+
+      .site-footer__address {
+        margin: 0;
+        color: #64748b;
+        font-size: 12px;
+        font-weight: 400;
+        line-height: 18px;
+        letter-spacing: -0.1px;
+        text-align: left;
+      }
+
+      @media (min-width: 768px) {
+        .site-footer__address {
+          text-align: right;
+          max-width: 360px;
+        }
+      }
+
+      @media (prefers-reduced-motion: reduce) {
+        .site-footer__marquee-track {
+          animation: none;
+        }
+      }
     </style>
   </head>
   <body class="bg-slate-50 text-slate-900 overflow-x-hidden min-h-screen flex flex-col" x-data="{ mobileMenuOpen: false }">
     
-    <!-- Header / Navigation -->
-    <header class="bg-white/90 backdrop-blur-md border-b border-slate-100 sticky top-0 z-50 transition-all duration-300">
-      <div class="mx-8  lg:mx-24 mx-auto px-4 sm:px-6 lg:px-8">
-        <div class="flex justify-between items-center h-20">
-          
-          <!-- Logo -->
-          <div class="flex-shrink-0 flex items-center">
-            <a href="{% url 'home' %}" class="flex items-center space-x-2">
-              <img src="{% static 'images/logo.svg' %}" alt="Glupac Logo" class="h-11 w-auto" onerror="this.onerror=null; this.src='https://placehold.co/200x50?text=GLUPAC'">
-            </a>
-          </div>
-          
-          <!-- Desktop Nav -->
-          <nav class="hidden md:flex space-x-8 lg:space-x-10 text-sm font-semibold text-slate-600">
-            <a href="{% url 'home' %}" class="hover:text-[#2d388c] transition-colors py-2 {% if request.resolver_match.url_name == 'home' %}text-[#2d388c] border-b-2 border-[#2d388c]{% endif %}">Home</a>
-            <a href="#advantages" class="hover:text-primary transition-colors py-2">Advantages</a>
-            <a href="#solutions" class="hover:text-primary transition-colors py-2">Solutions</a>
-            <a href="{% url 'home' %}#footprints" class="hover:text-primary transition-colors py-2">Footprints</a>
-            <a href="#contact" class="hover:text-primary transition-colors py-2">Contact Us</a>
-          </nav>
-          
-          <!-- Right Button -->
-          <div class="hidden md:flex items-center">
-            <a href="#contact" class="inline-flex items-center justify-center px-6 py-2.5 rounded-full text-sm font-bold text-white bg-[#2d388c] hover:bg-[#25307c] transition-all shadow-md shadow-[#2d388c]/20 hover:-translate-y-0.5 active:translate-y-0">
+    <!-- Header / Navigation (Figma 105:1357) -->
+    <header class="site-header sticky top-0 z-50">
+      <div class="mx-8 lg:mx-24 mx-auto px-4 sm:px-6 lg:px-[88px]">
+        <div class="site-header__inner">
+
+          <a href="{% url 'home' %}" class="site-header__logo flex-shrink-0">
+            <img
+              src="{% static 'images/header/logo.png' %}"
+              alt="Glupac"
+              width="202"
+              height="45"
+            >
+          </a>
+
+          <div class="site-header__actions">
+            <nav class="site-header__nav" aria-label="Main navigation">
+              <a href="{% url 'home' %}" class="site-header__link {% if request.resolver_match.url_name == 'home' %}site-header__link--active{% endif %}">Home</a>
+              <a href="{% url 'home' %}" class="site-header__link {% if request.resolver_match.url_name == 'about' %}site-header__link--active{% endif %}">About Us</a>
+              <a href="{% url 'home' %}" class="site-header__link {% if request.resolver_match.url_name == 'industries' %}site-header__link--active{% endif %}">Industries</a>
+              <a href="{% url 'home' %}" class="site-header__link {% if request.resolver_match.url_name == 'solutions' or request.resolver_match.url_name == 'solution_detail' %}site-header__link--active{% endif %}">Solutions</a>
+              <a href="{% url 'home' %}#videos" class="site-header__link">Videos</a>
+              <a href="{% url 'home' %}" class="site-header__link {% if request.resolver_match.url_name == 'contact' %}site-header__link--active{% endif %}">Contact Us</a>
+            </nav>
+
+            <a href="{% url 'contact' %}" class="site-header__cta">
               Enquire Now
-              <i data-lucide="arrow-right" class="w-4 h-4 ml-1.5"></i>
             </a>
           </div>
-          
-          <!-- Mobile Menu Toggle -->
+
           <div class="flex items-center md:hidden">
-            <button @click="mobileMenuOpen = !mobileMenuOpen" type="button" class="inline-flex items-center justify-center p-2 rounded-lg text-slate-400 hover:text-slate-500 hover:bg-slate-100 focus:outline-none focus:ring-2 focus:ring-[#2d388c]" aria-controls="mobile-menu" aria-expanded="false">
+            <button @click="mobileMenuOpen = !mobileMenuOpen" type="button" class="inline-flex items-center justify-center p-2 rounded-lg text-slate-500 hover:text-slate-700 hover:bg-slate-100 focus:outline-none focus:ring-2 focus:ring-[#2d388c]" aria-controls="mobile-menu" :aria-expanded="mobileMenuOpen">
               <span class="sr-only">Open main menu</span>
               <svg :class="{'hidden': mobileMenuOpen, 'block': !mobileMenuOpen }" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
                 <path stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 12h16M4 18h16" />
@@ -902,20 +1251,30 @@
               </svg>
             </button>
           </div>
-          
+
         </div>
       </div>
-      
-      <!-- Mobile Menu -->
-      <div x-show="mobileMenuOpen" x-transition:enter="transition ease-out duration-200" x-transition:enter-start="opacity-0 -translate-y-4" x-transition:enter-end="opacity-100 translate-y-0" x-transition:leave="transition ease-in duration-150" x-transition:leave-start="opacity-100 translate-y-0" x-transition:leave-end="opacity-0 -translate-y-4" class="md:hidden border-b border-slate-100 bg-white" id="mobile-menu">
-        <div class="px-2 pt-2 pb-4 space-y-1 sm:px-3 text-base font-semibold">
-          <a href="{% url 'home' %}" class="block px-3 py-2 rounded-md hover:bg-slate-50 text-slate-800 {% if request.resolver_match.url_name == 'home' %}text-[#2d388c] bg-[#2d388c]/5{% endif %}">Home</a>
-          <a href="#advantages" class="block px-3 py-2 rounded-md hover:bg-slate-50 text-slate-800">Advantages</a>
-          <a href="#solutions" class="block px-3 py-2 rounded-md hover:bg-slate-50 text-slate-800">Solutions</a>
-          <a href="{% url 'home' %}#footprints" class="block px-3 py-2 rounded-md hover:bg-slate-50 text-slate-800">Footprints</a>
-          <a href="#contact" class="block px-3 py-2 rounded-md hover:bg-slate-50 text-slate-800">Contact Us</a>
-          <div class="pt-4 px-3">
-            <a href="#contact" class="w-full flex items-center justify-center px-4 py-3 border border-transparent rounded-full shadow-sm text-sm font-bold text-white bg-[#2d388c] hover:bg-[#25307c]">
+
+      <div
+        x-show="mobileMenuOpen"
+        x-transition:enter="transition ease-out duration-200"
+        x-transition:enter-start="opacity-0 -translate-y-4"
+        x-transition:enter-end="opacity-100 translate-y-0"
+        x-transition:leave="transition ease-in duration-150"
+        x-transition:leave-start="opacity-100 translate-y-0"
+        x-transition:leave-end="opacity-0 -translate-y-4"
+        class="md:hidden border-t border-[#e5e7eb] bg-white"
+        id="mobile-menu"
+      >
+        <div class="px-4 py-3 space-y-1">
+          <a href="{% url 'home' %}" class="site-header__mobile-link {% if request.resolver_match.url_name == 'home' %}site-header__mobile-link--active{% endif %}">Home</a>
+          <a href="{% url 'about' %}" class="site-header__mobile-link {% if request.resolver_match.url_name == 'about' %}site-header__mobile-link--active{% endif %}">About Us</a>
+          <a href="{% url 'industries' %}" class="site-header__mobile-link {% if request.resolver_match.url_name == 'industries' %}site-header__mobile-link--active{% endif %}">Industries</a>
+          <a href="{% url 'solutions' %}" class="site-header__mobile-link {% if request.resolver_match.url_name == 'solutions' or request.resolver_match.url_name == 'solution_detail' %}site-header__mobile-link--active{% endif %}">Solutions</a>
+          <a href="{% url 'home' %}#videos" class="site-header__mobile-link">Videos</a>
+          <a href="{% url 'contact' %}" class="site-header__mobile-link {% if request.resolver_match.url_name == 'contact' %}site-header__mobile-link--active{% endif %}">Contact Us</a>
+          <div class="pt-3">
+            <a href="{% url 'contact' %}" class="site-header__cta w-full">
               Enquire Now
             </a>
           </div>
@@ -929,75 +1288,92 @@
     </div>
 
     <!-- Footer -->
-    <footer class="bg-[#0f172a] text-slate-400 pt-16 pb-12 border-t border-slate-800 font-inter">
-      <div class="mx-8  lg:mx-24 mx-auto px-4 sm:px-6 lg:px-8">
-        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10">
-          
-          <!-- Column 1: Info -->
-          <div>
-            <div class="mb-6">
-              <img src="{% static 'images/logo.svg' %}" alt="Glupac Logo" class="h-10 w-auto filter brightness-0 invert" onerror="this.onerror=null; this.src='https://placehold.co/200x50?text=GLUPAC'">
-            </div>
-            <p class="text-sm leading-relaxed mb-6">
-              Precision Bonding, Seamless Packaging solutions for modern enterprise.
+    <footer class="site-footer">
+      <div class="site-footer__marquee-wrap" aria-hidden="true">
+        <div class="site-footer__marquee-track">
+          {% for i in "12345678" %}
+          <span class="site-footer__marquee-item">Let's Work Together <span class="site-footer__star">✦</span></span>
+          {% endfor %}
+        </div>
+      </div>
+
+      <div class="mx-8 lg:mx-24 mx-auto px-4 sm:px-6 lg:px-[88px] site-footer__main">
+        <div class="site-footer__grid">
+
+          <div class="site-footer__brand">
+            <a href="{% url 'home' %}" class="site-footer__logo">
+              <img
+                src="{% static 'images/header/logo.png' %}"
+                alt="Glupac"
+                width="202"
+                height="45"
+              >
+            </a>
+            <p class="site-footer__tagline">
+              Precision Bonding, Seamless Packaging solutions for industries worldwide.
             </p>
-            <div class="space-y-3 font-semibold text-sm">
-              <a href="tel:+919717333206" class="flex items-center space-x-3 hover:text-white transition-colors">
-                <i data-lucide="phone" class="w-4 h-4 text-[#47a33d]"></i>
+            <div class="site-footer__contact">
+              <a href="tel:+919717333206" class="site-footer__contact-link">
+                <i data-lucide="phone" class="w-4 h-4" aria-hidden="true"></i>
                 <span>+91 97173 33206</span>
               </a>
-              <a href="mailto:contact@glupac.in" class="flex items-center space-x-3 hover:text-white transition-colors">
-                <i data-lucide="mail" class="w-4 h-4 text-[#47a33d]"></i>
+              <a href="mailto:contact@glupac.in" class="site-footer__contact-link">
+                <i data-lucide="mail" class="w-4 h-4" aria-hidden="true"></i>
                 <span>contact@glupac.in</span>
               </a>
             </div>
           </div>
 
-          <!-- Column 2: Machines -->
           <div>
-            <h3 class="text-white text-base font-bold tracking-wide uppercase mb-6">Machines</h3>
-            <ul class="space-y-3.5 text-sm">
-              <li><a href="#solutions" class="hover:text-white transition-colors">Gluing Machines</a></li>
-              <li><a href="#solutions" class="hover:text-white transition-colors">Cartoning Machines</a></li>
-              <li><a href="#solutions" class="hover:text-white transition-colors">Cartonator Machines</a></li>
-              <li><a href="#solutions" class="hover:text-white transition-colors">Shipper Carton Machines</a></li>
+            <h3 class="site-footer__heading">Machines</h3>
+            <ul class="site-footer__links">
+              <li><a href="{% url 'solutions' %}?category=GLUING" class="site-footer__link">Gluing Machines</a></li>
+              <li><a href="{% url 'solutions' %}?category=CARTONING" class="site-footer__link">Cartoning Machines</a></li>
+              <li><a href="{% url 'solutions' %}?category=CARTONATOR" class="site-footer__link">Cartonator Machines</a></li>
+              <li><a href="{% url 'solutions' %}?category=SHIPPER" class="site-footer__link">Shipper Carton Machines</a></li>
             </ul>
           </div>
 
-          <!-- Column 3: Industries -->
           <div>
-            <h3 class="text-white text-base font-bold tracking-wide uppercase mb-6">Industries</h3>
-            <ul class="space-y-3.5 text-sm">
-              <li><a href="#solutions" class="hover:text-white transition-colors">Food & Beverage</a></li>
-              <li><a href="#solutions" class="hover:text-white transition-colors">Pharmaceuticals</a></li>
-              <li><a href="#solutions" class="hover:text-white transition-colors">Cosmetics</a></li>
-              <li><a href="#solutions" class="hover:text-white transition-colors">Textile & More</a></li>
+            <h3 class="site-footer__heading">Industries</h3>
+            <ul class="site-footer__links">
+              <li><a href="{% url 'industries' %}" class="site-footer__link">Food &amp; Beverage</a></li>
+              <li><a href="{% url 'industries' %}" class="site-footer__link">Pharmaceuticals</a></li>
+              <li><a href="{% url 'industries' %}" class="site-footer__link">Cosmetics</a></li>
+              <li><a href="{% url 'industries' %}" class="site-footer__link">Textile &amp; More</a></li>
             </ul>
           </div>
 
-          <!-- Column 4: Company -->
           <div>
-            <h3 class="text-white text-base font-bold tracking-wide uppercase mb-6">Company</h3>
-            <ul class="space-y-3.5 text-sm">
-              <li><a href="/" class="hover:text-white transition-colors">Home</a></li>
-              <li><a href="#contact" class="hover:text-white transition-colors">Contact</a></li>
-              <li><a href="#" class="hover:text-white transition-colors flex items-center"><i data-lucide="download" class="w-4 h-4 mr-1.5 text-[#47a33d]"></i>Download Brochure</a></li>
-              <li><a href="https://wa.me/919717333206" target="_blank" class="hover:text-white transition-colors flex items-center text-green-400">
-                <svg class="w-4 h-4 mr-1.5 fill-current" viewBox="0 0 24 24">
-                  <path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946C.06 5.348 5.397.01 12.008.01c3.202.001 6.212 1.246 8.477 3.513 2.262 2.268 3.507 5.28 3.505 8.484-.004 6.657-5.34 11.997-11.953 11.997-2.005-.001-3.973-.502-5.724-1.455L0 24zm6.59-4.846c1.66.986 3.287 1.498 4.773 1.499 5.4 0 9.79-4.385 9.793-9.774.001-2.61-1.012-5.064-2.853-6.91-1.842-1.847-4.294-2.864-6.904-2.866-5.4.001-9.793 4.385-9.796 9.775 0 1.91.517 3.774 1.497 5.378L1.93 22l4.717-1.726z"/>
-                </svg>
-                WhatsApp Us
-              </a></li>
+            <h3 class="site-footer__heading">Company</h3>
+            <ul class="site-footer__links">
+              <li><a href="{% url 'about' %}" class="site-footer__link">About Us</a></li>
+              <li><a href="{% url 'contact' %}" class="site-footer__link">Contact</a></li>
+              <li><a href="#" class="site-footer__link">Download Brochure</a></li>
+              <li><a href="https://wa.me/919717333206" target="_blank" rel="noopener noreferrer" class="site-footer__link">WhatsApp Us</a></li>
             </ul>
+            <div class="site-footer__socials">
+              <a href="#" class="site-footer__social" aria-label="Instagram">
+                <i data-lucide="instagram" aria-hidden="true"></i>
+              </a>
+              <a href="#" class="site-footer__social" aria-label="Facebook">
+                <i data-lucide="facebook" aria-hidden="true"></i>
+              </a>
+              <a href="#" class="site-footer__social" aria-label="LinkedIn">
+                <i data-lucide="linkedin" aria-hidden="true"></i>
+              </a>
+            </div>
           </div>
-          
+
         </div>
 
-        <div class="mt-12 pt-8 border-t border-slate-800 text-sm flex flex-col md:flex-row justify-between items-center gap-4 text-center md:text-left">
-          <p>© 2026 Glupac - Suresh Raj Industries. All rights reserved.</p>
-          <p class="flex items-center justify-center space-x-1">
-            <i data-lucide="map-pin" class="w-4 h-4 text-[#47a33d]"></i>
-            <span>Head Office: B5/9, 1st Floor, Paschim Vihar, New Delhi</span>
+        <div class="site-footer__bottom">
+          <div>
+            <p class="site-footer__legal">© 2026 Glupac - Suresh Raj Industries. All rights reserved.</p>
+            <p class="site-footer__credit">Handcrafted by Invincible Web Solutions</p>
+          </div>
+          <p class="site-footer__address">
+            Head Office: B5/9, 1st Floor, Paschim Vihar, New Delhi-110063
           </p>
         </div>
       </div>

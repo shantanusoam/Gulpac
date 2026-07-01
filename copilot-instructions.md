@@ -44,6 +44,7 @@ The script packages the project, uploads the archive, installs deps, builds asse
 - All templates extend `website/base.html`
 - Static files live under `website/static/`
 - Use `{% load static %}` and `{% static '...' %}` for static references
+- **Figma → Django:** use the `.cursor/skills/figma-to-django` skill when implementing designs from Figma (fonts, colors, assets, layout, animations, CMS models)
 
 ## Naming conventions
 
