@@ -6,14 +6,14 @@
 {% block content %}
 
   {# ── 1. HERO ─────────────────────────────────────────────────────────── #}
-  <section class="hero-section relative overflow-hidden bg-[#f3f5f9] pt-24 pb-24 md:pt-28 md:pb-28 lg:pt-32 lg:pb-36">
+  <section class="hero-section relative overflow-hidden bg-[#f3f5f9] min-h-[640px] sm:min-h-[700px] md:min-h-0 pt-16 pb-24 md:pt-28 md:pb-28 lg:pt-32 lg:pb-36">
     <div class="absolute inset-0 pointer-events-none" aria-hidden="true">
       <div
         class="hero-machine-bg absolute inset-0"
       ></div>
     </div>
 
-    <div class="relative z-10 mx-auto w-full max-w-[980px] px-4 sm:px-6 lg:px-10 xl:px-16">
+    <div class="relative z-10 mx-auto w-full px-4 sm:px-6 lg:px-10 xl:px-16">
       <div class="grid grid-cols-1 items-center gap-12 lg:grid-cols-12 lg:gap-8">
 
         <div class="hero-text-block-primary lg:col-span-5 space-y-6 md:space-y-7">
@@ -237,7 +237,7 @@
       >
     </div>
 
-    <div class="relative z-10 mx-auto w-full max-w-[980px] px-4 sm:px-6 lg:px-10 xl:px-16">
+    <div class="relative z-10 mx-auto w-full px-4 sm:px-6 lg:px-10 xl:px-16">
       <div class="industries-section__inner mx-auto w-full max-w-[1232px]">
 
         <header class="industries-header text-center mb-10 lg:mb-14">
@@ -702,7 +702,7 @@
 
       {# Section heading #}
       <div class="text-center mb-10 cta-info">
-        <h2 class="font-extrabold italic uppercase text-[40px] leading-[48px] tracking-[0.37px] mb-4" style="font-family: 'Plus Jakarta Sans', sans-serif;">
+        <h2 class="font-bold uppercase text-[40px] italic  mb-4" style="font-family: 'Hatsch Sans PERSONAL USE ONLY', sans-serif;">
           <span class="text-[#2d388c]">Get In </span><span class="text-[#47a33d]">Touch</span>
         </h2>
         <p class="font-normal text-[20px] leading-[28px] tracking-[-0.45px] text-black" style="font-family: 'Inter', sans-serif;">
@@ -834,6 +834,12 @@
     @media (min-width: 768px) {
       .hero-machine-bg {
         background-image: url("{% static 'heroBG.png' %}");
+      }
+    }
+
+    @media (max-width: 767px) {
+      .hero-text-block-primary {
+        margin-top: -28px;
       }
     }
 
