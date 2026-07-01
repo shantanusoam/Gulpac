@@ -1213,7 +1213,7 @@
     
     <!-- Header / Navigation (Figma 105:1357) -->
     <header class="site-header sticky top-0 z-50">
-      <div class="mx-8 lg:mx-24 mx-auto px-4 sm:px-6 lg:px-[88px]">
+      <div class="mx-auto w-full max-w-[1280px] px-4 sm:px-6 lg:px-10 xl:px-16">
         <div class="site-header__inner">
 
           <a href="{% url 'home' %}" class="site-header__logo flex-shrink-0">
@@ -1297,7 +1297,7 @@
         </div>
       </div>
 
-      <div class="mx-8 lg:mx-24 mx-auto px-4 sm:px-6 lg:px-[88px] site-footer__main">
+      <div class="mx-auto w-full max-w-[1280px] px-4 sm:px-6 lg:px-10 xl:px-16 site-footer__main">
         <div class="site-footer__grid">
 
           <div class="site-footer__brand">
@@ -1381,7 +1381,7 @@
 
     <!-- JS Libraries (GSAP, ScrollTrigger, Lucide Icons, Alpine.js) -->
     <!-- Lucide Icons -->
-    <script src="https://unpkg.com/lucide@latest"></script>
+    <script src="https://unpkg.com/lucide@0.468.0/dist/umd/lucide.min.js"></script>
     <!-- Alpine.js -->
     <script defer src="{% static 'js/alpine.min.js' %}"></script>
     <!-- GSAP & ScrollTrigger -->
@@ -1391,7 +1391,9 @@
     <script>
       // Initialize Lucide Icons
       document.addEventListener("DOMContentLoaded", function() {
-        lucide.createIcons();
+        if (window.lucide && typeof window.lucide.createIcons === "function") {
+          window.lucide.createIcons();
+        }
       });
 
       (function() {
