@@ -685,7 +685,17 @@
   <section id="contact" class="relative overflow-hidden pt-20 pb-20">
     {# Hexagonal background pattern #}
     <div class="absolute inset-0 pointer-events-none contact-bg-parallax" aria-hidden="true">
-      <img src="{% static 'images/contact-bg.gif' %}" alt="" class="contact-bg-parallax__image h-full w-full object-cover object-center">
+      <video
+        class="contact-bg-parallax__image h-full w-full object-cover object-center"
+        autoplay
+        muted
+        loop
+        playsinline
+        preload="metadata"
+        aria-hidden="true"
+      >
+        <source src="{% static '0_Hexagons_Geometric_1920x1080 (1).mp4' %}" type="video/mp4">
+      </video>
     </div>
 
     <div class="relative z-10 max-w-[1280px] mx-auto px-6 lg:px-8">
