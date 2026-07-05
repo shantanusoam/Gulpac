@@ -1,16 +1,71 @@
-<section class="page-cta" data-page-cta="{{ cta_section.section_key }}">
-  <div class="page-cta__bg" aria-hidden="true" style="{% if cta_section.background_image_url %}background-image: url('{{ cta_section.background_image_url }}');{% endif %}"></div>
-  <div class="page-cta__overlay" aria-hidden="true"></div>
-  <div class="page-cta__container">
-    <div class="page-cta__content">
+{% load static %}
+<section class="page-cta relative overflow-hidden" data-page-cta="{{ cta_section.section_key }}">
+  <div class="industries-bg pointer-events-none absolute inset-0 overflow-hidden" aria-hidden="true">
+    <img
+      src="{% static 'images/industries/magnific-hexagon-bg.png' %}"
+      alt=""
+      class="industries-bg__image absolute left-1/2 top-[-84px] h-[968px] w-[1702px] max-w-none -translate-x-1/2 object-cover"
+    >
+  </div>
+  <div class="page-cta__container relative z-10"  >
+    <div class="page-cta__content space-y-[3rem] xl:py-[5rem] py-[2rem]">
       <h2 class="page-cta__title">
-        <span class="page-cta__title-prefix">{{ cta_section.heading_prefix }}</span>
-        <span class="page-cta__title-accent">{{ cta_section.heading_accent }}</span>
+        <span class="page-cta__title-prefix font-[1000]">{{ cta_section.heading_prefix }}</span>
+        <span class="page-cta__title-accent font-bold">{{ cta_section.heading_accent }}</span>
       </h2>
-      <p class="page-cta__desc">{{ cta_section.description }}</p>
-      <a href="{{ cta_section.button_url }}" class="page-cta__button">
+      <p class="page-cta__desc w-full">{{ cta_section.description }}</p>
+      <a href="{{ cta_section.button_url }}" class="page-cta__button hover:scale-105 ease-in-out duration-300 inline-flex items-center ">
         {{ cta_section.button_label }}
+        <i data-lucide="arrow-right" size="22" aria-hidden="true"></i>
       </a>
     </div>
   </div>
 </section>
+
+<script>
+  window.addEventListener('load', function() {
+    if (typeof gsap === "undefined") return;
+
+    if (typeof ScrollTrigger !== "undefined" && !window.__gulpacScrollTriggerRegisteredCta) {
+      gsap.registerPlugin(ScrollTrigger);
+      window.__gulpacScrollTriggerRegisteredCta = true;
+    }
+
+    const reducedMotion = window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    if (reducedMotion) return;
+
+    // Background Image Entrance
+    gsap.fromTo(".page-cta .industries-bg__image",
+      { autoAlpha: 0, scale: 1.14 },
+      { autoAlpha: 1, scale: 1, duration: 1.4, ease: "power2.out",
+        scrollTrigger: { trigger: ".page-cta", start: "top 90%", once: true } }
+    );
+
+    // Background Scroll Parallax
+    gsap.to(".page-cta .industries-bg__image", {
+      y: 80,
+      scale: 1.08,
+      ease: "none",
+      scrollTrigger: { trigger: ".page-cta", start: "top bottom", end: "bottom top", scrub: 1.2 },
+    });
+
+    // Background Continuous Pan
+    gsap.to(".page-cta .industries-bg__image", {
+      x: "-=30",
+      duration: 12,
+      repeat: -1,
+      yoyo: true,
+      ease: "sine.inOut",
+    });
+
+    // Content Entrance
+    const ctaTl = gsap.timeline({
+      scrollTrigger: { trigger: ".page-cta__container", start: "top 85%", once: true },
+    });
+    
+    ctaTl
+      .fromTo(".page-cta__title", { autoAlpha: 0, y: 28 }, { autoAlpha: 1, y: 0, duration: 0.7 })
+      .fromTo(".page-cta__desc", { autoAlpha: 0, y: 20 }, { autoAlpha: 1, y: 0, duration: 0.65 }, "-=0.35")
+      .fromTo(".page-cta__button", { autoAlpha: 0, y: 16 }, { autoAlpha: 1, y: 0, duration: 0.55 }, "-=0.2");
+  });
+</script>
