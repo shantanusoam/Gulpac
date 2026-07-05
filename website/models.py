@@ -25,6 +25,36 @@ class HeroSection(models.Model):
         return self.page_key
 
 
+class MissionVisionSection(models.Model):
+    page_key = models.CharField(max_length=100, unique=True, default="about")
+    mission_title = models.CharField(max_length=200, default="Our Mission")
+    mission_description = models.TextField(
+        default=(
+            "To empower global industries with state-of-the-art, customized gluing and packaging automation. "
+            "We commit to continuous technological enhancement, ensuring zero defect rates, high operator safety, "
+            "and exceptional long-term machinery value."
+        ),
+        help_text="Supports HTML entered through the admin rich text editor.",
+    )
+    vision_title = models.CharField(max_length=200, default="Our Vision")
+    vision_description = models.TextField(
+        default=(
+            "To be internationally recognized as the benchmark of excellence in structural packaging systems. "
+            "We strive to pioneer intelligence and PLC capabilities, helping modern manufacturing lines transition "
+            "cleanly onto green, low-waste automated solutions."
+        ),
+        help_text="Supports HTML entered through the admin rich text editor.",
+    )
+    is_active = models.BooleanField(default=True)
+
+    class Meta:
+        verbose_name = "Mission & Vision Section"
+        verbose_name_plural = "Mission & Vision Sections"
+
+    def __str__(self):
+        return self.page_key
+
+
 class CardGridSection(models.Model):
     page_key = models.CharField(max_length=100)
     section_key = models.CharField(max_length=100)

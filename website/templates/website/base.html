@@ -1238,7 +1238,7 @@
           <div class="site-header__actions">
             <nav class="site-header__nav" aria-label="Main navigation">
               <a href="{% url 'home' %}" class="site-header__link {% if request.resolver_match.url_name == 'home' %}site-header__link--active{% endif %}">Home</a>
-              <a href="{% url 'home' %}" class="site-header__link {% if request.resolver_match.url_name == 'about' %}site-header__link--active{% endif %}">About Us</a>
+              <a href="{% url 'about' %}" class="site-header__link {% if request.resolver_match.url_name == 'about' %}site-header__link--active{% endif %}">About Us</a>
               <a href="{% url 'industries' %}" class="site-header__link {% if request.resolver_match.url_name == 'industries' %}site-header__link--active{% endif %}">Industries</a>
               <a href="{% url 'home' %}" class="site-header__link {% if request.resolver_match.url_name == 'solutions' or request.resolver_match.url_name == 'solution_detail' %}site-header__link--active{% endif %}">Solutions</a>
               <a href="{% url 'home' %}#videos" class="site-header__link">Videos</a>

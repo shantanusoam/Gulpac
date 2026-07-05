@@ -1,0 +1,41 @@
+.rich-text-editor-shell {
+  display: grid;
+  gap: 8px;
+}
+
+.rich-text-editor-toolbar {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+
+.rich-text-editor-button {
+  padding: 6px 10px;
+  border: 1px solid #d1d5db;
+  border-radius: 6px;
+  background: #fff;
+  color: #111827;
+  font-size: 12px;
+  line-height: 1;
+  cursor: pointer;
+}
+
+.rich-text-editor-button:hover {
+  background: #f3f4f6;
+}
+
+.rich-text-editor-surface {
+  min-height: 140px;
+  padding: 12px;
+  border: 1px solid #d1d5db;
+  border-radius: 8px;
+  background: #fff;
+  color: #111827;
+  font: inherit;
+  line-height: 1.5;
+}
+
+.rich-text-editor-surface:focus {
+  outline: 2px solid #2563eb;
+  outline-offset: 1px;
+}

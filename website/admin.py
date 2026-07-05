@@ -1,3 +1,4 @@
+from django import forms
 from django.contrib import admin
 from .models import (
     CTASection,
@@ -5,11 +6,13 @@ from .models import (
     ContactMapSection,
     ContactSection,
     HeroSection,
+    MissionVisionSection,
     CardGridItem,
     CardGridSection,
     Machine,
     Testimonial,
 )
+from .admin_widgets import RichTextEditorWidget
 
 
 @admin.register(HeroSection)
@@ -17,6 +20,24 @@ class HeroSectionAdmin(admin.ModelAdmin):
     list_display = ("page_key", "title", "is_active")
     list_filter = ("is_active",)
     search_fields = ("page_key", "title", "description")
+
+
+class MissionVisionSectionAdminForm(forms.ModelForm):
+    class Meta:
+        model = MissionVisionSection
+        fields = "__all__"
+        widgets = {
+            "mission_description": RichTextEditorWidget(),
+            "vision_description": RichTextEditorWidget(),
+        }
+
+
+@admin.register(MissionVisionSection)
+class MissionVisionSectionAdmin(admin.ModelAdmin):
+    form = MissionVisionSectionAdminForm
+    list_display = ("page_key", "mission_title", "vision_title", "is_active")
+    list_filter = ("is_active",)
+    search_fields = ("page_key", "mission_title", "mission_description", "vision_title", "vision_description")
 
 
 class CardGridItemInline(admin.TabularInline):

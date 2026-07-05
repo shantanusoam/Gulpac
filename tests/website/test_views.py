@@ -2,7 +2,7 @@ from pathlib import Path
 
 from django.core.files.uploadedfile import SimpleUploadedFile
 from django.test import TestCase, Client
-from website.models import HeroSection, CardGridSection, CardGridItem, CTASection, Machine, Testimonial, ContactInquiry, Category
+from website.models import HeroSection, MissionVisionSection, CardGridSection, CardGridItem, CTASection, Machine, Testimonial, ContactInquiry, Category
 
 
 BASE_DIR = Path(__file__).resolve().parents[2]
@@ -34,13 +34,28 @@ class HomeViewTest(TestCase):
             back_link_label="Back to Home",
             back_link_url="/",
         )
+        image_bytes = (BASE_DIR / "website" / "static" / "images" / "factory.png").read_bytes()
+        self.about_hero = HeroSection.objects.create(
+            page_key="about",
+            title="About From Admin",
+            description="This about page hero is managed from the Django admin.",
+            back_link_label="Back to Home",
+            back_link_url="/",
+            background_image=SimpleUploadedFile("about-hero.png", image_bytes, content_type="image/png"),
+        )
+        self.mission_vision = MissionVisionSection.objects.create(
+            page_key="about",
+            mission_title="Mission From Admin",
+            mission_description="<p><strong>Mission HTML</strong> from admin.</p>",
+            vision_title="Vision From Admin",
+            vision_description="<p><em>Vision HTML</em> from admin.</p>",
+        )
         self.industry_section = CardGridSection.objects.create(
             page_key="industries",
             section_key="industries-grid",
             title="",
             description="",
         )
-        image_bytes = (BASE_DIR / "website" / "static" / "images" / "factory.png").read_bytes()
         self.industry_card = CardGridItem.objects.create(
             section=self.industry_section,
             title="Food Industry",
@@ -72,7 +87,10 @@ class HomeViewTest(TestCase):
         response = self.client.get("/about/")
         self.assertEqual(response.status_code, 200)
         self.assertTemplateUsed(response, "website/about.html")
-        self.assertContains(response, "Pioneering Packaging Excellence")
+        self.assertContains(response, "About From Admin")
+        self.assertContains(response, "Mission From Admin")
+        self.assertContains(response, "<strong>Mission HTML</strong> from admin.", html=True)
+        self.assertContains(response, "<em>Vision HTML</em> from admin.", html=True)
 
     def test_industries_returns_200_and_uses_template(self):
         response = self.client.get("/industries/")
