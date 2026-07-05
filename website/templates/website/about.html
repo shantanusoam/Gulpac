@@ -4,57 +4,62 @@
 {% block title %}About Us — Gulpac{% endblock %}
 
 {% block content %}
-  <!-- Page Header -->
-  <section class="relative bg-slate-900 text-white py-20 overflow-hidden">
-    <div class="absolute inset-0 bg-gradient-to-r from-blue-900/40 to-indigo-950/40 z-10"></div>
-    <div class="absolute inset-0 z-0">
-      <img src="{% static 'images/factory.png' %}" alt="Glupac Assembly Line" class="w-full h-full object-cover opacity-20 filter blur-sm">
-    </div>
-    
-    <div class="mx-auto w-full max-w-[1280px] px-4 sm:px-6 lg:px-10 xl:px-16 relative z-20 text-center space-y-4">
-      <span class="tracking-widest text-xs font-black text-blue-400 uppercase">A सुरेश राज Industries Venture</span>
-      <h1 class="text-4xl sm:text-5xl font-black tracking-tight about-title">About Our Company</h1>
-      <p class="text-slate-300 text-sm sm:text-base max-w-xl mx-auto about-subtitle">
-        Pioneering packaging development, precision bonding technology, and custom engineering since 2006.
-      </p>
-    </div>
-  </section>
+  {% include "website/components/page_hero.html" with hero=about_hero %}
 
-  <!-- Company Journey Section -->
-  <section class="py-20 md:py-28 bg-white">
-    <div class="mx-auto w-full max-w-[1280px] px-4 sm:px-6 lg:px-10 xl:px-16">
-      <div class="grid grid-cols-1 xl:grid-cols-12 gap-12 xl:gap-8 items-center">
-        
-        <!-- Left Side: Text -->
-        <div class="xl:col-span-6 space-y-6 journey-text">
-          <h2 class="text-3xl sm:text-4xl font-extrabold text-slate-900 tracking-tight leading-tight">
-            Pioneering Packaging Excellence
+  {# ── 2. ABOUT GLUPAC (Figma 105:784) ─────────────────────────────────── #}
+  <section id="about-glupac" class="about-section bg-white pt-20 lg:pt-[80px] pb-20 lg:pb-[80px]">
+    <div class="about-section__container mx-auto w-full max-w-[1280px] px-4 sm:px-6 lg:px-10 xl:px-16">
+      <div class="about-section__stage relative mx-auto w-full max-w-[1232px]">
+
+        <div class="about-content relative z-10 w-full max-w-[584px] xl:absolute xl:left-0 xl:top-0 xl:min-h-[516.75px]">
+          {% comment %} <p class="about-eyebrow">About Glupac</p> {% endcomment %}
+
+          <h2 class="about-heading">
+            Leading Manufacturer of
+            <span class="text-[#47a33d]">Packaging Solutions</span>
           </h2>
-          <p class="text-slate-600 text-base sm:text-lg leading-relaxed">
-            Glupac, under the banner of <span class="font-bold text-slate-900">Suresh Raj Industries</span>, has built its reputation as a leading manufacturer of premium, high-speed automated packaging and hot melt adhesive machinery. 
+
+          <p class="about-para">
+            Glupac, under Suresh Raj Industries, is a pioneering manufacturer of precision gluing and packaging machinery. With installations across 5 countries and 20+ industries, we deliver customized solutions that ensure product safety, reduce wastage, and prevent supply chain theft.
           </p>
-          <p class="text-slate-600 text-base sm:text-lg leading-relaxed">
-            Our journey began with a simple vision: to revolutionize regional cartoning operations by engineering systems that eliminate human error, guarantee leak-free packages, and significantly reduce material wastage.
+
+          <p class="about-para">
+            Our machines are engineered to provide zero-leakage packaging, theft resistance, and seamless automation for businesses ranging from food and pharmaceuticals to cosmetics and textiles.
           </p>
-          <p class="text-slate-600 text-base sm:text-lg leading-relaxed">
-            Every machinery unit that leaves our production floor is a testament to rigorous quality assurance, premium structural materials, and meticulous customization tailored to our industrial client requirements.
-          </p>
+
+          <div class="about-stats">
+            <div class="about-stat">
+              <div class="about-stat__icon">
+                <img src="{% static 'images/about/icon-experience.svg' %}" alt="" width="32" height="32" aria-hidden="true">
+              </div>
+              <p class="about-stat__label">20+ Years Experience</p>
+            </div>
+            <div class="about-stat">
+              <div class="about-stat__icon">
+                <img src="{% static 'images/about/icon-installations.svg' %}" alt="" width="32" height="32" aria-hidden="true">
+              </div>
+              <p class="about-stat__label">500+ Installations</p>
+            </div>
+            <div class="about-stat">
+              <div class="about-stat__icon">
+                <img src="{% static 'images/about/icon-customized.svg' %}" alt="" width="32" height="32" aria-hidden="true">
+              </div>
+              <p class="about-stat__label">100% Customized</p>
+            </div>
+          </div>
         </div>
 
-        <!-- Right Side: Overlapping Images -->
-        <div class="xl:col-span-6 relative flex items-center justify-center min-h-[400px] sm:min-h-[500px] journey-images-block">
-          <!-- Background shapes -->
-          <div class="absolute w-64 h-64 bg-blue-100/40 rounded-full blur-3xl -top-5 -right-5 pointer-events-none"></div>
-          
-          <!-- Image 1 (Factory) -->
-          <div class="absolute j-card-back left-4 sm:left-10 top-12 w-[260px] sm:w-[340px] aspect-[1.1] rounded-2xl overflow-hidden shadow-xl border-4 border-white bg-slate-100 transform -rotate-3 hover:rotate-0 hover:scale-105 transition-all duration-500 z-10">
-            <img src="{% static 'images/factory.png' %}" alt="Glupac Assembly Factory" class="w-full h-full object-cover">
-          </div>
-          
-          <!-- Image 2 (Manufacturing) -->
-          <div class="absolute j-card-front right-4 sm:right-10 bottom-10 w-[240px] sm:w-[320px] aspect-[1.1] rounded-2xl overflow-hidden shadow-2xl border-4 border-white bg-slate-150 transform rotate-3 hover:rotate-0 hover:scale-105 transition-all duration-500 z-20">
-            <img src="{% static 'images/process.png' %}" alt="Glupac Precision Manufacturing" class="w-full h-full object-cover">
-          </div>
+        <div class="about-images relative mt-10 h-[300px] sm:h-[360px] xl:absolute xl:inset-0 xl:mt-0 xl:h-auto xl:pointer-events-none">
+          <img
+            src="{% static 'images/about/machine-1.jpg' %}"
+            alt="Gulpac packaging machinery close-up"
+            class="about-image-1"
+          >
+          <img
+            src="{% static 'images/about/machine-2.jpg' %}"
+            alt="Gulpac automated packaging production line"
+            class="about-image-2"
+          >
         </div>
 
       </div>
@@ -71,10 +76,10 @@
           <div class="w-14 h-14 rounded-2xl bg-blue-50 flex items-center justify-center text-blue-600">
             <i data-lucide="target" class="w-7 h-7"></i>
           </div>
-          <h3 class="text-2xl font-black text-slate-900 font-inter">Our Mission</h3>
-          <p class="text-slate-600 text-sm sm:text-base leading-relaxed">
-            To empower global industries with state-of-the-art, customized gluing and packaging automation. We commit to continuous technological enhancement, ensuring zero defect rates, high operator safety, and exceptional long-term machinery value.
-          </p>
+          <h3 class="text-2xl font-black text-slate-900 font-inter">{{ mission_vision.mission_title }}</h3>
+          <div class="text-slate-600 text-sm sm:text-base leading-relaxed">
+            {{ mission_vision.mission_description|safe }}
+          </div>
         </div>
 
         <!-- Vision -->
@@ -82,153 +87,162 @@
           <div class="w-14 h-14 rounded-2xl bg-blue-50 flex items-center justify-center text-blue-600">
             <i data-lucide="eye" class="w-7 h-7"></i>
           </div>
-          <h3 class="text-2xl font-black text-slate-900 font-inter">Our Vision</h3>
-          <p class="text-slate-600 text-sm sm:text-base leading-relaxed">
-            To be internationally recognized as the benchmark of excellence in structural packaging systems. We strive to pioneer intelligence and PLC capabilities, helping modern manufacturing lines transition cleanly onto green, low-waste automated solutions.
-          </p>
+          <h3 class="text-2xl font-black text-slate-900 font-inter">{{ mission_vision.vision_title }}</h3>
+          <div class="text-slate-600 text-sm sm:text-base leading-relaxed">
+            {{ mission_vision.vision_description|safe }}
+          </div>
         </div>
 
       </div>
     </div>
   </section>
 
-  <!-- Commitment Grid (Why Choose Glupac - About Us Variation) -->
-  <section class="py-20 md:py-28 bg-white">
-    <div class="mx-auto w-full max-w-[1280px] px-4 sm:px-6 lg:px-10 xl:px-16">
-      
-      <!-- Headers -->
-      <div class="text-center max-w-3xl mx-auto mb-16 space-y-3 choose-header">
-        <h2 class="text-3xl sm:text-4xl font-extrabold text-slate-900 tracking-tight">Our Core Commitments</h2>
-        <p class="text-base text-slate-600 leading-relaxed font-semibold">Our core values drive how we build machines and support clients</p>
-      </div>
+  {# ── 3. ADVANTAGES (Figma 105:821) ───────────────────────────────────── #}
+  <section id="advantages" class="advantages-section bg-[#f1f8ff] pt-20 lg:pt-[80px] pb-20 lg:pb-[80px]">
+    <div class="advantages-section__container mx-auto w-full max-w-[1280px] px-4 sm:px-6 lg:px-10 xl:px-16">
+      <div class="advantages-section__inner mx-auto w-full max-w-[1232px] flex flex-col gap-12 lg:gap-16">
 
-      <div class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-8 choose-grid">
-        
-        <!-- Commit 1 -->
-        <div class="p-8 rounded-2xl bg-slate-50 border border-slate-100 space-y-4 hover:shadow-md transition-all">
-          <div class="text-blue-600"><i data-lucide="shield-check" class="w-7 h-7"></i></div>
-          <h3 class="text-lg font-bold text-slate-900">Zero Leakage Guarantee</h3>
-          <p class="text-slate-600 text-sm leading-relaxed">
-            Our hot melt sealing controls are optimized to create tight, seamless box bonding preventing outer content seepage under high impact.
+        <header class="adv-header text-center">
+          <h2 class="advantages-heading">
+            <span class="text-[#2d388c]">Why Choose</span><span class="text-[#47a33d]"> GLUPAC?</span>
+          </h2>
+          <p class="advantages-subheading">
+            Industry-leading gluing and packaging solutions that protect your products and brand
           </p>
-        </div>
+        </header>
 
-        <!-- Commit 2 -->
-        <div class="p-8 rounded-2xl bg-slate-50 border border-slate-100 space-y-4 hover:shadow-md transition-all">
-          <div class="text-blue-600"><i data-lucide="lock" class="w-7 h-7"></i></div>
-          <h3 class="text-lg font-bold text-slate-900">Theft Resistant Design</h3>
-          <p class="text-slate-600 text-sm leading-relaxed">
-            Tamper-proof closure alignment guarantees that any shipping carton cannot be easily opened and reclosed without visible marking.
-          </p>
-        </div>
+        <div class="advantages-grid adv-grid">
+          <article class="advantages-card adv-card">
+            <div class="advantages-card__icon">
+              <img src="{% static 'images/advantages/icon-zero-leakage.svg' %}" alt="" width="32" height="32" aria-hidden="true">
+            </div>
+            <h3 class="advantages-card__title">Zero Leakage Packaging</h3>
+            <p class="advantages-card__text">
+              Advanced sealing technology ensures complete protection and prevents any product leakage during transit and storage.
+            </p>
+          </article>
 
-        <!-- Commit 3 -->
-        <div class="p-8 rounded-2xl bg-slate-50 border border-slate-100 space-y-4 hover:shadow-md transition-all">
-          <div class="text-blue-600"><i data-lucide="sliders" class="w-7 h-7"></i></div>
-          <h3 class="text-lg font-bold text-slate-900">100% Customization</h3>
-          <p class="text-slate-600 text-sm leading-relaxed">
-            Every factory floor space demands custom design. We scale width, height, nozzle points, speed, and safety shields to exact client specifications.
-          </p>
-        </div>
+          <article class="advantages-card adv-card">
+            <div class="advantages-card__icon">
+              <img src="{% static 'images/advantages/icon-theft-resistant.svg' %}" alt="" width="32" height="32" aria-hidden="true">
+            </div>
+            <h3 class="advantages-card__title">Theft Resistant Systems</h3>
+            <p class="advantages-card__text">
+              Secure packaging solutions that prevent tampering and protect against counterfeiting in the supply chain.
+            </p>
+          </article>
 
-        <!-- Commit 4 -->
-        <div class="p-8 rounded-2xl bg-slate-50 border border-slate-100 space-y-4 hover:shadow-md transition-all">
-          <div class="text-blue-600"><i data-lucide="cpu" class="w-7 h-7"></i></div>
-          <h3 class="text-lg font-bold text-slate-900">Automation Excellence</h3>
-          <p class="text-slate-600 text-sm leading-relaxed">
-            We integrate with top-tier electronic providers like Schneider and Delta, running PLC intelligence to automatically monitor line faults.
-          </p>
-        </div>
+          <article class="advantages-card adv-card">
+            <div class="advantages-card__icon">
+              <img src="{% static 'images/advantages/icon-multi-size.svg' %}" alt="" width="32" height="32" aria-hidden="true">
+            </div>
+            <h3 class="advantages-card__title">Multi-Size Compatibility</h3>
+            <p class="advantages-card__text">
+              Flexible machines that handle various package dimensions from small pouches to large cartons.
+            </p>
+          </article>
 
-        <!-- Commit 5 -->
-        <div class="p-8 rounded-2xl bg-slate-50 border border-slate-100 space-y-4 hover:shadow-md transition-all">
-          <div class="text-blue-600"><i data-lucide="headphones" class="w-7 h-7"></i></div>
-          <h3 class="text-lg font-bold text-slate-900">Expert Technical Support</h3>
-          <p class="text-slate-600 text-sm leading-relaxed">
-            Transitioning to automation requires support. We provide comprehensive onsite training, documentation, and instant remote assistance.
-          </p>
-        </div>
+          <article class="advantages-card adv-card">
+            <div class="advantages-card__icon">
+              <img src="{% static 'images/advantages/icon-customization.svg' %}" alt="" width="32" height="32" aria-hidden="true">
+            </div>
+            <h3 class="advantages-card__title">Industry Customization</h3>
+            <p class="advantages-card__text">
+              Tailored solutions for food, pharma, cosmetics, FMCG, and more based on specific industry requirements.
+            </p>
+          </article>
 
-        <!-- Commit 6 -->
-        <div class="p-8 rounded-2xl bg-slate-50 border border-slate-100 space-y-4 hover:shadow-md transition-all">
-          <div class="text-blue-600"><i data-lucide="award" class="w-7 h-7"></i></div>
-          <h3 class="text-lg font-bold text-slate-900">Quality Assurance</h3>
-          <p class="text-slate-600 text-sm leading-relaxed">
-            Before packing, every single machine undergoes a non-stop 48-hour continuous cycle test with full carton load to verify electronic integrity.
-          </p>
+          <article class="advantages-card adv-card">
+            <div class="advantages-card__icon">
+              <img src="{% static 'images/advantages/icon-precision.svg' %}" alt="" width="32" height="32" aria-hidden="true">
+            </div>
+            <h3 class="advantages-card__title">Precision Automation</h3>
+            <p class="advantages-card__text">
+              High-speed automated systems with PLC controls ensuring consistent quality and reduced wastage.
+            </p>
+          </article>
+
+          <article class="advantages-card adv-card">
+            <div class="advantages-card__icon">
+              <img src="{% static 'images/advantages/icon-precision.svg' %}" alt="" width="32" height="32" aria-hidden="true">
+            </div>
+            <h3 class="advantages-card__title">Reduced Product Wastage</h3>
+            <p class="advantages-card__text">
+              Optimized gluing and sealing processes minimize material waste and maximize production efficiency.
+            </p>
+          </article>
         </div>
 
       </div>
     </div>
   </section>
 
-  <!-- Footprints / Globe section -->
-  <section id="footprints" class="py-20 md:py-28 bg-[#fafbfd] border-t border-slate-100 overflow-hidden">
+  {# ── 6. FOOTPRINTS (Figma 105:1134 + 105:1140) ─────────────────────── #}
+  <section id="footprints" class="footprints-section bg-white pt-20 lg:pt-[80px] pb-20 lg:pb-[80px] overflow-hidden">
     <div class="mx-auto w-full max-w-[1280px] px-4 sm:px-6 lg:px-10 xl:px-16">
-      
-      <!-- Section Headers -->
-      <div class="text-center max-w-2xl mx-auto mb-16 space-y-3 footprints-header">
-        <span class="tracking-widest text-xs font-black text-slate-400 uppercase">Footprints Across</span>
-        <h2 class="text-3xl sm:text-5xl font-black text-slate-900 tracking-tight">THE GLOBE</h2>
-        <p class="text-base text-slate-500 leading-relaxed font-semibold">Delivering excellence across continents</p>
-      </div>
+      <div class="footprints-section__inner mx-auto w-full max-w-[1232px]">
 
-      <div class="grid grid-cols-1 xl:grid-cols-12 gap-12 items-center relative">
-        
-        <!-- Left Side: Stats List -->
-        <div class="xl:col-span-5 space-y-6 md:space-y-8 footprints-stats">
-          
-          <!-- Stat 1 -->
-          <div class="flex items-center space-x-5 bg-white p-5 rounded-2xl shadow-sm border border-slate-100 hover:shadow-md transition-all">
-            <div class="w-14 h-14 rounded-xl bg-blue-50 flex items-center justify-center text-blue-600 flex-shrink-0">
-              <i data-lucide="anchor" class="w-6 h-6"></i>
+        <header class="footprints-header text-center mb-12 lg:mb-16">
+          <p class="footprints-eyebrow">Footprints Across</p>
+          <h2 class="footprints-heading">
+            <span class="text-[#2d388c]">THE </span><span class="text-[#47a33d]">GLOBE</span>
+          </h2>
+          <p class="footprints-subheading">Delivering excellence across continents</p>
+        </header>
+
+        <div class="grid grid-cols-1 xl:grid-cols-12 gap-12 items-center">
+          <div class="xl:col-span-5 footprints-stats flex flex-col gap-6 lg:gap-8">
+            <div class="footprints-stat footprints-stat-animate">
+              <div class="footprints-stat__icon">
+                <img src="{% static 'images/footprints/icon-installations.svg' %}" alt="" width="32" height="32" aria-hidden="true">
+              </div>
+              <div class="footprints-stat__text">
+                <p class="footprints-stat__value" data-final="500+">500+</p>
+                <p class="footprints-stat__label">Installations</p>
+              </div>
             </div>
-            <div>
-              <p class="text-3xl font-black text-slate-900 font-inter">500+</p>
-              <p class="text-sm font-bold text-slate-500">Installations Worldwide</p>
+
+            <div class="footprints-stat footprints-stat-animate">
+              <div class="footprints-stat__icon">
+                <img src="{% static 'images/footprints/icon-industries.svg' %}" alt="" width="32" height="32" aria-hidden="true">
+              </div>
+              <div class="footprints-stat__text">
+                <p class="footprints-stat__value" data-final="20+">20+</p>
+                <p class="footprints-stat__label">Industries Served</p>
+              </div>
+            </div>
+
+            <div class="footprints-stat footprints-stat-animate">
+              <div class="footprints-stat__icon">
+                <img src="{% static 'images/footprints/icon-engineering.svg' %}" alt="" width="32" height="32" aria-hidden="true">
+              </div>
+              <div class="footprints-stat__text">
+                <p class="footprints-stat__value" data-final="100%">100%</p>
+                <p class="footprints-stat__label">Customized Engineering</p>
+              </div>
+            </div>
+
+            <div class="footprints-stat footprints-stat-animate">
+              <div class="footprints-stat__icon">
+                <img src="{% static 'images/footprints/icon-countries.svg' %}" alt="" width="32" height="32" aria-hidden="true">
+              </div>
+              <div class="footprints-stat__text">
+                <p class="footprints-stat__value" data-final="5">5</p>
+                <p class="footprints-stat__label">Countries Worldwide</p>
+              </div>
             </div>
           </div>
 
-          <!-- Stat 2 -->
-          <div class="flex items-center space-x-5 bg-white p-5 rounded-2xl shadow-sm border border-slate-100 hover:shadow-md transition-all">
-            <div class="w-14 h-14 rounded-xl bg-blue-50 flex items-center justify-center text-blue-600 flex-shrink-0">
-              <i data-lucide="factory" class="w-6 h-6"></i>
+          <div class="xl:col-span-7 flex justify-center items-center relative footprints-globe">
+            <div class="footprints-globe__glow footprints-globe__glow--1" aria-hidden="true"></div>
+            <div class="footprints-globe__glow footprints-globe__glow--2" aria-hidden="true"></div>
+            <div class="footprints-globe__frame relative w-full max-w-[720px] h-[360px] sm:h-[460px]">
+              <img
+                src="{% static 'images/footprints/globe.png' %}"
+                alt="Glupac global export network across USA, Kuwait, UAE, India, and Russia"
+                class="footprints-globe__image"
+              >
             </div>
-            <div>
-              <p class="text-3xl font-black text-slate-900 font-inter">20+</p>
-              <p class="text-sm font-bold text-slate-500">Industries Served</p>
-            </div>
-          </div>
-
-          <!-- Stat 3 -->
-          <div class="flex items-center space-x-5 bg-white p-5 rounded-2xl shadow-sm border border-slate-100 hover:shadow-md transition-all">
-            <div class="w-14 h-14 rounded-xl bg-blue-50 flex items-center justify-center text-blue-600 flex-shrink-0">
-              <i data-lucide="settings" class="w-6 h-6"></i>
-            </div>
-            <div>
-              <p class="text-3xl font-black text-slate-900 font-inter">100%</p>
-              <p class="text-sm font-bold text-slate-500">Customized Engineering</p>
-            </div>
-          </div>
-
-          <!-- Stat 4 -->
-          <div class="flex items-center space-x-5 bg-white p-5 rounded-2xl shadow-sm border border-slate-100 hover:shadow-md transition-all">
-            <div class="w-14 h-14 rounded-xl bg-blue-50 flex items-center justify-center text-blue-600 flex-shrink-0">
-              <i data-lucide="globe" class="w-6 h-6"></i>
-            </div>
-            <div>
-              <p class="text-3xl font-black text-slate-900 font-inter">5</p>
-              <p class="text-sm font-bold text-slate-500">Countries Worldwide</p>
-            </div>
-          </div>
-
-        </div>
-
-        <!-- Right Side: Beautiful Globe Image -->
-        <div class="xl:col-span-7 flex justify-center items-center relative footprints-globe">
-          <div class="absolute w-80 h-80 bg-blue-400/10 rounded-full blur-3xl pointer-events-none select-none"></div>
-          <div class="relative w-full max-w-[500px] h-[350px] sm:h-[450px] flex items-center justify-center transform hover:scale-105 transition-all duration-700 select-none">
-            <img src="{% static 'images/globe.png' %}" alt="Glupac Global Export Network Map" class="w-full h-full object-contain filter drop-shadow-2xl">
           </div>
         </div>
 
@@ -254,25 +268,378 @@
 {% endblock %}
 
 {% block scripts %}
-  <script>
-    initGulpacAnimations(function(context) {
-      if (!context.gsapAvailable) {
-        return;
+  <style>
+    @font-face {
+      font-family: "Hatsch Sans PERSONAL USE ONLY";
+      font-style: normal;
+      font-weight: 400;
+      font-display: swap;
+      src: url("{% static 'fonts/HatschSans-Regular.woff' %}") format("woff");
+    }
+
+    @font-face {
+      font-family: "Hatsch Sans PERSONAL USE ONLY";
+      font-style: italic;
+      font-weight: 400;
+      font-display: swap;
+      src: url("{% static 'fonts/HatschSans-Italic.woff' %}") format("woff");
+    }
+
+    .about-eyebrow {
+      margin: 0;
+      color: #2d388c;
+      font-family: "Inter", sans-serif;
+      font-size: 14px;
+      font-weight: 600;
+      line-height: 20px;
+      letter-spacing: 0.1996px;
+      text-transform: uppercase;
+    }
+
+    .about-heading {
+      margin: 16px 0 0;
+      max-width: 584px;
+      color: #2d388c;
+      font-family: "Hatsch Sans PERSONAL USE ONLY", sans-serif;
+      font-size: 40px;
+      font-style: italic;
+      font-weight: 400;
+      line-height: 48px;
+      letter-spacing: 0.369px;
+    }
+
+    .about-para {
+      margin: 24px 0 0;
+      max-width: 584px;
+      color: #4a5565;
+      font-family: "Inter", sans-serif;
+      font-size: 18px;
+      font-weight: 400;
+      line-height: 29.25px;
+      letter-spacing: -0.439px;
+    }
+
+    .about-stats {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 24px;
+      margin-top: 32px;
+      max-width: 584px;
+    }
+
+    .about-stat {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+    }
+
+    .about-stat__icon,
+    .advantages-card__icon,
+    .footprints-stat__icon {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 64px;
+      height: 64px;
+      border-radius: 14px;
+      background: linear-gradient(135deg, rgb(44, 62, 143) 0%, rgb(42, 62, 148) 16.667%, rgb(40, 63, 154) 33.333%, rgb(38, 63, 159) 50%, rgb(35, 64, 164) 66.667%, rgb(33, 64, 170) 83.333%, rgb(30, 64, 175) 100%);
+    }
+
+    .about-stat__label {
+      margin: 12px 0 0;
+      color: #364153;
+      font-family: "Inter", sans-serif;
+      font-size: 14px;
+      font-weight: 500;
+      line-height: 20px;
+      letter-spacing: -0.1504px;
+    }
+
+    .about-image-1,
+    .about-image-2 {
+      position: absolute;
+      border-radius: 14px;
+      object-fit: cover;
+      box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -4px rgba(0, 0, 0, 0.1);
+      will-change: transform;
+    }
+
+    .about-image-1 {
+      left: 0;
+      top: 0;
+      width: 58%;
+      max-width: 280px;
+      aspect-ratio: 341 / 338;
+      z-index: 1;
+    }
+
+    .about-image-2 {
+      right: 0;
+      bottom: 0;
+      width: 64%;
+      max-width: 300px;
+      aspect-ratio: 370 / 339;
+      z-index: 2;
+    }
+
+    .mission-card,
+    .vision-card,
+    .advantages-card,
+    .footprints-stat {
+      transform-style: preserve-3d;
+      backface-visibility: hidden;
+    }
+
+    .mission-card p,
+    .vision-card p {
+      margin: 0;
+    }
+
+    .mission-card ul,
+    .vision-card ul,
+    .mission-card ol,
+    .vision-card ol {
+      margin: 0;
+      padding-left: 1.25rem;
+    }
+
+    .advantages-heading {
+      margin: 0;
+      font-family: "Hatsch Sans PERSONAL USE ONLY", sans-serif;
+      font-size: 40px;
+      font-style: italic;
+      font-weight: 400;
+      line-height: 48px;
+      letter-spacing: 0.369px;
+    }
+
+    .advantages-subheading {
+      margin: 8px auto 0;
+      max-width: 672px;
+      color: #4a5565;
+      font-family: "Inter", sans-serif;
+      font-size: 20px;
+      font-weight: 400;
+      line-height: 28px;
+      letter-spacing: -0.449px;
+    }
+
+    .advantages-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 24px;
+    }
+
+    .advantages-card {
+      min-height: 272px;
+      padding: 32px;
+      border-radius: 14px;
+      border: 1px solid #f3f4f6;
+      background: #ffffff;
+      box-shadow: 0 10px 7.5px rgba(0, 0, 0, 0.1), 0 4px 3px rgba(0, 0, 0, 0.1);
+    }
+
+    .advantages-card__title {
+      margin: 24px 0 0;
+      color: #1a1a2e;
+      font-family: "Inter", sans-serif;
+      font-size: 20px;
+      font-weight: 600;
+      line-height: 28px;
+      letter-spacing: -0.449px;
+    }
+
+    .advantages-card__text {
+      margin: 12px 0 0;
+      color: #4a5565;
+      font-family: "Inter", sans-serif;
+      font-size: 16px;
+      font-weight: 400;
+      line-height: 26px;
+      letter-spacing: -0.3125px;
+    }
+
+    .footprints-eyebrow {
+      margin: 0;
+      color: #6a7282;
+      font-family: "Inter", sans-serif;
+      font-size: 18px;
+      font-weight: 500;
+      line-height: 28px;
+      letter-spacing: -0.4395px;
+      text-transform: uppercase;
+    }
+
+    .footprints-heading {
+      margin: 8px 0 0;
+      font-family: "Hatsch Sans PERSONAL USE ONLY", sans-serif;
+      font-size: 40px;
+      font-style: italic;
+      font-weight: 400;
+      line-height: 48px;
+      letter-spacing: 0.369px;
+    }
+
+    .footprints-subheading {
+      margin: 16px auto 0;
+      max-width: 672px;
+      color: #4a5565;
+      font-family: "Inter", sans-serif;
+      font-size: 20px;
+      font-weight: 400;
+      line-height: 28px;
+      letter-spacing: -0.449px;
+    }
+
+    .footprints-stat {
+      display: flex;
+      align-items: center;
+      gap: 24px;
+      min-height: 132px;
+      padding: 26px;
+      border-radius: 14px;
+      border: 2px solid #f3f4f6;
+      background: linear-gradient(to right, #f9fafb, #ffffff);
+    }
+
+    .footprints-stat__icon {
+      flex-shrink: 0;
+    }
+
+    .footprints-stat__value {
+      margin: 0;
+      color: #2d388c;
+      font-family: "Inter", sans-serif;
+      font-size: 48px;
+      font-weight: 700;
+      line-height: 48px;
+      letter-spacing: 0.3516px;
+    }
+
+    .footprints-stat__label {
+      margin: 4px 0 0;
+      color: #364153;
+      font-family: "Inter", sans-serif;
+      font-size: 18px;
+      font-weight: 500;
+      line-height: 28px;
+      letter-spacing: -0.4395px;
+    }
+
+    .footprints-globe__frame {
+      overflow: hidden;
+    }
+
+    .footprints-globe__image {
+      position: absolute;
+      width: 100.04%;
+      height: 255.43%;
+      left: -0.02%;
+      top: -61.76%;
+      max-width: none;
+      pointer-events: none;
+      user-select: none;
+      will-change: transform;
+    }
+
+    .footprints-globe__glow {
+      position: absolute;
+      border-radius: 50%;
+      pointer-events: none;
+      filter: blur(40px);
+    }
+
+    .footprints-globe__glow--1 {
+      width: 128px;
+      height: 128px;
+      left: 10%;
+      top: 50%;
+      transform: translateY(-50%);
+      background: rgba(44, 62, 143, 0.1);
+    }
+
+    .footprints-globe__glow--2 {
+      width: 96px;
+      height: 96px;
+      right: 10%;
+      top: 52%;
+      transform: translateY(-50%);
+      background: rgba(30, 64, 175, 0.1);
+    }
+
+    @media (min-width: 768px) {
+      .advantages-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 28px;
+      }
+    }
+
+    @media (min-width: 1280px) {
+      .about-section__stage {
+        min-height: 516.75px;
       }
 
+      .about-image-1 {
+        left: 644px;
+        top: 9px;
+        width: 341px;
+        max-width: none;
+        height: 338px;
+        aspect-ratio: auto;
+      }
+
+      .about-image-2 {
+        left: 862px;
+        right: auto;
+        bottom: auto;
+        top: 178px;
+        width: 370px;
+        max-width: none;
+        height: 339px;
+        aspect-ratio: auto;
+      }
+
+      .advantages-grid {
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        gap: 32px;
+      }
+    }
+
+    @media (max-width: 640px) {
+      .about-heading,
+      .advantages-heading,
+      .footprints-heading {
+        font-size: 34px;
+        line-height: 40px;
+      }
+
+      .about-stats {
+        grid-template-columns: 1fr;
+      }
+
+      .footprints-stat {
+        align-items: flex-start;
+        padding: 20px;
+      }
+
+      .footprints-stat__value {
+        font-size: 38px;
+        line-height: 42px;
+      }
+    }
+  </style>
+
+  <script>
+    initGulpacAnimations(function(context) {
+      if (!context.gsapAvailable) return;
+
       const animatedTargets = [
-        ".about-title",
-        ".about-subtitle",
-        ".journey-text",
-        ".journey-images-block .j-card-back",
-        ".journey-images-block .j-card-front",
-        ".mission-card",
-        ".vision-card",
-        ".choose-header",
-        ".choose-grid > div",
-        ".footprints-header",
-        ".footprints-stats > div",
-        ".footprints-globe"
+        ".about-eyebrow", ".about-heading", ".about-para", ".about-stat",
+        ".about-image-1", ".about-image-2", ".mission-card", ".vision-card",
+        ".adv-header", ".advantages-heading", ".advantages-subheading", ".adv-card",
+        ".footprints-eyebrow", ".footprints-heading", ".footprints-subheading",
+        ".footprints-stat-animate", ".footprints-globe", ".footprints-globe__glow"
       ];
 
       if (context.reducedMotion) {
@@ -280,170 +647,111 @@
         return;
       }
 
-      const tl = gsap.timeline({ defaults: { ease: "power3.out", duration: 1 } });
-      tl.fromTo(".about-title", {
-        autoAlpha: 0,
-        y: 30
-      }, {
+      gsap.defaults({ ease: "power2.out", duration: 0.7 });
+
+      function bindCardHover(cards) {
+        cards.forEach(function(card) {
+          card.addEventListener("mouseenter", function() {
+            gsap.to(card, { y: -6, scale: 1.02, boxShadow: "0 20px 40px rgba(45,56,140,0.12)", duration: 0.35 });
+            const icon = card.querySelector(".advantages-card__icon, .footprints-stat__icon");
+            if (icon) gsap.to(icon, { scale: 1.12, rotation: 6, duration: 0.35, ease: "back.out(1.7)" });
+          });
+          card.addEventListener("mouseleave", function() {
+            gsap.to(card, { y: 0, x: 0, scale: 1, boxShadow: "none", duration: 0.4 });
+            const icon = card.querySelector(".advantages-card__icon, .footprints-stat__icon");
+            if (icon) gsap.to(icon, { scale: 1, rotation: 0, duration: 0.35 });
+          });
+        });
+      }
+
+      const aboutTl = gsap.timeline({
+        scrollTrigger: { trigger: ".about-section__stage", start: "top 85%", once: true },
+      });
+
+      aboutTl
+        .fromTo(".about-eyebrow", { autoAlpha: 0, y: 18 }, { autoAlpha: 1, y: 0, duration: 0.55 })
+        .fromTo(".about-heading", { autoAlpha: 0, y: 32, clipPath: "inset(0 0 100% 0)" }, { autoAlpha: 1, y: 0, clipPath: "inset(0 0 0% 0)", duration: 0.85 }, "-=0.25")
+        .fromTo(".about-para", { autoAlpha: 0, y: 22 }, { autoAlpha: 1, y: 0, duration: 0.65, stagger: 0.12 }, "-=0.35")
+        .fromTo(".about-stat", { autoAlpha: 0, y: 28, scale: 0.9 }, { autoAlpha: 1, y: 0, scale: 1, duration: 0.6, stagger: 0.1 }, "-=0.25")
+        .fromTo(".about-image-1", { autoAlpha: 0, x: 80, y: 24, rotation: 3 }, { autoAlpha: 1, x: 0, y: 0, rotation: 0, duration: 1, ease: "power3.out" }, "-=0.5")
+        .fromTo(".about-image-2", { autoAlpha: 0, x: 100, y: 40, rotation: -4 }, { autoAlpha: 1, x: 0, y: 0, rotation: 0, duration: 1.1, ease: "power3.out" }, "-=0.75");
+
+      gsap.to(".about-image-1", {
+        y: -30,
+        ease: "none",
+        scrollTrigger: { trigger: ".about-section", start: "top bottom", end: "bottom top", scrub: 1.2 },
+      });
+
+      gsap.to(".about-image-2", {
+        y: 40,
+        ease: "none",
+        scrollTrigger: { trigger: ".about-section", start: "top bottom", end: "bottom top", scrub: 1.5 },
+      });
+
+      gsap.fromTo(".mission-card, .vision-card", { autoAlpha: 0, y: 42, scale: 0.97 }, {
         autoAlpha: 1,
         y: 0,
-        delay: 0.15
-      }).fromTo(".about-subtitle", {
-        autoAlpha: 0,
-        y: 20
-      }, {
-        autoAlpha: 1,
-        y: 0
-      }, "-=0.6");
-
-      gsap.fromTo(".journey-text", {
-        autoAlpha: 0,
-        x: -50
-      }, {
-        autoAlpha: 1,
-        x: 0,
-        duration: 1,
-        ease: "power2.out",
-        scrollTrigger: {
-          trigger: ".journey-text",
-          start: "top 82%",
-          once: true
-        }
-      });
-
-      gsap.fromTo(".journey-images-block .j-card-back", {
-        autoAlpha: 0,
-        x: -80,
-        rotate: -15
-      }, {
-        autoAlpha: 1,
-        x: 0,
-        rotate: -6,
-        duration: 1,
-        scrollTrigger: {
-          trigger: ".journey-images-block",
-          start: "top 86%",
-          once: true
-        }
-      });
-
-      gsap.fromTo(".journey-images-block .j-card-front", {
-        autoAlpha: 0,
-        x: 80,
-        rotate: 15
-      }, {
-        autoAlpha: 1,
-        x: 0,
-        rotate: 4,
-        duration: 1,
-        scrollTrigger: {
-          trigger: ".journey-images-block",
-          start: "top 86%",
-          once: true
-        }
-      });
-
-      gsap.fromTo(".mission-card", {
-        autoAlpha: 0,
-        y: 40
-      }, {
-        autoAlpha: 1,
-        y: 0,
-        duration: 0.8,
-        scrollTrigger: {
-          trigger: ".mission-card",
-          start: "top 82%",
-          once: true
-        }
-      });
-
-      gsap.fromTo(".vision-card", {
-        autoAlpha: 0,
-        y: 40
-      }, {
-        autoAlpha: 1,
-        y: 0,
-        duration: 0.8,
-        scrollTrigger: {
-          trigger: ".vision-card",
-          start: "top 82%",
-          once: true
-        }
-      });
-
-      gsap.fromTo(".choose-header", {
-        autoAlpha: 0,
-        y: 30
-      }, {
-        autoAlpha: 1,
-        y: 0,
-        duration: 0.8,
-        scrollTrigger: {
-          trigger: ".choose-header",
-          start: "top 84%",
-          once: true
-        }
-      });
-
-      gsap.fromTo(".choose-grid > div", {
-        autoAlpha: 0,
-        y: 40
-      }, {
-        autoAlpha: 1,
-        y: 0,
-        stagger: 0.15,
-        duration: 0.8,
-        scrollTrigger: {
-          trigger: ".choose-grid",
-          start: "top 82%",
-          once: true
-        }
-      });
-
-      gsap.fromTo(".footprints-header", {
-        autoAlpha: 0,
-        y: 35
-      }, {
-        autoAlpha: 1,
-        y: 0,
-        duration: 0.8,
-        scrollTrigger: {
-          trigger: ".footprints-header",
-          start: "top 86%",
-          once: true
-        }
-      });
-
-      gsap.fromTo(".footprints-stats > div", {
-        autoAlpha: 0,
-        x: -45
-      }, {
-        autoAlpha: 1,
-        x: 0,
-        stagger: 0.15,
-        duration: 0.8,
-        ease: "power2.out",
-        scrollTrigger: {
-          trigger: ".footprints-stats",
-          start: "top 82%",
-          once: true
-        }
-      });
-
-      gsap.fromTo(".footprints-globe", {
-        autoAlpha: 0,
-        scale: 0.88
-      }, {
-        autoAlpha: 1,
         scale: 1,
-        duration: 1.2,
-        ease: "power2.out",
-        scrollTrigger: {
-          trigger: ".footprints-globe",
-          start: "top 78%",
-          once: true
-        }
+        stagger: 0.16,
+        duration: 0.8,
+        scrollTrigger: { trigger: ".mission-card", start: "top 82%", once: true },
       });
+
+      const advTl = gsap.timeline({
+        scrollTrigger: { trigger: ".advantages-section__inner", start: "top 85%", once: true },
+      });
+
+      advTl
+        .fromTo(".advantages-heading", { autoAlpha: 0, y: 28 }, { autoAlpha: 1, y: 0, duration: 0.75 })
+        .fromTo(".advantages-subheading", { autoAlpha: 0, y: 20 }, { autoAlpha: 1, y: 0, duration: 0.65 }, "-=0.35")
+        .fromTo(".adv-card", { autoAlpha: 0, y: 50, scale: 0.95 }, { autoAlpha: 1, y: 0, scale: 1, duration: 0.7, stagger: { amount: 0.5, from: "start" } }, "-=0.2");
+
+      const footprintsTl = gsap.timeline({
+        scrollTrigger: { trigger: ".footprints-section__inner", start: "top 85%", once: true },
+      });
+
+      footprintsTl
+        .fromTo(".footprints-eyebrow", { autoAlpha: 0, y: 18 }, { autoAlpha: 1, y: 0, duration: 0.55 })
+        .fromTo(".footprints-heading", { autoAlpha: 0, y: 32 }, { autoAlpha: 1, y: 0, duration: 0.75 }, "-=0.3")
+        .fromTo(".footprints-subheading", { autoAlpha: 0, y: 20 }, { autoAlpha: 1, y: 0, duration: 0.65 }, "-=0.35")
+        .fromTo(".footprints-stat-animate", { autoAlpha: 0, x: -60 }, { autoAlpha: 1, x: 0, stagger: 0.14, duration: 0.75 }, "-=0.2")
+        .fromTo(".footprints-globe", { autoAlpha: 0, scale: 0.85, x: 50 }, { autoAlpha: 1, scale: 1, x: 0, duration: 1.2, ease: "power3.out" }, "-=0.5")
+        .fromTo(".footprints-globe__glow", { autoAlpha: 0, scale: 0.5 }, { autoAlpha: 1, scale: 1, duration: 0.9, stagger: 0.15 }, "-=0.8");
+
+      document.querySelectorAll(".footprints-stat__value").forEach(function(el) {
+        const final = el.dataset.final || "";
+        const match = final.match(/^(\d+)(.*)$/);
+        if (!match) return;
+        const target = parseInt(match[1], 10);
+        const suffix = match[2] || "";
+        el.textContent = "0" + suffix;
+        const counter = { val: 0 };
+        gsap.to(counter, {
+          val: target,
+          duration: 1.8,
+          ease: "power2.out",
+          snap: { val: 1 },
+          scrollTrigger: { trigger: el.closest(".footprints-stat"), start: "top 86%", once: true },
+          onUpdate: function() { el.textContent = Math.round(counter.val) + suffix; },
+        });
+      });
+
+      gsap.to(".footprints-globe__image", {
+        y: -12,
+        duration: 3.5,
+        ease: "sine.inOut",
+        yoyo: true,
+        repeat: -1,
+        delay: 1.5,
+      });
+
+      gsap.to(".footprints-globe__image", {
+        rotation: 8,
+        ease: "none",
+        scrollTrigger: { trigger: ".footprints-section", start: "top bottom", end: "bottom top", scrub: 2 },
+      });
+
+      bindCardHover(document.querySelectorAll(".adv-card, .footprints-stat"));
     });
   </script>
 {% endblock %}

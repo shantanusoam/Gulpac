@@ -29,3 +29,51 @@
     </div>
   </div>
 </section>
+
+<script>
+  window.addEventListener('load', function() {
+    if (typeof gsap === "undefined") return;
+
+    const reducedMotion = window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    if (reducedMotion) return;
+
+    const heroTl = gsap.timeline({ defaults: { ease: "power3.out" } });
+    
+    // Background entrance
+    gsap.fromTo(".page-hero__media",
+      { autoAlpha: 0, scale: 1.15 },
+      { autoAlpha: 1, scale: 1.02, duration: 1.8, ease: "power2.out" }
+    );
+    
+    // Subtle continuous ambient zoom
+    gsap.to(".page-hero__media", {
+      scale: 1.06,
+      duration: 18,
+      ease: "sine.inOut",
+      yoyo: true,
+      repeat: -1,
+      delay: 1.8
+    });
+
+    heroTl
+      .fromTo(".page-hero__back", 
+        { autoAlpha: 0, x: -15 }, 
+        { autoAlpha: 1, x: 0, duration: 0.6, delay: 0.1 }
+      )
+      .fromTo(".page-hero__badge, .page-hero__eyebrow", 
+        { autoAlpha: 0, y: 25 }, 
+        { autoAlpha: 1, y: 0, duration: 0.7, stagger: 0.15 },
+        "-=0.4"
+      )
+      .fromTo(".page-hero__title", 
+        { autoAlpha: 0, y: 40, rotationX: -15, scale: 0.95 }, 
+        { autoAlpha: 1, y: 0, rotationX: 0, scale: 1, duration: 1, transformPerspective: 1000 },
+        "-=0.5"
+      )
+      .fromTo(".page-hero__desc", 
+        { autoAlpha: 0, y: 20 }, 
+        { autoAlpha: 1, y: 0, duration: 0.8 },
+        "-=0.6"
+      );
+  });
+</script>

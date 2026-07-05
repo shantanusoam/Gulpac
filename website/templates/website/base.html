@@ -375,6 +375,10 @@
       }
 
       .page-cta__bg {
+        top: -100px;
+        bottom: -100px;
+        left: -100px;
+        right: -100px;
         background-position: center center;
         background-size: cover;
         background-repeat: no-repeat;
@@ -398,37 +402,42 @@
       }
 
       .page-cta__content {
-        max-width: 700px;
+        max-width: 80%%;
         margin: 0 auto;
         text-align: center;
-        padding: 0 16px 56px;
+        {% comment %} padding: 0 16px 56px; {% endcomment %}
       }
 
       .page-cta__title {
-        margin: 0 0 10px;
-        font-size: clamp(24px, 3vw, 40px);
-        line-height: 1.2;
-        font-weight: 800;
-        letter-spacing: -0.03em;
+        margin: 0 0 12px;
+        font-family: "Hatsch Sans PERSONAL USE ONLY", sans-serif;
+        font-size: 40px;
+        font-style: italic;
+        font-weight: 400;
+        line-height: 48px;
+        letter-spacing: 0.369px;
+        text-transform: uppercase;
       }
 
       .page-cta__title-prefix {
         color: #2d388c;
-        font-style: italic;
       }
 
       .page-cta__title-accent {
         color: #47a33d;
-        font-style: italic;
         margin-left: 8px;
       }
 
       .page-cta__desc {
-        margin: 0 auto 24px;
-        max-width: 640px;
-        color: #4a5565;
+        margin: 0 auto 32px;
+        max-width: 80%%;
+        color: #000000;
+        font-family: "Inter", sans-serif;
         font-size: 20px;
-        line-height: 1.45;
+        font-style: normal;
+        font-weight: 400;
+        line-height: 28px;
+        letter-spacing: -0.45px;
       }
 
       .page-cta__button {
@@ -1229,8 +1238,8 @@
           <div class="site-header__actions">
             <nav class="site-header__nav" aria-label="Main navigation">
               <a href="{% url 'home' %}" class="site-header__link {% if request.resolver_match.url_name == 'home' %}site-header__link--active{% endif %}">Home</a>
-              <a href="{% url 'home' %}" class="site-header__link {% if request.resolver_match.url_name == 'about' %}site-header__link--active{% endif %}">About Us</a>
-              <a href="{% url 'home' %}" class="site-header__link {% if request.resolver_match.url_name == 'industries' %}site-header__link--active{% endif %}">Industries</a>
+              <a href="{% url 'about' %}" class="site-header__link {% if request.resolver_match.url_name == 'about' %}site-header__link--active{% endif %}">About Us</a>
+              <a href="{% url 'industries' %}" class="site-header__link {% if request.resolver_match.url_name == 'industries' %}site-header__link--active{% endif %}">Industries</a>
               <a href="{% url 'home' %}" class="site-header__link {% if request.resolver_match.url_name == 'solutions' or request.resolver_match.url_name == 'solution_detail' %}site-header__link--active{% endif %}">Solutions</a>
               <a href="{% url 'home' %}#videos" class="site-header__link">Videos</a>
               <a href="{% url 'home' %}" class="site-header__link {% if request.resolver_match.url_name == 'contact' %}site-header__link--active{% endif %}">Contact Us</a>

@@ -75,6 +75,7 @@
     --drop-shadow-2xl: 0 25px 25px rgb(0 0 0 / 0.15);
     --ease-in: cubic-bezier(0.4, 0, 1, 1);
     --ease-out: cubic-bezier(0, 0, 0.2, 1);
+    --ease-in-out: cubic-bezier(0.4, 0, 0.2, 1);
     --blur-sm: 8px;
     --blur-3xl: 64px;
     --aspect-video: 16 / 9;
@@ -439,6 +440,10 @@
   .aspect-video {
     aspect-ratio: var(--aspect-video);
   }
+  .size-3 {
+    width: calc(var(--spacing) * 3);
+    height: calc(var(--spacing) * 3);
+  }
   .size-\[64px\] {
     width: 64px;
     height: 64px;
@@ -607,9 +612,6 @@
   }
   .max-w-\[720px\] {
     max-width: 720px;
-  }
-  .max-w-\[980px\] {
-    max-width: 980px;
   }
   .max-w-\[1232px\] {
     max-width: 1232px;
@@ -814,6 +816,13 @@
       --tw-space-y-reverse: 0;
       margin-block-start: calc(calc(var(--spacing) * 16) * var(--tw-space-y-reverse));
       margin-block-end: calc(calc(var(--spacing) * 16) * calc(1 - var(--tw-space-y-reverse)));
+    }
+  }
+  .space-y-\[3rem\] {
+    :where(& > :not(:last-child)) {
+      --tw-space-y-reverse: 0;
+      margin-block-start: calc(3rem * var(--tw-space-y-reverse));
+      margin-block-end: calc(3rem * calc(1 - var(--tw-space-y-reverse)));
     }
   }
   .gap-x-2 {
@@ -1178,6 +1187,12 @@
   .py-20 {
     padding-block: calc(var(--spacing) * 20);
   }
+  .py-\[2rem\] {
+    padding-block: 2rem;
+  }
+  .py-\[5rem\] {
+    padding-block: 5rem;
+  }
   .py-\[16px\] {
     padding-block: 16px;
   }
@@ -1207,9 +1222,6 @@
   }
   .pt-20 {
     padding-top: calc(var(--spacing) * 20);
-  }
-  .pt-24 {
-    padding-top: calc(var(--spacing) * 24);
   }
   .pt-\[22px\] {
     padding-top: 22px;
@@ -1303,9 +1315,6 @@
   .text-\[24px\] {
     font-size: 24px;
   }
-  .text-\[32px\] {
-    font-size: 32px;
-  }
   .text-\[40px\] {
     font-size: 40px;
   }
@@ -1337,14 +1346,6 @@
     --tw-leading: 32px;
     line-height: 32px;
   }
-  .leading-\[40px\] {
-    --tw-leading: 40px;
-    line-height: 40px;
-  }
-  .leading-\[48px\] {
-    --tw-leading: 48px;
-    line-height: 48px;
-  }
   .leading-normal {
     --tw-leading: var(--leading-normal);
     line-height: var(--leading-normal);
@@ -1360,6 +1361,14 @@
   .leading-tight {
     --tw-leading: var(--leading-tight);
     line-height: var(--leading-tight);
+  }
+  .font-\[800\] {
+    --tw-font-weight: 800;
+    font-weight: 800;
+  }
+  .font-\[1000\] {
+    --tw-font-weight: 1000;
+    font-weight: 1000;
   }
   .font-black {
     --tw-font-weight: var(--font-weight-black);
@@ -1413,17 +1422,9 @@
     --tw-tracking: 0.2em;
     letter-spacing: 0.2em;
   }
-  .tracking-\[0\.2px\] {
-    --tw-tracking: 0.2px;
-    letter-spacing: 0.2px;
-  }
   .tracking-\[0\.07px\] {
     --tw-tracking: 0.07px;
     letter-spacing: 0.07px;
-  }
-  .tracking-\[0\.37px\] {
-    --tw-tracking: 0.37px;
-    letter-spacing: 0.37px;
   }
   .tracking-tight {
     --tw-tracking: var(--tracking-tight);
@@ -1668,6 +1669,10 @@
   .ease-in {
     --tw-ease: var(--ease-in);
     transition-timing-function: var(--ease-in);
+  }
+  .ease-in-out {
+    --tw-ease: var(--ease-in-out);
+    transition-timing-function: var(--ease-in-out);
   }
   .ease-out {
     --tw-ease: var(--ease-out);
@@ -2208,6 +2213,16 @@
   .xl\:px-16 {
     @media (width >= 80rem) {
       padding-inline: calc(var(--spacing) * 16);
+    }
+  }
+  .xl\:py-\[4rem\] {
+    @media (width >= 80rem) {
+      padding-block: 4rem;
+    }
+  }
+  .xl\:py-\[5rem\] {
+    @media (width >= 80rem) {
+      padding-block: 5rem;
     }
   }
 }

@@ -12,7 +12,8 @@
     <div class="page-card-grid__grid">
       {% for card in industry_grid.cards %}
         <article class="page-card-grid__card">
-          <div class="page-card-grid__image" style="background-image: url('{{ card.image_url }}');" aria-hidden="true">
+          <div class="page-card-grid__image" aria-hidden="true">
+            <div class="page-card-grid__image-bg" style="position: absolute; inset: 0; background-image: url('{{ card.image_url }}'); background-size: cover; background-position: center center;"></div>
             <div class="page-card-grid__image-overlay"></div>
             <div class="page-card-grid__card-title">{{ card.title }}</div>
           </div>
@@ -33,3 +34,65 @@
     </div>
   </div>
 </section>
+
+<script>
+  window.addEventListener('load', function() {
+    if (typeof gsap === "undefined") return;
+
+    if (typeof ScrollTrigger !== "undefined" && !window.__gulpacScrollTriggerRegisteredCardGrid) {
+      gsap.registerPlugin(ScrollTrigger);
+      window.__gulpacScrollTriggerRegisteredCardGrid = true;
+    }
+
+    const reducedMotion = window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    if (reducedMotion) return;
+
+    // Scroll animation for heading and cards
+    const gridTl = gsap.timeline({
+      scrollTrigger: { trigger: ".page-card-grid__container", start: "top 85%", once: true },
+    });
+
+    gridTl
+      .fromTo(".page-card-grid__title", { autoAlpha: 0, y: 28 }, { autoAlpha: 1, y: 0, duration: 0.7 })
+      .fromTo(".page-card-grid__desc", { autoAlpha: 0, y: 20 }, { autoAlpha: 1, y: 0, duration: 0.65 }, "-=0.35")
+      .fromTo(".page-card-grid__card", { autoAlpha: 0, y: 50, scale: 0.96 }, { autoAlpha: 1, y: 0, scale: 1, duration: 0.7, stagger: 0.1 }, "-=0.2");
+
+    // Hover parallax and tilt effects
+    const cards = document.querySelectorAll(".page-card-grid__card");
+    const lift = -8;
+    const scale = 1.015;
+    const deg = 5;
+
+    cards.forEach(function(card) {
+      const img = card.querySelector(".page-card-grid__image-bg");
+      
+      // Hover parallax
+      card.addEventListener("mouseenter", function() {
+        gsap.to(card, { y: lift, scale: scale, boxShadow: "0 20px 40px rgba(45,56,140,0.12)", duration: 0.35, ease: "power2.out" });
+        if (img) gsap.to(img, { scale: 1.08, duration: 0.5, ease: "power2.out" });
+      });
+      
+      card.addEventListener("mouseleave", function() {
+        gsap.to(card, { y: 0, scale: 1, boxShadow: "0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -4px rgba(0, 0, 0, 0.1)", duration: 0.4, ease: "power2.out" });
+        if (img) gsap.to(img, { scale: 1, duration: 0.5, ease: "power2.out" });
+        
+        // Tilt reset
+        gsap.to(card, { rotationY: 0, rotationX: 0, duration: 0.6, ease: "power3.out" });
+      });
+
+      // Tilt effect
+      card.addEventListener("mousemove", function(e) {
+        const rect = card.getBoundingClientRect();
+        const x = (e.clientX - rect.left) / rect.width - 0.5;
+        const y = (e.clientY - rect.top) / rect.height - 0.5;
+        gsap.to(card, {
+          rotationY: x * deg,
+          rotationX: -y * deg,
+          transformPerspective: 800,
+          duration: 0.4,
+          ease: "power2.out",
+        });
+      });
+    });
+  });
+</script>
