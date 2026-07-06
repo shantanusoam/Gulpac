@@ -3,6 +3,7 @@ from django.templatetags.static import static
 from django.contrib import messages
 from .models import (
     HeroSection,
+    MissionVisionSection,
     CardGridSection,
     CTASection,
     ContactInquiry,
@@ -40,6 +41,26 @@ def build_hero_context(page_key, defaults):
     context.update({key: value for key, value in defaults.items() if key not in context})
     context.setdefault("show_back_link", True)
     return context
+
+
+def build_mission_vision_context(page_key, defaults):
+    section = MissionVisionSection.objects.filter(page_key=page_key, is_active=True).first()
+    if section:
+        return {
+            "page_key": page_key,
+            "mission_title": section.mission_title,
+            "mission_description": section.mission_description,
+            "vision_title": section.vision_title,
+            "vision_description": section.vision_description,
+        }
+
+    return {
+        "page_key": page_key,
+        "mission_title": defaults["mission_title"],
+        "mission_description": defaults["mission_description"],
+        "vision_title": defaults["vision_title"],
+        "vision_description": defaults["vision_description"],
+    }
 
 
 def build_card_grid_context(page_key, section_key, defaults):
@@ -200,7 +221,33 @@ def home(request):
     })
 
 def about(request):
-    return render(request, "website/about.html")
+    about_hero = build_hero_context("about", {
+        "title": "About Us",
+        "description": "Discover the engineering story behind Gulpac and the systems we build for safer, cleaner, and more efficient packaging.",
+        "badge_label": "About Glupac",
+        "background_image_url": static("images/hero/hero-bg.png"),
+        "show_back_link": True,
+        "back_link_label": "Back to Home",
+        "back_link_url": "/",
+    })
+    mission_vision = build_mission_vision_context("about", {
+        "mission_title": "Our Mission",
+        "mission_description": (
+            "<p>To empower global industries with state-of-the-art, customized gluing and packaging automation. "
+            "We commit to continuous technological enhancement, ensuring zero defect rates, high operator safety, "
+            "and exceptional long-term machinery value.</p>"
+        ),
+        "vision_title": "Our Vision",
+        "vision_description": (
+            "<p>To be internationally recognized as the benchmark of excellence in structural packaging systems. "
+            "We strive to pioneer intelligence and PLC capabilities, helping modern manufacturing lines transition "
+            "cleanly onto green, low-waste automated solutions.</p>"
+        ),
+    })
+    return render(request, "website/about.html", {
+        "about_hero": about_hero,
+        "mission_vision": mission_vision,
+    })
 
 def industries(request):
     hero = build_hero_context("industries", {
