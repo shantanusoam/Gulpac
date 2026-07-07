@@ -17,6 +17,36 @@ SECRET_KEY = env("SECRET_KEY", default="django-insecure-change-me-in-production"
 DEBUG = env("DEBUG")
 ALLOWED_HOSTS = env.list("ALLOWED_HOSTS", default=["localhost", "127.0.0.1"])
 
+
+def build_csrf_trusted_origins(hosts, ports=()):
+    origins = []
+    for host in hosts:
+        host = host.strip()
+        if not host or host == "*":
+            continue
+        if host.startswith("."):
+            host = f"*{host}"
+        if host.startswith("http://") or host.startswith("https://"):
+            origins.append(host)
+            continue
+        origins.append(f"http://{host}")
+        origins.append(f"https://{host}")
+        for port in ports:
+            if port in ("80", "443"):
+                continue
+            origins.append(f"http://{host}:{port}")
+            origins.append(f"https://{host}:{port}")
+    return origins
+
+
+CSRF_TRUSTED_ORIGIN_PORTS = env.list("CSRF_TRUSTED_ORIGIN_PORTS", default=[])
+CSRF_TRUSTED_ORIGINS = env.list(
+    "CSRF_TRUSTED_ORIGINS",
+    default=build_csrf_trusted_origins(ALLOWED_HOSTS, CSRF_TRUSTED_ORIGIN_PORTS),
+)
+SECURE_PROXY_SSL_HEADER = ("HTTP_X_FORWARDED_PROTO", "https")
+USE_X_FORWARDED_HOST = True
+
 INSTALLED_APPS = [
     "django.contrib.admin",
     "django.contrib.auth",

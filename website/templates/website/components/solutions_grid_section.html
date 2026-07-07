@@ -1,0 +1,63 @@
+{% load static %}
+
+<section id="solutions" class="solutions-section bg-[#F2F2F2] pt-20 lg:pt-[80px] pb-20 lg:pb-[80px]">
+  <div class="solutions-section__container mx-auto w-full max-w-[1280px] px-4 sm:px-6 lg:px-10 xl:px-16">
+    <div class="solutions-section__inner mx-auto w-full max-w-[1232px] flex flex-col gap-12 lg:gap-16">
+
+      <header class="solutions-header text-center">
+        <h2 class="solutions-heading">
+          <span class="text-[#2d388c]">Our</span><span class="text-[#47a33d]"> Solutions </span>
+        </h2>
+        <p class="solutions-subheading">
+          Advanced gluing and cartoning solutions
+        </p>
+      </header>
+
+      {% if show_filters %}
+      <div class="solutions-filters flex flex-wrap justify-center gap-3">
+        <a href="{% url 'solutions' %}" class="solutions-filter{% if not category_filter %} solutions-filter--active{% endif %}">All Machinery</a>
+        {% for cat_val, cat_label in categories %}
+        <a href="{% url 'solutions' %}?category={{ cat_val }}" class="solutions-filter{% if category_filter == cat_val %} solutions-filter--active{% endif %}">{{ cat_label }}</a>
+        {% endfor %}
+      </div>
+      {% endif %}
+
+      <div class="machines-grid solutions-grid">
+        {% for machine in machines %}
+        <article class="machine-card{% if animate_cards %} solutions-card-animate{% endif %}">
+          <div class="machine-card__media">
+            <img
+              src="{% static machine.image_path %}"
+              alt="{{ machine.name }}"
+              class="machine-card__image"
+              onerror="this.onerror=null; this.src='https://placehold.co/800x512?text={{ machine.model_number }}'"
+            >
+            <span class="machine-card__badge">{{ machine.model_number }}</span>
+          </div>
+          <div class="machine-card__body">
+            <h3 class="machine-card__title">{{ machine.name }}</h3>
+            <ul class="machine-card__features">
+              {% for feature in machine.features|slice:":3" %}
+              <li>
+                <img src="{% static 'images/industries/icon-check.svg' %}" alt="" width="16" height="16" aria-hidden="true">
+                <span>{{ feature }}</span>
+              </li>
+              {% endfor %}
+            </ul>
+            <a href="{% url 'solution_detail' machine.slug %}" class="machine-card__cta">View Details</a>
+          </div>
+        </article>
+        {% empty %}
+        <div class="col-span-full py-16 text-center text-[#4a5565]">
+          {% if show_filters %}
+          No machinery fits this filter.
+          {% else %}
+          No machines loaded yet. Run <code>python manage.py seed_demo</code> to populate.
+          {% endif %}
+        </div>
+        {% endfor %}
+      </div>
+
+    </div>
+  </div>
+</section>

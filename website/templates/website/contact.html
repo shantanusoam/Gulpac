@@ -4,5 +4,5 @@
 
 {% block content %}
   {% include "website/components/page_hero.html" with hero=hero %}
-  {% include "website/components/contact_section.html" with selected_interest=selected_interest contact_page=contact_page %}
+  {% include "website/components/contact_section.html" with selected_interest=selected_interest hide_intro=True %}
 {% endblock %}

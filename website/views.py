@@ -32,7 +32,7 @@ def build_hero_context(page_key, defaults):
 
     context = {
         "page_key": page_key,
-        "title": defaults["title"],
+        "title": defaults.get("title", ""),
         "description": defaults["description"],
         "back_link_label": defaults.get("back_link_label", "Back to Home"),
         "back_link_url": defaults.get("back_link_url", "/"),
@@ -224,7 +224,6 @@ def about(request):
     about_hero = build_hero_context("about", {
         "title": "About Us",
         "description": "Discover the engineering story behind Gulpac and the systems we build for safer, cleaner, and more efficient packaging.",
-        "badge_label": "About Glupac",
         "background_image_url": static("images/hero/hero-bg.png"),
         "show_back_link": True,
         "back_link_label": "Back to Home",
@@ -244,9 +243,21 @@ def about(request):
             "cleanly onto green, low-waste automated solutions.</p>"
         ),
     })
+    cta_section = build_cta_context("about", "factory-demo-cta", {
+        "heading_prefix": "WANT TO SEE OUR",
+        "heading_accent": "FACTORY SETUP?",
+        "description": (
+            "Let us schedule an in-person workshop visit, or run your dummy cartons on our "
+            "demonstration lines over a high-resolution zoom video call."
+        ),
+        "background_image_url": static("images/about/section-cta-bg.png"),
+        "button_label": "Book Demonstration",
+        "button_url": "/contact/",
+    })
     return render(request, "website/about.html", {
         "about_hero": about_hero,
         "mission_vision": mission_vision,
+        "cta_section": cta_section,
     })
 
 def industries(request):
@@ -339,7 +350,7 @@ def industries(request):
         "heading_prefix": "DON'T SEE YOUR",
         "heading_accent": "INDUSTRY LISTED?",
         "description": "We specialize in custom solutions. Contact us to discuss your specific packaging requirements.",
-        "background_image_url": static("images/component2.png"),
+        "background_image_url": static("images/industries/footer-industry-cta-bg.png"),
         "button_label": "Contact Us Today",
         "button_url": "/contact/",
     })
@@ -351,14 +362,15 @@ def industries(request):
 
 def contact(request):
     hero = build_hero_context("contact", {
-        "title": "Get In Touch",
-        "description": "Tell us about your packaging requirement and our team will help you find the right solution.",
-        "back_link_label": "Back to Home",
-        "back_link_url": "/",
-        "background_image_url": static("images/factory.png"),
+        "title_prefix": "GET IN",
+        "title_accent": "TOUCH",
+        "description": "We'd love to hear from you",
+        "background_image_url": static("images/contact/inqueryherobg.png"),
         "centered": True,
+        "light": True,
         "show_back_link": False,
-        "eyebrow": "Contact Gulpac",
+        "button_label": "Send Message",
+        "button_url": "#contact-form",
     })
     selected_interest = request.GET.get("interest", "")
     contact_section = build_contact_section_context("contact", {

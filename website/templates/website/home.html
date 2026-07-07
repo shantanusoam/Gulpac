@@ -6,7 +6,7 @@
 {% block content %}
 
   {# ── 1. HERO ─────────────────────────────────────────────────────────── #}
-  <section class="hero-section relative overflow-hidden bg-[#f3f5f9] min-h-[640px] sm:min-h-[700px] md:min-h-0 pt-16 pb-24 md:pt-28 md:pb-28 lg:pt-32 lg:pb-36">
+  <section class="hero-section relative overflow-hidden bg-[#F2F2F2] min-h-[640px] sm:min-h-[700px] md:min-h-0 pt-16 pb-24 md:pt-28 md:pb-28 lg:pt-32 lg:pb-36">
     <div class="absolute inset-0 pointer-events-none" aria-hidden="true">
       <div
         class="hero-machine-bg absolute inset-0"
@@ -21,7 +21,7 @@
             {{ hero.badge_label|default:"Precision Bonding, Seamless Packaging" }}
           </div>
 
-          <h1 class="hero-heading max-w-[18ch] font-black italic uppercase leading-[1.08] tracking-[0.01em] text-[2rem] sm:text-[2.5rem] lg:text-[3.1rem] text-[#2d388c]">
+          <h1 class="hero-heading max-w-[18ch] italic uppercase leading-[1.08] tracking-[0.01em] text-[2rem] sm:text-[2.5rem] lg:text-[3.1rem] text-[#2d388c]">
             <span class="hero-heading__line block">Packaging Machines</span>
             <span class="hero-heading__line block text-[#47a33d]">Built For Your Product</span>
           </h1>
@@ -148,7 +148,7 @@
   </section> -->
 
   {# ── 3. ADVANTAGES (Figma 105:821) ───────────────────────────────────── #}
-  <section id="advantages" class="advantages-section bg-[#f1f8ff] pt-20 lg:pt-[80px] pb-20 lg:pb-[80px]">
+  <section id="advantages" class="advantages-section bg-[#F2F2F2] pt-20 lg:pt-[80px] pb-20 lg:pb-[80px]">
     <div class="advantages-section__container mx-auto w-full max-w-[1280px] px-4 sm:px-6 lg:px-10 xl:px-16">
       <div class="advantages-section__inner mx-auto w-full max-w-[1232px] flex flex-col gap-12 lg:gap-16">
 
@@ -386,54 +386,7 @@
   </section>
 
   {# ── 5. SOLUTIONS (Figma 105:882) ────────────────────────────────────── #}
-  <section id="solutions" class="solutions-section bg-[#f1f8ff] pt-20 lg:pt-[80px] pb-20 lg:pb-[80px]">
-    <div class="solutions-section__container mx-auto w-full max-w-[1280px] px-4 sm:px-6 lg:px-10 xl:px-16">
-      <div class="solutions-section__inner mx-auto w-full max-w-[1232px] flex flex-col gap-12 lg:gap-16">
-
-        <header class="solutions-header text-center">
-          <h2 class="solutions-heading">
-            <span class="text-[#2d388c]">Our</span><span class="text-[#47a33d]"> Solutions </span>
-          </h2>
-          <p class="solutions-subheading">
-            Advanced gluing and cartoning solutions
-          </p>
-        </header>
-
-        <div class="machines-grid solutions-grid">
-          {% for machine in machines %}
-          <article class="machine-card solutions-card-animate">
-            <div class="machine-card__media">
-              <img
-                src="{% static machine.image_path %}"
-                alt="{{ machine.name }}"
-                class="machine-card__image"
-                onerror="this.onerror=null; this.src='https://placehold.co/800x512?text={{ machine.model_number }}'"
-              >
-              <span class="machine-card__badge">{{ machine.model_number }}</span>
-            </div>
-            <div class="machine-card__body">
-              <h3 class="machine-card__title">{{ machine.name }}</h3>
-              <ul class="machine-card__features">
-                {% for feature in machine.features|slice:":3" %}
-                <li>
-                  <img src="{% static 'images/industries/icon-check.svg' %}" alt="" width="16" height="16" aria-hidden="true">
-                  <span>{{ feature }}</span>
-                </li>
-                {% endfor %}
-              </ul>
-              <a href="{% url 'solution_detail' machine.slug %}" class="machine-card__cta">View Details</a>
-            </div>
-          </article>
-          {% empty %}
-          <div class="col-span-full py-16 text-center text-[#4a5565]">
-            No machines loaded yet. Run <code>python manage.py seed_demo</code> to populate.
-          </div>
-          {% endfor %}
-        </div>
-
-      </div>
-    </div>
-  </section>
+  {% include "website/components/solutions_grid_section.html" with machines=machines animate_cards=True %}
 
  
 
@@ -502,7 +455,7 @@
       </div>
     </div>
 
-    <div class="clients-part bg-[#f1f8ff] pt-[22px] pb-[22px]">
+    <div class="clients-part bg-[#F2F2F2] pt-[22px] pb-[22px]">
       <div class="mx-auto w-full max-w-[1280px] px-4 sm:px-6 lg:px-10 xl:px-16">
         <div class="clients-part__inner mx-auto w-full max-w-[1232px] py-[38px]">
 
@@ -612,14 +565,15 @@
             </div>
           </div>
 
-          <div class="xl:col-span-7 flex justify-center items-center relative footprints-globe">
-            <div class="footprints-globe__glow footprints-globe__glow--1" aria-hidden="true"></div>
-            <div class="footprints-globe__glow footprints-globe__glow--2" aria-hidden="true"></div>
-            <div class="footprints-globe__frame relative w-full max-w-[720px] h-[360px] sm:h-[460px]">
+          <div class="xl:col-span-7 flex justify-center items-center footprints-globe">
+            <div class="footprints-globe__frame relative w-full max-w-[720px]">
               <img
-                src="{% static 'images/footprints/globe.png' %}"
+                src="{% static 'images/footprints/glupac-globe.png' %}"
                 alt="Glupac global export network across USA, Kuwait, UAE, India, and Russia"
-                class="footprints-globe__image"
+                class="footprints-globe__image w-full h-auto"
+                width="666"
+                height="618"
+                loading="lazy"
               >
             </div>
           </div>
@@ -843,7 +797,6 @@
       }
     }
 
-    /* ── About Glupac (Figma 105:784) ─────── */
     @font-face {
       font-family: "Hatsch Sans PERSONAL USE ONLY";
       font-style: normal;
@@ -859,6 +812,13 @@
       src: url("{% static 'fonts/HatschSans-Italic.woff' %}") format("woff");
     }
 
+    .hero-heading {
+      font-family: "Hatsch Sans PERSONAL USE ONLY", sans-serif;
+      font-style: italic;
+      font-weight: 400;
+    }
+
+    /* ── About Glupac (Figma 105:784) ─────── */
     .about-eyebrow {
       margin: 0;
       color: #2d388c;
@@ -1113,7 +1073,7 @@
     }
 
     .industries-carousel-shell {
-      mask-image: linear-gradient(90deg, transparent 0%, #000 3%, #000 97%, transparent 100%);
+      background: #ffffff;
     }
 
     .industries-carousel {
@@ -1242,162 +1202,6 @@
     .industries-cta:hover {
       background: #25307c;
       transform: translateY(-1px);
-    }
-
-    /* ── Solutions (Figma 105:882) ──────── */
-    .solutions-heading {
-      margin: 0;
-      font-family: "Hatsch Sans PERSONAL USE ONLY", sans-serif;
-      font-size: 40px;
-      font-style: italic;
-      font-weight: 400;
-      line-height: 48px;
-      letter-spacing: 0.369px;
-    }
-
-    .solutions-subheading {
-      margin: 16px auto 0;
-      max-width: 672px;
-      color: #4a5565;
-      font-family: "Inter", sans-serif;
-      font-size: 20px;
-      font-style: normal;
-      font-weight: 400;
-      line-height: 28px;
-      letter-spacing: -0.449px;
-    }
-
-    .solutions-grid {
-      display: grid;
-      grid-template-columns: 1fr;
-      gap: 24px;
-    }
-
-    @media (min-width: 768px) {
-      .solutions-grid {
-        grid-template-columns: repeat(2, minmax(0, 1fr));
-        gap: 28px;
-      }
-    }
-
-    @media (min-width: 1280px) {
-      .solutions-grid {
-        grid-template-columns: repeat(3, minmax(0, 1fr));
-        gap: 32px;
-      }
-    }
-
-    .machine-card {
-      display: flex;
-      flex-direction: column;
-      overflow: hidden;
-      border-radius: 14px;
-      background: #ffffff;
-      box-shadow:
-        0 10px 15px -3px rgba(0, 0, 0, 0.1),
-        0 4px 6px -4px rgba(0, 0, 0, 0.1);
-    }
-
-    .machine-card__media {
-      position: relative;
-      height: 256px;
-      overflow: hidden;
-      flex-shrink: 0;
-    }
-
-    .machine-card__image {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-    }
-
-    .machine-card__badge {
-      position: absolute;
-      top: 16px;
-      right: 16px;
-      display: inline-flex;
-      align-items: center;
-      min-height: 28px;
-      padding: 4px 12px;
-      border-radius: 9999px;
-      background: #2d388c;
-      color: #ffffff;
-      font-family: "Inter", sans-serif;
-      font-size: 14px;
-      font-style: normal;
-      font-weight: 400;
-      line-height: 20px;
-      letter-spacing: -0.1504px;
-      white-space: nowrap;
-    }
-
-    .machine-card__body {
-      display: flex;
-      flex-direction: column;
-      flex: 1;
-      padding: 24px;
-    }
-
-    .machine-card__title {
-      margin: 0;
-      color: #1a1a2e;
-      font-family: "Inter", sans-serif;
-      font-size: 20px;
-      font-style: normal;
-      font-weight: 600;
-      line-height: 28px;
-      letter-spacing: -0.449px;
-    }
-
-    .machine-card__features {
-      margin: 16px 0 0;
-      padding: 0;
-      list-style: none;
-      display: flex;
-      flex-direction: column;
-      gap: 8px;
-      flex: 1;
-    }
-
-    .machine-card__features li {
-      display: flex;
-      align-items: center;
-      gap: 8px;
-      color: #4a5565;
-      font-family: "Inter", sans-serif;
-      font-size: 14px;
-      font-style: normal;
-      font-weight: 400;
-      line-height: 20px;
-      letter-spacing: -0.1504px;
-    }
-
-    .machine-card__features img {
-      flex-shrink: 0;
-    }
-
-    .machine-card__cta {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      width: 100%;
-      min-height: 48px;
-      margin-top: 24px;
-      border-radius: 10px;
-      background: #2d388c;
-      color: #ffffff;
-      font-family: "Inter", sans-serif;
-      font-size: 16px;
-      font-style: normal;
-      font-weight: 500;
-      line-height: 24px;
-      letter-spacing: -0.3125px;
-      text-decoration: none;
-      transition: background-color 0.2s ease;
-    }
-
-    .machine-card__cta:hover {
-      background: #25307c;
     }
 
     /* ── Testimonials + Clients (Figma 105:1058 + 183:450) ── */
@@ -1601,43 +1405,14 @@
     }
 
     .footprints-globe__frame {
-      overflow: hidden;
+      width: 100%;
     }
 
     .footprints-globe__image {
-      position: absolute;
-      width: 100.04%;
-      height: 255.43%;
-      left: -0.02%;
-      top: -61.76%;
-      max-width: none;
-      pointer-events: none;
-      user-select: none;
-    }
-
-    .footprints-globe__glow {
-      position: absolute;
-      border-radius: 50%;
-      pointer-events: none;
-      filter: blur(40px);
-    }
-
-    .footprints-globe__glow--1 {
-      width: 128px;
-      height: 128px;
-      left: 10%;
-      top: 50%;
-      transform: translateY(-50%);
-      background: rgba(44, 62, 143, 0.1);
-    }
-
-    .footprints-globe__glow--2 {
-      width: 96px;
-      height: 96px;
-      right: 10%;
-      top: 52%;
-      transform: translateY(-50%);
-      background: rgba(30, 64, 175, 0.1);
+      display: block;
+      width: 100%;
+      height: auto;
+      max-width: 100%;
     }
 
     /* ── CTA Banner (Figma 105:1185) ────────── */
@@ -1884,8 +1659,7 @@
     .about-image-1,
     .about-image-2,
     .industries-bg__image,
-    .cta-banner__photo,
-    .footprints-globe__image {
+    .cta-banner__photo {
       will-change: transform;
     }
 
@@ -1922,7 +1696,7 @@
         ".industries-card-animate", ".industries-cta-animate",
         ".solutions-header", ".solutions-heading", ".solutions-subheading", ".solutions-card-animate",
         ".footprints-eyebrow", ".footprints-heading", ".footprints-subheading",
-        ".footprints-stat-animate", ".footprints-globe", ".footprints-globe__glow",
+        ".footprints-stat-animate",
         ".testimonials-header", ".testimonial-card-animate",
         ".clients-header", ".clients-marquee-animate", ".clients-more-animate",
         ".cta-banner", ".cta-banner__badge", ".cta-banner__heading", ".cta-banner__body",
@@ -2175,9 +1949,7 @@
           .fromTo(".footprints-eyebrow", { autoAlpha: 0, y: 18 }, { autoAlpha: 1, y: 0, duration: 0.55 })
           .fromTo(".footprints-heading", { autoAlpha: 0, y: 32 }, { autoAlpha: 1, y: 0, duration: 0.75 }, "-=0.3")
           .fromTo(".footprints-subheading", { autoAlpha: 0, y: 20 }, { autoAlpha: 1, y: 0, duration: 0.65 }, "-=0.35")
-          .fromTo(".footprints-stat-animate", { autoAlpha: 0, x: -60 }, { autoAlpha: 1, x: 0, stagger: 0.14, duration: 0.75 }, "-=0.2")
-          .fromTo(".footprints-globe", { autoAlpha: 0, scale: 0.85, x: 50 }, { autoAlpha: 1, scale: 1, x: 0, duration: 1.2, ease: "power3.out" }, "-=0.5")
-          .fromTo(".footprints-globe__glow", { autoAlpha: 0, scale: 0.5 }, { autoAlpha: 1, scale: 1, duration: 0.9, stagger: 0.15 }, "-=0.8");
+          .fromTo(".footprints-stat-animate", { autoAlpha: 0, x: -60 }, { autoAlpha: 1, x: 0, stagger: 0.14, duration: 0.75 }, "-=0.2");
 
         document.querySelectorAll(".footprints-stat__value").forEach(function(el) {
           const final = el.dataset.final || "";
@@ -2195,21 +1967,6 @@
             scrollTrigger: { trigger: el.closest(".footprints-stat"), start: "top 86%", once: true },
             onUpdate: function() { el.textContent = Math.round(counter.val) + suffix; },
           });
-        });
-
-        gsap.to(".footprints-globe__image", {
-          y: -12,
-          duration: 3.5,
-          ease: "sine.inOut",
-          yoyo: true,
-          repeat: -1,
-          delay: 1.5,
-        });
-
-        gsap.to(".footprints-globe__image", {
-          rotation: 8,
-          ease: "none",
-          scrollTrigger: { trigger: ".footprints-section", start: "top bottom", end: "bottom top", scrub: 2 },
         });
 
         document.querySelectorAll(".footprints-stat").forEach(function(stat) {

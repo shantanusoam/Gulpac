@@ -91,6 +91,10 @@ class HomeViewTest(TestCase):
         self.assertContains(response, "Mission From Admin")
         self.assertContains(response, "<strong>Mission HTML</strong> from admin.", html=True)
         self.assertContains(response, "<em>Vision HTML</em> from admin.", html=True)
+        self.assertContains(response, "WANT TO SEE OUR")
+        self.assertContains(response, "FACTORY SETUP?")
+        self.assertContains(response, "Book Demonstration")
+        self.assertContains(response, "section-cta-bg.png")
 
     def test_industries_returns_200_and_uses_template(self):
         response = self.client.get("/industries/")
@@ -107,6 +111,12 @@ class HomeViewTest(TestCase):
         response = self.client.get("/contact/")
         self.assertEqual(response.status_code, 200)
         self.assertTemplateUsed(response, "website/contact.html")
+        self.assertContains(response, "GET IN")
+        self.assertContains(response, "TOUCH")
+        self.assertContains(response, "We&#x27;d love to hear from you")
+        self.assertContains(response, "Send Message")
+        self.assertContains(response, "contact/inqueryherobg.png")
+        self.assertContains(response, 'id="contact-form"')
 
     def test_contact_post_creates_inquiry(self):
         self.assertEqual(ContactInquiry.objects.count(), 0)

@@ -2,9 +2,13 @@
 <section class="page-cta relative overflow-hidden" data-page-cta="{{ cta_section.section_key }}">
   <div class="industries-bg pointer-events-none absolute inset-0 overflow-hidden" aria-hidden="true">
     <img
+      {% if cta_section.background_image_url %}
+      src="{{ cta_section.background_image_url }}"
+      {% else %}
       src="{% static 'images/industries/magnific-hexagon-bg.png' %}"
+      {% endif %}
       alt=""
-      class="industries-bg__image absolute left-1/2 top-[-84px] h-[968px] w-[1702px] max-w-none -translate-x-1/2 object-cover"
+      class="industries-bg__image absolute inset-0 h-full w-full object-cover object-center"
     >
   </div>
   <div class="page-cta__container relative z-10"  >
@@ -43,19 +47,9 @@
 
     // Background Scroll Parallax
     gsap.to(".page-cta .industries-bg__image", {
-      y: 80,
-      scale: 1.08,
+      y: 24,
       ease: "none",
       scrollTrigger: { trigger: ".page-cta", start: "top bottom", end: "bottom top", scrub: 1.2 },
-    });
-
-    // Background Continuous Pan
-    gsap.to(".page-cta .industries-bg__image", {
-      x: "-=30",
-      duration: 12,
-      repeat: -1,
-      yoyo: true,
-      ease: "sine.inOut",
     });
 
     // Content Entrance

@@ -13,6 +13,22 @@
     <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
     
     <style>
+      @font-face {
+        font-family: "Hatsch Sans PERSONAL USE ONLY";
+        font-style: normal;
+        font-weight: 400;
+        font-display: swap;
+        src: url("{% static 'fonts/HatschSans-Regular.woff' %}") format("woff");
+      }
+
+      @font-face {
+        font-family: "Hatsch Sans PERSONAL USE ONLY";
+        font-style: italic;
+        font-weight: 400;
+        font-display: swap;
+        src: url("{% static 'fonts/HatschSans-Italic.woff' %}") format("woff");
+      }
+
       body {
         font-family: 'Plus Jakarta Sans', 'Inter', sans-serif;
       }
@@ -129,8 +145,8 @@
 
       .page-hero__title {
         margin: 0 0 18px;
-        font-size: 72px;
-        line-height: 1.05;
+        font-size: 40px;
+        line-height: 48px;
         font-weight: 800;
         letter-spacing: 0;
         color: #fff;
@@ -144,6 +160,291 @@
         color: #e5e7eb;
       }
 
+      .page-hero--light {
+        color: #1f2937;
+        background: #f9fafb;
+      }
+
+      .page-hero--light .page-hero__media,
+      .page-hero--light .page-hero__media--image {
+        background-position: center center;
+        background-size: cover;
+        transform: none;
+      }
+
+      .page-hero--light .page-hero__media--image {
+        position: absolute;
+        inset: 0;
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        object-position: center;
+      }
+
+      .page-hero--light .page-hero__overlay {
+        background:
+          radial-gradient(circle at 1px 1px, rgba(209, 213, 220, 0.45) 1px, transparent 0),
+          linear-gradient(180deg, rgba(255, 255, 255, 0.28), rgba(255, 255, 255, 0.42));
+        background-size: 24px 24px, 100% 100%;
+      }
+
+      .page-hero--light .page-hero__content--centered {
+        max-width: 720px;
+        padding-top: 24px;
+        padding-bottom: 8px;
+      }
+
+      .page-hero--light .page-hero__title {
+        margin: 0 0 12px;
+        font-family: "Hatsch Sans PERSONAL USE ONLY", sans-serif;
+        font-size: 40px;
+        font-style: italic;
+        font-weight: 400;
+        line-height: 48px;
+        letter-spacing: 0.369px;
+        text-transform: uppercase;
+        color: inherit;
+      }
+
+      .page-hero--light .page-hero__title-prefix {
+        color: #2d388c;
+      }
+
+      .page-hero--light .page-hero__title-accent {
+        color: #47a33d;
+        margin-left: 8px;
+      }
+
+      .page-hero--light .page-hero__desc {
+        margin: 0 auto;
+        max-width: 560px;
+        color: #4a5565;
+        font-family: "Inter", sans-serif;
+        font-size: 20px;
+        font-style: normal;
+        font-weight: 400;
+        line-height: 28px;
+        letter-spacing: -0.45px;
+      }
+
+      .page-hero__button {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        gap: 8px;
+        margin-top: 28px;
+        min-width: 164px;
+        min-height: 52px;
+        padding: 0 28px;
+        border-radius: 10px;
+        background: #2c3e8f;
+        color: #fff;
+        font-size: 16px;
+        line-height: 1;
+        font-weight: 600;
+        text-decoration: none;
+        box-shadow: 0 10px 24px rgba(44, 62, 143, 0.22);
+        transition: background-color 160ms ease, transform 160ms ease;
+      }
+
+      .page-hero__button:hover {
+        background: #24367f;
+        transform: translateY(-1px);
+      }
+
+      .page-hero__button svg {
+        width: 18px;
+        height: 18px;
+        flex: none;
+      }
+
+      .solutions-heading {
+        margin: 0;
+        font-family: "Hatsch Sans PERSONAL USE ONLY", sans-serif;
+        font-size: 40px;
+        font-style: italic;
+        font-weight: 400;
+        line-height: 48px;
+        letter-spacing: 0.369px;
+      }
+
+      .solutions-subheading {
+        margin: 16px auto 0;
+        max-width: 672px;
+        color: #4a5565;
+        font-family: "Inter", sans-serif;
+        font-size: 20px;
+        font-style: normal;
+        font-weight: 400;
+        line-height: 28px;
+        letter-spacing: -0.449px;
+      }
+
+      .solutions-filters {
+        margin-top: -8px;
+      }
+
+      .solutions-filter {
+        display: inline-flex;
+        align-items: center;
+        min-height: 40px;
+        padding: 0 18px;
+        border-radius: 9999px;
+        border: 1px solid #d1d5dc;
+        background: #ffffff;
+        color: #4a5565;
+        font-family: "Inter", sans-serif;
+        font-size: 14px;
+        font-weight: 600;
+        line-height: 20px;
+        text-decoration: none;
+        transition: background-color 0.2s ease, border-color 0.2s ease, color 0.2s ease;
+      }
+
+      .solutions-filter:hover {
+        border-color: #2d388c;
+        color: #2d388c;
+      }
+
+      .solutions-filter--active {
+        border-color: #2d388c;
+        background: #2d388c;
+        color: #ffffff;
+      }
+
+      .solutions-grid {
+        display: grid;
+        grid-template-columns: 1fr;
+        gap: 24px;
+      }
+
+      @media (min-width: 768px) {
+        .solutions-grid {
+          grid-template-columns: repeat(2, minmax(0, 1fr));
+          gap: 28px;
+        }
+      }
+
+      @media (min-width: 1280px) {
+        .solutions-grid {
+          grid-template-columns: repeat(3, minmax(0, 1fr));
+          gap: 32px;
+        }
+      }
+
+      .machine-card {
+        display: flex;
+        flex-direction: column;
+        overflow: hidden;
+        border-radius: 14px;
+        background: #ffffff;
+        box-shadow:
+          0 10px 15px -3px rgba(0, 0, 0, 0.1),
+          0 4px 6px -4px rgba(0, 0, 0, 0.1);
+      }
+
+      .machine-card__media {
+        position: relative;
+        height: 256px;
+        overflow: hidden;
+        flex-shrink: 0;
+      }
+
+      .machine-card__image {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+      }
+
+      .machine-card__badge {
+        position: absolute;
+        top: 16px;
+        right: 16px;
+        display: inline-flex;
+        align-items: center;
+        min-height: 28px;
+        padding: 4px 12px;
+        border-radius: 9999px;
+        background: #2d388c;
+        color: #ffffff;
+        font-family: "Inter", sans-serif;
+        font-size: 14px;
+        font-style: normal;
+        font-weight: 400;
+        line-height: 20px;
+        letter-spacing: -0.1504px;
+        white-space: nowrap;
+      }
+
+      .machine-card__body {
+        display: flex;
+        flex-direction: column;
+        flex: 1;
+        padding: 24px;
+      }
+
+      .machine-card__title {
+        margin: 0;
+        color: #1a1a2e;
+        font-family: "Inter", sans-serif;
+        font-size: 20px;
+        font-style: normal;
+        font-weight: 600;
+        line-height: 28px;
+        letter-spacing: -0.449px;
+      }
+
+      .machine-card__features {
+        margin: 16px 0 0;
+        padding: 0;
+        list-style: none;
+        display: flex;
+        flex-direction: column;
+        gap: 8px;
+        flex: 1;
+      }
+
+      .machine-card__features li {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        color: #4a5565;
+        font-family: "Inter", sans-serif;
+        font-size: 14px;
+        font-style: normal;
+        font-weight: 400;
+        line-height: 20px;
+        letter-spacing: -0.1504px;
+      }
+
+      .machine-card__features img {
+        flex-shrink: 0;
+      }
+
+      .machine-card__cta {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 100%;
+        min-height: 48px;
+        margin-top: 24px;
+        border-radius: 10px;
+        background: #2d388c;
+        color: #ffffff;
+        font-family: "Inter", sans-serif;
+        font-size: 16px;
+        font-style: normal;
+        font-weight: 500;
+        line-height: 24px;
+        letter-spacing: -0.3125px;
+        text-decoration: none;
+        transition: background-color 0.2s ease;
+      }
+
+      .machine-card__cta:hover {
+        background: #25307c;
+      }
+
       .pdp-video-embed,
       .pdp-video-embed iframe {
         width: 100%;
@@ -153,12 +454,6 @@
       .pdp-video-embed iframe {
         border: 0;
         display: block;
-      }
-
-      @media (max-width: 1024px) {
-        .page-hero__title {
-          font-size: 56px;
-        }
       }
 
       @media (max-width: 640px) {
@@ -193,14 +488,29 @@
         }
 
         .page-hero__title {
-          font-size: 38px;
-          line-height: 1.08;
+          font-size: 32px;
+          line-height: 40px;
           margin-bottom: 14px;
         }
 
         .page-hero__desc {
           font-size: 16px;
           line-height: 1.55;
+        }
+
+        .page-hero--light .page-hero__title {
+          font-size: 32px;
+          line-height: 40px;
+        }
+
+        .page-hero--light .page-hero__desc {
+          font-size: 18px;
+          line-height: 26px;
+        }
+
+        .page-hero__button {
+          margin-top: 22px;
+          min-height: 48px;
         }
 
         .page-hero__eyebrow {
@@ -465,6 +775,10 @@
         overflow: hidden;
         padding: 72px 0 96px;
         background: #f9fafb;
+      }
+
+      .contact-section--no-intro {
+        padding-top: 32px;
       }
 
       .contact-section__background {
@@ -972,16 +1286,16 @@
         background: rgba(45, 56, 140, 0.05);
       }
 
-      /* ── Site Footer ──────────────────────── */
+      /* ── Site Footer (Figma 250:986) ─────── */
       .site-footer {
-        background: #0f172a;
-        color: #94a3b8;
+        background: #2d388c;
+        color: rgba(255, 255, 255, 0.75);
         font-family: "Inter", sans-serif;
       }
 
       .site-footer__marquee-wrap {
         overflow: hidden;
-        border-bottom: 1px solid rgba(148, 163, 184, 0.12);
+        border-bottom: 1px solid rgba(255, 255, 255, 0.14);
         padding: 28px 0;
       }
 
@@ -1017,7 +1331,8 @@
         justify-content: center;
         font-size: 0.85em;
         font-style: normal;
-        opacity: 0.95;
+        color: #47a33d;
+        opacity: 1;
       }
 
       @keyframes footer-marquee {
@@ -1050,18 +1365,35 @@
         }
       }
 
-      .site-footer__logo img {
-        display: block;
-        width: 202px;
-        height: 45px;
-        object-fit: contain;
-        object-position: left center;
+      .site-footer__logo {
+        display: inline-flex;
+        text-decoration: none;
+      }
+
+      .site-footer__logo-mark {
+        display: inline-flex;
+        align-items: baseline;
+        font-family: "Hatsch Sans PERSONAL USE ONLY", sans-serif;
+        font-size: 40px;
+        font-style: italic;
+        font-weight: 400;
+        line-height: 1;
+        letter-spacing: 0.01em;
+        text-transform: uppercase;
+      }
+
+      .site-footer__logo-glu {
+        color: #ffffff;
+      }
+
+      .site-footer__logo-pac {
+        color: #47a33d;
       }
 
       .site-footer__tagline {
         margin: 20px 0 0;
         max-width: 280px;
-        color: #94a3b8;
+        color: rgba(255, 255, 255, 0.72);
         font-size: 14px;
         font-weight: 400;
         line-height: 22px;
@@ -1089,13 +1421,13 @@
       }
 
       .site-footer__contact-link:hover {
-        color: #cbd5e1;
+        color: rgba(255, 255, 255, 0.85);
       }
 
       .site-footer__contact-link svg,
       .site-footer__contact-link i {
         flex-shrink: 0;
-        color: #2d388c;
+        color: #47a33d;
       }
 
       .site-footer__heading {
@@ -1117,7 +1449,7 @@
       }
 
       .site-footer__link {
-        color: #94a3b8;
+        color: rgba(255, 255, 255, 0.72);
         font-size: 14px;
         font-weight: 400;
         line-height: 20px;
@@ -1144,14 +1476,14 @@
         width: 36px;
         height: 36px;
         border-radius: 50%;
-        background: #1e3a8a;
+        background: #47a33d;
         color: #ffffff;
         text-decoration: none;
         transition: background-color 0.2s ease, transform 0.2s ease;
       }
 
       .site-footer__social:hover {
-        background: #2d388c;
+        background: #3b8a33;
         transform: translateY(-1px);
       }
 
@@ -1166,7 +1498,7 @@
         gap: 16px;
         margin-top: 48px;
         padding-top: 28px;
-        border-top: 1px solid rgba(148, 163, 184, 0.15);
+        border-top: 1px solid rgba(255, 255, 255, 0.14);
       }
 
       @media (min-width: 768px) {
@@ -1180,7 +1512,7 @@
 
       .site-footer__legal {
         margin: 0;
-        color: #64748b;
+        color: rgba(255, 255, 255, 0.55);
         font-size: 12px;
         font-weight: 400;
         line-height: 18px;
@@ -1189,7 +1521,7 @@
 
       .site-footer__credit {
         margin: 6px 0 0;
-        color: #64748b;
+        color: rgba(255, 255, 255, 0.55);
         font-size: 12px;
         font-weight: 400;
         line-height: 18px;
@@ -1197,7 +1529,7 @@
 
       .site-footer__address {
         margin: 0;
-        color: #64748b;
+        color: rgba(255, 255, 255, 0.55);
         font-size: 12px;
         font-weight: 400;
         line-height: 18px;
@@ -1240,9 +1572,8 @@
               <a href="{% url 'home' %}" class="site-header__link {% if request.resolver_match.url_name == 'home' %}site-header__link--active{% endif %}">Home</a>
               <a href="{% url 'about' %}" class="site-header__link {% if request.resolver_match.url_name == 'about' %}site-header__link--active{% endif %}">About Us</a>
               <a href="{% url 'industries' %}" class="site-header__link {% if request.resolver_match.url_name == 'industries' %}site-header__link--active{% endif %}">Industries</a>
-              <a href="{% url 'home' %}" class="site-header__link {% if request.resolver_match.url_name == 'solutions' or request.resolver_match.url_name == 'solution_detail' %}site-header__link--active{% endif %}">Solutions</a>
+              <a href="{% url 'solutions' %}" class="site-header__link {% if request.resolver_match.url_name == 'solutions' or request.resolver_match.url_name == 'solution_detail' %}site-header__link--active{% endif %}">Solutions</a>
               <a href="{% url 'home' %}#videos" class="site-header__link">Videos</a>
-              <a href="{% url 'home' %}" class="site-header__link {% if request.resolver_match.url_name == 'contact' %}site-header__link--active{% endif %}">Contact Us</a>
             </nav>
 
             <a href="{% url 'contact' %}" class="site-header__cta">
@@ -1282,7 +1613,6 @@
           <a href="{% url 'industries' %}" class="site-header__mobile-link {% if request.resolver_match.url_name == 'industries' %}site-header__mobile-link--active{% endif %}">Industries</a>
           <a href="{% url 'solutions' %}" class="site-header__mobile-link {% if request.resolver_match.url_name == 'solutions' or request.resolver_match.url_name == 'solution_detail' %}site-header__mobile-link--active{% endif %}">Solutions</a>
           <a href="{% url 'home' %}#videos" class="site-header__mobile-link">Videos</a>
-          <a href="{% url 'contact' %}" class="site-header__mobile-link {% if request.resolver_match.url_name == 'contact' %}site-header__mobile-link--active{% endif %}">Contact Us</a>
           <div class="pt-3">
             <a href="{% url 'contact' %}" class="site-header__cta w-full">
               Enquire Now
@@ -1311,13 +1641,10 @@
         <div class="site-footer__grid">
 
           <div class="site-footer__brand">
-            <a href="{% url 'home' %}" class="site-footer__logo">
-              <img
-                src="{% static 'images/header/logo.png' %}"
-                alt="Glupac"
-                width="202"
-                height="45"
-              >
+            <a href="{% url 'home' %}" class="site-footer__logo" aria-label="Glupac">
+              <span class="site-footer__logo-mark" aria-hidden="true">
+                <span class="site-footer__logo-glu">GLU</span><span class="site-footer__logo-pac">PAC</span>
+              </span>
             </a>
             <p class="site-footer__tagline">
               Precision Bonding, Seamless Packaging solutions for industries worldwide.

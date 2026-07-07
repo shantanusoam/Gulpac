@@ -98,7 +98,7 @@
   </section>
 
   {# ── 3. ADVANTAGES (Figma 105:821) ───────────────────────────────────── #}
-  <section id="advantages" class="advantages-section bg-[#f1f8ff] pt-20 lg:pt-[80px] pb-20 lg:pb-[80px]">
+  <section id="advantages" class="advantages-section bg-[#F2F2F2] pt-20 lg:pt-[80px] pb-20 lg:pb-[80px]">
     <div class="advantages-section__container mx-auto w-full max-w-[1280px] px-4 sm:px-6 lg:px-10 xl:px-16">
       <div class="advantages-section__inner mx-auto w-full max-w-[1232px] flex flex-col gap-12 lg:gap-16">
 
@@ -233,14 +233,15 @@
             </div>
           </div>
 
-          <div class="xl:col-span-7 flex justify-center items-center relative footprints-globe">
-            <div class="footprints-globe__glow footprints-globe__glow--1" aria-hidden="true"></div>
-            <div class="footprints-globe__glow footprints-globe__glow--2" aria-hidden="true"></div>
-            <div class="footprints-globe__frame relative w-full max-w-[720px] h-[360px] sm:h-[460px]">
+          <div class="xl:col-span-7 flex justify-center items-center footprints-globe">
+            <div class="footprints-globe__frame relative w-full max-w-[720px]">
               <img
-                src="{% static 'images/footprints/globe.png' %}"
+                src="{% static 'images/footprints/glupac-globe.png' %}"
                 alt="Glupac global export network across USA, Kuwait, UAE, India, and Russia"
-                class="footprints-globe__image"
+                class="footprints-globe__image w-full h-auto"
+                width="666"
+                height="618"
+                loading="lazy"
               >
             </div>
           </div>
@@ -250,21 +251,7 @@
     </div>
   </section>
 
-  <!-- CTA section -->
-  <section class="py-16 bg-[#020617] text-white overflow-hidden relative">
-    <div class="relative z-10 max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 text-center space-y-6">
-      <h2 class="text-3xl sm:text-4xl font-extrabold tracking-tight font-inter">Want to See Our Factory Setup?</h2>
-      <p class="text-slate-400 max-w-xl mx-auto text-sm sm:text-base leading-relaxed">
-        Let us schedule an in-person workshop visit, or run your dummy cartons on our demonstration lines over a high-resolution zoom video call.
-      </p>
-      <div class="pt-4 flex justify-center space-x-4">
-        <a href="{% url 'contact' %}" class="inline-flex items-center justify-center px-8 py-3 rounded-full text-sm font-bold text-white bg-blue-600 hover:bg-blue-700 shadow-lg shadow-blue-500/10 transition-all hover:-translate-y-0.5 active:translate-y-0">
-          Book Demonstration
-          <i data-lucide="phone-call" class="w-4 h-4 ml-1.5"></i>
-        </a>
-      </div>
-    </div>
-  </section>
+  {% include "website/components/cta_section.html" with cta_section=cta_section %}
 {% endblock %}
 
 {% block scripts %}
@@ -528,44 +515,14 @@
     }
 
     .footprints-globe__frame {
-      overflow: hidden;
+      width: 100%;
     }
 
     .footprints-globe__image {
-      position: absolute;
-      width: 100.04%;
-      height: 255.43%;
-      left: -0.02%;
-      top: -61.76%;
-      max-width: none;
-      pointer-events: none;
-      user-select: none;
-      will-change: transform;
-    }
-
-    .footprints-globe__glow {
-      position: absolute;
-      border-radius: 50%;
-      pointer-events: none;
-      filter: blur(40px);
-    }
-
-    .footprints-globe__glow--1 {
-      width: 128px;
-      height: 128px;
-      left: 10%;
-      top: 50%;
-      transform: translateY(-50%);
-      background: rgba(44, 62, 143, 0.1);
-    }
-
-    .footprints-globe__glow--2 {
-      width: 96px;
-      height: 96px;
-      right: 10%;
-      top: 52%;
-      transform: translateY(-50%);
-      background: rgba(30, 64, 175, 0.1);
+      display: block;
+      width: 100%;
+      height: auto;
+      max-width: 100%;
     }
 
     @media (min-width: 768px) {
@@ -639,7 +596,7 @@
         ".about-image-1", ".about-image-2", ".mission-card", ".vision-card",
         ".adv-header", ".advantages-heading", ".advantages-subheading", ".adv-card",
         ".footprints-eyebrow", ".footprints-heading", ".footprints-subheading",
-        ".footprints-stat-animate", ".footprints-globe", ".footprints-globe__glow"
+        ".footprints-stat-animate"
       ];
 
       if (context.reducedMotion) {
@@ -714,9 +671,7 @@
         .fromTo(".footprints-eyebrow", { autoAlpha: 0, y: 18 }, { autoAlpha: 1, y: 0, duration: 0.55 })
         .fromTo(".footprints-heading", { autoAlpha: 0, y: 32 }, { autoAlpha: 1, y: 0, duration: 0.75 }, "-=0.3")
         .fromTo(".footprints-subheading", { autoAlpha: 0, y: 20 }, { autoAlpha: 1, y: 0, duration: 0.65 }, "-=0.35")
-        .fromTo(".footprints-stat-animate", { autoAlpha: 0, x: -60 }, { autoAlpha: 1, x: 0, stagger: 0.14, duration: 0.75 }, "-=0.2")
-        .fromTo(".footprints-globe", { autoAlpha: 0, scale: 0.85, x: 50 }, { autoAlpha: 1, scale: 1, x: 0, duration: 1.2, ease: "power3.out" }, "-=0.5")
-        .fromTo(".footprints-globe__glow", { autoAlpha: 0, scale: 0.5 }, { autoAlpha: 1, scale: 1, duration: 0.9, stagger: 0.15 }, "-=0.8");
+        .fromTo(".footprints-stat-animate", { autoAlpha: 0, x: -60 }, { autoAlpha: 1, x: 0, stagger: 0.14, duration: 0.75 }, "-=0.2");
 
       document.querySelectorAll(".footprints-stat__value").forEach(function(el) {
         const final = el.dataset.final || "";
@@ -734,21 +689,6 @@
           scrollTrigger: { trigger: el.closest(".footprints-stat"), start: "top 86%", once: true },
           onUpdate: function() { el.textContent = Math.round(counter.val) + suffix; },
         });
-      });
-
-      gsap.to(".footprints-globe__image", {
-        y: -12,
-        duration: 3.5,
-        ease: "sine.inOut",
-        yoyo: true,
-        repeat: -1,
-        delay: 1.5,
-      });
-
-      gsap.to(".footprints-globe__image", {
-        rotation: 8,
-        ease: "none",
-        scrollTrigger: { trigger: ".footprints-section", start: "top bottom", end: "bottom top", scrub: 2 },
       });
 
       bindCardHover(document.querySelectorAll(".adv-card, .footprints-stat"));

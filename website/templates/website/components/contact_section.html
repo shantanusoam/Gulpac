@@ -1,6 +1,6 @@
 {% load static %}
 
-<section class="contact-section">
+<section class="contact-section{% if hide_intro %} contact-section--no-intro{% endif %}">
   <div class="contact-section__background"></div>
   <div class="contact-section__container">
     <div class="contact-section__stack">
@@ -15,6 +15,7 @@
         </div>
       {% endif %}
 
+      {% if not hide_intro %}
       <div class="contact-section__intro">
         <h2 class="contact-section__title">
           <span>{{ contact_section.intro_prefix }}</span>
@@ -22,8 +23,9 @@
         </h2>
         <p class="contact-section__subtitle">{{ contact_section.intro_description }}</p>
       </div>
+      {% endif %}
 
-      <div class="contact-form-card">
+      <div id="contact-form" class="contact-form-card">
         <h3 class="contact-form-card__title">{{ contact_section.form_title }}</h3>
 
         <form action="{% url 'contact' %}" method="POST" class="contact-form">

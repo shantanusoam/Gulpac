@@ -1,7 +1,16 @@
 {% load static %}
 
-<section class="page-hero font-inter{% if hero.centered %} page-hero--centered{% endif %}" data-page-hero="{{ hero.page_key }}">
+<section class="page-hero font-inter{% if hero.centered %} page-hero--centered{% endif %}{% if hero.light %} page-hero--light{% endif %}" data-page-hero="{{ hero.page_key }}">
+  {% if hero.light %}
+  <img
+    src="{{ hero.background_image_url }}"
+    alt=""
+    class="page-hero__media page-hero__media--image"
+    aria-hidden="true"
+  >
+  {% else %}
   <div class="page-hero__media" aria-hidden="true" style="background-image: url('{{ hero.background_image_url }}');"></div>
+  {% endif %}
   <div class="page-hero__overlay" aria-hidden="true"></div>
 
   <div class="page-hero__container{% if hero.centered %} page-hero__container--centered{% endif %}">
@@ -21,11 +30,24 @@
       <span class="page-hero__eyebrow">{{ hero.eyebrow }}</span>
       {% endif %}
 
-      <h1 class="page-hero__title">{{ hero.title }}</h1>
+      <h1 class="page-hero__title">
+        {% if hero.title_prefix %}
+          <span class="page-hero__title-prefix">{{ hero.title_prefix }}</span><span class="page-hero__title-accent">{{ hero.title_accent }}</span>
+        {% else %}
+          {{ hero.title }}
+        {% endif %}
+      </h1>
 
       <p class="page-hero__desc">
         {{ hero.description }}
       </p>
+
+      {% if hero.button_label %}
+      <a href="{{ hero.button_url }}" class="page-hero__button">
+        {{ hero.button_label }}
+        <i data-lucide="arrow-right" aria-hidden="true"></i>
+      </a>
+      {% endif %}
     </div>
   </div>
 </section>
@@ -37,23 +59,27 @@
     const reducedMotion = window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
     if (reducedMotion) return;
 
+    const heroSection = document.querySelector(".page-hero");
+    const isLightHero = heroSection && heroSection.classList.contains("page-hero--light");
     const heroTl = gsap.timeline({ defaults: { ease: "power3.out" } });
     
     // Background entrance
     gsap.fromTo(".page-hero__media",
-      { autoAlpha: 0, scale: 1.15 },
-      { autoAlpha: 1, scale: 1.02, duration: 1.8, ease: "power2.out" }
+      { autoAlpha: 0, scale: isLightHero ? 1.04 : 1.15 },
+      { autoAlpha: 1, scale: isLightHero ? 1 : 1.02, duration: isLightHero ? 1.1 : 1.8, ease: "power2.out" }
     );
     
-    // Subtle continuous ambient zoom
-    gsap.to(".page-hero__media", {
-      scale: 1.06,
-      duration: 18,
-      ease: "sine.inOut",
-      yoyo: true,
-      repeat: -1,
-      delay: 1.8
-    });
+    if (!isLightHero) {
+      // Subtle continuous ambient zoom (dark heroes only)
+      gsap.to(".page-hero__media", {
+        scale: 1.06,
+        duration: 18,
+        ease: "sine.inOut",
+        yoyo: true,
+        repeat: -1,
+        delay: 1.8
+      });
+    }
 
     heroTl
       .fromTo(".page-hero__back", 
@@ -64,16 +90,42 @@
         { autoAlpha: 0, y: 25 }, 
         { autoAlpha: 1, y: 0, duration: 0.7, stagger: 0.15 },
         "-=0.4"
-      )
-      .fromTo(".page-hero__title", 
-        { autoAlpha: 0, y: 40, rotationX: -15, scale: 0.95 }, 
-        { autoAlpha: 1, y: 0, rotationX: 0, scale: 1, duration: 1, transformPerspective: 1000 },
-        "-=0.5"
-      )
-      .fromTo(".page-hero__desc", 
-        { autoAlpha: 0, y: 20 }, 
-        { autoAlpha: 1, y: 0, duration: 0.8 },
-        "-=0.6"
       );
+
+    if (isLightHero) {
+      heroTl
+        .fromTo(".page-hero__title",
+          { y: 20 },
+          { y: 0, duration: 0.7 },
+          "-=0.2"
+        )
+        .fromTo(".page-hero__desc",
+          { y: 16 },
+          { y: 0, duration: 0.65 },
+          "-=0.45"
+        )
+        .fromTo(".page-hero__button",
+          { y: 12 },
+          { y: 0, duration: 0.55 },
+          "-=0.4"
+        );
+    } else {
+      heroTl
+        .fromTo(".page-hero__title", 
+          { autoAlpha: 0, y: 40, rotationX: -15, scale: 0.95 }, 
+          { autoAlpha: 1, y: 0, rotationX: 0, scale: 1, duration: 1, transformPerspective: 1000 },
+          "-=0.5"
+        )
+        .fromTo(".page-hero__desc", 
+          { autoAlpha: 0, y: 20 }, 
+          { autoAlpha: 1, y: 0, duration: 0.8 },
+          "-=0.6"
+        )
+        .fromTo(".page-hero__button",
+          { autoAlpha: 0, y: 16 },
+          { autoAlpha: 1, y: 0, duration: 0.55 },
+          "-=0.45"
+        );
+    }
   });
 </script>
