@@ -2,19 +2,17 @@ import json
 
 from django import forms
 from django.forms import Textarea
+from tinymce.widgets import AdminTinyMCE
 
 
-class RichTextEditorWidget(Textarea):
-    class Media:
-        css = {"all": ("website/admin_rich_text_editor.css",)}
-        js = ("website/admin_rich_text_editor.js",)
+class RichTextEditorWidget(AdminTinyMCE):
+    """TinyMCE editor used across Gulpac admin rich-text fields."""
 
-    def __init__(self, attrs=None):
+    def __init__(self, attrs=None, mce_attrs=None):
         attrs = attrs or {}
-        existing_class = attrs.get("class", "")
-        attrs["class"] = f"{existing_class} rich-text-source".strip()
-        attrs.setdefault("rows", 8)
-        super().__init__(attrs)
+        attrs.setdefault("rows", 12)
+        attrs.setdefault("cols", 80)
+        super().__init__(attrs=attrs, mce_attrs=mce_attrs)
 
 
 class StringListWidget(Textarea):

@@ -54,6 +54,7 @@ INSTALLED_APPS = [
     "django.contrib.sessions",
     "django.contrib.messages",
     "django.contrib.staticfiles",
+    "tinymce",
     "website.apps.WebsiteConfig",
 ]
 
@@ -127,3 +128,26 @@ STORAGES = {
 }
 
 DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
+
+# TinyMCE config aligned with the IWS product admin editor (menubar + classic toolbar).
+TINYMCE_DEFAULT_CONFIG = {
+    "theme": "silver",
+    "height": 360,
+    "menubar": "file edit view insert format tools table help",
+    "plugins": (
+        "advlist autolink lists link image charmap preview anchor "
+        "searchreplace visualblocks code fullscreen insertdatetime media table "
+        "help wordcount"
+    ),
+    "toolbar": (
+        "undo redo | blocks | bold italic underline | "
+        "alignleft aligncenter alignright alignjustify | "
+        "bullist numlist outdent indent | link image | removeformat | help"
+    ),
+    "browser_spellcheck": True,
+    "branding": False,
+    "promotion": False,
+    "relative_urls": False,
+    "remove_script_host": False,
+    "convert_urls": True,
+}

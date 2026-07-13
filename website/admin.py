@@ -14,6 +14,7 @@ from .models import (
     Industry,
     Machine,
     MissionVisionSection,
+    ProductCategory,
     Testimonial,
 )
 
@@ -47,14 +48,15 @@ class CardGridItemInlineForm(forms.ModelForm):
 
 
 class MachineAdminForm(forms.ModelForm):
-    features = StringListField(
-        required=False,
-        help_text="Enter one feature per line.",
-    )
-
     class Meta:
         model = Machine
         fields = "__all__"
+        widgets = {
+            "description": RichTextEditorWidget(),
+            "specifications": RichTextEditorWidget(),
+            "features": RichTextEditorWidget(),
+            "meta_description": forms.Textarea(attrs={"rows": 4}),
+        }
 
 
 class MissionVisionSectionAdminForm(forms.ModelForm):
@@ -177,17 +179,52 @@ class ContactMapSectionAdmin(PageSectionAdminMixin, admin.ModelAdmin):
     )
 
 
+@admin.register(ProductCategory)
+class ProductCategoryAdmin(admin.ModelAdmin):
+    list_display = ("name", "code", "order", "is_active")
+    list_filter = ("is_active",)
+    search_fields = ("name", "code")
+    ordering = ("order", "name")
+
+
 @admin.register(Machine)
 class MachineAdmin(admin.ModelAdmin):
     form = MachineAdminForm
-    list_display = ("model_number", "slug", "name", "category", "order")
-    list_filter = ("category",)
-    search_fields = ("model_number", "slug", "name", "description", "video_iframe_html")
-    prepopulated_fields = {"slug": ("model_number", "name")}
+    list_display = ("model_number", "name", "category", "product_type", "slug", "order")
+    list_filter = ("category", "product_type")
+    search_fields = (
+        "model_number",
+        "slug",
+        "name",
+        "description",
+        "meta_title",
+        "meta_description",
+        "video_iframe_html",
+    )
+    prepopulated_fields = {"slug": ("name",)}
     ordering = ("order", "model_number")
+    # Reason: Match the reference product admin field order for content editors.
     fieldsets = (
-        (None, {"fields": ("model_number", "slug", "name", "category", "order")}),
-        ("Content", {"fields": ("image_path", "description", "features", "specifications", "video_iframe_html")}),
+        (None, {
+            "fields": (
+                "model_number",
+                "name",
+                "description",
+                "specifications",
+                "features",
+                "category",
+                "product_image",
+                "slug",
+                "meta_description",
+                "meta_title",
+                "product_type",
+                "brochure",
+            ),
+        }),
+        ("Display & media", {
+            "classes": ("collapse",),
+            "fields": ("video_iframe_html", "image_path", "order"),
+        }),
     )
 
 

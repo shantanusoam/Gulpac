@@ -11,6 +11,7 @@ from .models import (
     ContactSection,
     Industry,
     Machine,
+    ProductCategory,
     Testimonial,
     Category,
 )
@@ -291,9 +292,9 @@ def build_industry_grid_context(*, home_only=False):
 def build_machine_hero_context(machine):
     return {
         "page_key": f"solutions:{machine.slug}",
-        "title": machine.name,
-        "description": machine.description,
-        "background_image_url": static(machine.image_path),
+        "title": machine.meta_title or machine.name,
+        "description": machine.meta_description or machine.description_plain,
+        "background_image_url": machine.image_url or static("images/hero/hero-machine.png"),
         "back_link_label": "Back to Home",
         "back_link_url": "/",
         "show_back_link": True,
@@ -468,18 +469,25 @@ def contact(request):
 
 def solutions(request):
     category_filter = request.GET.get("category", "")
-    machines = Machine.objects.all()
+    machines = Machine.objects.select_related("category").all()
     if category_filter:
-        machines = machines.filter(category=category_filter)
-        
+        machines = machines.filter(category__code=category_filter)
+
+    categories = [
+        (category.code, category.name)
+        for category in ProductCategory.objects.filter(is_active=True)
+    ]
+    if not categories:
+        categories = list(Category.choices)
+
     return render(request, "website/solutions.html", {
         "machines": machines,
         "category_filter": category_filter,
-        "categories": Category.choices,
+        "categories": categories,
     })
 
 def solution_detail(request, slug):
-    machine = get_object_or_404(Machine, slug=slug)
+    machine = get_object_or_404(Machine.objects.select_related("category"), slug=slug)
     contact_section = build_contact_section_context("contact", {
         "intro_prefix": "INTERESTED IN",
         "intro_accent": "THIS MACHINE?",
@@ -511,7 +519,11 @@ def solution_detail(request, slug):
         "image_url": "https://www.figma.com/api/mcp/asset/95be48c5-54d6-46c5-bd85-e2082beefd35",
     })
     # Related machines are other machines in the same category
-    related_machines = Machine.objects.filter(category=machine.category).exclude(model_number=machine.model_number)[:3]
+    related_machines = Machine.objects.none()
+    if machine.category_id:
+        related_machines = Machine.objects.filter(category=machine.category).exclude(
+            model_number=machine.model_number
+        )[:3]
     if not related_machines.exists():
         related_machines = Machine.objects.exclude(model_number=machine.model_number)[:3]
         

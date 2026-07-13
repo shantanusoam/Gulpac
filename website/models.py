@@ -1,11 +1,39 @@
+import re
+
 from django.db import models
+from django.urls import reverse
+from django.utils.html import strip_tags
 from django.utils.text import slugify
 
+
 class Category(models.TextChoices):
+    """Legacy category codes kept for seed data and URL filters."""
+
     GLUING = "GLUING", "Gluing Machines"
     CARTONING = "CARTONING", "Cartoning Machines"
     CARTONATOR = "CARTONATOR", "Cartonator Machines"
     SHIPPER = "SHIPPER", "Shipper Carton Machines"
+
+
+class ProductType(models.TextChoices):
+    NOT_CATEGORIZED = "not_categorized", "Not Categorized"
+    STANDARD = "standard", "Standard"
+    CUSTOM = "custom", "Custom"
+
+
+class ProductCategory(models.Model):
+    code = models.CharField(max_length=50, unique=True)
+    name = models.CharField(max_length=200)
+    order = models.IntegerField(default=0)
+    is_active = models.BooleanField(default=True)
+
+    class Meta:
+        ordering = ["order", "name"]
+        verbose_name = "Product category"
+        verbose_name_plural = "Product categories"
+
+    def __str__(self):
+        return self.name
 
 
 class PageKey(models.TextChoices):
@@ -41,7 +69,7 @@ class MissionVisionSection(models.Model):
             "We commit to continuous technological enhancement, ensuring zero defect rates, high operator safety, "
             "and exceptional long-term machinery value."
         ),
-        help_text="Supports HTML entered through the admin rich text editor.",
+        help_text="Supports HTML entered through the TinyMCE admin editor.",
     )
     vision_title = models.CharField(max_length=200, default="Our Vision")
     vision_description = models.TextField(
@@ -50,7 +78,7 @@ class MissionVisionSection(models.Model):
             "We strive to pioneer intelligence and PLC capabilities, helping modern manufacturing lines transition "
             "cleanly onto green, low-waste automated solutions."
         ),
-        help_text="Supports HTML entered through the admin rich text editor.",
+        help_text="Supports HTML entered through the TinyMCE admin editor.",
     )
     is_active = models.BooleanField(default=True)
 
@@ -192,24 +220,105 @@ class ContactMapSection(models.Model):
         return self.page_key
 
 class Machine(models.Model):
-    model_number = models.CharField(max_length=50, primary_key=True)
-    slug = models.SlugField(unique=True, blank=True, null=True)
+    model_number = models.CharField(
+        "Product SKU ID",
+        max_length=50,
+        primary_key=True,
+    )
     name = models.CharField(max_length=200)
-    category = models.CharField(max_length=50, choices=Category.choices, default=Category.GLUING)
-    image_path = models.CharField(max_length=250, help_text="Relative to static folder, e.g., 'images/machine1.png'")
-    features = models.JSONField(default=list, help_text="A list of bullet features, e.g., ['Timer base control', 'Auto/Manual system']")
-    description = models.TextField(blank=True, default="")
-    specifications = models.JSONField(default=dict, blank=True, help_text="Dict of tech specs, e.g., {'speed': '30-60 pcs/min', 'power': '220V'}")
-    video_iframe_html = models.TextField(blank=True, default="", help_text="Optional raw iframe HTML for the PDP video section.")
+    description = models.TextField(
+        blank=True,
+        default="",
+        help_text="Supports HTML entered through the TinyMCE admin editor.",
+    )
+    specifications = models.TextField(
+        blank=True,
+        default="",
+        help_text="Supports HTML entered through the TinyMCE admin editor.",
+    )
+    features = models.TextField(
+        blank=True,
+        default="",
+        help_text="Supports HTML entered through the TinyMCE admin editor.",
+    )
+    category = models.ForeignKey(
+        ProductCategory,
+        related_name="products",
+        on_delete=models.PROTECT,
+        null=True,
+        blank=True,
+    )
+    product_image = models.ImageField(
+        upload_to="products/",
+        blank=True,
+        null=True,
+        help_text="Primary product image shown on listing and detail pages.",
+    )
+    image_path = models.CharField(
+        max_length=250,
+        blank=True,
+        default="",
+        help_text="Legacy static path fallback, e.g., 'images/machine1.png'. Prefer Product image upload.",
+    )
+    slug = models.SlugField(unique=True, blank=True, null=True)
+    meta_description = models.TextField(blank=True, default="")
+    meta_title = models.CharField(max_length=200, blank=True, default="")
+    product_type = models.CharField(
+        max_length=50,
+        choices=ProductType.choices,
+        default=ProductType.NOT_CATEGORIZED,
+    )
+    brochure = models.FileField(
+        upload_to="brochure/",
+        blank=True,
+        null=True,
+        help_text="Optional PDF brochure for this product.",
+    )
+    video_iframe_html = models.TextField(
+        blank=True,
+        default="",
+        help_text="Optional raw iframe HTML for the PDP video section.",
+    )
     order = models.IntegerField(default=0)
 
     class Meta:
         ordering = ["order", "model_number"]
+        verbose_name = "Product"
+        verbose_name_plural = "Products"
 
     def save(self, *args, **kwargs):
         if not self.slug:
             self.slug = slugify(f"{self.model_number}-{self.name}")
         super().save(*args, **kwargs)
+
+    def get_absolute_url(self):
+        if self.slug:
+            return reverse("solution_detail", kwargs={"slug": self.slug})
+        return reverse("solutions")
+
+    @property
+    def image_url(self):
+        if self.product_image:
+            return self.product_image.url
+        if self.image_path:
+            from django.templatetags.static import static
+
+            return static(self.image_path)
+        return ""
+
+    @property
+    def description_plain(self):
+        return strip_tags(self.description or "").strip()
+
+    @property
+    def feature_list(self):
+        """Extract plain feature lines from rich-text HTML for card previews."""
+        html = self.features or ""
+        items = re.findall(r"<li[^>]*>(.*?)</li>", html, flags=re.IGNORECASE | re.DOTALL)
+        if items:
+            return [strip_tags(item).strip() for item in items if strip_tags(item).strip()]
+        text = strip_tags(html)
+        return [line.strip("•- \t") for line in text.splitlines() if line.strip()]
 
     def __str__(self):
         return f"{self.model_number} - {self.name}"
