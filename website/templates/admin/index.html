@@ -1,0 +1,90 @@
+{% extends "admin/index.html" %}
+
+{% block content %}
+<div id="content-main">
+  <div class="module" id="gulpac-content-guide">
+    <h2>Content guide by page</h2>
+    <table style="width: 100%;">
+      <thead>
+        <tr>
+          <th scope="col">Page</th>
+          <th scope="col">Section</th>
+          <th scope="col">Admin</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <th scope="row" rowspan="4">Home</th>
+          <td>Hero banner</td>
+          <td><a href="{% url 'admin:website_herosection_changelist' %}?page_key__exact=home">Hero Sections</a></td>
+        </tr>
+        <tr>
+          <td>Industries carousel</td>
+          <td><a href="{% url 'admin:website_industry_changelist' %}">Industries</a></td>
+        </tr>
+        <tr>
+          <td>Featured machines</td>
+          <td><a href="{% url 'admin:website_machine_changelist' %}">Machines</a></td>
+        </tr>
+        <tr>
+          <td>Testimonials</td>
+          <td><a href="{% url 'admin:website_testimonial_changelist' %}">Testimonials</a></td>
+        </tr>
+        <tr>
+          <th scope="row" rowspan="3">About</th>
+          <td>Hero</td>
+          <td><a href="{% url 'admin:website_herosection_changelist' %}?page_key__exact=about">Hero Sections</a></td>
+        </tr>
+        <tr>
+          <td>Mission &amp; Vision</td>
+          <td><a href="{% url 'admin:website_missionvisionsection_changelist' %}?page_key__exact=about">Mission &amp; Vision Sections</a></td>
+        </tr>
+        <tr>
+          <td>Footer CTA</td>
+          <td><a href="{% url 'admin:website_ctasection_changelist' %}?page_key__exact=about">CTA Sections</a></td>
+        </tr>
+        <tr>
+          <th scope="row" rowspan="3">Industries</th>
+          <td>Hero</td>
+          <td><a href="{% url 'admin:website_herosection_changelist' %}?page_key__exact=industries">Hero Sections</a></td>
+        </tr>
+        <tr>
+          <td>Industry grid</td>
+          <td><a href="{% url 'admin:website_industry_changelist' %}">Industries</a></td>
+        </tr>
+        <tr>
+          <td>Footer CTA</td>
+          <td><a href="{% url 'admin:website_ctasection_changelist' %}?page_key__exact=industries">CTA Sections</a></td>
+        </tr>
+        <tr>
+          <th scope="row" rowspan="3">Contact</th>
+          <td>Hero</td>
+          <td><a href="{% url 'admin:website_herosection_changelist' %}?page_key__exact=contact">Hero Sections</a></td>
+        </tr>
+        <tr>
+          <td>Form copy &amp; contact cards</td>
+          <td><a href="{% url 'admin:website_contactsection_changelist' %}?page_key__exact=contact">Contact Sections</a></td>
+        </tr>
+        <tr>
+          <td>Map</td>
+          <td><a href="{% url 'admin:website_contactmapsection_changelist' %}?page_key__exact=contact">Contact Map Sections</a></td>
+        </tr>
+        <tr>
+          <th scope="row">Solutions</th>
+          <td>Machine catalog</td>
+          <td><a href="{% url 'admin:website_machine_changelist' %}">Machines</a></td>
+        </tr>
+        <tr>
+          <th scope="row">Inbox</th>
+          <td>Form submissions</td>
+          <td><a href="{% url 'admin:website_contactinquiry_changelist' %}">Contact Inquiries</a></td>
+        </tr>
+      </tbody>
+    </table>
+    <p class="help" style="margin-top: 1rem;">
+      Use <strong>Industries</strong> to add or edit industry cards shown on the home page and industries page.
+    </p>
+  </div>
+</div>
+{{ block.super }}
+{% endblock %}

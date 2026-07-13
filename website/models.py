@@ -8,6 +8,13 @@ class Category(models.TextChoices):
     SHIPPER = "SHIPPER", "Shipper Carton Machines"
 
 
+class PageKey(models.TextChoices):
+    HOME = "home", "Home"
+    ABOUT = "about", "About"
+    INDUSTRIES = "industries", "Industries"
+    CONTACT = "contact", "Contact"
+
+
 class HeroSection(models.Model):
     page_key = models.CharField(max_length=100, unique=True)
     title = models.CharField(max_length=200)
@@ -83,6 +90,31 @@ class CardGridItem(models.Model):
 
     class Meta:
         ordering = ["order", "id"]
+
+    def __str__(self):
+        return self.title
+
+
+class Industry(models.Model):
+    title = models.CharField(max_length=200)
+    image = models.ImageField(upload_to="industries/")
+    detail_image = models.ImageField(
+        upload_to="industries/",
+        blank=True,
+        null=True,
+        help_text="Optional overlay image for the home page carousel.",
+    )
+    bullet_points = models.JSONField(default=list)
+    order = models.IntegerField(default=0)
+    is_active = models.BooleanField(default=True)
+    show_on_home = models.BooleanField(
+        default=True,
+        help_text="Show this industry in the home page carousel.",
+    )
+
+    class Meta:
+        ordering = ["order", "title"]
+        verbose_name_plural = "Industries"
 
     def __str__(self):
         return self.title

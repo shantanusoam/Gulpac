@@ -2,7 +2,16 @@ from pathlib import Path
 
 from django.core.files.uploadedfile import SimpleUploadedFile
 from django.test import TestCase, Client
-from website.models import HeroSection, MissionVisionSection, CardGridSection, CardGridItem, CTASection, Machine, Testimonial, ContactInquiry, Category
+from website.models import (
+    HeroSection,
+    MissionVisionSection,
+    Industry,
+    CTASection,
+    Machine,
+    Testimonial,
+    ContactInquiry,
+    Category,
+)
 
 
 BASE_DIR = Path(__file__).resolve().parents[2]
@@ -50,17 +59,13 @@ class HomeViewTest(TestCase):
             vision_title="Vision From Admin",
             vision_description="<p><em>Vision HTML</em> from admin.</p>",
         )
-        self.industry_section = CardGridSection.objects.create(
-            page_key="industries",
-            section_key="industries-grid",
-            title="",
-            description="",
-        )
-        self.industry_card = CardGridItem.objects.create(
-            section=self.industry_section,
+        self.industry = Industry.objects.create(
             title="Food Industry",
             image=SimpleUploadedFile("factory.png", image_bytes, content_type="image/png"),
             bullet_points=["Ready to Eat Food Boxes", "Spice Boxes"],
+            order=1,
+            is_active=True,
+            show_on_home=True,
         )
         self.cta_section = CTASection.objects.create(
             page_key="industries",
@@ -82,6 +87,11 @@ class HomeViewTest(TestCase):
         self.assertTemplateUsed(response, "website/home.html")
         self.assertContains(response, "Test Gluing Machine")
         self.assertContains(response, "Great machine!")
+
+    def test_home_renders_industries_from_admin(self):
+        response = self.client.get("/")
+        self.assertContains(response, "Food Industry")
+        self.assertContains(response, "Ready to Eat Food Boxes")
 
     def test_about_returns_200_and_uses_template(self):
         response = self.client.get("/about/")

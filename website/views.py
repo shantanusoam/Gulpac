@@ -9,6 +9,7 @@ from .models import (
     ContactInquiry,
     ContactMapSection,
     ContactSection,
+    Industry,
     Machine,
     Testimonial,
     Category,
@@ -179,6 +180,114 @@ def build_contact_map_context(page_key, defaults):
     }
 
 
+def build_industries_context(*, home_only=False):
+    industries_qs = Industry.objects.filter(is_active=True)
+    if home_only:
+        industries_qs = industries_qs.filter(show_on_home=True)
+
+    cards = [
+        {
+            "title": industry.title,
+            "image_url": industry.image.url,
+            "detail_image_url": industry.detail_image.url if industry.detail_image else "",
+            "bullet_points": industry.bullet_points,
+        }
+        for industry in industries_qs
+    ]
+    return {"cards": cards}
+
+
+def get_industry_grid_defaults():
+    return [
+        {
+            "title": "Food Industry",
+            "image_url": static("images/industries/food.jpg"),
+            "bullet_points": [
+                "Ready to Eat Food Boxes",
+                "Spice Boxes",
+                "Nuts & Dry Fruit Boxes",
+                "Confectionery Items",
+                "Cereals & Staple Food Boxes",
+                "Sweet Boxes",
+            ],
+        },
+        {
+            "title": "Pharma Industry",
+            "image_url": static("images/industries/pharma.jpg"),
+            "bullet_points": [
+                "Soap & Toothpaste Boxes",
+                "Vials, Ointments",
+                "Tubes Boxes",
+                "Medical Packaging",
+            ],
+        },
+        {
+            "title": "Cosmetics Industry",
+            "image_url": static("images/industries/cosmetics.jpg"),
+            "bullet_points": [
+                "Beauty Products",
+                "Bonding of Foam",
+                "Pasting of Mirror on Plastic Components",
+            ],
+        },
+        {
+            "title": "Paper Industry",
+            "image_url": static("images/industries/paper.jpg"),
+            "bullet_points": [
+                "Tissue Paper Boxes",
+                "Paper Bags",
+                "Corrugated Boxes",
+                "A4 Paper Reams",
+            ],
+        },
+        {
+            "title": "Textile Industry",
+            "image_url": static("images/industries/textile.jpg"),
+            "bullet_points": [
+                "Pasting of Velcro on Fabric",
+                "Textile Packaging",
+            ],
+        },
+        {
+            "title": "Mattress Industry",
+            "image_url": static("images/industries/mattress.jpg"),
+            "bullet_points": [
+                "Bonding of multiple layers of foam in a mattress",
+                "Foam Assembly",
+            ],
+        },
+        {
+            "title": "Wire Industry",
+            "image_url": static("images/industries/wire.jpg"),
+            "bullet_points": [
+                "Wire Coil Boxes",
+                "Cable Packaging",
+            ],
+        },
+        {
+            "title": "Automobile Industry",
+            "image_url": static("images/industries/automobile.jpg"),
+            "bullet_points": [
+                "Air Filters",
+                "Head Lights",
+                "Automotive Parts Packaging",
+            ],
+        },
+    ]
+
+
+def build_industry_grid_context(*, home_only=False):
+    context = build_industries_context(home_only=home_only)
+    cards = context["cards"] or get_industry_grid_defaults()
+    return {
+        "page_key": "industries",
+        "section_key": "industries-grid",
+        "title": "",
+        "description": "",
+        "cards": cards,
+    }
+
+
 def build_machine_hero_context(machine):
     return {
         "page_key": f"solutions:{machine.slug}",
@@ -214,10 +323,12 @@ def home(request):
     })
     machines = Machine.objects.all()[:6]
     testimonials = Testimonial.objects.all()[:3]
+    industries = Industry.objects.filter(is_active=True, show_on_home=True)
     return render(request, "website/home.html", {
         "hero": hero,
         "machines": machines,
         "testimonials": testimonials,
+        "industries": industries,
     })
 
 def about(request):
@@ -268,84 +379,7 @@ def industries(request):
         "back_link_url": "/",
         "background_image_url": static("images/factory.png"),
     })
-    industry_grid = build_card_grid_context("industries", "industries-grid", {
-        "cards": [
-            {
-                "title": "Food Industry",
-                "image_url": "https://www.figma.com/api/mcp/asset/754aa4a8-77fe-4c35-8c3b-65e43c5bacb7",
-                "bullet_points": [
-                    "Ready to Eat Food Boxes",
-                    "Spice Boxes",
-                    "Nuts & Dry Fruit Boxes",
-                    "Confectionery Items",
-                    "Cereals & Staple Food Boxes",
-                    "Sweet Boxes",
-                ],
-            },
-            {
-                "title": "Pharma Industry",
-                "image_url": "https://www.figma.com/api/mcp/asset/76c67f67-88a6-467d-a93b-5456c594b560",
-                "bullet_points": [
-                    "Soap & Toothpaste Boxes",
-                    "Vials, Ointments",
-                    "Tubes Boxes",
-                    "Medical Packaging",
-                ],
-            },
-            {
-                "title": "Cosmetics Industry",
-                "image_url": "https://www.figma.com/api/mcp/asset/1433696f-364c-4a8e-8891-97ee0e001c8b",
-                "bullet_points": [
-                    "Beauty Products",
-                    "Bonding of Foam",
-                    "Pasting of Mirror on Plastic Components",
-                ],
-            },
-            {
-                "title": "Paper Industry",
-                "image_url": "https://www.figma.com/api/mcp/asset/ca412f12-5a0d-460c-971c-c139b558123c",
-                "bullet_points": [
-                    "Tissue Paper Boxes",
-                    "Paper Bags",
-                    "Corrugated Boxes",
-                    "A4 Paper Reams",
-                ],
-            },
-            {
-                "title": "Textile Industry",
-                "image_url": "https://www.figma.com/api/mcp/asset/f360d000-e91e-4eb0-b687-bc50a4ecc700",
-                "bullet_points": [
-                    "Pasting of Velcro on Fabric",
-                    "Textile Packaging",
-                ],
-            },
-            {
-                "title": "Mattress Industry",
-                "image_url": "https://www.figma.com/api/mcp/asset/589d8e7a-4557-4401-8afa-e20c9f2d081b",
-                "bullet_points": [
-                    "Bonding of multiple layers of foam in a mattress",
-                    "Foam Assembly",
-                ],
-            },
-            {
-                "title": "Wire Industry",
-                "image_url": "https://www.figma.com/api/mcp/asset/61da5c6c-c092-47c0-8148-23a061e9d68a",
-                "bullet_points": [
-                    "Wire Coil Boxes",
-                    "Cable Packaging",
-                ],
-            },
-            {
-                "title": "Automobile Industry",
-                "image_url": "https://www.figma.com/api/mcp/asset/6ba28cc6-f619-41ac-88d6-4809015449df",
-                "bullet_points": [
-                    "Air Filters",
-                    "Head Lights",
-                    "Automotive Parts Packaging",
-                ],
-            },
-        ],
-    })
+    industry_grid = build_industry_grid_context()
     cta_section = build_cta_context("industries", "industries-cta", {
         "heading_prefix": "DON'T SEE YOUR",
         "heading_accent": "INDUSTRY LISTED?",

@@ -22,8 +22,10 @@ npm install
 cp .env.example .env   # edit SECRET_KEY, DEBUG=True
 npm run build
 python manage.py migrate
-python manage.py runserver 127.0.0.1:8007
+python manage.py runserver 127.0.0.1:8011
 ```
+
+**Important:** `CSRF_TRUSTED_ORIGIN_PORTS` and `CSRF_TRUSTED_ORIGINS` in `.env` must match the port you use with `runserver`. If you change the port (e.g. to `8007`), update both values in `.env` or contact/inquiry form POSTs will fail with a CSRF error.
 
 For live CSS reloading, run this in a second terminal:
 

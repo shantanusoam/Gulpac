@@ -1,0 +1,62 @@
+{% load static %}
+
+<section id="industries-we-serve" class="industries-section relative overflow-hidden bg-white pt-16 lg:pt-[62px] pb-20 lg:pb-[88px]">
+  <div class="industries-bg pointer-events-none absolute inset-0 overflow-hidden" aria-hidden="true">
+    <img
+      src="{% static 'images/industries/magnific-hexagon-bg.png' %}"
+      alt=""
+      class="industries-bg__image absolute left-1/2 top-[-84px] h-[968px] w-[1702px] max-w-none -translate-x-1/2 object-cover"
+    >
+  </div>
+
+  <div class="relative z-10 mx-auto w-full px-4 sm:px-6 lg:px-10 xl:px-16">
+    <div class="industries-section__inner mx-auto w-full max-w-[1232px]">
+
+      <header class="industries-header text-center mb-10 lg:mb-14">
+        <h2 class="industries-heading">
+          <span class="text-[#2d388c]">Industries </span><span class="text-[#47a33d]">We Serve</span>
+        </h2>
+        <p class="industries-subheading">
+          Customized packaging solutions across diverse sectors
+        </p>
+      </header>
+
+      <div class="industries-carousel-shell -mx-4 sm:mx-0">
+        <div class="industries-carousel flex gap-6 lg:gap-8 overflow-x-auto pb-4 snap-x snap-mandatory scroll-smooth">
+          {% for industry in industries %}
+            <article class="industries-card industries-card-animate snap-start shrink-0">
+              <div class="industries-card__media">
+                <img src="{{ industry.image.url }}" alt="" class="industries-card__image">
+                {% if industry.detail_image %}
+                  <img src="{{ industry.detail_image.url }}" alt="" class="industries-card__image industries-card__image--overlay" aria-hidden="true">
+                {% endif %}
+                <div class="industries-card__gradient"></div>
+                <h3 class="industries-card__title">{{ industry.title }}</h3>
+              </div>
+              <div class="industries-card__body{% if forloop.counter0 >= 3 %} industries-card__body--muted{% endif %}">
+                <ul class="industries-card__list">
+                  {% for bullet in industry.bullet_points %}
+                    <li>
+                      <img src="{% static 'images/industries/icon-check.svg' %}" alt="" width="16" height="16" aria-hidden="true">
+                      <span>{{ bullet }}</span>
+                    </li>
+                  {% endfor %}
+                </ul>
+              </div>
+            </article>
+          {% empty %}
+            <p class="text-center text-slate-500 w-full">Add industries in Django admin to show them here.</p>
+          {% endfor %}
+        </div>
+      </div>
+
+      <div class="industries-cta-wrap text-center mt-10 lg:mt-12">
+        <a href="{% url 'industries' %}" class="industries-cta industries-cta-animate gulpac-btn-primary">
+          <span>View All Industries</span>
+          <img src="{% static 'images/industries/icon-arrow.svg' %}" alt="" width="20" height="20" aria-hidden="true">
+        </a>
+      </div>
+
+    </div>
+  </div>
+</section>
