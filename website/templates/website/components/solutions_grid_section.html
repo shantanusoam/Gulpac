@@ -27,7 +27,7 @@
         <article class="machine-card{% if animate_cards %} solutions-card-animate{% endif %}">
           <div class="machine-card__media">
             <img
-              src="{% static machine.image_path %}"
+              src="{{ machine.get_image_url }}"
               alt="{{ machine.name }}"
               class="machine-card__image"
               onerror="this.onerror=null; this.src='https://placehold.co/800x512?text={{ machine.model_number }}'"

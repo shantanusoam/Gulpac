@@ -177,10 +177,10 @@ class HomeViewTest(TestCase):
         self.assertEqual(response.status_code, 200)
         self.assertTemplateUsed(response, "website/solution_detail.html")
         self.assertContains(response, "GP-TEST-10")
-        self.assertContains(response, "See It In Action")
         self.assertContains(response, "Main Features")
         self.assertContains(response, "Technical Specifications")
         self.assertContains(response, "Send Enquiry")
+        self.assertNotContains(response, "See It In Action")
         
         # Test 404 for non-existing model
         response_404 = self.client.get("/solutions/gp-unknown/")

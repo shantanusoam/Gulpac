@@ -11,7 +11,7 @@
       <section class="grid grid-cols-1 items-start gap-10 xl:grid-cols-2 xl:gap-12">
         <div class="overflow-hidden rounded-[16px] bg-slate-100 shadow-[0_25px_50px_-12px_rgba(0,0,0,0.25)]">
           <img
-            src="{% static machine.image_path %}"
+            src="{{ machine.get_image_url }}"
             alt="{{ machine.name }}"
             class="block h-full w-full object-cover"
             style="aspect-ratio: 592 / 451;"
@@ -90,6 +90,7 @@
         </div>
       </section>
 
+      {% if machine.video_embed_url %}
       <section class="space-y-8">
         <div class="space-y-2 text-center">
           <h2 class="text-2xl font-black text-slate-950 sm:text-3xl">See It In Action</h2>
@@ -97,24 +98,21 @@
 
         <div class="mx-auto max-w-5xl overflow-hidden rounded-[16px] bg-[#eee] shadow-[0_25px_50px_-12px_rgba(0,0,0,0.25)]">
           <div class="relative aspect-video w-full">
-            {% if machine.video_iframe_html %}
-              <div class="pdp-video-embed absolute inset-0 h-full w-full">
-                {{ machine.video_iframe_html|safe }}
-              </div>
-            {% else %}
+            <div class="pdp-video-embed absolute inset-0 h-full w-full">
               <iframe
                 class="absolute inset-0 h-full w-full"
-                src="https://www.youtube.com/embed/dQw4w9WgXcQ"
-                title="Product demonstration video"
+                src="{{ machine.video_embed_url }}"
+                title="{{ machine.name }} demonstration video"
                 loading="lazy"
                 allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
                 referrerpolicy="strict-origin-when-cross-origin"
                 allowfullscreen
               ></iframe>
-            {% endif %}
+            </div>
           </div>
         </div>
       </section>
+      {% endif %}
     </div>
   </section>
   {% include "website/components/contact_section.html" with selected_interest=selected_interest contact_section=contact_section contact_map=contact_map %}

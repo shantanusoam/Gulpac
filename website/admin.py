@@ -54,7 +54,8 @@ class MachineAdminForm(forms.ModelForm):
 
     class Meta:
         model = Machine
-        fields = "__all__"
+        # Reason: Hunny asked for image upload only — hide legacy static path field.
+        exclude = ("image_path",)
 
 
 class MissionVisionSectionAdminForm(forms.ModelForm):
@@ -182,12 +183,13 @@ class MachineAdmin(admin.ModelAdmin):
     form = MachineAdminForm
     list_display = ("model_number", "slug", "name", "category", "order")
     list_filter = ("category",)
-    search_fields = ("model_number", "slug", "name", "description", "video_iframe_html")
+    search_fields = ("model_number", "slug", "name", "description", "video_url")
     prepopulated_fields = {"slug": ("model_number", "name")}
     ordering = ("order", "model_number")
     fieldsets = (
-        (None, {"fields": ("model_number", "slug", "name", "category", "order")}),
-        ("Content", {"fields": ("image_path", "description", "features", "specifications", "video_iframe_html")}),
+        (None, {"fields": ("model_number", "slug", "name", "category")}),
+        ("Display & media", {"fields": ("image", "video_url", "order")}),
+        ("Content", {"fields": ("description", "features", "specifications")}),
     )
 
 

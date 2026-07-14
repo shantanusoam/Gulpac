@@ -1,5 +1,8 @@
 from django.db import models
+from django.templatetags.static import static
 from django.utils.text import slugify
+
+from .video import resolve_video_embed_url
 
 class Category(models.TextChoices):
     GLUING = "GLUING", "Gluing Machines"
@@ -196,11 +199,28 @@ class Machine(models.Model):
     slug = models.SlugField(unique=True, blank=True, null=True)
     name = models.CharField(max_length=200)
     category = models.CharField(max_length=50, choices=Category.choices, default=Category.GLUING)
-    image_path = models.CharField(max_length=250, help_text="Relative to static folder, e.g., 'images/machine1.png'")
+    image = models.ImageField(
+        upload_to="products/",
+        blank=True,
+        null=True,
+        help_text="Product image shown on the solutions grid and PDP.",
+    )
+    # Reason: keep for seeded/static machines; hidden from admin (upload-only workflow).
+    image_path = models.CharField(
+        max_length=250,
+        blank=True,
+        default="",
+        help_text="Legacy static path fallback, e.g., 'images/machine1.png'. Prefer Product image upload.",
+    )
     features = models.JSONField(default=list, help_text="A list of bullet features, e.g., ['Timer base control', 'Auto/Manual system']")
     description = models.TextField(blank=True, default="")
     specifications = models.JSONField(default=dict, blank=True, help_text="Dict of tech specs, e.g., {'speed': '30-60 pcs/min', 'power': '220V'}")
-    video_iframe_html = models.TextField(blank=True, default="", help_text="Optional raw iframe HTML for the PDP video section.")
+    video_url = models.CharField(
+        max_length=500,
+        blank=True,
+        default="",
+        help_text="YouTube or Vimeo URL for the PDP video section (e.g. https://youtu.be/…).",
+    )
     order = models.IntegerField(default=0)
 
     class Meta:
@@ -210,6 +230,17 @@ class Machine(models.Model):
         if not self.slug:
             self.slug = slugify(f"{self.model_number}-{self.name}")
         super().save(*args, **kwargs)
+
+    def get_image_url(self) -> str:
+        if self.image:
+            return self.image.url
+        if self.image_path:
+            return static(self.image_path)
+        return ""
+
+    @property
+    def video_embed_url(self) -> str:
+        return resolve_video_embed_url(self.video_url)
 
     def __str__(self):
         return f"{self.model_number} - {self.name}"
