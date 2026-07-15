@@ -33,10 +33,20 @@ For live CSS reloading, run this in a second terminal:
 npm run dev
 ```
 
-## Tests
+## Content admin (products)
+
+Products are managed in Django admin (`/admin/` → **Products**), with fields matching the CMS product form:
+
+- Product SKU ID, name, slug
+- **TinyMCE** rich-text description, specifications, and features
+- Product category (editable list), product type
+- Product image upload and optional PDF brochure
+- Meta title / meta description for SEO
+
+Seed demo catalog data with:
 
 ```bash
-pytest
+python manage.py seed_demo
 ```
 
 ## Code quality

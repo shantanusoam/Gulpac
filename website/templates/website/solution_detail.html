@@ -1,7 +1,7 @@
 {% extends "website/base.html" %}
 {% load static %}
 
-{% block title %}{{ machine.model_number }} — {{ machine.name }} — Gulpac{% endblock %}
+{% block title %}{% if machine.meta_title %}{{ machine.meta_title }}{% else %}{{ machine.model_number }} — {{ machine.name }}{% endif %} — Gulpac{% endblock %}
 
 {% block content %}
   {% include "website/components/page_hero.html" with hero=hero %}
@@ -11,7 +11,7 @@
       <section class="grid grid-cols-1 items-start gap-10 xl:grid-cols-2 xl:gap-12">
         <div class="overflow-hidden rounded-[16px] bg-slate-100 shadow-[0_25px_50px_-12px_rgba(0,0,0,0.25)]">
           <img
-            src="{{ machine.get_image_url }}"
+            src="{% if machine.image_url %}{{ machine.image_url }}{% else %}https://placehold.co/1200x900?text={{ machine.model_number }}{% endif %}"
             alt="{{ machine.name }}"
             class="block h-full w-full object-cover"
             style="aspect-ratio: 592 / 451;"
@@ -23,10 +23,10 @@
           <h2 class="text-2xl font-black tracking-tight text-slate-950 sm:text-3xl">Main Features</h2>
 
           <ul class="mt-6 space-y-4">
-            {% for feature in machine.features|slice:":6" %}
+            {% for feature in machine.feature_list %}
               <li class="flex items-start gap-3">
-                <span class="mt-0.5 flex h-6 w-6 flex-none items-center justify-center text-green-600">
-                  <i data-lucide="check-circle-2" class="h-5 w-5"></i>
+                <span class="mt-0.5 flex h-6 w-6 flex-none items-center justify-center text-[#47a33d]">
+                  <i data-lucide="check-circle-2" class="h-5 w-5" aria-hidden="true"></i>
                 </span>
                 <span class="text-base leading-7 text-slate-700 sm:text-[18px]">{{ feature }}</span>
               </li>
@@ -37,10 +37,15 @@
             {% endfor %}
           </ul>
 
-          <div class="mt-6">
+          <div class="mt-6 flex flex-wrap gap-3">
             <a href="{% url 'contact' %}?interest={{ machine.model_number }}" class="inline-flex min-h-[56px] items-center justify-center rounded-[10px] bg-[#2c3e8f] px-8 text-base font-medium text-white shadow-sm transition-colors hover:bg-[#25357c]">
               Enquire Now
             </a>
+            {% if machine.brochure %}
+              <a href="{{ machine.brochure.url }}" target="_blank" rel="noopener" class="inline-flex min-h-[56px] items-center justify-center rounded-[10px] border border-[#2c3e8f] px-8 text-base font-medium text-[#2c3e8f] transition-colors hover:bg-[#2c3e8f]/10">
+                Download Brochure
+              </a>
+            {% endif %}
           </div>
         </div>
       </section>
@@ -48,45 +53,38 @@
       <section class="space-y-8 border-t border-slate-200 pt-12">
         <div class="space-y-2 text-center">
           <h2 class="text-2xl font-black text-slate-950 sm:text-3xl">Technical Specifications</h2>
-          <p class="text-sm text-slate-500">Data is driven from Django admin and scales down cleanly on smaller screens.</p>
         </div>
 
         <div class="mx-auto w-full max-w-5xl overflow-hidden rounded-[16px] bg-white shadow-[0_10px_15px_-3px_rgba(0,0,0,0.1),0_4px_6px_-4px_rgba(0,0,0,0.1)]">
-          <div class="hidden md:block">
-            <table class="w-full border-separate border-spacing-0">
-              <tbody>
-                {% for key, val in machine.specifications.items %}
-                  <tr class="{% cycle 'bg-slate-50' 'bg-white' %}">
-                    <th class="w-[39.4%] border-b border-slate-200 px-6 py-4 text-left text-base font-semibold tracking-[-0.01em] text-slate-950">
-                      {{ key }}
-                    </th>
-                    <td class="border-b border-slate-200 px-6 py-4 text-left text-base tracking-[-0.01em] text-slate-600">
-                      {{ val }}
-                    </td>
-                  </tr>
-                {% empty %}
-                  <tr>
-                    <td colspan="2" class="px-6 py-8 text-sm text-slate-500">
-                      No specifications are loaded yet for this product.
-                    </td>
-                  </tr>
-                {% endfor %}
-              </tbody>
-            </table>
-          </div>
+          {% if machine.specification_rows %}
+            <div class="hidden md:block">
+              <table class="w-full border-separate border-spacing-0">
+                <tbody>
+                  {% for key, val in machine.specification_rows %}
+                    <tr class="{% cycle 'bg-slate-50' 'bg-white' %}">
+                      <th class="w-[39.4%] border-b border-slate-200 px-6 py-4 text-left text-base font-semibold tracking-[-0.01em] text-slate-950">
+                        {{ key }}
+                      </th>
+                      <td class="border-b border-slate-200 px-6 py-4 text-left text-base tracking-[-0.01em] text-slate-600">
+                        {{ val }}
+                      </td>
+                    </tr>
+                  {% endfor %}
+                </tbody>
+              </table>
+            </div>
 
-          <div class="md:hidden divide-y divide-slate-200">
-            {% for key, val in machine.specifications.items %}
-              <div class="{% cycle 'bg-slate-50' 'bg-white' %} px-5 py-4">
-                <p class="text-[10px] font-black uppercase tracking-[0.2em] text-slate-400">{{ key }}</p>
-                <p class="mt-2 text-sm font-medium text-slate-700">{{ val }}</p>
-              </div>
-            {% empty %}
-              <div class="px-5 py-8 text-sm text-slate-500">
-                No specifications are loaded yet for this product.
-              </div>
-            {% endfor %}
-          </div>
+            <div class="md:hidden divide-y divide-slate-200">
+              {% for key, val in machine.specification_rows %}
+                <div class="{% cycle 'bg-slate-50' 'bg-white' %} px-5 py-4">
+                  <p class="text-[10px] font-black uppercase tracking-[0.2em] text-slate-400">{{ key }}</p>
+                  <p class="mt-2 text-sm font-medium text-slate-700">{{ val }}</p>
+                </div>
+              {% endfor %}
+            </div>
+          {% else %}
+            <p class="px-6 py-8 text-sm text-slate-500">No specifications are loaded yet for this product.</p>
+          {% endif %}
         </div>
       </section>
 

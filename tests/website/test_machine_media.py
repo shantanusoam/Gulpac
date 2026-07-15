@@ -1,7 +1,7 @@
 from django.core.files.uploadedfile import SimpleUploadedFile
 from django.test import SimpleTestCase, TestCase
 
-from website.models import Category, Machine
+from website.models import Machine
 from website.video import resolve_video_embed_url
 
 
@@ -35,34 +35,31 @@ class ResolveVideoEmbedUrlTests(SimpleTestCase):
 
 
 class MachineDisplayMediaTests(TestCase):
-    def test_get_image_url_prefers_upload_over_path(self):
+    def test_image_url_prefers_product_image_upload(self):
         machine = Machine.objects.create(
             model_number="GP-IMG-1",
             name="Upload Machine",
-            category=Category.GLUING,
             image_path="images/machine1.png",
-            image=SimpleUploadedFile(
+            product_image=SimpleUploadedFile(
                 "product.png",
                 b"\x89PNG\r\n\x1a\n",
                 content_type="image/png",
             ),
         )
-        self.assertTrue(machine.get_image_url().startswith("/media/products/"))
+        self.assertTrue(machine.image_url.startswith("/media/products/"))
 
-    def test_get_image_url_falls_back_to_static_path(self):
+    def test_image_url_falls_back_to_static_path(self):
         machine = Machine.objects.create(
             model_number="GP-IMG-2",
             name="Legacy Path Machine",
-            category=Category.GLUING,
             image_path="images/machine2.png",
         )
-        self.assertEqual(machine.get_image_url(), "/static/images/machine2.png")
+        self.assertEqual(machine.image_url, "/static/images/machine2.png")
 
     def test_video_embed_url_from_watch_link(self):
         machine = Machine.objects.create(
             model_number="GP-VID-1",
             name="Video Machine",
-            category=Category.GLUING,
             video_url="https://youtu.be/j5jGpNVVrUI?si=demo",
         )
         self.assertEqual(
@@ -74,9 +71,8 @@ class MachineDisplayMediaTests(TestCase):
         machine = Machine.objects.create(
             model_number="GP-VID-2",
             name="PDP Video Machine",
-            category=Category.GLUING,
             image_path="images/machine1.png",
-            features=["One"],
+            features="<ul><li>One</li></ul>",
             video_url="https://youtu.be/j5jGpNVVrUI",
         )
         response = self.client.get(f"/solutions/{machine.slug}/")
@@ -92,9 +88,8 @@ class MachineDisplayMediaTests(TestCase):
         machine = Machine.objects.create(
             model_number="GP-VID-3",
             name="No Video Machine",
-            category=Category.GLUING,
             image_path="images/machine1.png",
-            features=["One"],
+            features="<ul><li>One</li></ul>",
         )
         response = self.client.get(f"/solutions/{machine.slug}/")
         self.assertEqual(response.status_code, 200)

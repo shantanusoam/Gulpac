@@ -1,8 +1,9 @@
 # Tasks
 
 ## Completed
-- [x] 2026-07-14 — Display & media: accept video URL (not iframe HTML); image upload option only in Machine admin
+- [x] 2026-07-14 — Display & media: accept video URL; image upload only (`product_image`), safe SQLite rename migration
+- [x] 2026-07-14 — PDP Main Features checkmark list + Technical Specs zebra key/value table (parse admin HTML)
 
 ## Discovered During Work
-- Live PDP was dumping pasted YouTube URLs as plain text inside `.pdp-video-embed` (fixed by converting URL → embed iframe)
-- Production already served `/media/products/`; local Machine model now matches with `image` ImageField
+- Production already had `0012_product_backend_fields` (HTML features/specs + `product_image`); deploying a conflicting `0012` caused SQLite remake + JSON_VALID failure
+- Fixed by restoring product-backend base and adding `0013_machine_video_url` via `ALTER TABLE ... RENAME COLUMN`

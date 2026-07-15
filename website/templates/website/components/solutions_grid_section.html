@@ -27,7 +27,7 @@
         <article class="machine-card{% if animate_cards %} solutions-card-animate{% endif %}">
           <div class="machine-card__media">
             <img
-              src="{{ machine.get_image_url }}"
+              src="{{ machine.image_url }}"
               alt="{{ machine.name }}"
               class="machine-card__image"
               onerror="this.onerror=null; this.src='https://placehold.co/800x512?text={{ machine.model_number }}'"
@@ -37,7 +37,7 @@
           <div class="machine-card__body">
             <h3 class="machine-card__title">{{ machine.name }}</h3>
             <ul class="machine-card__features">
-              {% for feature in machine.features|slice:":3" %}
+              {% for feature in machine.feature_list|slice:":3" %}
               <li>
                 <img src="{% static 'images/industries/icon-check.svg' %}" alt="" width="16" height="16" aria-hidden="true">
                 <span>{{ feature }}</span>

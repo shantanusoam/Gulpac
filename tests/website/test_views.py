@@ -2,12 +2,14 @@ from pathlib import Path
 
 from django.core.files.uploadedfile import SimpleUploadedFile
 from django.test import TestCase, Client
+
 from website.models import (
     HeroSection,
     MissionVisionSection,
     Industry,
     CTASection,
     Machine,
+    ProductCategory,
     Testimonial,
     ContactInquiry,
     Category,
@@ -20,15 +22,24 @@ BASE_DIR = Path(__file__).resolve().parents[2]
 class HomeViewTest(TestCase):
     def setUp(self):
         self.client = Client()
-        # Create some seed data for tests
+        self.gluing_category, _ = ProductCategory.objects.get_or_create(
+            code=Category.GLUING,
+            defaults={"name": "Gluing Machines", "order": 0},
+        )
+        self.cartonator_category, _ = ProductCategory.objects.get_or_create(
+            code=Category.CARTONATOR,
+            defaults={"name": "Cartonator Machines", "order": 1},
+        )
         self.machine = Machine.objects.create(
             model_number="GP-TEST-10",
             name="Test Gluing Machine",
-            category=Category.GLUING,
+            category=self.gluing_category,
             image_path="images/machine1.png",
-            features=["Feature 1", "Feature 2"],
-            description="Test description",
-            specifications={"Speed": "10-20 pcs/min"}
+            features="<ul><li>Feature 1</li><li>Feature 2</li></ul>",
+            description="<p>Test description</p>",
+            specifications="<ul><li><strong>Speed</strong> — 10-20 pcs/min</li></ul>",
+            meta_title="Test Gluing Machine SEO",
+            meta_description="SEO description for test gluing machine.",
         )
         self.testimonial = Testimonial.objects.create(
             name="Test User",
@@ -130,7 +141,7 @@ class HomeViewTest(TestCase):
 
     def test_contact_post_creates_inquiry(self):
         self.assertEqual(ContactInquiry.objects.count(), 0)
-        
+
         post_data = {
             "name": "Applicant Name",
             "email": "applicant@test.com",
@@ -142,33 +153,29 @@ class HomeViewTest(TestCase):
         response = self.client.post("/contact/", post_data)
         self.assertEqual(response.status_code, 200)
         self.assertEqual(ContactInquiry.objects.count(), 1)
-        
+
         inquiry = ContactInquiry.objects.first()
         self.assertEqual(inquiry.name, "Applicant Name")
         self.assertEqual(inquiry.machine_interest, "GP-TEST-10")
 
     def test_solutions_list_and_filter(self):
-        # Create a cartoner machine
         Machine.objects.create(
             model_number="GP-TEST-CB",
             name="Test Cartoner Machine",
-            category=Category.CARTONATOR,
+            category=self.cartonator_category,
             image_path="images/machine2.png",
-            features=["Cartoning Feature"],
-            description="Test description cartoner",
-            specifications={"Speed": "50 pcs/min"}
+            features="<ul><li>Cartoning Feature</li></ul>",
+            description="<p>Test description cartoner</p>",
+            specifications="<ul><li><strong>Speed</strong> — 50 pcs/min</li></ul>",
         )
-        
-        # Test full list
+
         response = self.client.get("/solutions/")
         self.assertEqual(response.status_code, 200)
         self.assertContains(response, "Test Gluing Machine")
         self.assertContains(response, "Test Cartoner Machine")
-        
-        # Test filtering by Category
+
         response_filtered = self.client.get("/solutions/?category=CARTONATOR")
         self.assertEqual(response_filtered.status_code, 200)
-        # Should contain Cartoner machine but NOT Gluing machine
         self.assertContains(response_filtered, "Test Cartoner Machine")
         self.assertNotContains(response_filtered, "Test Gluing Machine")
 
@@ -177,11 +184,64 @@ class HomeViewTest(TestCase):
         self.assertEqual(response.status_code, 200)
         self.assertTemplateUsed(response, "website/solution_detail.html")
         self.assertContains(response, "GP-TEST-10")
+        self.assertNotContains(response, "See It In Action")
         self.assertContains(response, "Main Features")
         self.assertContains(response, "Technical Specifications")
+        self.assertContains(response, "Feature 1")
+        self.assertContains(response, "10-20 pcs/min")
         self.assertContains(response, "Send Enquiry")
-        self.assertNotContains(response, "See It In Action")
-        
-        # Test 404 for non-existing model
+        self.assertContains(response, "Test Gluing Machine SEO")
+
         response_404 = self.client.get("/solutions/gp-unknown/")
         self.assertEqual(response_404.status_code, 404)
+
+    def test_product_feature_list_and_image_url(self):
+        self.assertEqual(self.machine.feature_list, ["Feature 1", "Feature 2"])
+        self.assertEqual(
+            self.machine.specification_rows,
+            [("Speed", "10-20 pcs/min")],
+        )
+        self.assertTrue(self.machine.image_url.endswith("images/machine1.png"))
+        self.assertEqual(self.machine.description_plain, "Test description")
+        self.assertEqual(self.machine.get_absolute_url(), f"/solutions/{self.machine.slug}/")
+
+    def test_specification_rows_from_html_table(self):
+        self.machine.specifications = (
+            '<table><tr><td>Power Supply</td><td>1 Phase, 220 V AC, 50 Hz</td></tr>'
+            "<tr><td>Power Load</td><td>1.5 kW</td></tr></table>"
+        )
+        self.machine.save()
+        self.assertEqual(
+            self.machine.specification_rows,
+            [
+                ("Power Supply", "1 Phase, 220 V AC, 50 Hz"),
+                ("Power Load", "1.5 kW"),
+            ],
+        )
+        response = self.client.get(f"/solutions/{self.machine.slug}/")
+        self.assertContains(response, "Power Supply")
+        self.assertContains(response, "1.5 kW")
+        self.assertContains(response, 'data-lucide="check-circle-2"')
+        self.assertNotContains(response, "Data is driven from Django admin")
+
+    def test_product_image_upload_preferred_over_legacy_path(self):
+        image_bytes = (BASE_DIR / "website" / "static" / "images" / "factory.png").read_bytes()
+        self.machine.product_image = SimpleUploadedFile(
+            "product.png",
+            image_bytes,
+            content_type="image/png",
+        )
+        self.machine.save()
+        self.assertIn("products/", self.machine.image_url)
+
+    def test_product_without_category_still_renders(self):
+        orphan = Machine.objects.create(
+            model_number="GP-ORPHAN",
+            name="Uncategorized Product",
+            features="",
+            description="",
+            specifications="",
+        )
+        response = self.client.get(f"/solutions/{orphan.slug}/")
+        self.assertEqual(response.status_code, 200)
+        self.assertContains(response, "Uncategorized Product")
