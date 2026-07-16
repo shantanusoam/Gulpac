@@ -2,6 +2,7 @@
 {% load static %}
 
 {% block title %}{% if machine.meta_title %}{{ machine.meta_title }}{% else %}{{ machine.model_number }} — {{ machine.name }}{% endif %} — Gulpac{% endblock %}
+{% block meta_description %}<meta name="description" content="{% if machine.meta_description %}{{ machine.meta_description|striptags }}{% else %}{{ machine.description_plain }}{% endif %}">{% endblock %}
 
 {% block content %}
   {% include "website/components/page_hero.html" with hero=hero %}

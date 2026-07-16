@@ -293,7 +293,7 @@ def build_machine_hero_context(machine):
     return {
         "page_key": f"solutions:{machine.slug}",
         "title": machine.meta_title or machine.name,
-        "description": machine.meta_description or machine.description_plain,
+        "description": machine.description_plain,
         "background_image_url": machine.image_url or static("images/hero/hero-machine.png"),
         "back_link_label": "Back to Home",
         "back_link_url": "/",

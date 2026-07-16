@@ -1,4 +1,5 @@
 import re
+from html import unescape
 
 from django.db import models
 from django.urls import reverse
@@ -6,6 +7,10 @@ from django.utils.html import strip_tags
 from django.utils.text import slugify
 
 from .video import resolve_video_embed_url
+
+
+def _plain_text(value: str) -> str:
+    return unescape(strip_tags(value or "")).strip()
 
 
 class Category(models.TextChoices):
@@ -314,7 +319,7 @@ class Machine(models.Model):
 
     @property
     def description_plain(self):
-        return strip_tags(self.description or "").strip()
+        return _plain_text(self.description)
 
     @property
     def feature_list(self):
@@ -322,8 +327,8 @@ class Machine(models.Model):
         html = self.features or ""
         items = re.findall(r"<li[^>]*>(.*?)</li>", html, flags=re.IGNORECASE | re.DOTALL)
         if items:
-            return [strip_tags(item).strip() for item in items if strip_tags(item).strip()]
-        text = strip_tags(html)
+            return [_plain_text(item) for item in items if _plain_text(item)]
+        text = _plain_text(html)
         return [line.strip("•- \t") for line in text.splitlines() if line.strip()]
 
     @property
@@ -341,7 +346,7 @@ class Machine(models.Model):
                 match.group(1),
                 flags=re.IGNORECASE | re.DOTALL,
             )
-            cleaned = [strip_tags(cell).strip() for cell in cells]
+            cleaned = [_plain_text(cell) for cell in cells]
             cleaned = [cell for cell in cleaned if cell]
             if len(cleaned) >= 2:
                 rows.append((cleaned[0], cleaned[1]))
@@ -350,7 +355,7 @@ class Machine(models.Model):
             return rows
 
         for item in re.findall(r"<li[^>]*>(.*?)</li>", html, flags=re.IGNORECASE | re.DOTALL):
-            text = strip_tags(item).strip()
+            text = _plain_text(item)
             if not text:
                 continue
             for sep in (" — ", " – ", " - ", ": "):
@@ -366,7 +371,7 @@ class Machine(models.Model):
         if rows:
             return rows
 
-        for line in strip_tags(html).splitlines():
+        for line in _plain_text(html).splitlines():
             text = line.strip("•- \t")
             if not text:
                 continue

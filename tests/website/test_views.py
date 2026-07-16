@@ -195,6 +195,16 @@ class HomeViewTest(TestCase):
         response_404 = self.client.get("/solutions/gp-unknown/")
         self.assertEqual(response_404.status_code, 404)
 
+    def test_solution_detail_keeps_product_and_meta_descriptions_separate(self):
+        response = self.client.get(f"/solutions/{self.machine.slug}/")
+
+        self.assertEqual(response.context["hero"]["description"], "Test description")
+        self.assertContains(
+            response,
+            '<meta name="description" content="SEO description for test gluing machine.">',
+            html=True,
+        )
+
     def test_product_feature_list_and_image_url(self):
         self.assertEqual(self.machine.feature_list, ["Feature 1", "Feature 2"])
         self.assertEqual(
@@ -223,6 +233,20 @@ class HomeViewTest(TestCase):
         self.assertContains(response, "1.5 kW")
         self.assertContains(response, 'data-lucide="check-circle-2"')
         self.assertNotContains(response, "Data is driven from Django admin")
+
+    def test_specification_rows_decode_html_entities(self):
+        self.machine.specifications = (
+            "<table><tr><td>Temperature</td><td>150&deg;C &ndash; 225&deg;C</td></tr></table>"
+        )
+        self.machine.save()
+
+        self.assertEqual(
+            self.machine.specification_rows,
+            [("Temperature", "150°C – 225°C")],
+        )
+        response = self.client.get(f"/solutions/{self.machine.slug}/")
+        self.assertContains(response, "150°C – 225°C")
+        self.assertNotContains(response, "&amp;deg;")
 
     def test_product_image_upload_preferred_over_legacy_path(self):
         image_bytes = (BASE_DIR / "website" / "static" / "images" / "factory.png").read_bytes()
