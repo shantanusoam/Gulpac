@@ -222,7 +222,7 @@ class MachineAdmin(admin.ModelAdmin):
             ),
         }),
         ("Display & media", {
-            "fields": ("product_image", "video_url", "order"),
+            "fields": ("product_image", "hero_image", "video_url", "order"),
         }),
     )
 

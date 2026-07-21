@@ -56,6 +56,28 @@ class MachineDisplayMediaTests(TestCase):
         )
         self.assertEqual(machine.image_url, "/static/images/machine2.png")
 
+    def test_solution_hero_prefers_dedicated_hero_image(self):
+        machine = Machine.objects.create(
+            model_number="GP-HERO-1",
+            name="Hero Image Machine",
+            product_image=SimpleUploadedFile(
+                "product.png",
+                b"\x89PNG\r\n\x1a\n",
+                content_type="image/png",
+            ),
+            hero_image=SimpleUploadedFile(
+                "hero.png",
+                b"\x89PNG\r\n\x1a\n",
+                content_type="image/png",
+            ),
+        )
+        response = self.client.get(f"/solutions/{machine.slug}/")
+
+        self.assertContains(
+            response,
+            f"background-image: url('{machine.hero_image.url}');",
+        )
+
     def test_video_embed_url_from_watch_link(self):
         machine = Machine.objects.create(
             model_number="GP-VID-1",

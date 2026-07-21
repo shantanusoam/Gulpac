@@ -261,6 +261,12 @@ class Machine(models.Model):
         null=True,
         help_text="Primary product image shown on listing and detail pages.",
     )
+    hero_image = models.ImageField(
+        upload_to="products/heroes/",
+        blank=True,
+        null=True,
+        help_text="Optional wide background image for this product's solution-page hero.",
+    )
     image_path = models.CharField(
         max_length=250,
         blank=True,
@@ -312,6 +318,13 @@ class Machine(models.Model):
 
             return static(self.image_path)
         return ""
+
+    @property
+    def hero_image_url(self):
+        """Return the dedicated solution-page hero image, falling back to the product image."""
+        if self.hero_image:
+            return self.hero_image.url
+        return self.image_url
 
     @property
     def video_embed_url(self) -> str:
