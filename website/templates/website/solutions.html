@@ -29,15 +29,17 @@
         const scale = opts && opts.scale ? opts.scale : 1.02;
         const lift = opts && opts.lift ? opts.lift : -8;
         const imgSel = opts && opts.image ? opts.image : null;
+        const restShadow = "0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -4px rgba(0, 0, 0, 0.1)";
+        const hoverShadow = "0 18px 32px -8px rgba(15, 23, 42, 0.18)";
 
         cards.forEach(function(card) {
           const img = imgSel ? card.querySelector(imgSel) : null;
           card.addEventListener("mouseenter", function() {
-            gsap.to(card, { y: lift, scale: scale, boxShadow: "0 20px 40px rgba(45,56,140,0.12)", duration: 0.35, ease: "power2.out" });
-            if (img) gsap.to(img, { scale: 1.08, duration: 0.5, ease: "power2.out" });
+            gsap.to(card, { y: lift, scale: scale, boxShadow: hoverShadow, duration: 0.35, ease: "power2.out" });
+            if (img) gsap.to(img, { scale: 1.06, duration: 0.5, ease: "power2.out" });
           });
           card.addEventListener("mouseleave", function() {
-            gsap.to(card, { y: 0, scale: 1, boxShadow: "none", duration: 0.4, ease: "power2.out" });
+            gsap.to(card, { y: 0, scale: 1, boxShadow: restShadow, duration: 0.4, ease: "power2.out" });
             if (img) gsap.to(img, { scale: 1, duration: 0.5, ease: "power2.out" });
           });
         });

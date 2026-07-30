@@ -57,41 +57,22 @@
       .fromTo(".page-card-grid__desc", { autoAlpha: 0, y: 20 }, { autoAlpha: 1, y: 0, duration: 0.65 }, "-=0.35")
       .fromTo(".page-card-grid__card", { autoAlpha: 0, y: 50, scale: 0.96 }, { autoAlpha: 1, y: 0, scale: 1, duration: 0.7, stagger: 0.1 }, "-=0.2");
 
-    // Hover parallax and tilt effects
+    // Reason: avoid 3D tilt — it detaches box-shadow from the card face (gap under image).
     const cards = document.querySelectorAll(".page-card-grid__card");
-    const lift = -8;
-    const scale = 1.015;
-    const deg = 5;
+    const restShadow = "0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -4px rgba(0, 0, 0, 0.1)";
+    const hoverShadow = "0 18px 32px -8px rgba(15, 23, 42, 0.18)";
 
     cards.forEach(function(card) {
       const img = card.querySelector(".page-card-grid__image-bg");
-      
-      // Hover parallax
+
       card.addEventListener("mouseenter", function() {
-        gsap.to(card, { y: lift, scale: scale, boxShadow: "0 20px 40px rgba(45,56,140,0.12)", duration: 0.35, ease: "power2.out" });
-        if (img) gsap.to(img, { scale: 1.08, duration: 0.5, ease: "power2.out" });
-      });
-      
-      card.addEventListener("mouseleave", function() {
-        gsap.to(card, { y: 0, scale: 1, boxShadow: "0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -4px rgba(0, 0, 0, 0.1)", duration: 0.4, ease: "power2.out" });
-        if (img) gsap.to(img, { scale: 1, duration: 0.5, ease: "power2.out" });
-        
-        // Tilt reset
-        gsap.to(card, { rotationY: 0, rotationX: 0, duration: 0.6, ease: "power3.out" });
+        gsap.to(card, { y: -6, boxShadow: hoverShadow, duration: 0.35, ease: "power2.out" });
+        if (img) gsap.to(img, { scale: 1.06, duration: 0.5, ease: "power2.out" });
       });
 
-      // Tilt effect
-      card.addEventListener("mousemove", function(e) {
-        const rect = card.getBoundingClientRect();
-        const x = (e.clientX - rect.left) / rect.width - 0.5;
-        const y = (e.clientY - rect.top) / rect.height - 0.5;
-        gsap.to(card, {
-          rotationY: x * deg,
-          rotationX: -y * deg,
-          transformPerspective: 800,
-          duration: 0.4,
-          ease: "power2.out",
-        });
+      card.addEventListener("mouseleave", function() {
+        gsap.to(card, { y: 0, boxShadow: restShadow, duration: 0.4, ease: "power2.out" });
+        if (img) gsap.to(img, { scale: 1, duration: 0.5, ease: "power2.out" });
       });
     });
   });

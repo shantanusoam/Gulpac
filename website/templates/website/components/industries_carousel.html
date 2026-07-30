@@ -26,9 +26,9 @@
           {% for industry in industries %}
             <article class="industries-card industries-card-animate snap-start shrink-0">
               <div class="industries-card__media">
-                <img src="{{ industry.image.url }}" alt="" class="industries-card__image">
-                {% if industry.detail_image %}
-                  <img src="{{ industry.detail_image.url }}" alt="" class="industries-card__image industries-card__image--overlay" aria-hidden="true">
+                <img src="{{ industry.image_url }}" alt="" class="industries-card__image">
+                {% if industry.detail_image_url %}
+                  <img src="{{ industry.detail_image_url }}" alt="" class="industries-card__image industries-card__image--overlay" aria-hidden="true">
                 {% endif %}
                 <div class="industries-card__gradient"></div>
                 <h3 class="industries-card__title">{{ industry.title }}</h3>

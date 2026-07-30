@@ -627,18 +627,13 @@
       background-image: url("{% static 'Mobileherobg.png' %}");
       background-repeat: no-repeat;
       background-size: cover;
-      background-position: center;
+      background-position: center 22px;
     }
 
     @media (min-width: 768px) {
       .hero-machine-bg {
         background-image: url("{% static 'heroBG.png' %}");
-      }
-    }
-
-    @media (max-width: 767px) {
-      .hero-text-block-primary {
-        margin-top: -28px;
+        background-position: center;
       }
     }
 
@@ -935,10 +930,10 @@
       border-radius: 14px;
       overflow: hidden;
       background: #ffffff;
-      border: 1px solid #f3f4f6;
       box-shadow:
         0 10px 15px -3px rgba(0, 0, 0, 0.1),
         0 4px 6px -4px rgba(0, 0, 0, 0.1);
+      isolation: isolate;
     }
 
     .industries-card__media {
@@ -991,6 +986,9 @@
     .industries-card__body {
       padding: 24px;
       background: #ffffff;
+      margin-top: -1px;
+      position: relative;
+      z-index: 1;
     }
 
     .industries-card__body--muted {
@@ -1509,12 +1507,15 @@
     }
 
     .adv-card,
-    .industries-card,
     .machine-card,
     .testimonial-card,
     .footprints-stat,
     .contact-info-card {
       transform-style: preserve-3d;
+      backface-visibility: hidden;
+    }
+
+    .industries-card {
       backface-visibility: hidden;
     }
 
@@ -1562,15 +1563,21 @@
           const scale = opts && opts.scale ? opts.scale : 1.02;
           const lift = opts && opts.lift ? opts.lift : -8;
           const imgSel = opts && opts.image ? opts.image : null;
+          const restShadow = opts && opts.restShadow
+            ? opts.restShadow
+            : "0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -4px rgba(0, 0, 0, 0.1)";
+          const hoverShadow = opts && opts.hoverShadow
+            ? opts.hoverShadow
+            : "0 18px 32px -8px rgba(15, 23, 42, 0.18)";
 
           cards.forEach(function(card) {
             const img = imgSel ? card.querySelector(imgSel) : null;
             card.addEventListener("mouseenter", function() {
-              gsap.to(card, { y: lift, scale: scale, boxShadow: "0 20px 40px rgba(45,56,140,0.12)", duration: 0.35, ease: "power2.out" });
-              if (img) gsap.to(img, { scale: 1.08, duration: 0.5, ease: "power2.out" });
+              gsap.to(card, { y: lift, scale: scale, boxShadow: hoverShadow, duration: 0.35, ease: "power2.out" });
+              if (img) gsap.to(img, { scale: 1.06, duration: 0.5, ease: "power2.out" });
             });
             card.addEventListener("mouseleave", function() {
-              gsap.to(card, { y: 0, scale: 1, boxShadow: "none", duration: 0.4, ease: "power2.out" });
+              gsap.to(card, { y: 0, scale: 1, boxShadow: restShadow, duration: 0.4, ease: "power2.out" });
               if (img) gsap.to(img, { scale: 1, duration: 0.5, ease: "power2.out" });
             });
           });
@@ -1770,7 +1777,7 @@
           .fromTo(".industries-card-animate", { autoAlpha: 0, y: 40, scale: 0.94 }, { autoAlpha: 1, y: 0, scale: 1, duration: 0.65, stagger: 0.08 }, "-=0.2")
           .fromTo(".industries-cta-animate", { autoAlpha: 0, y: 16 }, { autoAlpha: 1, y: 0, duration: 0.55 }, "-=0.15");
 
-        bindCardHover(document.querySelectorAll(".industries-card"), { lift: -10, scale: 1.02, image: ".industries-card__image" });
+        bindCardHover(document.querySelectorAll(".industries-card"), { lift: -6, scale: 1.01, image: ".industries-card__image:not(.industries-card__image--overlay)" });
 
         /* ── Solutions ──────────────────────────── */
         const solutionsTl = gsap.timeline({

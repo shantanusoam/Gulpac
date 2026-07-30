@@ -324,7 +324,11 @@ def home(request):
     })
     machines = Machine.objects.all()[:6]
     testimonials = Testimonial.objects.all()[:3]
-    industries = Industry.objects.filter(is_active=True, show_on_home=True)
+    # Reason: industries page falls back to defaults when DB is empty; home must match
+    # so cards stay visible even before admin Industry rows are seeded.
+    industries = build_industries_context(home_only=True)["cards"]
+    if not industries and not Industry.objects.filter(is_active=True).exists():
+        industries = get_industry_grid_defaults()
     return render(request, "website/home.html", {
         "hero": hero,
         "machines": machines,

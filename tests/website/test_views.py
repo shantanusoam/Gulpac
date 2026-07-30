@@ -104,6 +104,22 @@ class HomeViewTest(TestCase):
         self.assertContains(response, "Food Industry")
         self.assertContains(response, "Ready to Eat Food Boxes")
 
+    def test_home_falls_back_to_default_industries_when_db_empty(self):
+        Industry.objects.all().delete()
+        response = self.client.get("/")
+        self.assertEqual(response.status_code, 200)
+        self.assertContains(response, "Food Industry")
+        self.assertContains(response, "Ready to Eat Food Boxes")
+        self.assertContains(response, "Pharma Industry")
+        self.assertNotContains(response, "Add industries in Django admin to show them here.")
+
+    def test_home_hides_industries_when_show_on_home_disabled(self):
+        Industry.objects.all().update(show_on_home=False)
+        response = self.client.get("/")
+        self.assertEqual(response.status_code, 200)
+        self.assertContains(response, "Add industries in Django admin to show them here.")
+        self.assertNotContains(response, "Ready to Eat Food Boxes")
+
     def test_about_returns_200_and_uses_template(self):
         response = self.client.get("/about/")
         self.assertEqual(response.status_code, 200)
@@ -191,6 +207,10 @@ class HomeViewTest(TestCase):
         self.assertContains(response, "10-20 pcs/min")
         self.assertContains(response, "Send Enquiry")
         self.assertContains(response, "Test Gluing Machine SEO")
+        self.assertContains(response, "INTERESTED IN")
+        self.assertContains(response, "THIS MACHINE?")
+        self.assertContains(response, "Click to interact with map")
+        self.assertContains(response, "data-map-interact")
 
         response_404 = self.client.get("/solutions/gp-unknown/")
         self.assertEqual(response_404.status_code, 404)

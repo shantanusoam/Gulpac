@@ -112,7 +112,7 @@
           <p class="contact-map-section__description">{{ contact_map.description }}</p>
         </div>
 
-        <div class="contact-map-section__media">
+        <div class="contact-map-section__media" data-map-interact>
           <iframe
             title="Gulpac office location map"
             class="contact-map-section__iframe"
@@ -127,8 +127,28 @@
             loading="lazy"
             allowfullscreen
           ></iframe>
+          <button type="button" class="contact-map-section__overlay" aria-label="Click to interact with map">
+            <span class="contact-map-section__hint">Click to interact with map</span>
+          </button>
         </div>
       </div>
     </div>
   </div>
 </section>
+
+<script>
+  (function() {
+    document.querySelectorAll("[data-map-interact]").forEach(function(wrap) {
+      var overlay = wrap.querySelector(".contact-map-section__overlay");
+      if (!overlay) return;
+
+      overlay.addEventListener("click", function() {
+        wrap.classList.add("is-active");
+      });
+
+      wrap.addEventListener("mouseleave", function() {
+        wrap.classList.remove("is-active");
+      });
+    });
+  })();
+</script>
