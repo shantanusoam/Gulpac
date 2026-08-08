@@ -133,6 +133,10 @@ $SUDO find "$APP_DIR" -mindepth 1 -maxdepth 1 \
 echo "Unpacking project"
 $SUDO tar --no-same-owner -xzf "$REMOTE_ARCHIVE" -C "$APP_DIR"
 $SUDO mkdir -p "$APP_DIR/media" "$APP_DIR/staticfiles"
+# ponytail: media is persisted between deploys; normalize perms so nginx can always read uploads.
+$SUDO chown -R root:www-data "$APP_DIR/media"
+$SUDO find "$APP_DIR/media" -type d -exec chmod 750 {} +
+$SUDO find "$APP_DIR/media" -type f -exec chmod 640 {} +
 
 if [[ ! -f "$APP_DIR/.env" ]]; then
   echo "Creating production .env"
