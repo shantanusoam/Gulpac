@@ -227,10 +227,12 @@ class ContactMapSection(models.Model):
         return self.page_key
 
 class Machine(models.Model):
+    # Reason: SKU must be editable in admin; using it as PK made edits look like creates
+    # and falsely failed unique slug validation against the same product.
     model_number = models.CharField(
         "Product SKU ID",
         max_length=50,
-        primary_key=True,
+        unique=True,
     )
     name = models.CharField(max_length=200)
     description = models.TextField(

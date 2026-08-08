@@ -526,10 +526,10 @@ def solution_detail(request, slug):
     related_machines = Machine.objects.none()
     if machine.category_id:
         related_machines = Machine.objects.filter(category=machine.category).exclude(
-            model_number=machine.model_number
+            pk=machine.pk
         )[:3]
     if not related_machines.exists():
-        related_machines = Machine.objects.exclude(model_number=machine.model_number)[:3]
+        related_machines = Machine.objects.exclude(pk=machine.pk)[:3]
         
     return render(request, "website/solution_detail.html", {
         "machine": machine,
