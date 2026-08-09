@@ -15,8 +15,8 @@
           {% comment %} <p class="about-eyebrow">About Glupac</p> {% endcomment %}
 
           <h2 class="about-heading">
-            Leading Manufacturer of
-            <span class="text-[#47a33d]">Packaging Solutions</span>
+            <span class="about-heading__line">Leading Manufacturer of</span>
+            <span class="about-heading__line text-[#47a33d]">Packaging Solutions</span>
           </h2>
 
           <p class="about-para">
@@ -191,7 +191,7 @@
         </header>
 
         <div class="grid grid-cols-1 xl:grid-cols-12 gap-12 items-center">
-          <div class="xl:col-span-5 footprints-stats flex flex-col gap-6 lg:gap-8">
+          <div class="xl:col-span-5 footprints-stats">
             <div class="footprints-stat footprints-stat-animate">
               <div class="footprints-stat__icon">
                 <img src="{% static 'images/footprints/icon-installations.svg' %}" alt="" width="32" height="32" aria-hidden="true">
@@ -276,41 +276,53 @@
       margin: 0;
       color: #2d388c;
       font-family: "Inter", sans-serif;
-      font-size: 14px;
+      font-size: 12px;
       font-weight: 600;
-      line-height: 20px;
+      line-height: 18px;
       letter-spacing: 0.1996px;
       text-transform: uppercase;
     }
 
     .about-heading {
-      margin: 16px 0 0;
+      margin: 12px 0 0;
       max-width: 584px;
       color: #2d388c;
       font-family: "Hatsch Sans PERSONAL USE ONLY", sans-serif;
-      font-size: 40px;
+      /* Reason: Smaller mobile type keeps the heading on two lines in the about card. */
+      font-size: clamp(18px, 5.2vw, 40px);
       font-style: italic;
       font-weight: 400;
-      line-height: 48px;
-      letter-spacing: 0.369px;
+      line-height: 1.2;
+      letter-spacing: 0.2px;
+    }
+
+    .about-heading__line {
+      display: block;
+      white-space: nowrap;
+    }
+
+    @media (max-width: 360px) {
+      .about-heading__line {
+        white-space: normal;
+      }
     }
 
     .about-para {
-      margin: 24px 0 0;
+      margin: 16px 0 0;
       max-width: 584px;
       color: #4a5565;
       font-family: "Inter", sans-serif;
-      font-size: 18px;
+      font-size: 15px;
       font-weight: 400;
-      line-height: 29.25px;
-      letter-spacing: -0.439px;
+      line-height: 24px;
+      letter-spacing: -0.2px;
     }
 
     .about-stats {
       display: grid;
       grid-template-columns: repeat(3, minmax(0, 1fr));
-      gap: 24px;
-      margin-top: 32px;
+      gap: 12px;
+      margin-top: 24px;
       max-width: 584px;
     }
 
@@ -333,14 +345,68 @@
       background: linear-gradient(135deg, rgb(44, 62, 143) 0%, rgb(42, 62, 148) 16.667%, rgb(40, 63, 154) 33.333%, rgb(38, 63, 159) 50%, rgb(35, 64, 164) 66.667%, rgb(33, 64, 170) 83.333%, rgb(30, 64, 175) 100%);
     }
 
+    .about-stat__icon {
+      width: 52px;
+      height: 52px;
+      border-radius: 12px;
+    }
+
+    .about-stat__icon img {
+      width: 26px;
+      height: 26px;
+    }
+
     .about-stat__label {
-      margin: 12px 0 0;
+      margin: 8px 0 0;
       color: #364153;
       font-family: "Inter", sans-serif;
-      font-size: 14px;
+      font-size: 12px;
       font-weight: 500;
-      line-height: 20px;
-      letter-spacing: -0.1504px;
+      line-height: 16px;
+      letter-spacing: -0.15px;
+    }
+
+    @media (min-width: 768px) {
+      .about-eyebrow {
+        font-size: 14px;
+        line-height: 20px;
+      }
+
+      .about-heading {
+        margin-top: 16px;
+        font-size: 40px;
+        line-height: 48px;
+        letter-spacing: 0.369px;
+      }
+
+      .about-para {
+        margin-top: 24px;
+        font-size: 18px;
+        line-height: 29.25px;
+        letter-spacing: -0.439px;
+      }
+
+      .about-stats {
+        gap: 24px;
+        margin-top: 32px;
+      }
+
+      .about-stat__icon {
+        width: 64px;
+        height: 64px;
+        border-radius: 14px;
+      }
+
+      .about-stat__icon img {
+        width: 32px;
+        height: 32px;
+      }
+
+      .about-stat__label {
+        margin-top: 12px;
+        font-size: 14px;
+        line-height: 20px;
+      }
     }
 
     .about-image-1,
@@ -352,22 +418,18 @@
       will-change: transform;
     }
 
+    /* Reason: Mobile shows a single full-bleed about image; second image returns at xl. */
     .about-image-1 {
-      left: 0;
-      top: 0;
-      width: 58%;
-      max-width: 280px;
-      aspect-ratio: 341 / 338;
+      inset: 0;
+      width: 100%;
+      max-width: none;
+      height: 100%;
+      aspect-ratio: auto;
       z-index: 1;
     }
 
     .about-image-2 {
-      right: 0;
-      bottom: 0;
-      width: 64%;
-      max-width: 300px;
-      aspect-ratio: 370 / 339;
-      z-index: 2;
+      display: none;
     }
 
     .mission-card,
@@ -394,11 +456,11 @@
     .advantages-heading {
       margin: 0;
       font-family: "Hatsch Sans PERSONAL USE ONLY", sans-serif;
-      font-size: 40px;
+      font-size: 28px;
       font-style: italic;
       font-weight: 400;
-      line-height: 48px;
-      letter-spacing: 0.369px;
+      line-height: 1.2;
+      letter-spacing: 0.2px;
     }
 
     .advantages-subheading {
@@ -406,10 +468,10 @@
       max-width: 672px;
       color: #4a5565;
       font-family: "Inter", sans-serif;
-      font-size: 20px;
+      font-size: 14px;
       font-weight: 400;
-      line-height: 28px;
-      letter-spacing: -0.449px;
+      line-height: 20px;
+      letter-spacing: -0.2px;
     }
 
     .advantages-grid {
@@ -461,57 +523,134 @@
     .footprints-heading {
       margin: 8px 0 0;
       font-family: "Hatsch Sans PERSONAL USE ONLY", sans-serif;
-      font-size: 40px;
+      font-size: 28px;
       font-style: italic;
       font-weight: 400;
-      line-height: 48px;
-      letter-spacing: 0.369px;
+      line-height: 1.2;
+      letter-spacing: 0.2px;
     }
 
     .footprints-subheading {
-      margin: 16px auto 0;
+      margin: 12px auto 0;
       max-width: 672px;
       color: #4a5565;
       font-family: "Inter", sans-serif;
-      font-size: 20px;
+      font-size: 14px;
       font-weight: 400;
-      line-height: 28px;
-      letter-spacing: -0.449px;
+      line-height: 20px;
+      letter-spacing: -0.2px;
+    }
+
+    @media (min-width: 768px) {
+      .advantages-heading,
+      .footprints-heading {
+        font-size: 40px;
+        line-height: 48px;
+        letter-spacing: 0.369px;
+      }
+
+      .advantages-subheading,
+      .footprints-subheading {
+        font-size: 20px;
+        line-height: 28px;
+        letter-spacing: -0.449px;
+      }
+
+      .footprints-subheading {
+        margin-top: 16px;
+      }
+    }
+
+    /* Reason: Mobile shows 2 stats side-by-side; desktop sidebar stays a single column. */
+    .footprints-stats {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 12px;
     }
 
     .footprints-stat {
       display: flex;
-      align-items: center;
-      gap: 24px;
-      min-height: 132px;
-      padding: 26px;
-      border-radius: 14px;
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 12px;
+      min-height: 0;
+      min-width: 0;
+      padding: 16px;
+      border-radius: 12px;
       border: 2px solid #f3f4f6;
       background: linear-gradient(to right, #f9fafb, #ffffff);
     }
 
     .footprints-stat__icon {
       flex-shrink: 0;
+      width: 44px;
+      height: 44px;
+      border-radius: 10px;
+    }
+
+    .footprints-stat__icon img {
+      width: 22px;
+      height: 22px;
     }
 
     .footprints-stat__value {
       margin: 0;
       color: #2d388c;
       font-family: "Inter", sans-serif;
-      font-size: 48px;
+      font-size: 28px;
       font-weight: 700;
-      line-height: 48px;
-      letter-spacing: 0.3516px;
+      line-height: 1.1;
+      letter-spacing: 0.2px;
     }
 
     .footprints-stat__label {
       margin: 4px 0 0;
       color: #364153;
       font-family: "Inter", sans-serif;
-      font-size: 18px;
+      font-size: 13px;
       font-weight: 500;
-      line-height: 28px;
-      letter-spacing: -0.4395px;
+      line-height: 18px;
+      letter-spacing: -0.2px;
+    }
+
+    @media (min-width: 1280px) {
+      .footprints-stats {
+        display: flex;
+        flex-direction: column;
+        gap: 32px;
+      }
+
+      .footprints-stat {
+        flex-direction: row;
+        align-items: center;
+        gap: 24px;
+        min-height: 132px;
+        padding: 26px;
+        border-radius: 14px;
+      }
+
+      .footprints-stat__icon {
+        width: 64px;
+        height: 64px;
+        border-radius: 14px;
+      }
+
+      .footprints-stat__icon img {
+        width: 32px;
+        height: 32px;
+      }
+
+      .footprints-stat__value {
+        font-size: 48px;
+        line-height: 48px;
+        letter-spacing: 0.3516px;
+      }
+
+      .footprints-stat__label {
+        font-size: 18px;
+        line-height: 28px;
+        letter-spacing: -0.4395px;
+      }
     }
 
     .footprints-globe__frame {
@@ -538,6 +677,7 @@
       }
 
       .about-image-1 {
+        inset: auto;
         left: 644px;
         top: 9px;
         width: 341px;
@@ -547,6 +687,7 @@
       }
 
       .about-image-2 {
+        display: block;
         left: 862px;
         right: auto;
         bottom: auto;
@@ -555,6 +696,7 @@
         max-width: none;
         height: 339px;
         aspect-ratio: auto;
+        z-index: 2;
       }
 
       .advantages-grid {
@@ -564,25 +706,14 @@
     }
 
     @media (max-width: 640px) {
-      .about-heading,
-      .advantages-heading,
-      .footprints-heading {
-        font-size: 34px;
-        line-height: 40px;
-      }
-
       .about-stats {
-        grid-template-columns: 1fr;
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        gap: 8px;
       }
 
-      .footprints-stat {
-        align-items: flex-start;
-        padding: 20px;
-      }
-
-      .footprints-stat__value {
-        font-size: 38px;
-        line-height: 42px;
+      .about-stat__label {
+        font-size: 11px;
+        line-height: 14px;
       }
     }
   </style>

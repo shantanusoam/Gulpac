@@ -33,7 +33,7 @@
                 <div class="industries-card__gradient"></div>
                 <h3 class="industries-card__title">{{ industry.title }}</h3>
               </div>
-              <div class="industries-card__body{% if forloop.counter0 >= 3 %} industries-card__body--muted{% endif %}">
+              <div class="industries-card__body">
                 <ul class="industries-card__list">
                   {% for bullet in industry.bullet_points %}
                     <li>

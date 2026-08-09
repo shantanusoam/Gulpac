@@ -262,23 +262,38 @@
       .solutions-heading {
         margin: 0;
         font-family: "Hatsch Sans PERSONAL USE ONLY", sans-serif;
-        font-size: 40px;
+        font-size: 28px;
         font-style: italic;
         font-weight: 400;
-        line-height: 48px;
-        letter-spacing: 0.369px;
+        line-height: 1.2;
+        letter-spacing: 0.2px;
       }
 
       .solutions-subheading {
-        margin: 16px auto 0;
+        margin: 12px auto 0;
         max-width: 672px;
         color: #4a5565;
         font-family: "Inter", sans-serif;
-        font-size: 20px;
+        font-size: 14px;
         font-style: normal;
         font-weight: 400;
-        line-height: 28px;
-        letter-spacing: -0.449px;
+        line-height: 20px;
+        letter-spacing: -0.2px;
+      }
+
+      @media (min-width: 768px) {
+        .solutions-heading {
+          font-size: 40px;
+          line-height: 48px;
+          letter-spacing: 0.369px;
+        }
+
+        .solutions-subheading {
+          margin-top: 16px;
+          font-size: 20px;
+          line-height: 28px;
+          letter-spacing: -0.449px;
+        }
       }
 
       .solutions-filters {
@@ -313,15 +328,15 @@
         color: #ffffff;
       }
 
+      /* Reason: Mobile shows 2 products side-by-side; scales to 3 columns on desktop. */
       .solutions-grid {
         display: grid;
-        grid-template-columns: 1fr;
-        gap: 24px;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 12px;
       }
 
       @media (min-width: 768px) {
         .solutions-grid {
-          grid-template-columns: repeat(2, minmax(0, 1fr));
           gap: 28px;
         }
       }
@@ -336,8 +351,9 @@
       .machine-card {
         display: flex;
         flex-direction: column;
+        min-width: 0;
         overflow: hidden;
-        border-radius: 14px;
+        border-radius: 12px;
         background: #ffffff;
         box-shadow:
           0 10px 15px -3px rgba(0, 0, 0, 0.1),
@@ -346,7 +362,7 @@
 
       .machine-card__media {
         position: relative;
-        height: 256px;
+        height: 140px;
         overflow: hidden;
         flex-shrink: 0;
       }
@@ -359,21 +375,21 @@
 
       .machine-card__badge {
         position: absolute;
-        top: 16px;
-        right: 16px;
+        top: 8px;
+        right: 8px;
         display: inline-flex;
         align-items: center;
-        min-height: 28px;
-        padding: 4px 12px;
+        min-height: 22px;
+        padding: 2px 8px;
         border-radius: 9999px;
         background: #2d388c;
         color: #ffffff;
         font-family: "Inter", sans-serif;
-        font-size: 14px;
+        font-size: 11px;
         font-style: normal;
         font-weight: 400;
-        line-height: 20px;
-        letter-spacing: -0.1504px;
+        line-height: 16px;
+        letter-spacing: -0.15px;
         white-space: nowrap;
       }
 
@@ -381,45 +397,48 @@
         display: flex;
         flex-direction: column;
         flex: 1;
-        padding: 24px;
+        padding: 12px;
       }
 
       .machine-card__title {
         margin: 0;
         color: #1a1a2e;
         font-family: "Inter", sans-serif;
-        font-size: 20px;
+        font-size: 14px;
         font-style: normal;
         font-weight: 600;
-        line-height: 28px;
-        letter-spacing: -0.449px;
+        line-height: 18px;
+        letter-spacing: -0.2px;
       }
 
       .machine-card__features {
-        margin: 16px 0 0;
+        margin: 10px 0 0;
         padding: 0;
         list-style: none;
         display: flex;
         flex-direction: column;
-        gap: 8px;
+        gap: 6px;
         flex: 1;
       }
 
       .machine-card__features li {
         display: flex;
-        align-items: center;
-        gap: 8px;
+        align-items: flex-start;
+        gap: 6px;
         color: #4a5565;
         font-family: "Inter", sans-serif;
-        font-size: 14px;
+        font-size: 11px;
         font-style: normal;
         font-weight: 400;
-        line-height: 20px;
-        letter-spacing: -0.1504px;
+        line-height: 15px;
+        letter-spacing: -0.15px;
       }
 
       .machine-card__features img {
         flex-shrink: 0;
+        width: 12px;
+        height: 12px;
+        margin-top: 1px;
       }
 
       .machine-card__cta {
@@ -427,23 +446,80 @@
         align-items: center;
         justify-content: center;
         width: 100%;
-        min-height: 48px;
-        margin-top: 24px;
-        border-radius: 10px;
+        min-height: 36px;
+        margin-top: 12px;
+        padding: 0 8px;
+        border-radius: 8px;
         background: #2d388c;
         color: #ffffff;
         font-family: "Inter", sans-serif;
-        font-size: 16px;
+        font-size: 12px;
         font-style: normal;
         font-weight: 500;
-        line-height: 24px;
-        letter-spacing: -0.3125px;
+        line-height: 16px;
+        letter-spacing: -0.2px;
         text-decoration: none;
         transition: background-color 0.2s ease;
       }
 
       .machine-card__cta:hover {
         background: #25307c;
+      }
+
+      @media (min-width: 768px) {
+        .machine-card {
+          border-radius: 14px;
+        }
+
+        .machine-card__media {
+          height: 256px;
+        }
+
+        .machine-card__badge {
+          top: 16px;
+          right: 16px;
+          min-height: 28px;
+          padding: 4px 12px;
+          font-size: 14px;
+          line-height: 20px;
+        }
+
+        .machine-card__body {
+          padding: 24px;
+        }
+
+        .machine-card__title {
+          font-size: 20px;
+          line-height: 28px;
+          letter-spacing: -0.449px;
+        }
+
+        .machine-card__features {
+          margin-top: 16px;
+          gap: 8px;
+        }
+
+        .machine-card__features li {
+          align-items: center;
+          gap: 8px;
+          font-size: 14px;
+          line-height: 20px;
+        }
+
+        .machine-card__features img {
+          width: 16px;
+          height: 16px;
+          margin-top: 0;
+        }
+
+        .machine-card__cta {
+          min-height: 48px;
+          margin-top: 24px;
+          border-radius: 10px;
+          font-size: 16px;
+          line-height: 24px;
+          letter-spacing: -0.3125px;
+        }
       }
 
       .pdp-video-embed,
@@ -667,17 +743,35 @@
           font-size: 24px;
         }
 
+        /* Reason: Keep two industry cards side-by-side on mobile. */
         .page-card-grid__grid {
-          grid-template-columns: 1fr;
-          gap: 20px;
+          grid-template-columns: repeat(2, minmax(0, 1fr));
+          gap: 12px;
         }
 
         .page-card-grid__image {
-          min-height: 208px;
+          min-height: 140px;
+          padding: 10px;
+        }
+
+        .page-card-grid__card-title {
+          font-size: 14px;
+          line-height: 1.25;
         }
 
         .page-card-grid__body {
-          padding: 20px;
+          padding: 12px;
+        }
+
+        .page-card-grid__item {
+          gap: 6px;
+          font-size: 11px;
+          line-height: 1.35;
+        }
+
+        .page-card-grid__item svg {
+          width: 12px;
+          height: 12px;
         }
       }
 
@@ -1185,7 +1279,8 @@
         }
 
         .contact-section__subtitle {
-          font-size: 16px;
+          font-size: 14px;
+          line-height: 20px;
         }
 
         .contact-form-card {
@@ -1233,7 +1328,8 @@
         }
 
         .page-cta__desc {
-          font-size: 16px;
+          font-size: 14px;
+          line-height: 20px;
         }
       }
 
@@ -1241,6 +1337,7 @@
       .site-header {
         background: #ffffff;
         border-bottom: 1px solid #e5e7eb;
+        box-shadow: 0 2px 10px rgba(15, 23, 42, 0.07), 0 1px 3px rgba(15, 23, 42, 0.04);
       }
 
       .site-header__inner {
@@ -1495,13 +1592,82 @@
         letter-spacing: -0.31px;
       }
 
-      .site-footer__links {
+      .site-footer__group {
+        border-top: 1px solid rgba(255, 255, 255, 0.12);
+        padding-top: 16px;
+      }
+
+      .site-footer__toggle {
         display: flex;
+        align-items: center;
+        justify-content: space-between;
+        width: 100%;
+        margin: 0;
+        padding: 0;
+        border: 0;
+        background: transparent;
+        color: inherit;
+        font: inherit;
+        text-align: left;
+        cursor: pointer;
+      }
+
+      .site-footer__heading.site-footer__toggle {
+        margin-bottom: 0;
+      }
+
+      @media (min-width: 768px) {
+        .site-footer__group {
+          border-top: 0;
+          padding-top: 0;
+        }
+      }
+
+      .site-footer__chevron {
+        width: 18px;
+        height: 18px;
+        flex-shrink: 0;
+        color: rgba(255, 255, 255, 0.8);
+        transition: transform 0.2s ease;
+      }
+
+      .site-footer__chevron--open {
+        transform: rotate(180deg);
+      }
+
+      .site-footer__links {
+        display: none;
         flex-direction: column;
         gap: 14px;
         margin: 0;
         padding: 0;
         list-style: none;
+      }
+
+      .site-footer__links--open {
+        display: flex;
+        margin-top: 16px;
+      }
+
+      @media (min-width: 768px) {
+        .site-footer__toggle {
+          pointer-events: none;
+          cursor: default;
+        }
+
+        .site-footer__chevron {
+          display: none;
+        }
+
+        .site-footer__heading {
+          margin-bottom: 20px;
+        }
+
+        .site-footer__links,
+        .site-footer__links--open {
+          display: flex;
+          margin-top: 0;
+        }
       }
 
       .site-footer__link {
@@ -1684,7 +1850,10 @@
     </div>
 
     <!-- Footer -->
-    <footer class="site-footer">
+    <footer
+      class="site-footer"
+      x-data="{ machinesOpen: false, industriesOpen: false, companyOpen: false }"
+    >
       <div class="site-footer__marquee-wrap" aria-hidden="true">
         <div class="site-footer__marquee-track">
           {% for i in "12345678" %}
@@ -1717,9 +1886,24 @@
             </div>
           </div>
 
-          <div>
-            <h3 class="site-footer__heading">Machines</h3>
-            <ul class="site-footer__links">
+          <div class="site-footer__group">
+            <button
+              type="button"
+              class="site-footer__heading site-footer__toggle"
+              @click="machinesOpen = !machinesOpen"
+              :aria-expanded="machinesOpen.toString()"
+              aria-controls="footer-machines-links"
+            >
+              <span>Machines</span>
+              <svg class="site-footer__chevron" :class="{ 'site-footer__chevron--open': machinesOpen }" viewBox="0 0 20 20" fill="none" aria-hidden="true">
+                <path d="M5 7.5L10 12.5L15 7.5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+            </button>
+            <ul
+              id="footer-machines-links"
+              class="site-footer__links"
+              :class="{ 'site-footer__links--open': machinesOpen }"
+            >
               <li><a href="{% url 'solutions' %}?category=GLUING" class="site-footer__link">Gluing Machines</a></li>
               <li><a href="{% url 'solutions' %}?category=CARTONING" class="site-footer__link">Cartoning Machines</a></li>
               <li><a href="{% url 'solutions' %}?category=CARTONATOR" class="site-footer__link">Cartonator Machines</a></li>
@@ -1727,9 +1911,24 @@
             </ul>
           </div>
 
-          <div>
-            <h3 class="site-footer__heading">Industries</h3>
-            <ul class="site-footer__links">
+          <div class="site-footer__group">
+            <button
+              type="button"
+              class="site-footer__heading site-footer__toggle"
+              @click="industriesOpen = !industriesOpen"
+              :aria-expanded="industriesOpen.toString()"
+              aria-controls="footer-industries-links"
+            >
+              <span>Industries</span>
+              <svg class="site-footer__chevron" :class="{ 'site-footer__chevron--open': industriesOpen }" viewBox="0 0 20 20" fill="none" aria-hidden="true">
+                <path d="M5 7.5L10 12.5L15 7.5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+            </button>
+            <ul
+              id="footer-industries-links"
+              class="site-footer__links"
+              :class="{ 'site-footer__links--open': industriesOpen }"
+            >
               <li><a href="{% url 'industries' %}" class="site-footer__link">Food &amp; Beverage</a></li>
               <li><a href="{% url 'industries' %}" class="site-footer__link">Pharmaceuticals</a></li>
               <li><a href="{% url 'industries' %}" class="site-footer__link">Cosmetics</a></li>
@@ -1737,9 +1936,24 @@
             </ul>
           </div>
 
-          <div>
-            <h3 class="site-footer__heading">Company</h3>
-            <ul class="site-footer__links">
+          <div class="site-footer__group">
+            <button
+              type="button"
+              class="site-footer__heading site-footer__toggle"
+              @click="companyOpen = !companyOpen"
+              :aria-expanded="companyOpen.toString()"
+              aria-controls="footer-company-links"
+            >
+              <span>Company</span>
+              <svg class="site-footer__chevron" :class="{ 'site-footer__chevron--open': companyOpen }" viewBox="0 0 20 20" fill="none" aria-hidden="true">
+                <path d="M5 7.5L10 12.5L15 7.5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+            </button>
+            <ul
+              id="footer-company-links"
+              class="site-footer__links"
+              :class="{ 'site-footer__links--open': companyOpen }"
+            >
               <li><a href="{% url 'about' %}" class="site-footer__link">About Us</a></li>
               <li><a href="{% url 'contact' %}" class="site-footer__link">Contact</a></li>
               <li><a href="#" class="site-footer__link">Download Brochure</a></li>

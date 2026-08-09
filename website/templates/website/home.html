@@ -16,7 +16,7 @@
     <div class="relative z-10 mx-auto w-full px-4 sm:px-6 lg:px-10 xl:px-16">
       <div class="grid grid-cols-1 items-center gap-12 lg:grid-cols-12 lg:gap-8">
 
-        <div class="hero-text-block-primary lg:col-span-5 space-y-6 md:space-y-7">
+        <div class="hero-text-block-primary lg:col-span-5 space-y-4 md:space-y-7">
           <div class="hero-badge inline-flex items-center rounded-full bg-[#2d388c] px-5 py-2 text-xs sm:text-sm font-medium text-white tracking-[-0.01em]">
             {{ hero.badge_label|default:"Precision Bonding, Seamless Packaging" }}
           </div>
@@ -55,8 +55,8 @@
           <p class="about-eyebrow">About Glupac</p>
 
           <h2 class="about-heading">
-            Leading Manufacturer of
-            <span class="text-[#47a33d]">Packaging Solutions</span>
+            <span class="about-heading__line">Leading Manufacturer of</span>
+            <span class="about-heading__line text-[#47a33d]">Packaging Solutions</span>
           </h2>
 
           <p class="about-para">
@@ -248,52 +248,54 @@
             <p class="testimonials-subheading">Trusted by industry leaders worldwide</p>
           </header>
 
-          <div class="testimonials-grid">
-            {% for testimonial in testimonials %}
-            <article class="testimonial-card testimonial-card-animate">
-              <div class="testimonial-card__stars" aria-label="{{ testimonial.rating }} out of 5 stars">
-                {% for i in "12345" %}
-                <img src="{% static 'images/testimonials/icon-star.svg' %}" alt="" width="20" height="20" aria-hidden="true">
-                {% endfor %}
-              </div>
-              <blockquote class="testimonial-card__quote">"{{ testimonial.quote }}"</blockquote>
-              <div class="testimonial-card__author">
-                <p class="testimonial-card__name">{{ testimonial.name }}</p>
-                <p class="testimonial-card__company">{{ testimonial.company }}</p>
-              </div>
-            </article>
-            {% empty %}
-            <article class="testimonial-card testimonial-card-animate">
-              <div class="testimonial-card__stars" aria-hidden="true">
-                {% for i in "12345" %}<img src="{% static 'images/testimonials/icon-star.svg' %}" alt="" width="20" height="20">{% endfor %}
-              </div>
-              <blockquote class="testimonial-card__quote">"Glupac machines have transformed our packaging efficiency. The zero-leakage feature has significantly reduced product wastage."</blockquote>
-              <div class="testimonial-card__author">
-                <p class="testimonial-card__name">Rajesh Kumar</p>
-                <p class="testimonial-card__company">India Gate Foods</p>
-              </div>
-            </article>
-            <article class="testimonial-card testimonial-card-animate">
-              <div class="testimonial-card__stars" aria-hidden="true">
-                {% for i in "12345" %}<img src="{% static 'images/testimonials/icon-star.svg' %}" alt="" width="20" height="20">{% endfor %}
-              </div>
-              <blockquote class="testimonial-card__quote">"Outstanding customization and support. The machines are perfectly tailored to our product requirements."</blockquote>
-              <div class="testimonial-card__author">
-                <p class="testimonial-card__name">Priya Sharma</p>
-                <p class="testimonial-card__company">Haldirams</p>
-              </div>
-            </article>
-            <article class="testimonial-card testimonial-card-animate">
-              <div class="testimonial-card__stars" aria-hidden="true">
-                {% for i in "12345" %}<img src="{% static 'images/testimonials/icon-star.svg' %}" alt="" width="20" height="20">{% endfor %}
-              </div>
-              <blockquote class="testimonial-card__quote">"Excellent build quality and automation. Our production speed has increased by 40% since installation."</blockquote>
-              <div class="testimonial-card__author">
-                <p class="testimonial-card__name">Mohammed Ali</p>
-                <p class="testimonial-card__company">Finolex Cables</p>
-              </div>
-            </article>
-            {% endfor %}
+          <div class="testimonials-carousel-shell -mx-4 sm:mx-0">
+            <div class="testimonials-grid">
+              {% for testimonial in testimonials %}
+              <article class="testimonial-card testimonial-card-animate snap-start">
+                <div class="testimonial-card__stars" aria-label="{{ testimonial.rating }} out of 5 stars">
+                  {% for i in "12345" %}
+                  <img src="{% static 'images/testimonials/icon-star.svg' %}" alt="" width="20" height="20" aria-hidden="true">
+                  {% endfor %}
+                </div>
+                <blockquote class="testimonial-card__quote">"{{ testimonial.quote }}"</blockquote>
+                <div class="testimonial-card__author">
+                  <p class="testimonial-card__name">{{ testimonial.name }}</p>
+                  <p class="testimonial-card__company">{{ testimonial.company }}</p>
+                </div>
+              </article>
+              {% empty %}
+              <article class="testimonial-card testimonial-card-animate snap-start">
+                <div class="testimonial-card__stars" aria-hidden="true">
+                  {% for i in "12345" %}<img src="{% static 'images/testimonials/icon-star.svg' %}" alt="" width="20" height="20">{% endfor %}
+                </div>
+                <blockquote class="testimonial-card__quote">"Glupac machines have transformed our packaging efficiency. The zero-leakage feature has significantly reduced product wastage."</blockquote>
+                <div class="testimonial-card__author">
+                  <p class="testimonial-card__name">Rajesh Kumar</p>
+                  <p class="testimonial-card__company">India Gate Foods</p>
+                </div>
+              </article>
+              <article class="testimonial-card testimonial-card-animate snap-start">
+                <div class="testimonial-card__stars" aria-hidden="true">
+                  {% for i in "12345" %}<img src="{% static 'images/testimonials/icon-star.svg' %}" alt="" width="20" height="20">{% endfor %}
+                </div>
+                <blockquote class="testimonial-card__quote">"Outstanding customization and support. The machines are perfectly tailored to our product requirements."</blockquote>
+                <div class="testimonial-card__author">
+                  <p class="testimonial-card__name">Priya Sharma</p>
+                  <p class="testimonial-card__company">Haldirams</p>
+                </div>
+              </article>
+              <article class="testimonial-card testimonial-card-animate snap-start">
+                <div class="testimonial-card__stars" aria-hidden="true">
+                  {% for i in "12345" %}<img src="{% static 'images/testimonials/icon-star.svg' %}" alt="" width="20" height="20">{% endfor %}
+                </div>
+                <blockquote class="testimonial-card__quote">"Excellent build quality and automation. Our production speed has increased by 40% since installation."</blockquote>
+                <div class="testimonial-card__author">
+                  <p class="testimonial-card__name">Mohammed Ali</p>
+                  <p class="testimonial-card__company">Finolex Cables</p>
+                </div>
+              </article>
+              {% endfor %}
+            </div>
           </div>
 
         </div>
@@ -368,7 +370,7 @@
         </header>
 
         <div class="grid grid-cols-1 xl:grid-cols-12 gap-12 items-center">
-          <div class="xl:col-span-5 footprints-stats flex flex-col gap-6 lg:gap-8">
+          <div class="xl:col-span-5 footprints-stats">
             <div class="footprints-stat footprints-stat-animate">
               <div class="footprints-stat__icon">
                 <img src="{% static 'images/footprints/icon-installations.svg' %}" alt="" width="32" height="32" aria-hidden="true">
@@ -658,49 +660,87 @@
       font-weight: 400;
     }
 
+    .hero-text-block-primary {
+      margin-top: -50px;
+    }
+
+    .hero-text-block-primary .hero-badge {
+      padding-top: 0.4rem;
+      padding-bottom: 0.4rem;
+    }
+
+    .hero-text-block-primary .hero-cta {
+      padding-top: 0;
+    }
+
+    @media (min-width: 768px) {
+      .hero-text-block-primary {
+        margin-top: 0;
+      }
+    }
+
     /* ── About Glupac (Figma 105:784) ─────── */
     .about-eyebrow {
       margin: 0;
       color: #2d388c;
       font-family: "Inter", sans-serif;
-      font-size: 14px;
+      font-size: 12px;
       font-style: normal;
       font-weight: 600;
-      line-height: 20px;
+      line-height: 18px;
       letter-spacing: 0.1996px;
       text-transform: uppercase;
     }
 
     .about-heading {
-      margin: 16px 0 0;
+      margin: 12px 0 0;
       max-width: 584px;
       color: #2d388c;
       font-family: "Hatsch Sans PERSONAL USE ONLY", sans-serif;
-      font-size: 40px;
+      /* Reason: Smaller mobile type keeps the heading on two lines in the about card. */
+      font-size: clamp(18px, 5.2vw, 40px);
       font-style: italic;
       font-weight: 400;
-      line-height: 48px;
-      letter-spacing: 0.369px;
+      line-height: 1.2;
+      letter-spacing: 0.2px;
+    }
+
+    .about-heading__line {
+      display: block;
+      white-space: nowrap;
+    }
+
+    @media (max-width: 360px) {
+      .about-heading__line {
+        white-space: normal;
+      }
     }
 
     .about-para {
-      margin: 24px 0 0;
+      margin: 16px 0 0;
       max-width: 584px;
       color: #4a5565;
       font-family: "Inter", sans-serif;
-      font-size: 18px;
+      font-size: 15px;
       font-style: normal;
       font-weight: 400;
-      line-height: 29.25px;
-      letter-spacing: -0.439px;
+      line-height: 24px;
+      letter-spacing: -0.2px;
     }
 
     .about-stats {
       display: grid;
       grid-template-columns: repeat(3, minmax(0, 1fr));
-      gap: 24px;
-      margin-top: 32px;
+      gap: 8px;
+      margin-top: 24px;
       max-width: 584px;
+    }
+
+    @media (max-width: 640px) {
+      .about-stat__label {
+        font-size: 11px;
+        line-height: 14px;
+      }
     }
 
     .about-stat {
@@ -714,9 +754,9 @@
       display: flex;
       align-items: center;
       justify-content: center;
-      width: 64px;
-      height: 64px;
-      border-radius: 14px;
+      width: 52px;
+      height: 52px;
+      border-radius: 12px;
       background: linear-gradient(
         135deg,
         rgb(44, 62, 143) 0%,
@@ -729,15 +769,63 @@
       );
     }
 
+    .about-stat__icon img {
+      width: 26px;
+      height: 26px;
+    }
+
     .about-stat__label {
-      margin: 12px 0 0;
+      margin: 8px 0 0;
       color: #364153;
       font-family: "Inter", sans-serif;
-      font-size: 14px;
+      font-size: 12px;
       font-style: normal;
       font-weight: 500;
-      line-height: 20px;
-      letter-spacing: -0.1504px;
+      line-height: 16px;
+      letter-spacing: -0.15px;
+    }
+
+    @media (min-width: 768px) {
+      .about-eyebrow {
+        font-size: 14px;
+        line-height: 20px;
+      }
+
+      .about-heading {
+        margin-top: 16px;
+        font-size: 40px;
+        line-height: 48px;
+        letter-spacing: 0.369px;
+      }
+
+      .about-para {
+        margin-top: 24px;
+        font-size: 18px;
+        line-height: 29.25px;
+        letter-spacing: -0.439px;
+      }
+
+      .about-stats {
+        gap: 24px;
+        margin-top: 32px;
+      }
+
+      .about-stat__icon {
+        width: 64px;
+        height: 64px;
+        border-radius: 14px;
+      }
+
+      .about-stat__icon img {
+        width: 32px;
+        height: 32px;
+      }
+
+      .about-stat__label {
+        margin-top: 12px;
+        font-size: 14px;
+        line-height: 20px;
+      }
     }
 
     .about-image-1,
@@ -750,22 +838,18 @@
         0 4px 6px -4px rgba(0, 0, 0, 0.1);
     }
 
+    /* Reason: Mobile shows a single full-bleed about image; second image returns at xl. */
     .about-image-1 {
-      left: 0;
-      top: 0;
-      width: 58%;
-      max-width: 280px;
-      aspect-ratio: 341 / 338;
+      inset: 0;
+      width: 100%;
+      max-width: none;
+      height: 100%;
+      aspect-ratio: auto;
       z-index: 1;
     }
 
     .about-image-2 {
-      right: 0;
-      bottom: 0;
-      width: 64%;
-      max-width: 300px;
-      aspect-ratio: 370 / 339;
-      z-index: 2;
+      display: none;
     }
 
     @media (min-width: 1280px) {
@@ -774,6 +858,7 @@
       }
 
       .about-image-1 {
+        inset: auto;
         left: 644px;
         top: 9px;
         width: 341px;
@@ -783,6 +868,7 @@
       }
 
       .about-image-2 {
+        display: block;
         left: 862px;
         right: auto;
         bottom: auto;
@@ -791,6 +877,7 @@
         max-width: none;
         height: 339px;
         aspect-ratio: auto;
+        z-index: 2;
       }
     }
 
@@ -798,11 +885,11 @@
     .advantages-heading {
       margin: 0;
       font-family: "Hatsch Sans PERSONAL USE ONLY", sans-serif;
-      font-size: 40px;
+      font-size: 28px;
       font-style: italic;
       font-weight: 400;
-      line-height: 48px;
-      letter-spacing: 0.369px;
+      line-height: 1.2;
+      letter-spacing: 0.2px;
     }
 
     .advantages-subheading {
@@ -810,11 +897,11 @@
       max-width: 672px;
       color: #4a5565;
       font-family: "Inter", sans-serif;
-      font-size: 20px;
+      font-size: 14px;
       font-style: normal;
       font-weight: 400;
-      line-height: 28px;
-      letter-spacing: -0.449px;
+      line-height: 20px;
+      letter-spacing: -0.2px;
     }
 
     .advantages-grid {
@@ -893,27 +980,27 @@
     .industries-heading {
       margin: 0;
       font-family: "Hatsch Sans PERSONAL USE ONLY", sans-serif;
-      font-size: 40px;
+      font-size: 28px;
       font-style: italic;
       font-weight: 400;
-      line-height: 48px;
-      letter-spacing: 0.369px;
+      line-height: 1.2;
+      letter-spacing: 0.2px;
     }
 
     .industries-subheading {
-      margin: 16px auto 0;
+      margin: 12px auto 0;
       max-width: 672px;
       color: #4a5565;
       font-family: "Inter", sans-serif;
-      font-size: 20px;
+      font-size: 14px;
       font-style: normal;
       font-weight: 400;
-      line-height: 28px;
-      letter-spacing: -0.449px;
+      line-height: 20px;
+      letter-spacing: -0.2px;
     }
 
     .industries-carousel-shell {
-      background: #ffffff;
+      background: transparent;
     }
 
     .industries-carousel {
@@ -991,10 +1078,6 @@
       z-index: 1;
     }
 
-    .industries-card__body--muted {
-      background: #f9fafb;
-    }
-
     .industries-card__list {
       margin: 0;
       padding: 0;
@@ -1052,36 +1135,76 @@
     .clients-heading {
       margin: 0;
       font-family: "Hatsch Sans PERSONAL USE ONLY", sans-serif;
-      font-size: 40px;
+      font-size: 28px;
       font-style: italic;
       font-weight: 400;
-      line-height: 48px;
-      letter-spacing: 0.369px;
+      line-height: 1.2;
+      letter-spacing: 0.2px;
     }
 
     .testimonials-subheading,
     .clients-subheading {
-      margin: 16px auto 0;
+      margin: 12px auto 0;
       max-width: 672px;
       color: #4a5565;
       font-family: "Inter", sans-serif;
-      font-size: 20px;
+      font-size: 14px;
       font-style: normal;
       font-weight: 400;
-      line-height: 28px;
-      letter-spacing: -0.449px;
+      line-height: 20px;
+      letter-spacing: -0.2px;
+    }
+
+    /* Reason: Mobile testimonials swipe as a carousel; tablet/desktop stay as a grid. */
+    .testimonials-carousel-shell {
+      background: transparent;
     }
 
     .testimonials-grid {
-      display: grid;
-      grid-template-columns: 1fr;
-      gap: 24px;
+      display: flex;
+      gap: 16px;
+      overflow-x: auto;
+      padding: 0 16px 12px;
+      scroll-snap-type: x mandatory;
+      scroll-behavior: smooth;
+      scrollbar-width: none;
+    }
+
+    .testimonials-grid::-webkit-scrollbar {
+      display: none;
+    }
+
+    .testimonial-card {
+      display: flex;
+      flex-direction: column;
+      flex: 0 0 min(82vw, 300px);
+      width: min(82vw, 300px);
+      min-height: 276px;
+      padding: 24px;
+      border-radius: 14px;
+      border: 2px solid #f3f4f6;
+      background: #f9fafb;
     }
 
     @media (min-width: 768px) {
+      .testimonials-carousel-shell {
+        margin-left: 0;
+        margin-right: 0;
+      }
+
       .testimonials-grid {
+        display: grid;
         grid-template-columns: repeat(2, minmax(0, 1fr));
         gap: 28px;
+        overflow: visible;
+        padding: 0;
+        scroll-snap-type: none;
+      }
+
+      .testimonial-card {
+        flex: unset;
+        width: auto;
+        padding: 32px;
       }
     }
 
@@ -1090,16 +1213,6 @@
         grid-template-columns: repeat(3, minmax(0, 1fr));
         gap: 32px;
       }
-    }
-
-    .testimonial-card {
-      display: flex;
-      flex-direction: column;
-      min-height: 276px;
-      padding: 32px;
-      border-radius: 14px;
-      border: 2px solid #f3f4f6;
-      background: #f9fafb;
     }
 
     .testimonial-card__stars {
@@ -1175,32 +1288,71 @@
     .footprints-heading {
       margin: 8px 0 0;
       font-family: "Hatsch Sans PERSONAL USE ONLY", sans-serif;
-      font-size: 40px;
+      font-size: 28px;
       font-style: italic;
       font-weight: 400;
-      line-height: 48px;
-      letter-spacing: 0.369px;
+      line-height: 1.2;
+      letter-spacing: 0.2px;
     }
 
     .footprints-subheading {
-      margin: 16px auto 0;
+      margin: 12px auto 0;
       max-width: 672px;
       color: #4a5565;
       font-family: "Inter", sans-serif;
-      font-size: 20px;
+      font-size: 14px;
       font-style: normal;
       font-weight: 400;
-      line-height: 28px;
-      letter-spacing: -0.449px;
+      line-height: 20px;
+      letter-spacing: -0.2px;
+    }
+
+    /* Reason: Restore desktop subsection heading scale from tablet up. */
+    @media (min-width: 768px) {
+      .advantages-heading,
+      .industries-heading,
+      .testimonials-heading,
+      .clients-heading,
+      .footprints-heading {
+        font-size: 40px;
+        line-height: 48px;
+        letter-spacing: 0.369px;
+      }
+
+      .advantages-subheading,
+      .industries-subheading,
+      .testimonials-subheading,
+      .clients-subheading,
+      .footprints-subheading {
+        font-size: 20px;
+        line-height: 28px;
+        letter-spacing: -0.449px;
+      }
+
+      .industries-subheading,
+      .testimonials-subheading,
+      .clients-subheading,
+      .footprints-subheading {
+        margin-top: 16px;
+      }
+    }
+
+    /* Reason: Mobile shows 2 stats side-by-side; desktop sidebar stays a single column. */
+    .footprints-stats {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 12px;
     }
 
     .footprints-stat {
       display: flex;
-      align-items: center;
-      gap: 24px;
-      min-height: 132px;
-      padding: 26px;
-      border-radius: 14px;
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 12px;
+      min-height: 0;
+      min-width: 0;
+      padding: 16px;
+      border-radius: 12px;
       border: 2px solid #f3f4f6;
       background: linear-gradient(to right, #f9fafb, #ffffff);
     }
@@ -1210,9 +1362,9 @@
       align-items: center;
       justify-content: center;
       flex-shrink: 0;
-      width: 64px;
-      height: 64px;
-      border-radius: 14px;
+      width: 44px;
+      height: 44px;
+      border-radius: 10px;
       background: linear-gradient(
         135deg,
         rgb(44, 62, 143) 0%,
@@ -1225,26 +1377,71 @@
       );
     }
 
+    .footprints-stat__icon img {
+      width: 22px;
+      height: 22px;
+    }
+
     .footprints-stat__value {
       margin: 0;
       color: #2d388c;
       font-family: "Inter", sans-serif;
-      font-size: 48px;
+      font-size: 28px;
       font-style: normal;
       font-weight: 700;
-      line-height: 48px;
-      letter-spacing: 0.3516px;
+      line-height: 1.1;
+      letter-spacing: 0.2px;
     }
 
     .footprints-stat__label {
       margin: 4px 0 0;
       color: #364153;
       font-family: "Inter", sans-serif;
-      font-size: 18px;
+      font-size: 13px;
       font-style: normal;
       font-weight: 500;
-      line-height: 28px;
-      letter-spacing: -0.4395px;
+      line-height: 18px;
+      letter-spacing: -0.2px;
+    }
+
+    @media (min-width: 1280px) {
+      .footprints-stats {
+        display: flex;
+        flex-direction: column;
+        gap: 32px;
+      }
+
+      .footprints-stat {
+        flex-direction: row;
+        align-items: center;
+        gap: 24px;
+        min-height: 132px;
+        padding: 26px;
+        border-radius: 14px;
+      }
+
+      .footprints-stat__icon {
+        width: 64px;
+        height: 64px;
+        border-radius: 14px;
+      }
+
+      .footprints-stat__icon img {
+        width: 32px;
+        height: 32px;
+      }
+
+      .footprints-stat__value {
+        font-size: 48px;
+        line-height: 48px;
+        letter-spacing: 0.3516px;
+      }
+
+      .footprints-stat__label {
+        font-size: 18px;
+        line-height: 28px;
+        letter-spacing: -0.4395px;
+      }
     }
 
     .footprints-globe__frame {
@@ -1350,11 +1547,19 @@
       max-width: 496px;
       color: #ffffff;
       font-family: "Inter", sans-serif;
-      font-size: 36px;
+      font-size: 24px;
       font-style: normal;
       font-weight: 700;
-      line-height: 43.2px;
-      letter-spacing: 0.3691px;
+      line-height: 1.2;
+      letter-spacing: 0.2px;
+    }
+
+    @media (min-width: 768px) {
+      .cta-banner__heading {
+        font-size: 36px;
+        line-height: 43.2px;
+        letter-spacing: 0.3691px;
+      }
     }
 
     .cta-banner__body {
@@ -1644,8 +1849,8 @@
             "-=0.4"
           )
           .fromTo(".hero-machine-bg",
-            { autoAlpha: 0, x: 100, y: 30, scale: 1.06 },
-            { autoAlpha: 1, x: 0, y: 0, scale: 1, duration: 1.2 },
+            { autoAlpha: 0 },
+            { autoAlpha: 1, duration: 0.8 },
             "-=0.9"
           )
           .fromTo(".hero-wave__layer",
@@ -1654,26 +1859,7 @@
             "-=0.8"
           );
 
-        gsap.to(".hero-machine-bg", {
-          rotation: 1.2,
-          duration: 4.5,
-          ease: "sine.inOut",
-          yoyo: true,
-          repeat: -1,
-          delay: 1.5,
-          transformOrigin: "80% 80%",
-        });
-
-        gsap.to(".hero-machine-bg", {
-          y: 50,
-          ease: "none",
-          scrollTrigger: {
-            trigger: ".hero-section",
-            start: "top top",
-            end: "bottom top",
-            scrub: 1.5,
-          },
-        });
+        // Reason: Keep the hero machine image static — no idle wobble or scroll parallax.
 
         gsap.to(".hero-wave__layer--green", {
           y: 6,
